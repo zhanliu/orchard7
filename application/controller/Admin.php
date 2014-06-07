@@ -19,7 +19,7 @@ class Admin extends Controller
     {
         // load a model, perform an action, pass the returned data to a variable
         // NOTE: please write the name of the model "LikeThis"
-        $category_model = $this->loadModel('AdminCategoryModel');
+        $category_model = $this->loadModel('CategoryModel');
         $categories = $category_model->getAllCategories();
 
         $stats_model = $this->loadModel('CategoryStatsModel');
@@ -42,7 +42,7 @@ class Admin extends Controller
         // if we have POST data to create a new song entry
         if (isset($_POST["submit_add_category"])) {
             // load model, perform an action on the model
-            $category_model = $this->loadModel('AdminCategoryModel');
+            $category_model = $this->loadModel('CategoryModel');
             $category_model->addCategory($_POST["name"]);
         }
 
