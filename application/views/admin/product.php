@@ -38,6 +38,9 @@
 
             <label for="category">类目*</label>
             <select name="category" id="category">
+                <?php foreach ($categories as $category) { ?>
+                  <? echo "<option value=".$category->id.">".$category->name."</option>"; ?>
+                <?php } ?>
                 <option value="海珠区" selected="selected">海珠区</option>
                 <option value="荔湾区">荔湾区</option>
                 <option value="白云区">白云区</option>

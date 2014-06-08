@@ -102,6 +102,60 @@ class Admin extends Controller
         header('location: ' . URL . 'admin/category');
     }
 
+    // *** PRODUCT MANAGEMENT *** //
+
+    public function product()
+    {
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts();
+
+        $stats_model = $this->loadModel('ProductStatsModel');
+        $amount_of_products = $stats_model->getAmountOfProducts();
+
+        $category_model = $this->loadModel('CategoryModel');
+        $categories = $category_model->getAllCategories();
+
+        // debug message to show where you are, just for the demo
+        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/product.php';
+        require 'application/views/admin/footer.php';
+        // load views. within the views we can echo out $songs and $amount_of_songs easily
+
+    }
+
+    public function addProduct()
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method addProduct().';
+
+        // if we have POST data to create a new song entry
+        if (isset($_POST["submit_add_product"])) {
+            // load model, perform an action on the model
+            $product_model = $this->loadModel('ProductModel');
+            echo "district** is ".$_POST["district"];
+            $product_model->addProduct($_POST["name"], $_POST["price"], $_POST["unit"], $_POST["is_archived"], $_POST["category_id"], $_POST["tag"], $_POST["description"], $_POST["created_time"], $_POST["updated_time"]);
+        }
+
+        // where to go after song has been added
+        header('location: ' . URL . 'admin/product');
+    }
+
+    public function deleteProduct($id)
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteProduct().';
+
+        // if we have an id of a song that should be deleted
+        if (isset($id)) {
+            // load model, perform an action on the model
+            $products_model = $this->loadModel('ProductModel');
+            $products_model->deleteProduct($id);
+        }
+
+        // where to go after song has been deleted
+        header('location: ' . URL . 'admin/product');
+    }
 
 
 
