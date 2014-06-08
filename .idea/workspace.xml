@@ -38,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="combo.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="combo.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="20" selection-start="3263" selection-end="3263" vertical-scroll-proportion="-2.5897436" vertical-offset="1103" max-vertical-offset="1785">
+            <state line="87" column="20" selection-start="3263" selection-end="3263" vertical-scroll-proportion="3.5558584" vertical-offset="0" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -110,10 +110,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="06-create-table-combo_product_mapping.sql" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="06-create-table-combo_product_mapping.sql" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo_product_mapping.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+            <state line="0" column="0" selection-start="0" selection-end="457" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
               <folding />
             </state>
           </provider>
@@ -569,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="20" selection-start="3263" selection-end="3263" vertical-scroll-proportion="-2.5897436" vertical-offset="1103" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/_install/04-create-table-product.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
@@ -593,6 +586,13 @@
     <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo_product_mapping.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="20" selection-start="3263" selection-end="3263" vertical-scroll-proportion="3.5558584" vertical-offset="0" max-vertical-offset="1785">
           <folding />
         </state>
       </provider>
