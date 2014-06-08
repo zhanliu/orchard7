@@ -187,11 +187,23 @@ class Admin extends Controller
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
             $combo_model = $this->loadModel('ComboModel');
-            $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+
+            // insert multiple records into mapping table
+            $product_ids = $_POST['product_id'];
+            $number_of_units = $_POST['number_of_unit'];
+            //echo "Hello -> ".$number_of_units[1];
+            $mapping_model = $this->loadModel('ComboProductMappingModel');
+            $index = 0;
+            foreach($product_ids as $product_id) {
+                $mapping_model->addMapping($combo_id, $product_id, $number_of_units[$index]);
+                $index++;
+            }
+
         }
 
         // where to go after song has been added
-        header('location: ' . URL . 'admin/combo');
+        //header('location: ' . URL . 'admin/combo');
     }
 
     public function deleteCombo($id)

@@ -40,6 +40,8 @@ class ComboModel
         $sql = "INSERT INTO combo (name, price, description, tag, is_archived, created_time, updated_time) VALUES (:name,:price,:description,:tag, :is_archived,:created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':name' => $name, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':is_archived'=>$is_archived, 'created_time'=>$created_time, 'updated_time'=>$updated_time));
+        $insertedId = $this->db->lastInsertId();
+        return $insertedId;
     }
 
     public function deleteProduct($id)

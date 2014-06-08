@@ -14,10 +14,24 @@
         cell2.innerHTML = rowCount + 1;
 
         var cell3 = row.insertCell(2);
-        var element2 = document.createElement("input");
-        element2.type = "text";
-        element2.name = "txtbox[]";
+        var element2 = document.createElement("select");
+        element2.name = "product_id[]";
+        //Create and append the options
+        <?php
+            foreach ($products as $product) {
+                echo 'var option = document.createElement("option");';
+                echo 'option.value = "'.$product->id.'";';
+                echo 'option.text = "'.$product->name.'";';
+                echo 'element2.appendChild(option);';
+            }
+        ?>
         cell3.appendChild(element2);
+
+        var cell4 = row.insertCell(3);
+        var element3 = document.createElement("input");
+        element3.type = "text";
+        element3.name = "number_of_unit[]";
+        cell4.appendChild(element3);
     }
 
     function deleteRow(tableID) {
@@ -68,9 +82,6 @@
         .comboform label { display:block; margin-top:1.2em; }
         .switch .ui-slider-switch { width: 15.5em !important }
         .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
-        .ui-panel {
-            width: 30%;
-        }
     </style>
 
     <div data-role="panel" data-position="right" width＝“25em” data-position-fixed="false" data-display="overlay" id="add-form" data-theme="b" class="add-form">
@@ -86,7 +97,16 @@
                 <TR>
                     <TD><INPUT type="checkbox" name="chk"/>1</TD>
                     <TD> 1 </TD>
-                    <TD> <INPUT type="text" /> </TD>
+                    <TD>
+                        <select name="product_id[]" id="mapping">
+                            <?php
+                                foreach ($products as $product) {
+                                    echo '<option value="'.$product->id.'">'.$product->name.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </TD>
+                    <TD><input type="text" name="number_of_unit[]"></TD>
                 </TR>
             </TABLE>
 
