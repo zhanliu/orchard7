@@ -38,9 +38,6 @@
             <label for="price">价格*</label>
             <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
 
-            <label for="unit">单位</label>
-            <input type="text" name="unit" id="unit" value="" data-clear-btn="true" data-mini="true">
-
             <div class="switch">
                 <label for="is_archived">当前状态</label>
                 <select name="is_archived" id="slider" data-role="slider" data-mini="true">
