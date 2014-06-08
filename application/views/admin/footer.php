@@ -22,11 +22,15 @@
             <a href="index">返回首页</a>
         </li>
         <li>
+            <a href="store">店铺管理</a>
+        </li>
+        <li>
             <a href="category">产品目录管理</a>
         </li>
         <li>
             <a href="product">产品管理</a>
         </li>
+    </ul>
 </div><!-- /panel -->
 </div>
 

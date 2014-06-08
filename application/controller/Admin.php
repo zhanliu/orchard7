@@ -15,6 +15,58 @@ class Admin extends Controller
         // load views. within the views we can echo out $songs and $amount_of_songs easily
     }
 
+    public function store()
+    {
+        // load a model, perform an action, pass the returned data to a variable
+        // NOTE: please write the name of the model "LikeThis"
+        $store_model = $this->loadModel('StoreModel');
+        $stores = $store_model->getAllStores();
+
+        $stats_model = $this->loadModel('StoreStatsModel');
+        $amount_of_stores = $stats_model->getAmountOfStores();
+
+        // debug message to show where you are, just for the demo
+        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/store.php';
+        require 'application/views/admin/footer.php';
+        // load views. within the views we can echo out $songs and $amount_of_songs easily
+
+    }
+
+    public function addStore()
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method addStore().';
+
+        // if we have POST data to create a new song entry
+        if (isset($_POST["submit_add_store"])) {
+            // load model, perform an action on the model
+            $store_model = $this->loadModel('AdminStoreModel');
+            echo "district** is ".$_POST["district"];
+            $store_model->addStore($_POST["name"], $_POST["district"], $_POST["address"], $_POST["phone_number"]);
+        }
+
+        // where to go after song has been added
+        header('location: ' . URL . 'admin/store');
+    }
+
+    public function deleteStore($id)
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteStore().';
+
+        // if we have an id of a song that should be deleted
+        if (isset($id)) {
+            // load model, perform an action on the model
+            $stores_model = $this->loadModel('StoreModel');
+            $stores_model->deleteStore($id);
+        }
+
+        // where to go after song has been deleted
+        header('location: ' . URL . 'admin/store');
+    }
+
     public function category()
     {
         // load a model, perform an action, pass the returned data to a variable
@@ -49,6 +101,8 @@ class Admin extends Controller
         // where to go after song has been added
         header('location: ' . URL . 'admin/category');
     }
+
+
 
 
 }

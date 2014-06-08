@@ -1,6 +1,6 @@
 <?php
 
-class AdminStoreModel
+class StoreModel
 {
     /**
      * Every model needs a database connection, passed to the model
