@@ -183,15 +183,15 @@ class Admin extends Controller
         // simple message to show where you are
         echo 'Message from Controller: You are in the Controller: Admin, using the method addCombo().';
 
-        // if we have POST data to create a new song entry
-        if (isset($_POST["submit_add_combo"])) {
-            // load model, perform an action on the model
-            $combo_model = $this->loadModel('ComboModel');
-            $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
-        }
-
-        // where to go after song has been added
-        header('location: ' . URL . 'admin/combo');
+//        // if we have POST data to create a new song entry
+//        if (isset($_POST["submit_add_combo"])) {
+//            // load model, perform an action on the model
+//            $combo_model = $this->loadModel('ComboModel');
+//            $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+//        }
+//
+//        // where to go after song has been added
+//        header('location: ' . URL . 'admin/combo');
     }
 
     public function deleteCombo($id)
