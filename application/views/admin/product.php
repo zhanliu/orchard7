@@ -12,9 +12,8 @@
         <ul>
             <?php foreach ($products as $product) { ?>
                 <li>
-                    <div><?php echo $product->name; ?> [<a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>">X</a>]</div>
-                    <div><?php echo $product->price; ?><?php echo $product->price; ?></div>
-                    <div><?php echo $product->unit; ?><?php echo $product->unit; ?></div>
+                    <div><?php echo $product->name; ?> <?php echo $product->price; ?>元/<?php echo $product->unit; ?>
+                        [<a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>">X</a>]</div>
                 </li>
             <?php } ?>
         </ul>
@@ -39,14 +38,8 @@
             <label for="category">类目*</label>
             <select name="category" id="category">
                 <?php foreach ($categories as $category) { ?>
-                  <? echo "<option value=".$category->id.">".$category->name."</option>"; ?>
+                  <?php echo '<option value="'.$category->id.'">'.$category->name.'</option>'; ?>
                 <?php } ?>
-                <option value="海珠区" selected="selected">海珠区</option>
-                <option value="荔湾区">荔湾区</option>
-                <option value="白云区">白云区</option>
-                <option value="天河区">天河区</option>
-                <option value="越秀区">越秀区</option>
-                <option value="黄埔区">黄埔区</option>
             </select>
 
             <label for="price">价格*</label>
