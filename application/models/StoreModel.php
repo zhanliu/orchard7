@@ -1,6 +1,6 @@
 <?php
 
-class SongsModel
+class AdminStoreModel
 {
     /**
      * Every model needs a database connection, passed to the model
@@ -17,9 +17,9 @@ class SongsModel
     /**
      * Get all songs from database
      */
-    public function getAllSongs()
+    public function getAllStores()
     {
-        $sql = "SELECT id, artist, track, link FROM song";
+        $sql = "SELECT id, name, state, city, district, address, phone_number, lat, lon FROM store";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -36,16 +36,17 @@ class SongsModel
      * @param string $track Track
      * @param string $link Link
      */
-    public function addSong($artist, $track, $link)
+    public function addStore($name, $district, $address, $phone_number)
     {
         // clean the input from javascript code for example
-        $artist = strip_tags($artist);
-        $track = strip_tags($track);
-        $link = strip_tags($link);
+        $name = strip_tags($name);
+        $district = strip_tags($district);
+        $address = strip_tags($address);
+        $phone_number = strip_tags($phone_number);
 
-        $sql = "INSERT INTO song (artist, track, link) VALUES (:artist, :track, :link)";
+        $sql = "INSERT INTO store (name, district, address, phone_number) VALUES (:name, :district, :address, :phone_number)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':artist' => $artist, ':track' => $track, ':link' => $link));
+        $query->execute(array(':name' => $name, ':district' => $district, ':address' => $address, ':phone_number' => $phone_number));
     }
 
     /**
@@ -54,10 +55,10 @@ class SongsModel
      * add/update/delete stuff!
      * @param int $song_id Id of song
      */
-    public function deleteSong($song_id)
+    public function deleteStore($store_id)
     {
-        $sql = "DELETE FROM song WHERE id = :song_id";
+        $sql = "DELETE FROM store WHERE id = :store_id";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':song_id' => $song_id));
+        $query->execute(array(':store_id' => $store_id));
     }
 }
