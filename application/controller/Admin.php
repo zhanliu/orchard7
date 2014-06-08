@@ -133,7 +133,7 @@ class Admin extends Controller
         if (isset($_POST["submit_add_product"])) {
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
-            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+            $product_model->addProduct($_POST["name"], $_POST["price"], $_POST["unit"], $_POST["is_archived"], $_POST["category_id"], $_POST["tag"], $_POST["description"], $_POST["created_time"], $_POST["updated_time"]);
         }
 
         // where to go after song has been added
@@ -149,12 +149,67 @@ class Admin extends Controller
         if (isset($id)) {
             // load model, perform an action on the model
             $products_model = $this->loadModel('ProductModel');
-            $products_model->deleteProduct($id);
+            $products_model->deleteCombo($id);
         }
 
         // where to go after song has been deleted
         header('location: ' . URL . 'admin/product');
     }
+
+    // *** COMBO MANAGEMENT *** //
+
+    public function combo()
+    {
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
+
+        $stats_model = $this->loadModel('ComboStatsModel');
+        $amount_of_combos = $stats_model->getAmountOfCombos();
+
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts();
+
+        // debug message to show where you are, just for the demo
+        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/combo.php';
+        require 'application/views/admin/footer.php';
+        // load views. within the views we can echo out $songs and $amount_of_songs easily
+
+    }
+
+    public function addCombo()
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method addCombo().';
+
+        // if we have POST data to create a new song entry
+        if (isset($_POST["submit_add_combo"])) {
+            // load model, perform an action on the model
+            $combo_model = $this->loadModel('ComboModel');
+            $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+        }
+
+        // where to go after song has been added
+        header('location: ' . URL . 'admin/combo');
+    }
+
+    public function deleteCombo($id)
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteCombo().';
+
+        // if we have an id of a song that should be deleted
+        if (isset($id)) {
+            // load model, perform an action on the model
+            $combos_model = $this->loadModel('ComboModel');
+            $combos_model->deleteCombo($id);
+        }
+
+        // where to go after song has been deleted
+        header('location: ' . URL . 'admin/combo');
+    }
+
 
 
 

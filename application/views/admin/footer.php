@@ -30,6 +30,9 @@
         <li>
             <a href="product">产品管理</a>
         </li>
+        <li>
+            <a href="combo">套餐管理</a>
+        </li>
     </ul>
 </div><!-- /panel -->
 </div>
