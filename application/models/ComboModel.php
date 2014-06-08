@@ -17,14 +17,14 @@ class ComboModel
 
     public function getAllCombos()
     {
-        $sql = "SELECT id, name,price,description, tag, is_archived, created_time, updated_time FROM combo";
+        $sql = "SELECT id, name, price, description, tag, is_archived, created_time, updated_time FROM combo";
         $query = $this->db->prepare($sql);
         $query->execute();
 
         return $query->fetchAll();
     }
 
-    public function addProduct($name, $price, $description,$tag, $is_archived)
+    public function addCombo($name, $price, $description,$tag, $is_archived)
     {
         // clean the input from javascript code for example
         $name = strip_tags($name);

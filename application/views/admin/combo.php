@@ -54,7 +54,7 @@
         <ul>
             <?php foreach ($combos as $combo) { ?>
                 <li>
-                    <div><?php echo $combo->name; ?> <?php echo $combo->price; ?>元/<?php echo $combo->unit; ?>
+                    <div><?php echo $combo->name; ?> <?php echo $combo->price; ?>元/份
                         [<a href="<?php echo URL . 'admin/deletecombo/' . $combo->id; ?>">X</a>]</div>
                 </li>
             <?php } ?>
@@ -66,22 +66,25 @@
         .comboform { padding:.8em 1.2em; }
         .comboform h2 { color:#555; margin:0.3em 0 .8em 0; padding-bottom:.5em; border-bottom:1px solid rgba(0,0,0,.1); }
         .comboform label { display:block; margin-top:1.2em; }
-        .switch .ui-slider-switch { width: 8.5em !important }
+        .switch .ui-slider-switch { width: 15.5em !important }
         .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
+        .ui-panel {
+            width: 30%;
+        }
     </style>
 
-    <div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="add-form" data-theme="b" class="add-form">
+    <div data-role="panel" data-position="right" width＝“25em” data-position-fixed="false" data-display="overlay" id="add-form" data-theme="b" class="add-form">
 
-        <form class="comboform" action="<?php echo URL; ?>admin/addcombo" method="post">
+        <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
             <h2>创建新套餐</h2>
             <label for="name">套餐名称*</label>
             <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
 
-            <INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
-            <INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
-            <TABLE id="dataTable" width="350px" border="1">
+            <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
+            <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+            <TABLE id="dataTable" width="100%" border="1">
                 <TR>
-                    <TD><INPUT type="checkbox" name="chk"/></TD>
+                    <TD><INPUT type="checkbox" name="chk"/>1</TD>
                     <TD> 1 </TD>
                     <TD> <INPUT type="text" /> </TD>
                 </TR>
