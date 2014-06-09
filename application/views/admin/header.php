@@ -14,34 +14,10 @@
     <script src="/orchard7/public/js/jquery.datatable.js"></script>
 
     <script type="text/javascript">
-//        $(document).ready(function () {
-//            $('body').layout({  });
-//        });
-
-        var outerLayout, innerLayout;
         $(document).ready(function () {
-            outerLayout = $('body').layout({
-                // using 'sub-key' option format here
-                east: {
-                    size:				400
-                    ,	resizable:			true
-                    ,	togglerLength_open:	0
-                    ,	spacing_open:		1 /* cosmetic only */
-                    ,	initHidden:			true
-                    ,	onhide_end:			function () { $("#pane4-closed").show(); }
-                    ,	onshow_start:		function () { $("#pane4-closed").hide(); }
-                }
-//                ,	center: {
-//                    onresize:		function () { if (innerLayout) innerLayout.resizeAll(); }
-//                }
+            $('body').layout({
             });
-//            innerLayout = $('body > .ui-layout-center').layout({
-//                minSize:			60
-//                ,	closable:			false
-//            });
-
         });
-
     </script>
     <style>
         .f1 {font-weight: bold;font-size: 26px}
@@ -49,7 +25,9 @@
         .ui-layout-north	{ background:	#00B4BA; }
         .ui-layout-west	{ background:	#008EFF; }
         .ui-layout-center	{ background:	#FFFFFF; }
-        #pane4-closed {
+
+        .add_object_button_div {
+            background:#333333 url(images/plus.png) 85% 55% no-repeat;
             position:	absolute;
             top:		0;
             right:		0;
@@ -59,7 +37,36 @@
             text-align:	center;
             border:		1px solid #999;
         }
-
+        .panel{
+            position:absolute;
+            top:10%;
+            right:0;
+            display:none;
+            background:#00CB6D;
+            border:1px solid #111111;
+            -moz-border-radius-topleft:20px;
+            -webkit-border-top-left-radius:20px;
+            -moz-border-radius-bottomleft:20px;
+            -webkit-border-bottom-left-radius:20px;
+            width:auto;
+            height:auto;
+            padding:30px 30px 30px 30px;
+            filter:alpha(opacity=85);opacity:.85;}
+        .panel p{
+            margin:0 0 15px 0;
+            padding:0;
+            color:#cccccc;}
+        .panel a,.panel a:visited{
+            margin:0;
+            padding:0;
+            color:#9FC54E;
+            text-decoration:none;
+            border-bottom:1px solid #9FC54E;}
+        .panel a:hover,.panel a:visited:hover{
+            margin:0;padding:0;
+            color:#ffffff;
+            text-decoration:none;
+            border-bottom:1px solid #ffffff;}
     </style>
 </head>
 <body>

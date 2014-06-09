@@ -53,8 +53,7 @@
             </tbody>
         </table>
 
-        <div id="pane4-closed">
-<!--            <button onclick="outerLayout.show('east',true)">添加</button>-->
+        <div class="add_object_button_div">
             <button class="product_add_button">添加</button>
         </div>
     </div>
@@ -66,40 +65,6 @@
         .productform h2 { color:#555; margin:0.3em 0 .8em 0; padding-bottom:.5em; border-bottom:1px solid rgba(0,0,0,.1); }
         .productform label { display:block; margin-top:1.2em; }
         .switch .ui-slider-switch { width: 8.5em !important }
-        .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
-        div#pane4-closed {
-            background:#333333 url(images/plus.png) 85% 55% no-repeat;
-        }
-        .panel{
-            position:absolute;
-            top:10%;
-            right:0;
-            display:none;
-            background:#00CB6D;
-            border:1px solid #111111;
-            -moz-border-radius-topleft:20px;
-            -webkit-border-top-left-radius:20px;
-            -moz-border-radius-bottomleft:20px;
-            -webkit-border-bottom-left-radius:20px;
-            width:auto;
-            height:auto;
-            padding:30px 30px 30px 30px;
-            filter:alpha(opacity=85);opacity:.85;}
-        .panel p{
-            margin:0 0 15px 0;
-            padding:0;
-            color:#cccccc;}
-        .panel a,.panel a:visited{
-            margin:0;
-            padding:0;
-            color:#9FC54E;
-            text-decoration:none;
-            border-bottom:1px solid #9FC54E;}
-        .panel a:hover,.panel a:visited:hover{
-            margin:0;padding:0;
-            color:#ffffff;
-            text-decoration:none;
-            border-bottom:1px solid #ffffff;}
     </style>
 
     <div class="panel">
@@ -130,7 +95,7 @@
             </div>
 
 
-            <p><button onclick="outerLayout.hide('east')">放弃</button></p>
+            <p><button>放弃</button></p>
             <input type="submit" name="submit_add_category" value="保存" />
 
         </form>
@@ -138,8 +103,6 @@
         <!-- panel content goes here -->
     </div><!-- /panel -->
 </div>
-
-<!--<div id="add-form" class="ui-layout-east">-->
 
 
 <script type="text/javascript">
