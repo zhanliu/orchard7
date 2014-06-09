@@ -1,7 +1,26 @@
-<div class="ui-layout-center">
+<div id="page-content" style="min-height: 2911px;">
+    <div id="wrap">
+        <div id="page-heading">
 
-    <div data-role="content">
-        <p>欢迎来到果园7号信息管理系统</p>
+            <ol class="breadcrumb">
+                <li><a href="http://redteamux.com/avant/index.php">Dashboard</a></li>
+                <li>UI Elements</li>
+                <li class="active">Buttons</li>
+            </ol>
+
+            <h1>Hello World</h1>
+
+        </div>
+
+        <div class="container">
+
+
+
+            In side the container
+
+
+
+
+        </div>
     </div>
-
-</div>
+</div>   
