@@ -1,4 +1,4 @@
-<SCRIPT language="javascript">
+<script type="text/javascript">
     function addRow(tableID) {
         var table = document.getElementById(tableID);
         var rowCount = table.rows.length;
@@ -52,27 +52,65 @@
             alert(e);
         }
     }
-</SCRIPT>
+
+    $(document).ready(function(){
+        $(".combo_add_button").click(function(){
+            $(".panel").toggle("fast");
+            $(this).toggleClass("active");
+            return false;
+        });
+
+        $('#combo_data_table').dataTable();
+    });
+</script>
 
 <div class="ui-layout-center">
 
     <p class="f1">套餐管理</p><hr/>
 
-    <div data-role="content">
-        <h3>套餐数量: <?php echo $amount_of_combos; ?></h3>
-        <h3>套餐列表</h3>
-        <ul>
-            <?php foreach ($combos as $combo) { ?>
-                <li>
-                    <div><?php echo $combo->name; ?> <?php echo $combo->price; ?>元/份
-                        [<a href="<?php echo URL . 'admin/deletecombo/' . $combo->id; ?>">X</a>]</div>
-                </li>
-            <?php } ?>
-        </ul>
+    <div>
+        <table id="combo_data_table" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th>标签</th>
+                <th>活跃</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+            </tr>
+            </thead>
 
-<!--        <a href="#combo_create_popup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">添加</a>-->
-        <div id="pane4-closed">
-            <button onclick="outerLayout.show('east',true)">添加</button>
+            <tfoot>
+            <tr>
+                <th>名称</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th>标签</th>
+                <th>活跃</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+            </tr>
+            </tfoot>
+
+            <tbody>
+            <?php foreach ($combos as $combo) { ?>
+                <tr align="center">
+                    <td><?php echo $combo->name; ?></td>
+                    <td><?php echo $combo->price; ?></td>
+                    <td><?php echo $combo->description; ?></td>
+                    <td><?php echo $combo->tag; ?></td>
+                    <td>[<a href="<?php echo URL . 'admin/deletecombo/' . $combo->id; ?>">X</a>]</td>
+                    <td><?php echo $product->created_time; ?></td>
+                    <td><?php echo $product->updated_time; ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+
+        <div class="add_object_button_div">
+            <button class="combo_add_button">添加</button>
         </div>
 
     </div>
@@ -88,11 +126,10 @@
             width: 30%;
         }
     </style>
-</div>
 
-<div id="combo_create_popup" class="ui-layout-east">
+    <div class="panel">
 
-    <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
+        <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
             <h2>创建新套餐</h2>
             <label for="name">套餐名称*</label>
             <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
@@ -106,9 +143,9 @@
                     <TD>
                         <select name="product_id[]" id="mapping">
                             <?php
-                                foreach ($products as $product) {
-                                    echo '<option value="'.$product->id.'">'.$product->name.'</option>';
-                                }
+                            foreach ($products as $product) {
+                                echo '<option value="'.$product->id.'">'.$product->name.'</option>';
+                            }
                             ?>
                         </select>
                     </TD>
@@ -127,15 +164,10 @@
                 </select>
             </div>
 
+            <p><button>放弃</button></p>
+            <input type="submit" name="submit_add_combo" value="保存" />
+        </form>
 
-
-        <div class="ui-grid-a">
-<!--            <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">放弃</a></div>-->
-            <p><button onclick="outerLayout.hide('east')">放弃</button></p>
-            <div class="ui-block-b"><input type="submit" name="submit_add_combo" value="保存" /></div>
-            <!--<div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">保存</a></div>-->
-        </div>
-    </form>
-
-        <!-- panel content goes here -->
+    <!-- panel content goes here -->
     </div><!-- /panel -->
+</div>

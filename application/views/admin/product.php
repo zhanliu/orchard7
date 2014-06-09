@@ -2,7 +2,7 @@
 
     <p class="f1">商品管理</p><hr/>
 
-    <div data-role="content">
+    <div>
 
         <table id="product_data_table" class="display" cellspacing="0" width="100%">
             <thead>
@@ -57,8 +57,6 @@
             <button class="product_add_button">添加</button>
         </div>
     </div>
-
-
 
     <style>
         .productform { padding:.8em 1.2em; }
