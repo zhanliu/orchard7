@@ -5,11 +5,13 @@
 <!--    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">-->
     <link rel="stylesheet" href="/orchard7/public/css/jquery-ui-1.10.4.custom.min.css">
     <link rel="stylesheet" href="/orchard7/public/css/jquery-layout.css">
+    <link rel="stylesheet" href="/orchard7/public/css/jquery.datatable.css">
 <!--    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>-->
 <!--    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>-->
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="/orchard7/public/js/jquery-layout.js"></script>
+    <script src="/orchard7/public/js/jquery.datatable.js"></script>
 
     <script type="text/javascript">
 //        $(document).ready(function () {
@@ -46,7 +48,7 @@
         .ui-layout-east	{ background:	#00CB6D; }
         .ui-layout-north	{ background:	#00B4BA; }
         .ui-layout-west	{ background:	#008EFF; }
-        .ui-layout-center	{ background:	#90C7FF; }
+        .ui-layout-center	{ background:	#FFFFFF; }
         #pane4-closed {
             position:	absolute;
             top:		0;
@@ -64,5 +66,5 @@
 
 
 <div class="ui-layout-north">
-    <span class="f1">¹ûÔ°7ºÅ Dashboard</span>
+    <span class="f1">orchard7 Dashboard</span>
 </div>

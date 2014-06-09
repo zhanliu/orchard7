@@ -3,21 +3,63 @@
     <p class="f1">商品管理</p><hr/>
 
     <div data-role="content">
-        <h3>商品数量: <?php echo $amount_of_products; ?></h3>
-        <h3>商品列表</h3>
-        <ul>
+
+        <table id="product_data_table" class="display" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>类别</th>
+                <th>单位</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th>标签</th>
+                <th>活跃</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+            </tr>
+            </thead>
+
+            <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>类别</th>
+                <th>单位</th>
+                <th>价格</th>
+                <th>描述</th>
+                <th>标签</th>
+                <th>活跃</th>
+                <th>创建时间</th>
+                <th>修改时间</th>
+            </tr>
+            </tfoot>
+
+            <tbody>
             <?php foreach ($products as $product) { ?>
-                <li>
-                    <div><?php echo $product->name; ?> <?php echo $product->price; ?>元/<?php echo $product->unit; ?>
-                        [<a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>">X</a>]</div>
-                </li>
+                <tr align="center">
+                    <td><?php echo $product->id; ?></td>
+                    <td><?php echo $product->name; ?></td>
+                    <td><?php echo $product->category_id; ?></td>
+                    <td><?php echo $product->unit; ?></td>
+                    <td><?php echo $product->price; ?></td>
+                    <td><?php echo $product->description; ?></td>
+                    <td><?php echo $product->tag; ?></td>
+                    <td>[<a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>">X</a>]</td>
+                    <td><?php echo $product->created_time; ?></td>
+                    <td><?php echo $product->updated_time; ?></td>
+                </tr>
             <?php } ?>
-        </ul>
+            </tbody>
+        </table>
+
         <div id="pane4-closed">
 <!--            <button onclick="outerLayout.show('east',true)">添加</button>-->
             <button class="product_add_button">添加</button>
         </div>
     </div>
+
+
 
     <style>
         .productform { padding:.8em 1.2em; }
@@ -107,5 +149,7 @@
             $(this).toggleClass("active");
             return false;
         });
+
+        $('#product_data_table').dataTable();
     });
 </script>
