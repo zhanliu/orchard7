@@ -1,11 +1,7 @@
-<div data-role="page" id="pageone">
-
-
-    <div data-role="header">
-        <h1>果园7号 Dashboard</h1>
-        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-    </div>
+<div class="ui-layout-center">
 
     <div data-role="content">
-        <p>Hello World!</p>
+        <p>欢迎来到果园7号信息管理系统</p>
     </div>
+
+</div>

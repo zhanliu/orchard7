@@ -102,6 +102,21 @@ class Admin extends Controller
         header('location: ' . URL . 'admin/category');
     }
 
+    public function deleteCategory($id)
+    {
+        // simple message to show where you are
+        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteCategory().';
+
+        // if we have an id of a song that should be deleted
+        if (isset($id)) {
+            // load model, perform an action on the model
+            $categories_model = $this->loadModel('CategoryModel');
+            $categories_model->deleteCategory($id);
+        }
+
+        // where to go after song has been deleted
+        header('location: ' . URL . 'admin/category');
+    }
     // *** PRODUCT MANAGEMENT *** //
 
     public function product()

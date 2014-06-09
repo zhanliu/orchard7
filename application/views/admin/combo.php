@@ -54,13 +54,9 @@
     }
 </SCRIPT>
 
-<div data-role="page" id="pageone">
+<div class="ui-layout-center">
 
-    <div data-role="header">
-        <h1>套餐管理</h1>
-        <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-        <a href="#add-form" data-icon="plus" data-iconpos="notext">Add</a>
-    </div>
+    <p class="f1">套餐管理</p><hr/>
 
     <div data-role="content">
         <h3>套餐数量: <?php echo $amount_of_combos; ?></h3>
@@ -73,6 +69,12 @@
                 </li>
             <?php } ?>
         </ul>
+
+<!--        <a href="#combo_create_popup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">添加</a>-->
+        <div id="pane4-closed">
+            <button onclick="outerLayout.show('east',true)">添加</button>
+        </div>
+
     </div>
 
     <style>
@@ -82,11 +84,15 @@
         .comboform label { display:block; margin-top:1.2em; }
         .switch .ui-slider-switch { width: 15.5em !important }
         .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
+        .ui-panel {
+            width: 30%;
+        }
     </style>
+</div>
 
-    <div data-role="panel" data-position="right" width＝“25em” data-position-fixed="false" data-display="overlay" id="add-form" data-theme="b" class="add-form">
+<div id="combo_create_popup" class="ui-layout-east">
 
-        <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
+    <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
             <h2>创建新套餐</h2>
             <label for="name">套餐名称*</label>
             <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
@@ -123,12 +129,13 @@
 
 
 
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">放弃</a></div>
-                <div class="ui-block-b"><input type="submit" name="submit_add_combo" value="Save" /></div>
-                <!--<div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">保存</a></div>-->
-            </div>
-        </form>
+        <div class="ui-grid-a">
+<!--            <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">放弃</a></div>-->
+            <p><button onclick="outerLayout.hide('east')">放弃</button></p>
+            <div class="ui-block-b"><input type="submit" name="submit_add_combo" value="保存" /></div>
+            <!--<div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">保存</a></div>-->
+        </div>
+    </form>
 
         <!-- panel content goes here -->
     </div><!-- /panel -->
