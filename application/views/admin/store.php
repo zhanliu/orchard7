@@ -3,7 +3,7 @@
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
+                <li>水果7号</li>
                 <li>资产中心</li>
                 <li class="active">店铺管理</li>
             </ol>
@@ -17,7 +17,7 @@
                 <table id="store_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>省</th>
                         <th>市</th>
@@ -32,7 +32,7 @@
 
                     <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>省</th>
                         <th>市</th>

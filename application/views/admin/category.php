@@ -4,7 +4,7 @@
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
+                <li>水果7号</li>
                 <li>库存管理</li>
                 <li class="active">产品目录管理</li>
             </ol>
@@ -17,9 +17,9 @@
 
             <div>
                 <table id="category_data_table" class="display" cellspacing="0" width="100%">
-                    <thead text-align="center">
+                    <thead>
                     <tr>
-                        <th text-align="center">ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>删除</th>
                     </tr>
@@ -27,7 +27,7 @@
 
                     <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>删除</th>
                     </tr>

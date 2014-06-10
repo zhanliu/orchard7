@@ -69,7 +69,7 @@
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
+                <li>水果7号</li>
                 <li>库存管理</li>
                 <li class="active">套餐管理</li>
             </ol>

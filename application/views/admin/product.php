@@ -3,7 +3,7 @@
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
+                <li>水果7号</li>
                 <li>库存管理</li>
                 <li class="active">商品管理</li>
             </ol>
@@ -17,7 +17,7 @@
                 <table id="product_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>类别</th>
                         <th>单位</th>
@@ -32,7 +32,7 @@
 
                     <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th>标识</th>
                         <th>名称</th>
                         <th>类别</th>
                         <th>单位</th>
