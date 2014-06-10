@@ -60,14 +60,18 @@
             display:none;
             background:#e6e7e8;
             border:1px solid #111111;
-            /*-moz-border-radius-topleft:20px;*/
-            /*-webkit-border-top-left-radius:20px;*/
-            /*-moz-border-radius-bottomleft:20px;*/
-            /*-webkit-border-bottom-left-radius:20px;*/
+            -moz-border-radius-topleft:10px;
+            -webkit-border-top-left-radius:10px;
+            -moz-border-radius-bottomleft:10px;
+            -webkit-border-bottom-left-radius:10px;
+            -moz-border-radius-topright:10px;
+            -webkit-border-top-right-radius:10px;
+            -moz-border-radius-bottomright:10px;
+            -webkit-border-bottom-right-radius:10px;
             width:auto;
             height:auto;
             padding:30px 30px 30px 30px;
-            filter:alpha(opacity=95);opacity:.95;}
+            filter:alpha(opacity=98);opacity:.98;}
         .panel p{
             margin:0 0 15px 0;
             padding:0;
