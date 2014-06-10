@@ -64,9 +64,12 @@
 </div>
 <script>
     $(document).ready(function(){
+
         $(".category_add_button").click(function(){
             $(".panel").toggle("fast");
             $(this).toggleClass("active");
+
+
             return false;
         });
 

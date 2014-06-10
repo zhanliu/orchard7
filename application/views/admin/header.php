@@ -45,7 +45,7 @@
         .add_object_button_div {
             background:#333333 url(images/plus.png) 85% 55% no-repeat;
             position:	absolute;
-            top:		15%;
+            top:		12%;
             right:		0;
             width:		auto;
             height:		auto;
@@ -55,19 +55,19 @@
         }
         .panel{
             position:absolute;
-            top:22%;
-            right:0;
+            top:8%;
+            left:40%;
             display:none;
-            background:#00CB6D;
+            background:#e6e7e8;
             border:1px solid #111111;
-            -moz-border-radius-topleft:20px;
-            -webkit-border-top-left-radius:20px;
-            -moz-border-radius-bottomleft:20px;
-            -webkit-border-bottom-left-radius:20px;
+            /*-moz-border-radius-topleft:20px;*/
+            /*-webkit-border-top-left-radius:20px;*/
+            /*-moz-border-radius-bottomleft:20px;*/
+            /*-webkit-border-bottom-left-radius:20px;*/
             width:auto;
             height:auto;
             padding:30px 30px 30px 30px;
-            filter:alpha(opacity=85);opacity:.85;}
+            filter:alpha(opacity=95);opacity:.95;}
         .panel p{
             margin:0 0 15px 0;
             padding:0;

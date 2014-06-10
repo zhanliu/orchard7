@@ -44,7 +44,7 @@ class ComboModel
         return $insertedId;
     }
 
-    public function deleteProduct($id)
+    public function deleteCombo($id)
     {
         $sql = "DELETE FROM combo WHERE id = :id";
         $query = $this->db->prepare($sql);

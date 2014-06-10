@@ -165,7 +165,7 @@
                         </select>
                     </div>
 
-                    <p><button>放弃</button></p>
+<!--                    <p><button>放弃</button></p>-->
                     <input type="submit" name="submit_add_combo" value="保存" />
                 </form>
             </div><!-- /panel -->
