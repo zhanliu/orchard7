@@ -7,18 +7,27 @@
     <title>Orchard7</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Avant">
-    <meta name="author" content="The Red Team">
 
     <link rel="stylesheet" href="http://redteamux.com/avant/assets/css/styles.min.css?=121">
-    <link href="/orchard7/public/css/css" rel="stylesheet" type="text/css">
-
-
+    <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
-
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
     <link rel="stylesheet" href="/orchard7/public/css/jquery.datatable.css">
+
+    <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/jquery.datatable.js"></script>
+    <script src="/orchard7/public/js/jqueryui-1.10.3.min.js"></script>
+    <script src="/orchard7/public/js/bootstrap.min.js"></script>
+    <script src="/orchard7/public/js/enquire.js"></script>
+    <script src="/orchard7/public/js/jquery.cookie.js"></script>
+    <script src="/orchard7/public/js/jquery.nicescroll.min.js"></script>
+    <script src="/orchard7/public/js/prettify.js"></script>
+    <script src="/orchard7/public/js/jquery.easypiechart.min.js"></script>
+    <script src="/orchard7/public/js/jquery.sparklines.min.js"></script>
+    <script src="/orchard7/public/js/toggle.min.js"></script>
+    <script src="/orchard7/public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
+    <script src="/orchard7/public/js/application.js"></script>
+    <script src="/orchard7/public/js/demo.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="assets/css/ie8.css">
@@ -79,7 +88,8 @@
 </head>
 
 <body class="" style="">
-<script async="" src="/orchard7/public/js/analytics.js"></script><script>
+<script async="" src="/orchard7/public/js/analytics.js"></script>
+<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
