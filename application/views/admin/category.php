@@ -1,3 +1,4 @@
+
 <div id="page-content" style="min-height: 2911px;">
     <div id="wrap">
         <div id="page-heading">
@@ -14,11 +15,11 @@
 
         <div class="container">
 
-            <div data-role="content">
+            <div>
                 <table id="category_data_table" class="display" cellspacing="0" width="100%">
-                    <thead>
-                    <tr  align="center">
-                        <th>ID</th>
+                    <thead text-align="center">
+                    <tr>
+                        <th text-align="center">ID</th>
                         <th>名称</th>
                         <th>删除</th>
                     </tr>

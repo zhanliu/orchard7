@@ -42,7 +42,7 @@ class Admin extends Controller
         // if we have POST data to create a new song entry
         if (isset($_POST["submit_add_store"])) {
             // load model, perform an action on the model
-            $store_model = $this->loadModel('AdminStoreModel');
+            $store_model = $this->loadModel('StoreModel');
             echo "district** is ".$_POST["district"];
             $store_model->addStore($_POST["name"], $_POST["district"], $_POST["address"], $_POST["phone_number"]);
         }
@@ -78,7 +78,7 @@ class Admin extends Controller
         $amount_of_categories = $stats_model->getAmountOfCategories();
 
         // debug message to show where you are, just for the demo
-        echo 'Message from Controller: You are in the controller *admin, using the method cat()';
+//        echo 'Message from Controller: You are in the controller *admin, using the method cat()';
         require 'application/views/admin/header.php';
         require 'application/views/admin/category.php';
         require 'application/views/admin/footer.php';

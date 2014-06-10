@@ -12,7 +12,9 @@
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
-    <link rel="stylesheet" href="/orchard7/public/css/jquery.datatable.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/jquery.datatable.js"></script>
@@ -38,15 +40,12 @@
 
     <!-- The following CSS are included as plugins and can be removed if unused-->
 
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
-
     <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
     <style>
         .add_object_button_div {
             background:#333333 url(images/plus.png) 85% 55% no-repeat;
             position:	absolute;
-            top:		0;
+            top:		15%;
             right:		0;
             width:		auto;
             height:		auto;
@@ -56,7 +55,7 @@
         }
         .panel{
             position:absolute;
-            top:10%;
+            top:22%;
             right:0;
             display:none;
             background:#00CB6D;
@@ -84,7 +83,12 @@
             color:#ffffff;
             text-decoration:none;
             border-bottom:1px solid #ffffff;}
+
+        .container th {
+            text-align: center;
+        }
     </style>
+
 </head>
 
 <body class="" style="">
