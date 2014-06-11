@@ -218,7 +218,7 @@ class Admin extends Controller
         }
 
         // where to go after song has been added
-        //header('location: ' . URL . 'admin/combo');
+        header('location: ' . URL . 'admin/combo');
     }
 
     public function deleteCombo($id)
