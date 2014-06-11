@@ -37,9 +37,15 @@ class AddressModel
         $address2 = strip_tags($address2);
         $postcode = strip_tags($postcode);
 
-        $sql = "INSERT INTO address (country, province, city, district, address1, address2, postcode) VALUES (:country, :province, :city, :district, :address1, :address2, :postcode)";
+        $now = time();
+        $created_time = date("Y-m-d H:i:s" ,$now);
+        $updated_time = date("Y-m-d H:i:s" ,$now);
+
+        $sql = "INSERT INTO address (country, province, city, district, address1, address2, postcode, created_time, updated_time) VALUES (:country, :province, :city, :district, :address1, :address2, :postcode, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':country' => $country, ':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2,':postcode' => $postcode));
+        $query->execute(array(':country' => $country, ':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2,':postcode' => $postcode, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $insertedId = $this->db->lastInsertId();
+        return $insertedId;
     }
 
     public function deleteAddress($id)

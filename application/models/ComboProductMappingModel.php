@@ -32,4 +32,12 @@ class ComboProductMappingModel
         return $insertedId;
     }
 
+    public function deleteMapping($id)
+    {
+        $sql = "DELETE FROM combo_product_mapping WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':id' => $id));
+    }
+
+
 }
