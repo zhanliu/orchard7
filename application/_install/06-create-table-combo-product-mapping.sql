@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `combo_product_mapping` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `combo_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `number_of_unit` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `created_time` datetime NOT NULL,
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

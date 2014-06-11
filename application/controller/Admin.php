@@ -206,12 +206,12 @@ class Admin extends Controller
 
             // insert multiple records into mapping table
             $product_ids = $_POST['product_id'];
-            $number_of_units = $_POST['number_of_unit'];
-            //echo "Hello -> ".$number_of_units[1];
+            $quantities = $_POST['quantity'];
+
             $mapping_model = $this->loadModel('ComboProductMappingModel');
             $index = 0;
             foreach($product_ids as $product_id) {
-                $mapping_model->addMapping($combo_id, $product_id, $number_of_units[$index]);
+                $mapping_model->addMapping($combo_id, $product_id, $quantities[$index]);
                 $index++;
             }
 

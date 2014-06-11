@@ -30,7 +30,7 @@
         var cell4 = row.insertCell(3);
         var element3 = document.createElement("input");
         element3.type = "text";
-        element3.name = "number_of_unit[]";
+        element3.name = "quantity[]";
         cell4.appendChild(element3);
     }
 
@@ -150,7 +150,7 @@
                                     ?>
                                 </select>
                             </TD>
-                            <TD><input type="text" name="number_of_unit[]"></TD>
+                            <TD><input type="text" name="quantity[]"></TD>
                         </TR>
                     </TABLE>
 
