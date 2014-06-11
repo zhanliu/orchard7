@@ -97,7 +97,7 @@
 
 
                     <p><button>放弃</button></p>
-                    <input type="submit" name="submit_add_category" value="保存" />
+                    <input type="submit" name="submit_add_product" value="保存" />
 
                 </form>
 

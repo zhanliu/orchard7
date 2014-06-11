@@ -41,7 +41,7 @@ class ProductModel
 
         $sql = "INSERT INTO product (name, category_id, unit, price, description, tag, is_archived, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:description,:tag, :is_archived,:created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':is_archived'=>$is_archived, 'created_time'=>$created_time, 'updated_time'=>$updated_time));
+        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':is_archived'=>$is_archived, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
     }
 
     public function deleteProduct($id)
