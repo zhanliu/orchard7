@@ -208,10 +208,10 @@ class Admin extends Controller
             $product_ids = $_POST['product_id'];
             $quantities = $_POST['quantity'];
 
-            $mapping_model = $this->loadModel('ComboProductMappingModel');
+            $combo_detail_model = $this->loadModel('ComboDetailModel');
             $index = 0;
             foreach($product_ids as $product_id) {
-                $mapping_model->addMapping($combo_id, $product_id, $quantities[$index]);
+                $combo_detail_model->addMapping($combo_id, $product_id, $quantities[$index]);
                 $index++;
             }
 

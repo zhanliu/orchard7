@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `combo_product_mapping` (
+CREATE TABLE IF NOT EXISTS `combo_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `combo_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,

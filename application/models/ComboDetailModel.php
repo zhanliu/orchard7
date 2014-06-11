@@ -1,6 +1,6 @@
 <?php
 
-class ComboProductMappingModel
+class ComboDetailModel
 {
     /**
      * Every model needs a database connection, passed to the model
@@ -25,7 +25,7 @@ class ComboProductMappingModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO combo_product_mapping (combo_id, product_id, $quantity, created_time, updated_time) VALUES (:combo_id, :product_id, :quantity, :created_time, :updated_time)";
+        $sql = "INSERT INTO combo_detail (combo_id, product_id, $quantity, created_time, updated_time) VALUES (:combo_id, :product_id, :quantity, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':combo_id' => $combo_id, ':product_id'=>$product_id, ':quantity'=>$quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
@@ -34,7 +34,7 @@ class ComboProductMappingModel
 
     public function deleteMapping($id)
     {
-        $sql = "DELETE FROM combo_product_mapping WHERE id = :id";
+        $sql = "DELETE FROM combo_detail WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }

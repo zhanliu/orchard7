@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2383402-f623-46ac-8213-885bb330df15" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql" afterPath="$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql" afterPath="$PROJECT_DIR$/application/_install/06-create-table-combo-detail.sql" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/application/models/ComboProductMappingModel.php" afterPath="$PROJECT_DIR$/application/models/ComboDetailModel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controller/Admin.php" afterPath="$PROJECT_DIR$/application/controller/Admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/ComboProductMappingModel.php" afterPath="$PROJECT_DIR$/application/models/ComboProductMappingModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/admin/combo.php" afterPath="$PROJECT_DIR$/application/views/admin/combo.php" />
     </list>
     <ignored path="orchard7.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,19 +54,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="06-create-table-combo-product-mapping.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql">
+      <file leaf-file-name="06-create-table-combo-detail.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo-detail.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="11" selection-start="168" selection-end="168" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="225">
+            <state line="0" column="40" selection-start="40" selection-end="40" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComboProductMappingModel.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/models/ComboProductMappingModel.php">
+      <file leaf-file-name="ComboDetailModel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/ComboDetailModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="20" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.5954774" vertical-offset="273" max-vertical-offset="720">
+            <state line="36" column="40" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-22.5" vertical-offset="0" max-vertical-offset="720">
               <folding />
             </state>
           </provider>
@@ -91,10 +90,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Admin.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Admin.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="47" selection-start="6554" selection-end="6554" vertical-scroll-proportion="-3.6" vertical-offset="2205" max-vertical-offset="3720">
+            <state line="213" column="83" selection-start="8815" selection-end="8826" vertical-scroll-proportion="0.7493671" vertical-offset="2899" max-vertical-offset="3720">
               <folding />
             </state>
           </provider>
@@ -136,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/admin/footer.php" />
         <option value="$PROJECT_DIR$/public/css/popup.style.css" />
         <option value="$PROJECT_DIR$/public/css/jquery.datatable.css" />
         <option value="$PROJECT_DIR$/public/js/jquery.datatable.js" />
@@ -148,10 +146,11 @@
         <option value="$PROJECT_DIR$/application/_install/07-create-table-address.sql" />
         <option value="$PROJECT_DIR$/application/models/AddressModel.php" />
         <option value="$PROJECT_DIR$/application/models/DeliveryAddressModel.php" />
-        <option value="$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql" />
         <option value="$PROJECT_DIR$/application/views/admin/combo.php" />
-        <option value="$PROJECT_DIR$/application/controller/Admin.php" />
         <option value="$PROJECT_DIR$/application/models/ComboProductMappingModel.php" />
+        <option value="$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql" />
+        <option value="$PROJECT_DIR$/application/models/ComboDetailModel.php" />
+        <option value="$PROJECT_DIR$/application/controller/Admin.php" />
       </list>
     </option>
   </component>
@@ -513,13 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/08-create-table-delivery-address.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="40" selection-start="196" selection-end="196" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="225">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/_install/07-create-table-address.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="56" selection-start="135" selection-end="135" vertical-scroll-proportion="-0.6" vertical-offset="0" max-vertical-offset="285">
@@ -541,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo-product-mapping.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="11" selection-start="168" selection-end="168" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="225">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="33" selection-start="1191" selection-end="1191" vertical-scroll-proportion="-4.68" vertical-offset="246" max-vertical-offset="2865">
@@ -555,16 +540,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
+    <entry file="file://$PROJECT_DIR$/application/_install/08-create-table-delivery-address.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="47" selection-start="6554" selection-end="6554" vertical-scroll-proportion="-3.6" vertical-offset="2205" max-vertical-offset="3720">
+        <state line="4" column="40" selection-start="196" selection-end="196" vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="225">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboProductMappingModel.php">
+    <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo-detail.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="20" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.5954774" vertical-offset="273" max-vertical-offset="720">
+        <state line="0" column="40" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/ComboDetailModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="40" selection-start="1318" selection-end="1318" vertical-scroll-proportion="-22.5" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="213" column="83" selection-start="8815" selection-end="8826" vertical-scroll-proportion="0.7493671" vertical-offset="2899" max-vertical-offset="3720">
           <folding />
         </state>
       </provider>
