@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2383402-f623-46ac-8213-885bb330df15" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\orchard7.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\xampp\htdocs\orchard7\.idea\workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/application.js" afterPath="$PROJECT_DIR$/public/js/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/admin/footer.php" afterPath="$PROJECT_DIR$/application/views/admin/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/admin/header.php" afterPath="$PROJECT_DIR$/application/views/admin/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/admin/index.php" afterPath="$PROJECT_DIR$/application/views/admin/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/orchard7.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/_install/07-create-table-address.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/AddressModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="orchard7.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +31,16 @@
       <file leaf-file-name="category.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="18" selection-start="947" selection-end="947" vertical-scroll-proportion="2.0714285" vertical-offset="685" max-vertical-offset="1311">
+            <state line="11" column="20" selection-start="288" selection-end="288" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="1245">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="07-create-table-address.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/_install/07-create-table-address.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="58" selection-start="486" selection-end="486" vertical-scroll-proportion="-2.4" vertical-offset="0" max-vertical-offset="285">
               <folding />
             </state>
           </provider>
@@ -47,7 +49,7 @@
       <file leaf-file-name="combo.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="19" selection-start="2791" selection-end="2791" vertical-scroll-proportion="-8.142858" vertical-offset="1596" max-vertical-offset="3382">
+            <state line="96" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="2865">
               <folding />
             </state>
           </provider>
@@ -56,7 +58,7 @@
       <file leaf-file-name="product.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="4" selection-start="2198" selection-end="2217" vertical-scroll-proportion="-6.785714" vertical-offset="1083" max-vertical-offset="2299">
+            <state line="67" column="4" selection-start="2198" selection-end="2217" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1965">
               <folding />
             </state>
           </provider>
@@ -65,12 +67,35 @@
       <file leaf-file-name="ComboModel.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/ComboModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="-0.6785714" vertical-offset="475" max-vertical-offset="1102">
-              <folding>
-                <marker date="1402316722137" expanded="true" signature="414:506" placeholder="SELECT id, n..combo..." />
-                <marker date="1402316722137" expanded="true" signature="1111:1284" placeholder="INSERT INTO ..." />
-                <marker date="1402316722137" expanded="true" signature="1679:1711" placeholder="DELETE FROM ..." />
-              </folding>
+            <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="-11.75" vertical-offset="108" max-vertical-offset="870">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddressModel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/AddressModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="32" selection-start="1684" selection-end="1684" vertical-scroll-proportion="-30.0" vertical-offset="0" max-vertical-offset="855">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.0338297" vertical-offset="2981" max-vertical-offset="3720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoryStatsModel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/CategoryStatsModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="540">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,22 +103,17 @@
       <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="213" column="37" selection-start="10307" selection-end="10307" vertical-scroll-proportion="-19.892857" vertical-offset="3490" max-vertical-offset="6004">
-              <folding>
-                <element signature="n#style#0;n#ul#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#li#4;n#ul#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="213" column="9" selection-start="10514" selection-end="10514" vertical-scroll-proportion="0.0" vertical-offset="3195" max-vertical-offset="5010">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="17" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="465">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,15 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/home/store_list.php" />
-        <option value="$PROJECT_DIR$/application/controller/home.php" />
-        <option value="$PROJECT_DIR$/application/entities/Category.php" />
-        <option value="$PROJECT_DIR$/application/models/adminstoremodel.php" />
-        <option value="$PROJECT_DIR$/application/models/admincategorymodel.php" />
-        <option value="$PROJECT_DIR$/application/_install/02-create-table-admin-store.sql" />
-        <option value="$PROJECT_DIR$/application/controller/admin.php" />
-        <option value="$PROJECT_DIR$/application/libs/application.php" />
-        <option value="$PROJECT_DIR$/application/models/StoreModel.php" />
         <option value="$PROJECT_DIR$/application/models/ComboModel.php" />
         <option value="$PROJECT_DIR$/application/controller/Admin.php" />
         <option value="$PROJECT_DIR$/public/js/jquery-layout.js" />
@@ -139,6 +150,8 @@
         <option value="$PROJECT_DIR$/application/views/admin/store.php" />
         <option value="$PROJECT_DIR$/application/views/admin/combo.php" />
         <option value="$PROJECT_DIR$/application/views/admin/header.php" />
+        <option value="$PROJECT_DIR$/application/_install/07-create-table-address.sql" />
+        <option value="$PROJECT_DIR$/application/models/AddressModel.php" />
       </list>
     </option>
   </component>
@@ -149,10 +162,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -167,8 +178,8 @@
     <OptionsSetting value="true" id="更新" />
     <OptionsSetting value="true" id="状态" />
     <OptionsSetting value="true" id="编辑" />
-    <ConfirmationsSetting value="0" id="添加" />
-    <ConfirmationsSetting value="0" id="移除" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -214,101 +225,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orchard7" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -330,28 +247,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="orchard7" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="orchard7" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="orchard7" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="orchard7" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_install" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xamppfiles/htdocs/orchard7" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="bda47538-765c-4a8f-b2d0-0a9702bd04e6">
+        <serverdata />
+      </server>
+      <server id="f7bc4215-fde7-490d-acdc-f4f39716eef4">
+        <serverdata />
+      </server>
+    </servers>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/models" />
+      <recent name="$PROJECT_DIR$/application/_install" />
       <recent name="D:\xampp\htdocs\orchard7\public\js" />
       <recent name="D:\xampp\htdocs\orchard7\public\css" />
       <recent name="$PROJECT_DIR$/application/views/admin" />
-      <recent name="$PROJECT_DIR$/application/models" />
-      <recent name="$PROJECT_DIR$/application/_install" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.product.php">
@@ -408,33 +373,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="更改" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28330892" sideWeight="0.6154776" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38452238" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28194445" sideWeight="0.6154776" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38452238" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="更改" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47158405" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -456,277 +421,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/admin/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="14" selection-start="1496" selection-end="1496" vertical-scroll-proportion="0.0" vertical-offset="133" max-vertical-offset="1254">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="13" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1064">
-          <folding>
-            <marker date="1402316722137" expanded="true" signature="414:506" placeholder="SELECT id, n..combo..." />
-            <marker date="1402316722137" expanded="true" signature="1111:1284" placeholder="INSERT INTO ..." />
-            <marker date="1402316722137" expanded="true" signature="1679:1711" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/CategoryModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="20" selection-start="888" selection-end="888" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="912">
-          <folding>
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="SELECT id, n..category..." />
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboStatsModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="684">
-          <folding>
-            <marker date="1402204086738" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..combo..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="45" selection-start="4699" selection-end="4699" vertical-scroll-proportion="0.0" vertical-offset="3949" max-vertical-offset="4503">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="152" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/04-create-table-product.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/05-create-table-combo.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo_product_mapping.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="26" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="627" max-vertical-offset="893">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="89" selection-start="1064" selection-end="1065" vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="950">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="13" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="2261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1064">
-          <folding>
-            <marker date="1402316722137" expanded="true" signature="414:506" placeholder="SELECT id, n..combo..." />
-            <marker date="1402316722137" expanded="true" signature="1111:1284" placeholder="INSERT INTO ..." />
-            <marker date="1402316722137" expanded="true" signature="1679:1711" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboStatsModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="684">
-          <folding>
-            <marker date="1402204086738" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..combo..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="8" selection-start="7908" selection-end="7908" vertical-scroll-proportion="0.0" vertical-offset="3667" max-vertical-offset="4199">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/04-create-table-product.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/05-create-table-combo.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo_product_mapping.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="457" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/storestatsmodel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="776">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/songs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/04-create-table-product.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/05-create-table-combo.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="559" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/_install/06-create-table-combo_product_mapping.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboStatsModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="684">
-          <folding>
-            <marker date="1402204086738" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..combo..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="45" selection-start="4699" selection-end="4699" vertical-scroll-proportion="0.0" vertical-offset="3949" max-vertical-offset="4503">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jquery-1.10.2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.09793814" vertical-offset="57" max-vertical-offset="185877">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jquery-layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="142" selection-start="66454" selection-end="66454" vertical-scroll-proportion="4.6030927" vertical-offset="0" max-vertical-offset="2793">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1402281031998" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/jquery-layout.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="223" column="1" selection-start="6742" selection-end="6742" vertical-scroll-proportion="0.93613446" vertical-offset="3680" max-vertical-offset="4351">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="31" selection-start="9" selection-end="31" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="741">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/popup.style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="3932" selection-end="3932" vertical-scroll-proportion="-0.76" vertical-offset="0" max-vertical-offset="133">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jquery.datatable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5039" column="9" selection-start="193215" selection-end="193215" vertical-scroll-proportion="0.55498284" vertical-offset="95418" max-vertical-offset="273353">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/jquery.datatable.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="398" column="1" selection-start="15506" selection-end="15506" vertical-scroll-proportion="0.0" vertical-offset="7005" max-vertical-offset="7676">
-          <folding />
-        </state>
+        <state line="398" column="1" selection-start="15506" selection-end="15506" vertical-scroll-proportion="0.0" vertical-offset="7005" max-vertical-offset="7676" />
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/tables.rnc">
@@ -738,92 +435,91 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/ProductModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="43" selection-start="434" selection-end="445" vertical-scroll-proportion="-8.821428" vertical-offset="114" max-vertical-offset="1102">
-          <folding>
-            <marker date="1402202205613" expanded="true" signature="-1:-1" placeholder="SELECT id, n..product..." />
-            <marker date="1402202205613" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1402202205613" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="19" column="43" selection-start="434" selection-end="445" vertical-scroll-proportion="-8.821428" vertical-offset="114" max-vertical-offset="1102" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/CategoryModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="20" selection-start="888" selection-end="888" vertical-scroll-proportion="-21.25" vertical-offset="89" max-vertical-offset="912">
-          <folding>
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="SELECT id, n..category..." />
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1402156530503" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="36" column="20" selection-start="888" selection-end="888" vertical-scroll-proportion="-21.25" vertical-offset="89" max-vertical-offset="912" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/StoreModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="87" selection-start="532" selection-end="535" vertical-scroll-proportion="-5.428571" vertical-offset="247" max-vertical-offset="1330">
-          <folding>
-            <marker date="1402197825123" expanded="true" signature="-1:-1" placeholder="SELECT id, n..store..." />
-            <marker date="1402197825123" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1402197825123" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="21" column="87" selection-start="532" selection-end="535" vertical-scroll-proportion="-5.428571" vertical-offset="247" max-vertical-offset="1330" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/store.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="7" selection-start="4140" selection-end="4140" vertical-scroll-proportion="2.967742" vertical-offset="456" max-vertical-offset="2337">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/ComboModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="-0.6785714" vertical-offset="475" max-vertical-offset="1102">
-          <folding>
-            <marker date="1402316722137" expanded="true" signature="414:506" placeholder="SELECT id, n..combo..." />
-            <marker date="1402316722137" expanded="true" signature="1111:1284" placeholder="INSERT INTO ..." />
-            <marker date="1402316722137" expanded="true" signature="1679:1711" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
+        <state line="116" column="7" selection-start="4140" selection-end="4140" vertical-scroll-proportion="2.967742" vertical-offset="456" max-vertical-offset="2337" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="4" selection-start="2198" selection-end="2217" vertical-scroll-proportion="-6.785714" vertical-offset="1083" max-vertical-offset="2299">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/admin/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="18" selection-start="947" selection-end="947" vertical-scroll-proportion="2.0714285" vertical-offset="685" max-vertical-offset="1311">
+        <state line="67" column="4" selection-start="2198" selection-end="2217" vertical-scroll-proportion="0.0" vertical-offset="1005" max-vertical-offset="1965">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/combo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="19" selection-start="2791" selection-end="2791" vertical-scroll-proportion="-8.142858" vertical-offset="1596" max-vertical-offset="3382">
+        <state line="96" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="2865">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="37" selection-start="10307" selection-end="10307" vertical-scroll-proportion="-19.892857" vertical-offset="3490" max-vertical-offset="6004">
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#li#4;n#ul#0;n#nav#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="213" column="9" selection-start="10514" selection-end="10514" vertical-scroll-proportion="0.0" vertical-offset="3195" max-vertical-offset="5010">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="589">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="17" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="20" selection-start="288" selection-end="288" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="1245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/_install/07-create-table-address.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="58" selection-start="486" selection-end="486" vertical-scroll-proportion="-2.4" vertical-offset="0" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/ComboModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="28" selection-start="650" selection-end="650" vertical-scroll-proportion="-11.75" vertical-offset="108" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/CategoryStatsModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="776">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/AddressModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="32" selection-start="1684" selection-end="1684" vertical-scroll-proportion="-30.0" vertical-offset="0" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controller/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.0338297" vertical-offset="2981" max-vertical-offset="3720">
+          <folding />
         </state>
       </provider>
     </entry>
