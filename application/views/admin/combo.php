@@ -54,14 +54,19 @@
     }
 
     $(document).ready(function(){
-        $(".combo_add_button").click(function(){
-            $(".panel").toggle("fast");
-            $(this).toggleClass("active");
-            return false;
-        });
+//        $(".combo_add_button").click(function(){
+//            $(".panel").toggle("fast");
+//            $(this).toggleClass("active");
+//            return false;
+//        });
 
         $('#combo_data_table').dataTable();
     });
+
+    function submit() {
+        document.getElementById("myform").submit();
+        return false;
+    }
 </script>
 
 <div id="page-content" style="min-height: 2911px;">
@@ -124,21 +129,21 @@
                     </tbody>
                 </table>
 
-                <div class="add_object_button_div">
-                    <button class="combo_add_button">添加</button>
-                </div>
-
             </div>
 
-            <div class="panel">
+            <div id="shadowing"></div>
+            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+                <span id="boxtitle"></span>
 
-                <form class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post">
+<!--            <div class="panel">-->
+                <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
                     <h2>创建新套餐</h2>
                     <label for="name">套餐名称*</label>
                     <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
 
                     <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
                     <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+                    <input type="hidden" name="submit_add_combo">
                     <TABLE id="dataTable" width="100%" border="1">
                         <TR>
                             <TD><INPUT type="checkbox" name="chk"/>1</TD>
@@ -167,11 +172,12 @@
                         </select>
                     </div>
 
-<!--                    <p><button>放弃</button></p>-->
-                    <input type="submit" name="submit_add_combo" value="保存" />
+                    <a href="#" class="myButton" onclick="submit()">保存</a>
+                    <a href="#" class="myButton" onclick="closebox()">取消</a>
                 </form>
-            </div><!-- /panel -->
         </div>
+
+            <a href="#" onClick="openbox('套餐管理', 1)">添加新套餐</a>
     </div>
 </div>
 
