@@ -53,7 +53,7 @@
                     产品目录名称*:
                     <input type="text" name="name" id="name" value="" />
                     <input type="hidden" name="submit_add_category">
-                    <BR><BR>
+                    <br><br>
                     <a href="#" class="myButton" onclick="submit()">保存</a>
                     <a href="#" class="myButton" onclick="closebox()">取消</a>
                 </form>

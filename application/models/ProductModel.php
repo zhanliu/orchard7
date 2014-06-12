@@ -24,6 +24,16 @@ class ProductModel
         return $query->fetchAll();
     }
 
+    public function getProductsByComboId($combo_id) {
+        $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, cd.combo_id, cd.product_id, cd.quantity ";
+        $sql.= "FROM product as p, combo_detail as cd ";
+        $sql.= "WHERE p.id=cd.product_id AND cd.combo_id=".$combo_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addProduct($name, $category_id, $unit, $price,$description, $tag, $is_archived)
     {
         // clean the input from javascript code for example

@@ -110,7 +110,9 @@
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
                         <tr align="center">
-                            <td><?php echo $combo->name; ?></td>
+                            <td><a href="#">
+                                    <?php echo $combo->name; ?>
+                            </a></td>
                             <td><?php echo $combo->price; ?></td>
                             <td><?php echo $combo->description; ?></td>
                             <td><?php echo $combo->tag; ?></td>
