@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `shipping_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
   `is_primary` int(1) NOT NULL DEFAULT 0,
   `created_time` datetime NOT NULL,
