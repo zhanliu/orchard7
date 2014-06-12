@@ -61,6 +61,7 @@
             </div>
 
             <a href="#" onClick="openbox('商品类目管理', 1)">添加新商品类目</a>
+
             <div class="panel"></DIV>
         </div>
     </div>

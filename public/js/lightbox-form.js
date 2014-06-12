@@ -26,9 +26,9 @@ function fadein(id)
 // Open the lightbox
 
 
-function openbox(formtitle, fadin, boxid)
+function openbox(formtitle, fadin)
 {
-  var box = document.getElementById(boxid);
+  var box = document.getElementById('box');
   document.getElementById('shadowing').style.display='block';
 
   var btitle = document.getElementById('boxtitle');
@@ -36,8 +36,8 @@ function openbox(formtitle, fadin, boxid)
   
   if(fadin)
   {
-	 gradient(boxid, 0);
-	 fadein(boxid);
+	 gradient('box', 0);
+	 fadein('box');
   }
   else
   { 	
