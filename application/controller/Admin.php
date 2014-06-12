@@ -236,7 +236,57 @@ class Admin extends Controller
         header('location: ' . URL . 'admin/combo');
     }
 
+    public function addOrderStepOne() {
 
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_one.php';
+        require 'application/views/admin/footer.php';
+    }
+
+    public function addOrderStepTwo() {
+        $customer_model = $this->loadModel('CustomerModel');
+        $isCustomerExisted = false;
+        if (isset($_POST["cellphone"])) {
+
+            $cellphone = $_POST["cellphone"];
+            echo "--- phone --- ".$cellphone;
+            $customer = $customer_model->getCustomerByCellphone($cellphone);
+
+            if (sizeof($customer) == 1) {
+                $isCustomerExisted = true;
+
+                $cid = $customer[0]->id;
+
+                echo "--- cid --- ".$cid;
+                $address_model = $this->loadModel('AddressModel');
+                $list_of_address = $address_model->getAddressesByCustomerId($cid);
+            } else {
+                $cid = $customer_model->addCustomer($cellphone);
+            }
+        }
+
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_two.php';
+        require 'application/views/admin/footer.php';
+    }
+
+    public function addOrderStepThree() {
+
+        if (isset($_POST["submit_add_address"])) {
+            $customer_id = $_POST["customer_id"];
+
+            //insert row to address table
+            $address_model = $this->loadModel('AddressModel');
+            $address_id = $address_model->addAddress($_POST["country"], $_POST["province"], $_POST["city"], $_POST["district"], $_POST["address1"], $_POST["address2"]);
+
+            $shipping_address_model = $this->loadModel('ShippingAddressModel');
+            $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+        }
+
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_three.php';
+        require 'application/views/admin/footer.php';
+    }
 
 
 }

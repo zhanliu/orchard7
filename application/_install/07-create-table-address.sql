@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `district` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `address1` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `address2` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `postcode` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `postcode` varchar(20) COLLATE utf8_unicode_ci NULL,
   `created_time` datetime NOT NULL,
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

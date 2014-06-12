@@ -1,6 +1,6 @@
 <?php
 
-class DeliveryAddressModel
+class ShippingAddressModel
 {
     /**
      * Every model needs a database connection, passed to the model
@@ -14,25 +14,26 @@ class DeliveryAddressModel
         }
     }
 
-    public function addDeliveryAddress($user_id, $address_id)
+    public function addShippingAddress($customer_id, $address_id)
     {
         // clean the input from javascript code for example
-        $user_id = strip_tags($user_id);
+        $user_id = strip_tags($customer_id);
         $address_id = strip_tags($address_id);
 
         $now = time();
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO delivery_address (user_id, $address_id, created_time, updated_time) VALUES (:user_id, :address_id, :created_time, :updated_time)";
+        $sql = "INSERT INTO shipping_address (customer_id, address_id, created_time, updated_time) VALUES (:customer_id, :address_id, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':user_id' => $user_id, ':address_id'=>$address_id, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
-
+        $query->execute(array(':customer_id' => $customer_id, ':address_id'=>$address_id, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $insertedId = $this->db->lastInsertId();
+        return $insertedId;
     }
 
-    public function deleteDeliveryAddress($id)
+    public function deleteShippingAddress($id)
     {
-        $sql = "DELETE FROM delivery_address WHERE id = :id";
+        $sql = "DELETE FROM shipping_address WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }
@@ -41,7 +42,7 @@ class DeliveryAddressModel
         $now = time();
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "UPDATE delivery_address SET is_primary = :is_primary, updated_time = :updated_time";
+        $sql = "UPDATE shipping_address SET is_primary = :is_primary, updated_time = :updated_time";
         $query = $this->db->prepare($sql);
         $query->execute(array(':is_primary' => $is_primary, ':updated_time' => $updated_time));
 

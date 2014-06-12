@@ -245,6 +245,7 @@
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-tasks"></i> <span>订单中心</span> <span class="badge badge-info">12</span></a>
                 <ul class="acc-menu">
+                    <li><a href="addOrderStepOne">订单添加</a></li>
                     <li><a href="order">订单管理</a></li>
                 </ul>
             </li>
