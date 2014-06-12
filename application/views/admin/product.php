@@ -63,13 +63,17 @@
                     </tbody>
                 </table>
 
-                <div class="add_object_button_div">
-                    <button class="product_add_button">添加</button>
-                </div>
+<!--                <div class="add_object_button_div">-->
+<!--                    <button class="product_add_button">添加</button>-->
+<!--                </div>-->
             </div>
 
-            <div class="panel">
-                <form class="productform" action="<?php echo URL; ?>admin/addproduct" method="post">
+            <div id="shadowing"></div>
+            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+                <span id="boxtitle"></span>
+
+<!--            <div class="panel">-->
+                <form id="myform" class="productform" action="<?php echo URL; ?>admin/addproduct" method="post" target="_parent">
                     <h2>创建新商品</h2>
                     <label for="name">商品名称*</label>
                     <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
@@ -86,7 +90,7 @@
 
                     <label for="unit">单位</label>
                     <input type="text" name="unit" id="unit" value="" data-clear-btn="true" data-mini="true">
-
+                    <input type="hidden" name="submit_add_product">
                     <div class="switch">
                         <label for="is_archived">当前状态</label>
                         <select name="is_archived" id="slider" data-role="slider" data-mini="true">
@@ -96,13 +100,16 @@
                     </div>
 
 
-                    <p><button>放弃</button></p>
-                    <input type="submit" name="submit_add_product" value="保存" />
+                    <a href="#" class="myButton" onclick="submit()">保存</a>
+                    <a href="#" class="myButton" onclick="closebox()">取消</a>
 
                 </form>
+            </div>
 
+            <a href="#" onClick="openbox('商品管理', 1)">添加新商品</a>
+            <div class="panel"></DIV>
                 <!-- panel content goes here -->
-            </div><!-- /panel -->
+<!--            </div><!-- /panel -->-->
         </div>
     </div>
 </div>
@@ -115,12 +122,12 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".product_add_button").click(function(){
-            $(".panel").toggle("fast");
-            $(this).toggleClass("active");
-            return false;
-        });
-
         $('#product_data_table').dataTable();
     });
+
+
+    function submit() {
+        document.getElementById("myform").submit();
+        return false;
+    }
 </script>
