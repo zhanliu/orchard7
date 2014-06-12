@@ -43,7 +43,6 @@ class Admin extends Controller
         if (isset($_POST["submit_add_store"])) {
             // load model, perform an action on the model
             $store_model = $this->loadModel('StoreModel');
-            echo "district** is ".$_POST["district"];
             $store_model->addStore($_POST["name"], $_POST["district"], $_POST["address"], $_POST["phone_number"]);
         }
 

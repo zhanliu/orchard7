@@ -43,36 +43,34 @@
                     <?php } ?>
                     </tbody>
                 </table>
-
-                <div class="add_object_button_div">
-                    <button class="category_add_button">添加</button>
-                </div>
             </div>
 
-            <div class="panel">
-                <form class="adminform" action="<?php echo URL; ?>admin/addCategory" method="post">
-                    <h2>创建新产品目录</h2>
-                    <label for="name">产品目录名称*</label>
+            <div id="shadowing"></div>
+            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+            <span id="boxtitle"></span>
+
+                <form id="myform" class="adminform" action="<?php echo URL; ?>admin/addCategory" method="post" target="_parent">
+                    产品目录名称*:
                     <input type="text" name="name" id="name" value="" />
-                    <p><button>放弃</button></p>
-                    <input type="submit" name="submit_add_category" value="保存" />
+                    <input type="hidden" name="submit_add_category">
+                    <BR><BR>
+                    <a href="#" class="myButton" onclick="submit()">保存</a>
+                    <a href="#" class="myButton" onclick="closebox()">取消</a>
                 </form>
+
             </div>
 
+            <a href="#" onClick="openbox('商品类目管理', 1)">添加新商品类目</a>
+            <div class="panel"></DIV>
         </div>
     </div>
 </div>
 <script>
     $(document).ready(function(){
-
-        $(".category_add_button").click(function(){
-            $(".panel").toggle("fast");
-            $(this).toggleClass("active");
-
-
-            return false;
-        });
-
         $('#category_data_table').dataTable();
     });
+    function submit() {
+        document.getElementById("myform").submit();
+        return false;
+    }
 </script>

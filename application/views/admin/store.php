@@ -63,18 +63,20 @@
                     </tbody>
                 </table>
 
-                <div class="add_object_button_div">
-                    <button class="store_add_button">添加</button>
-                </div>
             </div>
 
-            <div class="panel">
-                <form class="storeform" action="<?php echo URL; ?>admin/addstore" method="post">
-                    <h2>创建新店铺</h2>
-                    <label for="name">店铺名称*</label>
+
+                <div id="shadowing"></div>
+                <div id="box" STYLE="margin: 0 auto; WIDTH: 50%; ALIGN: CENTER">
+                <span id="boxtitle"></span>
+
+                <form name="myform" class="storeform" action="<?php echo URL; ?>admin/addstore" method="post" target="_parent">
+                    店铺名称*:
                     <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
 
-                    <label for="district">地区*</label>
+                    <BR><BR><BR>
+
+                    地区*:
                     <select name="district" id="district">
                         <option value="海珠区" selected="selected">海珠区</option>
                         <option value="荔湾区">荔湾区</option>
@@ -84,32 +86,48 @@
                         <option value="黄埔区">黄埔区</option>
                     </select>
 
-                    <label for="password">地址*</label>
+                    <BR><BR><BR>
+
+                    地址*:
                     <input type="text" name="address" id="address" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
 
-                    <label for="phone_number">联系电话</label>
+                    <BR><BR><BR>
+
+                    联系电话:
                     <input type="text" name="phone_number" id="phone_number" value="" data-clear-btn="true" data-mini="true">
 
+                    <BR><BR><BR>
+
                     <div class="switch">
-                        <label for="status">当前状态</label>
+                        当前状态:
                         <select name="status" id="slider" data-role="slider" data-mini="true">
                             <option value="on">激活</option>
                             <option value="off">禁止</option>
                         </select>
                     </div>
 
+                    <BR><BR><BR>
 
-                    <p><button>放弃</button></p>
-                    <input type="submit" name="submit_add_store" value="Save" />
-                    <!--<div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">保存</a></div>-->
+                    <input type="hidden" name="submit_add_store"/>
+                    <a href="#" class="myButton" onclick="document.forms['myform'].submit(); return true;">保存</a>
+                    <a href="#" class="myButton" onclick="closebox()">取消</a>
+                    </p>
 
                 </form>
+                </div>
 
                 <!-- panel content goes here -->
+            <a href="#" onClick="openbox('店铺管理', 1)">添加新店铺</a>
+            <div class="panel">
             </div><!-- /panel -->
          </div>
     </div>
 </div>
+
+
+
+
+
 
 <style>
     .storeform { padding:.8em 1.2em; }
@@ -120,12 +138,6 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".store_add_button").click(function(){
-            $(".panel").toggle("fast");
-            $(this).toggleClass("active");
-            return false;
-        });
-
         $('#store_data_table').dataTable();
     });
 </script>

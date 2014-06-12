@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="http://redteamux.com/avant/assets/css/styles.min.css?=121">
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
+    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
@@ -30,6 +32,7 @@
     <script src="/orchard7/public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="/orchard7/public/js/application.js"></script>
     <script src="/orchard7/public/js/demo.js"></script>
+    <script src="/orchard7/public/js/lightbox-form.js" type="text/javascript"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="assets/css/ie8.css">
