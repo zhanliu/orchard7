@@ -169,6 +169,7 @@
 
                         <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
                         <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+                        <BR><BR>
                         <input type="hidden" name="submit_add_combo">
                         <TABLE id="dataTable" width="100%" border="1">
                             <TR>

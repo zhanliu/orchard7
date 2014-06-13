@@ -261,7 +261,6 @@ class Admin extends Controller
         if (isset($_POST["cellphone"])) {
 
             $cellphone = $_POST["cellphone"];
-            echo "--- phone --- ".$cellphone;
             $customer = $customer_model->getCustomerByCellphone($cellphone);
 
             if (sizeof($customer) == 1) {
@@ -283,6 +282,9 @@ class Admin extends Controller
     }
 
     public function addOrderStepThree() {
+
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
 
         if (isset($_POST["submit_add_address"])) {
             $customer_id = $_POST["customer_id"];
