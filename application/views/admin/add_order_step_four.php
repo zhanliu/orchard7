@@ -38,7 +38,7 @@
                             <td><?php echo $order_customer->cellphone; ?></td>
                             <td><?php echo $current_order->status; ?></td>
                             <td><?php echo $current_order->total_amount; ?></td>
-                            <td><?php echo "xxx" ?></td>
+                            <td><?php echo $address_str ?></td>
                         </tr>
                     </tbody>
                 </table>

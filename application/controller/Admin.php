@@ -291,7 +291,6 @@ class Admin extends Controller
 
         if (isset($_POST["submit_already_add_address"])) {
             $customer_id = $_POST["customer_id"];
-//            $shipping_address_id =
         }
 
         if (isset($_POST["submit_add_address"])) {
@@ -315,15 +314,20 @@ class Admin extends Controller
 
         $order_id = NULL;
         $current_order = NULL;
+        $address_str = NULL;
 
         if (isset($_POST["submit_add_order"])) {
             $customer_id = $_POST["customer_id"];
             $total_amount = 0;
-            $address_id = 0;
+
+            $address_model = $this->loadModel('AddressModel');
+            $addresses = $address_model->getAddressesByCustomerId($customer_id);
+            $address = $addresses[0];
+            $address_str = $address->district."-".$address->address1."-".$address->address2;
 
             //insert row to address table
             $order_model = $this->loadModel('OrderModel');
-            $order_id = $order_model->addOrder($customer_id, $address_id, $_POST["is_diy"], $total_amount);
+            $order_id = $order_model->addOrder($customer_id, $addresses[0]->id, $_POST["is_diy"], $total_amount);
 
             $order = $order_model->getOrderByOrderId($order_id);
             $current_order = $order[0];
