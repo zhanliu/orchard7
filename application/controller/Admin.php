@@ -183,6 +183,18 @@ class Admin extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
+        $comboDetailJson = "{";
+        foreach ($combos as $combo) {
+            $comboProducts = $product_model->getProductsByComboId($combo->id);
+
+            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
+            foreach ($comboProducts as $comboProduct) {
+                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
+            }
+            $comboDetailJson = $comboDetailJson .'],';
+        }
+        $comboDetailJson = $comboDetailJson . '}';
+
         // debug message to show where you are, just for the demo
         //echo 'Message from Controller: You are in the controller *admin, using the method index()';
         require 'application/views/admin/header.php';
