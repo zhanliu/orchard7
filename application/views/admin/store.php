@@ -125,10 +125,6 @@
 </div>
 
 
-
-
-
-
 <style>
     .storeform { padding:.8em 1.2em; }
     .storeform h2 { color:#555; margin:0.3em 0 .8em 0; padding-bottom:.5em; border-bottom:1px solid rgba(0,0,0,.1); }

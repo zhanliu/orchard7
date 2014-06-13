@@ -63,53 +63,48 @@
                     </tbody>
                 </table>
 
-<!--                <div class="add_object_button_div">-->
-<!--                    <button class="product_add_button">添加</button>-->
-<!--                </div>-->
             </div>
 
             <div id="shadowing"></div>
-            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+            <div id="box" STYLE="margin: 0 auto; border: 2px solid #F00; WIDTH: 50%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
 
 <!--            <div class="panel">-->
                 <form id="myform" class="productform" action="<?php echo URL; ?>admin/addproduct" method="post" target="_parent">
-                    <h2>创建新商品</h2>
-                    <label for="name">商品名称*</label>
-                    <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
 
-                    <label for="category">类目*</label>
-                    <select name="category" id="category">
+                    <input type="text" name="name" id="name" value="" placeholder="商品名称...">*
+                    <br><BR>
+                    类目*:
+                    <select name="category_id" id="category">
                         <?php foreach ($categories as $category) { ?>
                             <?php echo '<option value="'.$category->id.'">'.$category->name.'</option>'; ?>
                         <?php } ?>
                     </select>
 
-                    <label for="price">价格*</label>
-                    <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-
-                    <label for="unit">单位</label>
-                    <input type="text" name="unit" id="unit" value="" data-clear-btn="true" data-mini="true">
-                    <input type="hidden" name="submit_add_product">
+                    <BR><BR>
+                    <input type="text" name="price" size="10" id="price" value="" placeholder="价格...">(元)*
+                    <BR><BR>
+                    单位:<input type="text" name="unit" id="unit" value="" placeholder="个/斤/公斤/份/盒...">*
+                    <BR><BR>
                     <div class="switch">
-                        <label for="is_archived">当前状态</label>
+                        当前状态:
                         <select name="is_archived" id="slider" data-role="slider" data-mini="true">
                             <option value="on">激活</option>
                             <option value="off">禁止</option>
                         </select>
                     </div>
-
-
+                    <BR><BR>
+                    <input type="hidden" name="submit_add_product">
                     <a href="#" class="myButton" onclick="submit()">保存</a>
                     <a href="#" class="myButton" onclick="closebox()">取消</a>
 
                 </form>
             </div>
 
-            <a href="#" onClick="openbox('商品管理', 1)">添加新商品</a>
+            <a href="#" onClick="openbox('添加新商品', 1)">添加新商品</a>
             <div class="panel"></DIV>
                 <!-- panel content goes here -->
-<!--            </div><!-- /panel -->-->
+<!--            </div><!-- /panel -->
         </div>
     </div>
 </div>
