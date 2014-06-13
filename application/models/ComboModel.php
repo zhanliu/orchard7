@@ -41,6 +41,7 @@ class ComboModel
         $query = $this->db->prepare($sql);
         $query->execute(array(':name' => $name, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':is_archived'=>$is_archived, 'created_time'=>$created_time, 'updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
+
         return $insertedId;
     }
 

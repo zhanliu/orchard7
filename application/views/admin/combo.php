@@ -67,6 +67,31 @@
         document.getElementById("myform").submit();
         return false;
     }
+
+    function showComboProduct(comboID) {
+        //p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, cd.combo_id, cd.product_id, cd.quantity
+
+//        var obj = eval ('{"5":[{"name":"芒果","quantity":"1"},{"name":"苹果","quantity":"1"}],"6":[{"name":"荔枝","quantity":"2"},{"name":"龙眼","quantity":"2"}],"7":[{"name":"芒果","quantity":"3"},{"name":"草莓","quantity":"3"}]}');
+
+        var comboDetail = eval('(' + '<?php echo $comboDetailJson; ?>' + ')');
+        var combinedID = "ID" +  comboID;
+
+
+        var str = '<table border="1"><thead><tr><th>名称</th><th>数量</th></tr></thead><tfoot><tr><th>名称</th><th>数量</th></tr></tfoot><tbody>';
+
+        for (var n in eval('(' + 'comboDetail.' + combinedID + ')')) {
+            var product = eval('(' + 'comboDetail.' + combinedID +'['+ n + ']' +  ')');
+            str = str + '<tr><td>';
+            str = str + product.name + '</td>';
+            str = str + '<td>'+ product.quantity + '</td></tr>';
+        }
+        str = str +'</tbody></table>';
+
+        $("#boxcontent").replaceWith('<div id="boxcontent">'+str + '<a href="#" class="myButton" onclick="closebox()">确认</a>'+'</div>');
+        openbox("套餐" + comboID, 1);
+
+        return false;
+    }
 </script>
 
 <div id="page-content" style="min-height: 2911px;">
@@ -115,7 +140,7 @@
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
                         <tr align="center">
-                            <td><a href="#">
+                            <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
                                     <?php echo $combo->name; ?>
                             </a></td>
                             <td><?php echo $combo->price; ?></td>
@@ -136,48 +161,51 @@
                 <span id="boxtitle"></span>
 
 <!--            <div class="panel">-->
-                <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
-                    <h2>创建新套餐</h2>
-                    <label for="name">套餐名称*</label>
-                    <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+                <div id="boxcontent">
+                    <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
+                        <h2>创建新套餐</h2>
+                        <label for="name">套餐名称*</label>
+                        <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
 
-                    <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
-                    <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
-                    <input type="hidden" name="submit_add_combo">
-                    <TABLE id="dataTable" width="100%" border="1">
-                        <TR>
-                            <TD><INPUT type="checkbox" name="chk"/>1</TD>
-                            <TD> 1 </TD>
-                            <TD>
-                                <select name="product_id[]" id="mapping">
-                                    <?php
-                                    foreach ($products as $product) {
-                                        echo '<option value="'.$product->id.'">'.$product->name.'</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </TD>
-                            <TD><input type="text" name="quantity[]"></TD>
-                        </TR>
-                    </TABLE>
+                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
+                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+                        <input type="hidden" name="submit_add_combo">
+                        <TABLE id="dataTable" width="100%" border="1">
+                            <TR>
+                                <TD><INPUT type="checkbox" name="chk"/>1</TD>
+                                <TD> 1 </TD>
+                                <TD>
+                                    <select name="product_id[]" id="mapping">
+                                        <?php
+                                        foreach ($products as $product) {
+                                            echo '<option value="'.$product->id.'">'.$product->name.'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </TD>
+                                <TD><input type="text" name="quantity[]"></TD>
+                            </TR>
+                        </TABLE>
 
-                    <label for="price">价格*</label>
-                    <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+                        <label for="price">价格*</label>
+                        <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
 
-                    <div class="switch">
-                        <label for="is_archived">当前状态</label>
-                        <select name="is_archived" id="slider" data-role="slider" data-mini="true">
-                            <option value="on">激活</option>
-                            <option value="off">禁止</option>
-                        </select>
-                    </div>
+                        <div class="switch">
+                            <label for="is_archived">当前状态</label>
+                            <select name="is_archived" id="slider" data-role="slider" data-mini="true">
+                                <option value="on">激活</option>
+                                <option value="off">禁止</option>
+                            </select>
+                        </div>
 
-                    <a href="#" class="myButton" onclick="submit()">保存</a>
-                    <a href="#" class="myButton" onclick="closebox()">取消</a>
-                </form>
-        </div>
+                        <a href="#" class="myButton" onclick="submit()">保存</a>
+                        <a href="#" class="myButton" onclick="closebox()">取消</a>
+                    </form>
+                </div>
+            </div>
 
             <a href="#" onClick="openbox('套餐管理', 1)">添加新套餐</a>
+        </div>
     </div>
 </div>
 
