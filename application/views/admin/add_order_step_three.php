@@ -15,13 +15,13 @@
         </div>
 
         <div class="container">
-                <table id="combo_data_table" class="display" cellspacing="0" width="100%">
+            <form id="myform" class="myform" action="<?php echo URL; ?>admin/addOrderStepFour" method="post">
+                <table id="order_combo_data_table" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>名称</th>
                             <th>价格</th>
-                            <th>描述</th>
-                            <th>标签</th>
+                            <th>数量</th>
                         </tr>
                         </thead>
 
@@ -29,8 +29,7 @@
                         <tr>
                             <th>名称</th>
                             <th>价格</th>
-                            <th>描述</th>
-                            <th>标签</th>
+                            <th>数量</th>
                         </tr>
                         </tfoot>
 
@@ -41,13 +40,15 @@
                                         <?php echo $combo->name; ?>
                                     </a></td>
                                 <td><?php echo $combo->price; ?></td>
-                                <td><?php echo $combo->description; ?></td>
-                                <td><?php echo $combo->tag; ?></td>
+                                <td><input class="spinner" name="spinner_<?php echo $combo->id; ?>"></td>
                             </tr>
                         <?php } ?>
                         </tbody>
                 </table>
-
+                <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>">
+                <input type="hidden" name="submit_add_order">
+                <input type="hidden" name="is_diy" value="0">
+            </form>
                 <BR><BR>
                 <a href="#" class="myButton" onclick="submit()">确认订单</a>
 
@@ -59,7 +60,10 @@
 
 <script>
     $(document).ready(function(){
-        $('#category_data_table').dataTable();
+        $('#order_combo_data_table').dataTable();
+
+        $( ".spinner" ).spinner();
+//        $( ".spinner").spi
     });
     function submit() {
         document.getElementById("myform").submit();

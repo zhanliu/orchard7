@@ -286,6 +286,14 @@ class Admin extends Controller
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
 
+        $shipping_address_id = NULL;
+        $customer_id = NULL;
+
+        if (isset($_POST["submit_already_add_address"])) {
+            $customer_id = $_POST["customer_id"];
+//            $shipping_address_id =
+        }
+
         if (isset($_POST["submit_add_address"])) {
             $customer_id = $_POST["customer_id"];
 
@@ -303,4 +311,49 @@ class Admin extends Controller
     }
 
 
+    public function addOrderStepFour() {
+
+        $order_id = NULL;
+        $current_order = NULL;
+
+        if (isset($_POST["submit_add_order"])) {
+            $customer_id = $_POST["customer_id"];
+            $total_amount = 0;
+            $address_id = 0;
+
+            //insert row to address table
+            $order_model = $this->loadModel('OrderModel');
+            $order_id = $order_model->addOrder($customer_id, $address_id, $_POST["is_diy"], $total_amount);
+
+            $order = $order_model->getOrderByOrderId($order_id);
+            $current_order = $order[0];
+        }
+
+        $customer_model = $this->loadModel('CustomerModel');
+        $customer = $customer_model->getCustomerByID($customer_id);
+        $order_customer = $customer[0];
+
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_four.php';
+        require 'application/views/admin/footer.php';
+    }
+
+    public function addOrderStepFive() {
+
+        $order_id = NULL;
+
+        if (isset($_POST["submit_add_order"])) {
+            $customer_id = $_POST["customer_id"];
+            $total_amount = 0;
+            $address_id = 0;
+
+            //insert row to address table
+            $order_model = $this->loadModel('OrderModel');
+            $order_id = $order_model->addOrder($customer_id, $address_id, $_POST["is_diy"], $total_amount);
+        }
+
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_five.php';
+        require 'application/views/admin/footer.php';
+    }
 }

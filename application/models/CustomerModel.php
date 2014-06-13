@@ -35,6 +35,15 @@ class CustomerModel
         return $query->fetchAll();
     }
 
+    public function getCustomerByID($id) {
+        $sql = "SELECT * FROM customer WHERE id='".$id."'";
+//        echo "Customer sql is ".$sql;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addCustomer($cellphone)
     {
         // clean the input from javascript code for example

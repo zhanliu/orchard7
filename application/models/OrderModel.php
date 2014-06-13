@@ -26,7 +26,7 @@ class OrderModel
         return $query->fetchAll();
     }
 
-    public function addOrder($customer_id, $address_id, $is_diy)
+    public function addOrder($customer_id, $address_id, $is_diy, $total_amount)
     {
         // clean the input from javascript code for example
         $customer_id = strip_tags($customer_id);
@@ -39,11 +39,23 @@ class OrderModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO customer (customer_id, address_id, status, is_diy, created_time, updated_time) VALUES (:customer_id, :address_id, :status, :is_diy, :updated_time)";
+        $sql = "insert into order1 (customer_id, status,  is_diy, total_amount, address_id, created_time, updated_time) VALUES (:customer_id, :status, :is_diy, :total_amount, :address_id, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':customer_id' => $customer_id, ':address_id' => $address_id, ':status' => $status, ':is_diy' => $is_diy, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+
+        $query->execute(array(':customer_id' => $customer_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
+
         return $insertedId;
+    }
+
+    public function getOrderByOrderId($order_id) {
+        $sql = "SELECT * ";
+        $sql.= "FROM order1 o ";
+        $sql.= "WHERE o.id=".$order_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
     }
 
     public function deleteOrder($id)

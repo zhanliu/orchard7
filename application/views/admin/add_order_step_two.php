@@ -37,7 +37,9 @@
                             foreach ($list_of_address as $address) {
                                 echo $address->district."-".$address->address1."-".$address->address2;
                             }
-
+                     ?>
+                            <input type="hidden" name="submit_already_add_address">
+                    <?php
                         } else {
                     ?>
                             广州市 -
