@@ -147,7 +147,7 @@ class Admin extends Controller
         if (isset($_POST["submit_add_product"])) {
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
-            $product_model->addProduct($_POST["name"], $_POST["price"], $_POST["unit"], $_POST["is_archived"], $_POST["category_id"], $_POST["tag"], $_POST["description"], $_POST["created_time"], $_POST["updated_time"]);
+            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["img_url"], $_POST["is_archived"]);
         }
 
         // where to go after song has been added

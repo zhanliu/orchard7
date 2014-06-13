@@ -17,7 +17,7 @@ class ProductModel
 
     public function getAllProducts()
     {
-        $sql = "SELECT id, name,category_id,unit, price, description, tag, is_archived, created_time, updated_time FROM product";
+        $sql = "SELECT id, name,category_id,unit, price, description, tag, img_url, is_archived, created_time, updated_time FROM product";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -25,7 +25,7 @@ class ProductModel
     }
 
     public function getProductsByComboId($combo_id) {
-        $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, cd.combo_id, cd.product_id, cd.quantity ";
+        $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, p.img_url, cd.combo_id, cd.product_id, cd.quantity ";
         $sql.= "FROM product as p, combo_detail as cd ";
         $sql.= "WHERE p.id=cd.product_id AND cd.combo_id=".$combo_id;
         $query = $this->db->prepare($sql);
@@ -34,7 +34,7 @@ class ProductModel
         return $query->fetchAll();
     }
 
-    public function addProduct($name, $category_id, $unit, $price,$description, $tag, $is_archived)
+    public function addProduct($name, $category_id, $unit, $price, $description, $tag, $img_url, $is_archived)
     {
         // clean the input from javascript code for example
         $name = strip_tags($name);
@@ -43,15 +43,16 @@ class ProductModel
         $price = strip_tags($price);
         $description = strip_tags($description);
         $tag = strip_tags($tag);
+        $img_url = strip_tags($img_url);
         $is_archived = strip_tags($is_archived);
 
         $now = time();
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO product (name, category_id, unit, price, description, tag, is_archived, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:description,:tag, :is_archived,:created_time, :updated_time)";
+        $sql = "INSERT INTO product (name, category_id, unit, price, description, tag, img_url, is_archived, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:description,:tag, :img_url, :is_archived, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':is_archived'=>$is_archived, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':img_url'=>$img_url, ':is_archived'=>$is_archived, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
     }
 
     public function deleteProduct($id)
