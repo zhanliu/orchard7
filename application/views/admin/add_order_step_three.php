@@ -38,14 +38,14 @@
                         <tbody>
                         <?php foreach ($combos as $combo) { ?>
                             <tr align="center">
-                                <td>要了</td>
+                                <td><input type="checkbox" name="chk" class="chk" value="0" id="check<?php echo $combo->id; ?>" onclick=" check_change(<?php echo $combo->id; ?>)" /></td>
+                                <td><input class="spinner" name="quantity[]" id="spinner<?php echo $combo->id; ?>" disabled="true"></td>
                                 <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
                                         <?php echo $combo->name; ?>
                                     </a></td>
                                 <td><?php echo $combo->price; ?></td>
-                                <td><input class="spinner" name="quantity[]"></td>
-                                <input type="hidden" name="comboIds[]" value="<?php echo $combo->id; ?>" />
-                                <input type="hidden" name="comboPrices[]" value="<?php echo $combo->price; ?>" />
+                                <input type="hidden" name="comboIds[]" disabled="true" id="comboIdHidden<?php echo $combo->id; ?>" value="<?php echo $combo->id; ?>" />
+                                <input type="hidden" name="comboPrices[]" disabled="true" id="comboPriceHidden<?php echo $combo->id; ?>" value="<?php echo $combo->price; ?>"/>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -56,7 +56,6 @@
             </form>
                 <BR><BR>
                 <a href="#" class="myButton" onclick="submit()">确认订单</a>
-
          <div class="panel">
          </div><!-- /panel -->
 
@@ -65,11 +64,27 @@
 
 <script>
     $(document).ready(function(){
-        $('#order_combo_data_table').dataTable();
+        $("#order_combo_data_table").dataTable();
 
-        $( ".spinner" ).spinner();
-//        $( ".spinner").spi
+//        $( ".spinner" ).spinner();
     });
+
+    function check_change(id) {
+
+        if ($("#check"+id).attr("value") == 0) {
+            $("#check"+id).attr("value", 1);
+            $("#spinner"+id).attr("disabled", false);
+            $("#comboIdHidden"+id).attr("disabled", false);
+            $("#comboPriceHidden"+id).attr("disabled", false);
+        } else {
+            $("#check"+id).attr("value", 0);
+            $("#spinner"+id).attr("disabled", true);
+            $("#comboIdHidden"+id).attr("disabled", true);
+            $("#comboPriceHidden"+id).attr("disabled", true);
+            $("#spinner"+id).val("");
+        }
+    }
+
     function submit() {
         document.getElementById("myform").submit();
         return false;
