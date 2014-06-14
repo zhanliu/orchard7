@@ -268,7 +268,7 @@ class Admin extends Controller
 
                 $cid = $customer[0]->id;
 
-                echo "--- cid --- ".$cid;
+//                echo "--- cid --- ".$cid;
                 $address_model = $this->loadModel('AddressModel');
                 $list_of_address = $address_model->getAddressesByCustomerId($cid);
             } else {
@@ -317,6 +317,7 @@ class Admin extends Controller
         $address_str = NULL;
 
         if (isset($_POST["submit_add_order"])) {
+
             $customer_id = $_POST["customer_id"];
             $total_amount = 0;
 
@@ -325,21 +326,41 @@ class Admin extends Controller
             $address = $addresses[0];
             $address_str = $address->district."-".$address->address1."-".$address->address2;
 
-            //insert row to address table
+            //insert row to order table
             $order_model = $this->loadModel('OrderModel');
             $order_id = $order_model->addOrder($customer_id, $addresses[0]->id, $_POST["is_diy"], $total_amount);
 
             $order = $order_model->getOrderByOrderId($order_id);
             $current_order = $order[0];
+
+            //insert into order detail
+            $quantities = $_POST['quantity'];
+            $comboIds = $_POST['comboIds'];
+            $comboPrices = $_POST['comboPrices'];
+
+            $order_detail_model = $this->loadModel('OrderDetailModel');
+
+            $quantity_index = 0;
+            foreach ($quantities as $quantity) {
+                if ($quantity > 0) {
+                    $order_detail_model->addOrderDetail($order_id, $comboIds[$quantity_index], $quantity);
+
+                    $total_amount = $total_amount + $comboPrices[$quantity_index] * $quantity;
+                }
+
+                $quantity_index++;
+            }
         }
+
+        echo $total_amount;
 
         $customer_model = $this->loadModel('CustomerModel');
         $customer = $customer_model->getCustomerByID($customer_id);
         $order_customer = $customer[0];
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/add_order_step_four.php';
-        require 'application/views/admin/footer.php';
+//        require 'application/views/admin/header.php';
+//        require 'application/views/admin/add_order_step_four.php';
+//        require 'application/views/admin/footer.php';
     }
 
     public function addOrderStepFive() {

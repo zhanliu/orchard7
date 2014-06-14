@@ -1,6 +1,6 @@
 <?php
 
-class OrderModel
+class OrderDetailModel
 {
     /**
      * Every model needs a database connection, passed to the model
@@ -17,50 +17,48 @@ class OrderModel
     /**
      * ##### FOR DEBUG PURPOSE ONLY #####
      */
-    public function getAllOrders()
+    public function getAllOrderDetails()
     {
-        $sql = "SELECT * FROM order1";
+        $sql = "SELECT * FROM order_details";
         $query = $this->db->prepare($sql);
         $query->execute();
 
         return $query->fetchAll();
     }
 
-    public function addOrder($customer_id, $address_id, $is_diy, $total_amount)
+    public function addOrderDetail($order_id, $combo_id, $combo_quantity)
     {
         // clean the input from javascript code for example
-        $customer_id = strip_tags($customer_id);
-        $address_id = strip_tags($address_id);
-        $is_diy = strip_tags($is_diy);
-
-        $status = 0;
+        $order_id = strip_tags($order_id);
+        $combo_id = strip_tags($combo_id);
+        $combo_quantity = strip_tags($combo_quantity);
 
         $now = time();
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order1 (customer_id, status,  is_diy, total_amount, address_id, created_time, updated_time) VALUES (:customer_id, :status, :is_diy, :total_amount, :address_id, :created_time, :updated_time)";
+        $sql = "insert into order_details (order_id, combo_id, combo_quantity, created_time, updated_time) VALUES (:order_id, :combo_id, :combo_quantity, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
-        $query->execute(array(':customer_id' => $customer_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':order_id' => $order_id, ':combo_id'=> $combo_id ,':combo_quantity' => $combo_quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
 
         return $insertedId;
     }
 
-    public function getOrderByOrderId($order_id) {
+    public function getOrderDetailByOrderDetailId($order_detail_id) {
         $sql = "SELECT * ";
-        $sql.= "FROM order1 o ";
-        $sql.= "WHERE o.id=".$order_id;
+        $sql.= "FROM order_details o ";
+        $sql.= "WHERE o.id=".$order_detail_id;
         $query = $this->db->prepare($sql);
         $query->execute();
 
         return $query->fetchAll();
     }
 
-    public function deleteOrder($id)
+    public function deleteOrderDetail($id)
     {
-        $sql = "DELETE FROM order WHERE id = :id";
+        $sql = "DELETE FROM order_details WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }

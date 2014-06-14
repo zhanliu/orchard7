@@ -40,7 +40,9 @@
                                         <?php echo $combo->name; ?>
                                     </a></td>
                                 <td><?php echo $combo->price; ?></td>
-                                <td><input class="spinner" name="spinner_<?php echo $combo->id; ?>"></td>
+                                <td><input class="spinner" name="quantity[]"></td>
+                                <input type="hidden" name="comboIds[]" value="<?php echo $combo->id; ?>" />
+                                <input type="hidden" name="comboPrices[]" value="<?php echo $combo->price; ?>" />
                             </tr>
                         <?php } ?>
                         </tbody>
