@@ -101,7 +101,7 @@
                 <!-- Upload area -->
                 <td>
                     Upload product picture:<br>
-                    <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                    <form id="upload" method="post" action="<?php echo URL; ?>admin/upload" enctype="multipart/form-data">
                         <div id="drop" border="1">
                             Drop Here
 

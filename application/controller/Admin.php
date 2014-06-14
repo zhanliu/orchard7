@@ -360,4 +360,8 @@ class Admin extends Controller
         require 'application/views/admin/add_order_step_five.php';
         require 'application/views/admin/footer.php';
     }
+
+    public function upload() {
+        require 'application/views/admin/upload.php';
+    }
 }
