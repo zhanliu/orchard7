@@ -46,7 +46,7 @@
             </div>
 
             <div id="shadowing"></div>
-            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
             <span id="boxtitle"></span>
 
                 <form id="myform" class="adminform" action="<?php echo URL; ?>admin/addCategory" method="post" target="_parent">

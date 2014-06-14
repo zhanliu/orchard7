@@ -67,7 +67,7 @@
 
 
                 <div id="shadowing"></div>
-                <div id="box" STYLE="margin: 0 auto; WIDTH: 50%; ALIGN: CENTER">
+                <div id="box" class="box" STYLE="margin: 0 auto; WIDTH: 50%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
 
                 <form name="myform" class="storeform" action="<?php echo URL; ?>admin/addstore" method="post" target="_parent">

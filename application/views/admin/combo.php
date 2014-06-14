@@ -157,7 +157,7 @@
             </div>
 
             <div id="shadowing"></div>
-            <div id="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
 
 <!--            <div class="panel">-->
