@@ -58,6 +58,14 @@ class OrderModel
         return $query->fetchAll();
     }
 
+    public function updateTotalAmount($order_id, $total_amount) {
+        $sql = "update order1 set total_amount = " . $total_amount ;
+        $sql.= " where id = " . $order_id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+    }
+
     public function deleteOrder($id)
     {
         $sql = "DELETE FROM order WHERE id = :id";

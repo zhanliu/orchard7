@@ -330,9 +330,6 @@ class Admin extends Controller
             $order_model = $this->loadModel('OrderModel');
             $order_id = $order_model->addOrder($customer_id, $addresses[0]->id, $_POST["is_diy"], $total_amount);
 
-            $order = $order_model->getOrderByOrderId($order_id);
-            $current_order = $order[0];
-
             //insert into order detail
             $quantities = $_POST['quantity'];
             $comboIds = $_POST['comboIds'];
@@ -350,17 +347,20 @@ class Admin extends Controller
 
                 $quantity_index++;
             }
-        }
 
-        echo $total_amount;
+            $order_model->updateTotalAmount($order_id, $total_amount);
+
+            $order = $order_model->getOrderByOrderId($order_id);
+            $current_order = $order[0];
+        }
 
         $customer_model = $this->loadModel('CustomerModel');
         $customer = $customer_model->getCustomerByID($customer_id);
         $order_customer = $customer[0];
 
-//        require 'application/views/admin/header.php';
-//        require 'application/views/admin/add_order_step_four.php';
-//        require 'application/views/admin/footer.php';
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/add_order_step_four.php';
+        require 'application/views/admin/footer.php';
     }
 
     public function addOrderStepFive() {

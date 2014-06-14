@@ -19,23 +19,26 @@
                 <table id="order_combo_data_table" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
+                            <th>点选</th>
+                            <th>数量</th>
                             <th>名称</th>
                             <th>价格</th>
-                            <th>数量</th>
                         </tr>
                         </thead>
 
                         <tfoot>
                         <tr>
+                            <th>点选</th>
+                            <th>数量</th>
                             <th>名称</th>
                             <th>价格</th>
-                            <th>数量</th>
                         </tr>
                         </tfoot>
 
                         <tbody>
                         <?php foreach ($combos as $combo) { ?>
                             <tr align="center">
+                                <td>要了</td>
                                 <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
                                         <?php echo $combo->name; ?>
                                     </a></td>
