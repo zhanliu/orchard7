@@ -68,11 +68,10 @@
             <div id="shadowing"></div>
             <div id="box" STYLE="margin: 0 auto; border: 2px solid #F00; WIDTH: 50%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
-
-<!--            <div class="panel">-->
+                <table><tr><td >
                 <form id="myform" class="productform" action="<?php echo URL; ?>admin/addproduct" method="post" target="_parent">
 
-                    <input type="text" name="name" id="name" value="" placeholder="商品名称...">*
+                    <input type="text" name="name" id="name" value="" placeholder="商品名称..." data-clear-btn="true" data-mini="true">*
                     <br><BR>
                     类目*:
                     <select name="category_id" id="category">
@@ -93,12 +92,34 @@
                             <option value="off">禁止</option>
                         </select>
                     </div>
-                    <BR><BR>
+
                     <input type="hidden" name="submit_add_product">
-                    <a href="#" class="myButton" onclick="submit()">保存</a>
-                    <a href="#" class="myButton" onclick="closebox()">取消</a>
 
                 </form>
+                </td>
+
+                <!-- Upload area -->
+                <td>
+                    Upload product picture:<br>
+                    <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                        <div id="drop" border="1">
+                            Drop Here
+
+                            <a>Browse</a>
+                            <input type="file" name="upl" multiple />
+                        </div>
+
+                        <ul>
+                            <!-- The file uploads will be shown here -->
+                        </ul>
+
+                    </form>
+                </td>
+
+                </table>
+
+                <a href="#" class="myButton" onclick="submit()">保存</a>
+                <a href="#" class="myButton" onclick="closebox()">取消</a>
             </div>
 
             <a href="#" onClick="openbox('添加新商品', 1)">添加新商品</a>
@@ -126,3 +147,16 @@
         return false;
     }
 </script>
+
+<script src="/orchard7/public/js/jquery.knob.js"></script>
+
+<!-- jQuery File Upload Dependencies -->
+<script src="/orchard7/public/js/jquery.ui.widget.js"></script>
+<script src="/orchard7/public/js/jquery.iframe-transport.js"></script>
+<script src="/orchard7/public/js/jquery.fileupload.js"></script>
+
+<!-- Our main JS file -->
+<script src="/orchard7/public/js/upload-script.js"></script>
+
+<!-- The main CSS file -->
+<link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
