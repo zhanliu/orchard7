@@ -1,6 +1,7 @@
 $(function(){
 
     var ul = $('#upload ul');
+    var fileName;
 
     $('#drop a').click(function(){
         // Simulate a click on the file input button
@@ -24,6 +25,8 @@ $(function(){
             // Append the file name and file size
             tpl.find('p').text(data.files[0].name)
                          .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
+            fileName = data.files[0].name;
+            $("#img_url").val(fileName);
 
             // Add the HTML to the UL element
             data.context = tpl.appendTo(ul);
@@ -89,6 +92,10 @@ $(function(){
         }
 
         return (bytes / 1000).toFixed(2) + ' KB';
+    }
+
+    function getFileName() {
+        return fileName;
     }
 
 });

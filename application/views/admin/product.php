@@ -58,7 +58,7 @@
                             <td><?php echo $product->description; ?></td>
                             <td><?php echo $product->tag; ?></td>
                             <td><a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>" class="myButton">删除</a></td>
-                            <td><a href="#" class="myButton" onclick="openbox('detail', '商品详情', 1)">查看</a></td>
+                            <td><a href="#" class="myButton" onclick="openDetailBox()">查看</a></td>
                             <td><?php echo $product->created_time; ?></td>
                             <td><?php echo $product->updated_time; ?></td>
                         </tr>
@@ -95,7 +95,7 @@
                             <option value="off">禁止</option>
                         </select>
                     </div>
-
+                    <input type="hidden" name="img_url" id="img_url">
                     <input type="hidden" name="submit_add_product">
 
                 </form>
@@ -127,7 +127,9 @@
 
             <div id="detail" class="box" STYLE="margin: 0 auto; border: 2px solid #F00; WIDTH: 50%; ALIGN: CENTER">
                 Hello Detail!<BR>
-                <a href="#" class="myButton" onclick="closebox('box')">取消</a>
+                Product Id is: <?php echo $_POST["product_id"]; ?><br>
+                Id is: <?php echo $product_id; ?><br>
+                <a href="#" class="myButton" onclick="closebox('detail')">取消</a>
             </div>
 
             <a href="#" onClick="openbox('box', '添加新商品', 1)">添加新商品</a>
@@ -151,8 +153,25 @@
 
 
     function submit() {
-        document.getElementById("myform").submit();
+        if ($('#name').val()=="") {
+            alert('Product name must not be empty');
+        } else if ($('#price').val()=="") {
+            alert('Price must not be empty');
+        } else if ($('#unit').val()=="") {
+            alert('Unit must not be empty');
+        } else if ($('#img_url').val()=="") {
+            alert('You have to upload product picture before submit');
+        } else {
+            document.getElementById("myform").submit();
+        }
         return false;
+    }
+
+    function openDetailBox() {
+        var product_id = '333';
+        alert("hihi");
+        $.post('<?php echo URL; ?>admin/product', {variable: product_id});
+        openbox('detail', '商品详情', 1);
     }
 </script>
 
