@@ -19,7 +19,7 @@ class OrderModel
      */
     public function getAllOrders()
     {
-        $sql = "SELECT * FROM order";
+        $sql = "SELECT * FROM order1";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -56,6 +56,14 @@ class OrderModel
         $query->execute();
 
         return $query->fetchAll();
+    }
+
+    public function updateTotalAmount($order_id, $total_amount) {
+        $sql = "update order1 set total_amount = " . $total_amount ;
+        $sql.= " where id = " . $order_id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
     }
 
     public function deleteOrder($id)
