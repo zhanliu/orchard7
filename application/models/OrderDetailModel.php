@@ -56,6 +56,16 @@ class OrderDetailModel
         return $query->fetchAll();
     }
 
+    public function getOrderDetailByOrderId($order_id) {
+        $sql = "SELECT od.combo_id, od.combo_quantity, c.name, c.price ";
+        $sql.= "FROM order_details as od, combo as c ";
+        $sql.= "WHERE od.order_id=".$order_id . " and od.combo_id = c.id ";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function deleteOrderDetail($id)
     {
         $sql = "DELETE FROM order_details WHERE id = :id";

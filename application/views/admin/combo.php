@@ -87,8 +87,8 @@
         }
         str = str +'</tbody></table>';
 
-        $("#boxcontent").replaceWith('<div id="boxcontent">'+str + '<a href="#" class="myButton" onclick="closebox()">确认</a>'+'</div>');
-        openbox("套餐" + comboID, 1);
+        $("#boxcontent").replaceWith('<div id="boxcontent">'+str + '<a href="#" class="myButton" onclick="closebox(\'box\')">确认</a>'+'</div>');
+        openbox("box","套餐" + comboID, 1);
 
         return false;
     }

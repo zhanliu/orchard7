@@ -365,6 +365,8 @@ class Admin extends Controller
         $customer = $customer_model->getCustomerByID($customer_id);
         $order_customer = $customer[0];
 
+        $order_details = $order_detail_model->getOrderDetailByOrderId($order_id);
+
         require 'application/views/admin/header.php';
         require 'application/views/admin/add_order_step_four.php';
         require 'application/views/admin/footer.php';
