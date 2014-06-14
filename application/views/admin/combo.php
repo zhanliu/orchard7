@@ -68,7 +68,7 @@
         return false;
     }
 
-    function showComboProduct(comboID) {
+    function showComboProduct(comboID, comboName) {
         //p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, cd.combo_id, cd.product_id, cd.quantity
 
 //        var obj = eval ('{"5":[{"name":"芒果","quantity":"1"},{"name":"苹果","quantity":"1"}],"6":[{"name":"荔枝","quantity":"2"},{"name":"龙眼","quantity":"2"}],"7":[{"name":"芒果","quantity":"3"},{"name":"草莓","quantity":"3"}]}');
@@ -87,10 +87,16 @@
         }
         str = str +'</tbody></table>';
 
-        $("#boxcontent").replaceWith('<div id="boxcontent">'+str + '<a href="#" class="myButton" onclick="closebox(\'box\')">确认</a>'+'</div>');
-        openbox("box","套餐" + comboID, 1);
+        $("#detailcontent").replaceWith('<div id="detailcontent">'+str + '<a href="#" class="myButton" onclick="closedetailbox();closebox(\'detailbox\'); ">确认</a>'+'</div>');
+        $(".detailboxtitle").replaceWith('<span id="boxtitle" class="detailboxtitle"></span>');
+        openbox("detailbox","套餐-" + comboName, 0);
 
         return false;
+    }
+
+    function closedetailbox() {
+        $(".detailboxtitle").replaceWith('<span id="detailboxtitle" class="detailboxtitle"></span>');
+//        return closebox("detailbox", 1);
     }
 </script>
 
@@ -140,7 +146,7 @@
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
                         <tr align="center">
-                            <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
+                            <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>, '<?php echo $combo->name; ?>')">
                                     <?php echo $combo->name; ?>
                             </a></td>
                             <td><?php echo $combo->price; ?></td>
@@ -157,6 +163,12 @@
             </div>
 
             <div id="shadowing"></div>
+            <div id="detailbox" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 25%; height:35%; ALIGN: CENTER">
+                <span id="boxtitle" class="detailboxtitle"></span>
+                <div id="detailcontent">
+                </div>
+            </div>
+
             <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
 
