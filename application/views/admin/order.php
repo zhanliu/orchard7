@@ -110,14 +110,14 @@
 
                     <input type="hidden" name="submit_add_store"/>
                     <a href="#" class="myButton" onclick="document.forms['myform'].submit(); return true;">保存</a>
-                    <a href="#" class="myButton" onclick="closebox()">取消</a>
+                    <a href="#" class="myButton" onclick="closebox('box')">取消</a>
                     </p>
 
                 </form>
                 </div>
 
                 <!-- panel content goes here -->
-            <a href="#" onClick="openbox('店铺管理', 1)">添加新店铺</a>
+            <a href="#" onClick="openbox('box', '店铺管理', 1)">添加新店铺</a>
             <div class="panel">
             </div><!-- /panel -->
          </div>

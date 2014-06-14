@@ -200,12 +200,12 @@
                         </div>
 
                         <a href="#" class="myButton" onclick="submit()">保存</a>
-                        <a href="#" class="myButton" onclick="closebox()">取消</a>
+                        <a href="#" class="myButton" onclick="closebox('box')">取消</a>
                     </form>
                 </div>
             </div>
 
-            <a href="#" onClick="openbox('套餐管理', 1)">添加新套餐</a>
+            <a href="#" onClick="openbox('box', '套餐管理', 1)">添加新套餐</a>
         </div>
     </div>
 </div>

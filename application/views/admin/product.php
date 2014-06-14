@@ -119,10 +119,10 @@
                 </table>
 
                 <a href="#" class="myButton" onclick="submit()">保存</a>
-                <a href="#" class="myButton" onclick="closebox()">取消</a>
+                <a href="#" class="myButton" onclick="closebox('box')">取消</a>
             </div>
 
-            <a href="#" onClick="openbox('添加新商品', 1)">添加新商品</a>
+            <a href="#" onClick="openbox('box', '添加新商品', 1)">添加新商品</a>
             <div class="panel"></DIV>
                 <!-- panel content goes here -->
 <!--            </div><!-- /panel -->

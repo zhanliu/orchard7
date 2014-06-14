@@ -26,9 +26,9 @@ function fadein(id)
 // Open the lightbox
 
 
-function openbox(formtitle, fadin)
+function openbox(id, formtitle, fadin)
 {
-  var box = document.getElementById('box');
+  var box = document.getElementById(id);
   document.getElementById('shadowing').style.display='block';
 
   var btitle = document.getElementById('boxtitle');
@@ -36,8 +36,8 @@ function openbox(formtitle, fadin)
   
   if(fadin)
   {
-	 gradient('box', 0);
-	 fadein('box');
+	 gradient(id, 0);
+	 fadein(id);
   }
   else
   { 	
@@ -48,9 +48,9 @@ function openbox(formtitle, fadin)
 
 // Close the lightbox
 
-function closebox()
+function closebox(id)
 {
-   document.getElementById('box').style.display='none';
+   document.getElementById(id).style.display='none';
    document.getElementById('shadowing').style.display='none';
 }
 

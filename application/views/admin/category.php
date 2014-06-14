@@ -55,12 +55,12 @@
                     <input type="hidden" name="submit_add_category">
                     <br><br>
                     <a href="#" class="myButton" onclick="submit()">保存</a>
-                    <a href="#" class="myButton" onclick="closebox()">取消</a>
+                    <a href="#" class="myButton" onclick="closebox('box')">取消</a>
                 </form>
 
             </div>
 
-            <a href="#" onClick="openbox('商品类目管理', 1)">添加新商品类目</a>
+            <a href="#" onClick="openbox('box', '商品类目管理', 1)">添加新商品类目</a>
 
             <div class="panel"></DIV>
         </div>
