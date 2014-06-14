@@ -24,7 +24,8 @@
                         <th>价格</th>
                         <th>描述</th>
                         <th>标签</th>
-                        <th>活跃</th>
+                        <th>删除</th>
+                        <th>查看</th>
                         <th>创建时间</th>
                         <th>修改时间</th>
                     </tr>
@@ -56,8 +57,8 @@
                             <td><?php echo $product->price; ?></td>
                             <td><?php echo $product->description; ?></td>
                             <td><?php echo $product->tag; ?></td>
-                            <td>[<a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>">X</a>]</td>
-                            <td><a href="#" class="myButton" onclick="openbox('detail', '商品 Detail', 1)">查看</a></td>
+                            <td><a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>" class="myButton">删除</a></td>
+                            <td><a href="#" class="myButton" onclick="openbox('detail', '商品详情', 1)">查看</a></td>
                             <td><?php echo $product->created_time; ?></td>
                             <td><?php echo $product->updated_time; ?></td>
                         </tr>
@@ -123,9 +124,12 @@
                 <a href="#" class="myButton" onclick="submit()">保存</a>
                 <a href="#" class="myButton" onclick="closebox('box')">取消</a>
             </div>
+
             <div id="detail" class="box" STYLE="margin: 0 auto; border: 2px solid #F00; WIDTH: 50%; ALIGN: CENTER">
-                Hello Detail!
+                Hello Detail!<BR>
+                <a href="#" class="myButton" onclick="closebox('box')">取消</a>
             </div>
+
             <a href="#" onClick="openbox('box', '添加新商品', 1)">添加新商品</a>
             <div class="panel"></DIV>
                 <!-- panel content goes here -->
