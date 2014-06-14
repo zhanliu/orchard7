@@ -131,7 +131,6 @@ class Admin extends Controller
 
         if (isset($_POST['product_id'])) {
             $product_id = $_POST['product_id'];
-            echo "===".$product_id;
         }
 
         // debug message to show where you are, just for the demo
@@ -168,7 +167,7 @@ class Admin extends Controller
         if (isset($id)) {
             // load model, perform an action on the model
             $products_model = $this->loadModel('ProductModel');
-            $products_model->deleteCombo($id);
+            $products_model->deleteProduct($id);
         }
 
         // where to go after song has been deleted
