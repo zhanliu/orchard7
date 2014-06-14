@@ -129,10 +129,6 @@ class Admin extends Controller
         $category_model = $this->loadModel('CategoryModel');
         $categories = $category_model->getAllCategories();
 
-        if (isset($_POST['product_id'])) {
-            $product_id = $_POST['product_id'];
-        }
-
         // debug message to show where you are, just for the demo
         //echo 'Message from Controller: You are in the controller *admin, using the method index()';
         require 'application/views/admin/header.php';
@@ -140,6 +136,13 @@ class Admin extends Controller
         require 'application/views/admin/footer.php';
         // load views. within the views we can echo out $songs and $amount_of_songs easily
 
+    }
+
+    public function productDetail($id) {
+        $product_model = $this->loadModel('ProductModel');
+        $product = $product_model->getProductById($id);
+
+        require 'application/views/admin/product_detail.php';
     }
 
     public function addProduct()

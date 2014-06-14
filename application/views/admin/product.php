@@ -58,7 +58,7 @@
                             <td><?php echo $product->description; ?></td>
                             <td><?php echo $product->tag; ?></td>
                             <td><a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>" class="myButton">删除</a></td>
-                            <td><a href="#" class="myButton" onclick="openDetailBox()">查看</a></td>
+                            <td><a href="<?php echo URL . 'admin/productDetail/' . $product->id; ?>" class="myButton" target="_blank">查看</a></td>
                             <td><?php echo $product->created_time; ?></td>
                             <td><?php echo $product->updated_time; ?></td>
                         </tr>
@@ -167,11 +167,10 @@
         return false;
     }
 
-    function openDetailBox() {
-        var product_id = '333';
-        alert("hihi");
-        $.post('<?php echo URL; ?>admin/product', {variable: product_id});
-        openbox('detail', '商品详情', 1);
+    function openDetailBox(pid) {
+        var product_id = pid;
+        $.post('<?php echo URL; ?>admin/productDetail', {variable: product_id});
+        window.open('<?php echo URL; ?>admin/productDetail');
     }
 </script>
 

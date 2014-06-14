@@ -24,6 +24,16 @@ class ProductModel
         return $query->fetchAll();
     }
 
+    public function getProductById($product_id)
+    {
+        $sql = "SELECT id, name,category_id,unit, price, description, tag, img_url, is_archived, created_time, updated_time FROM product ";
+        $sql.= "WHERE id=".$product_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function getProductsByComboId($combo_id) {
         $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, p.img_url, cd.combo_id, cd.product_id, cd.quantity ";
         $sql.= "FROM product as p, combo_detail as cd ";
