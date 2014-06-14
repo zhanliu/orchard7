@@ -22,12 +22,9 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
-                        <th>描述</th>
                         <th>标签</th>
                         <th>删除</th>
                         <th>查看</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
                     </tr>
                     </thead>
 
@@ -38,12 +35,9 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
-                        <th>描述</th>
                         <th>标签</th>
                         <th>删除</th>
                         <th>查看</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
                     </tr>
                     </tfoot>
 
@@ -55,12 +49,9 @@
                             <td><?php echo $product->category_id; ?></td>
                             <td><?php echo $product->unit; ?></td>
                             <td><?php echo $product->price; ?></td>
-                            <td><?php echo $product->description; ?></td>
                             <td><?php echo $product->tag; ?></td>
                             <td><a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>" class="myButton">删除</a></td>
                             <td><a href="<?php echo URL . 'admin/productDetail/' . $product->id; ?>" class="myButton" target="_blank">查看</a></td>
-                            <td><?php echo $product->created_time; ?></td>
-                            <td><?php echo $product->updated_time; ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -103,12 +94,12 @@
 
                 <!-- Upload area -->
                 <td>
-                    Upload product picture:<br>
+                    上传商品图片:<br>
                     <form id="upload" method="post" action="<?php echo URL; ?>admin/upload" enctype="multipart/form-data">
                         <div id="drop" border="1">
-                            Drop Here
+                            拖放图片到这里
 
-                            <a>Browse</a>
+                            <a>浏览</a>
                             <input type="file" name="upl" multiple />
                         </div>
 
@@ -125,12 +116,6 @@
                 <a href="#" class="myButton" onclick="closebox('box')">取消</a>
             </div>
 
-            <div id="detail" class="box" STYLE="margin: 0 auto; border: 2px solid #F00; WIDTH: 50%; ALIGN: CENTER">
-                Hello Detail!<BR>
-                Product Id is: <?php echo $_POST["product_id"]; ?><br>
-                Id is: <?php echo $product_id; ?><br>
-                <a href="#" class="myButton" onclick="closebox('detail')">取消</a>
-            </div>
 
             <a href="#" onClick="openbox('box', '添加新商品', 1)">添加新商品</a>
             <div class="panel"></DIV>
@@ -154,13 +139,13 @@
 
     function submit() {
         if ($('#name').val()=="") {
-            alert('Product name must not be empty');
+            alert('商品名称不能为空');
         } else if ($('#price').val()=="") {
-            alert('Price must not be empty');
+            alert('价格不能为空');
         } else if ($('#unit').val()=="") {
-            alert('Unit must not be empty');
+            alert('单位商品名称不能为空');
         } else if ($('#img_url').val()=="") {
-            alert('You have to upload product picture before submit');
+            alert('保存商品前请上传商品图片');
         } else {
             document.getElementById("myform").submit();
         }
