@@ -388,9 +388,26 @@ class Admin extends Controller
 
         $order_model = $this->loadModel('OrderModel');
         $orders = $order_model->getAllOrdersWithDetails();
-
         $orderStatus = $order_model->getOrderStatusCode();
 
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
+
+        //////////////////////
+        $order_detail_model = $this->loadModel('OrderDetailModel');
+        $orderDetails = $order_detail_model->getAllOrderDetails();
+        $orderDetailJson = "{";
+        foreach ($orderDetails as $orderDetail) {
+            $comboProducts = $product_model->getProductsByComboId($combo->id);
+
+            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
+            foreach ($comboProducts as $comboProduct) {
+                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
+            }
+            $comboDetailJson = $comboDetailJson .'],';
+        }
+        $comboDetailJson = $comboDetailJson . '}';
+        //////////////////////
 
         require 'application/views/admin/header.php';
         require 'application/views/admin/order_manager.php';
@@ -413,6 +430,17 @@ class Admin extends Controller
 
         $order_model = $this->loadModel('OrderModel');
         $orders = $order_model->updateOrderStatus($order_id, $order_status);
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
+
+    public function updateOrder() {
+
+//        $order_status = $_POST["orderstatus"];
+//        $order_id = $_POST["order_id"];
+//
+//        $order_model = $this->loadModel('OrderModel');
+//        $orders = $order_model->updateOrderStatus($order_id, $order_status);
 
         header('location: ' . URL . 'admin/manageOrder');
     }
