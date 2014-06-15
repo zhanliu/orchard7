@@ -14,7 +14,7 @@ if (!session_id()) session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
+
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
@@ -23,6 +23,7 @@ if (!session_id()) session_start();
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
+    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/orchard7.js"></script>
@@ -49,60 +50,6 @@ if (!session_id()) session_start();
     <![endif]-->
 
     <!-- The following CSS are included as plugins and can be removed if unused-->
-
-    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
-    <style>
-        .add_object_button_div {
-            background:#333333 url(images/plus.png) 85% 55% no-repeat;
-            position:	absolute;
-            top:		12%;
-            right:		0;
-            width:		auto;
-            height:		auto;
-            padding:	5px 10px;
-            text-align:	center;
-            border:		1px solid #999;
-        }
-        .panel{
-            position:absolute;
-            top:8%;
-            left:40%;
-            display:none;
-            background:#e6e7e8;
-            border:1px solid #111111;
-            -moz-border-radius-topleft:10px;
-            -webkit-border-top-left-radius:10px;
-            -moz-border-radius-bottomleft:10px;
-            -webkit-border-bottom-left-radius:10px;
-            -moz-border-radius-topright:10px;
-            -webkit-border-top-right-radius:10px;
-            -moz-border-radius-bottomright:10px;
-            -webkit-border-bottom-right-radius:10px;
-            width:auto;
-            height:auto;
-            padding:30px 30px 30px 30px;
-            filter:alpha(opacity=98);opacity:.98;}
-        .panel p{
-            margin:0 0 15px 0;
-            padding:0;
-            color:#cccccc;}
-        .panel a,.panel a:visited{
-            margin:0;
-            padding:0;
-            color:#9FC54E;
-            text-decoration:none;
-            border-bottom:1px solid #9FC54E;}
-        .panel a:hover,.panel a:visited:hover{
-            margin:0;padding:0;
-            color:#ffffff;
-            text-decoration:none;
-            border-bottom:1px solid #ffffff;}
-
-        .container th {
-            text-align: center;
-        }
-    </style>
-
 </head>
 
 <body class="" style="">
