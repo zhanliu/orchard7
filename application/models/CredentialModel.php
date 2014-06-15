@@ -17,7 +17,8 @@ class CredentialModel
 
     public function getAllCredentials()
     {
-        $sql = "SELECT id, role_id, login, password, description FROM role";
+        $sql = "SELECT c.id, c.login, c.password, c.description, r.name FROM credential as c, role as r ";
+        $sql.= "WHERE c.role_id=r.id";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -31,7 +32,7 @@ class CredentialModel
         $password = strip_tags($password);
         $description = strip_tags($description);
 
-        $sql = "INSERT INTO role (role_id, login, password, description) VALUES (:role_id, :login, :password, :description)";
+        $sql = "INSERT INTO role (role_id, login, password, description) VALUES (:role_id, :login, PASSWORD(:password), :description)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':role_id' => $role_id, ':login' => $login, ':password' => $password, ':description' => $description));
     }
