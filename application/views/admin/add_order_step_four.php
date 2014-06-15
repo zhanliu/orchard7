@@ -75,6 +75,9 @@
                     </tbody>
                 </table>
             <BR><BR>
+            <form id="myform" class="myform" action="<?php echo URL; ?>admin/addOrderStepFive" method="post">
+            </form>
+
             <a href="#" class="myButton" onclick="submit()">确认订单</a>
 
             <div class="panel">
@@ -91,7 +94,7 @@
 //        $( ".spinner").spi
         });
         function submit() {
-
+            $("#myform").submit();
             return false;
         }
     </script>

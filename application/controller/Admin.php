@@ -372,19 +372,8 @@ class Admin extends Controller
         require 'application/views/admin/footer.php';
     }
 
+
     public function addOrderStepFive() {
-
-        $order_id = NULL;
-
-        if (isset($_POST["submit_add_order"])) {
-            $customer_id = $_POST["customer_id"];
-            $total_amount = 0;
-            $address_id = 0;
-
-            //insert row to address table
-            $order_model = $this->loadModel('OrderModel');
-            $order_id = $order_model->addOrder($customer_id, $address_id, $_POST["is_diy"], $total_amount);
-        }
 
         require 'application/views/admin/header.php';
         require 'application/views/admin/add_order_step_five.php';
