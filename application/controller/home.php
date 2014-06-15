@@ -16,12 +16,15 @@ class Home extends Controller
      */
     public function index()
     {
-        // debug message to show where you are, just for the demo
-        echo 'Message from Controller: You are in the controller home, using the method index()';
-        // load views. within the views we can echo out $songs and $amount_of_songs easily
-        require 'application/views/_templates/header.php';
-        require 'application/views/home/index.php';
-        require 'application/views/_templates/footer.php';
+        if (!session_id()) session_start();
+        //echo "-----".$_SESSION['login'];
+        if (isset($_SESSION['login'])) {
+            require 'application/views/common/header.php';
+            require 'application/views/common/index.php';
+            require 'application/views/common/footer.php';
+        } else {
+            require 'application/views/common/login.php';
+        }
     }
 
 

@@ -236,7 +236,7 @@ if (!session_id()) session_start();
                 </form>
             </li>
             <li class="divider"></li>
-            <li><a href=""><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="/orchard7/home/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>权限管理</span>
                     <span class="badge badge-primary">5</span></a>
                 <ul class="acc-menu">
@@ -249,7 +249,7 @@ if (!session_id()) session_start();
                     <li><a href="/orchard7/admin/store"><span>店铺管理</span></a></li>
                 </ul>
             </li>
-            <li class="active hasChild"><a href="javascript:;"><i class="fa fa-list-ol"></i> <span>库存管理</span> <span class="badge badge-indigo">4</span></a>
+            <li class="hasChild"><a href="javascript:;"><i class="fa fa-list-ol"></i> <span>库存管理</span> <span class="badge badge-indigo">4</span></a>
                 <ul class="acc-menu" style="display: none;">
                     <li><a href="/orchard7/admin/category">类目管理</a></li>
                     <li><a href="/orchard7/admin/product">商品管理</a></li>

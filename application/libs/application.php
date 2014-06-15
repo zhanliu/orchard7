@@ -56,7 +56,7 @@ class Application
             }
         } else {
             // invalid URL, so simply show home/index
-            require './application/controller/home.php';
+            require './application/controller/Home.php';
             $home = new Home();
             $home->index();
         }
