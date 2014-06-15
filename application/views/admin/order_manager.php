@@ -45,7 +45,17 @@
                         </a>
                     </td>
                     <td><?php echo $order->cellphone; ?></td>
-                    <td><?php echo $order->status; ?> <a class="myButton" href="<?php echo URL . 'admin/orderstatus0/' . $order->id; ?>">初始</a><a class="myButton" href="<?php echo URL . 'admin/orderstatus1/' . $order->id; ?>">接单</a><a class="myButton" href="<?php echo URL . 'admin/orderstatus2/' . $order->id; ?>">取消</a></td>
+                    <td>
+                        <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>admin/orderstatus" method="post" target="_parent">
+                            <b><?php echo $order->status; ?></b>
+                            <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
+                            <?php foreach ($orderStatus as $status) { ?>
+                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
+                            <?php } ?>
+                        </select>
+                        <input type="hidden" name="order_id" value="<?php echo $order->id; ?>">
+                        </form>
+                    </td>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
                     <td>[<a href="<?php echo URL . 'admin/deleteorder/' . $order->id; ?>">X</a>]</td>
@@ -124,5 +134,9 @@
 
         function updateOrder(order_id) {
             openbox("box","订单-" + order_id, 1);
+        }
+
+        function optionClick(comboID) {
+            $("#myform"+comboID).submit();
         }
     </script>

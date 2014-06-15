@@ -389,6 +389,8 @@ class Admin extends Controller
         $order_model = $this->loadModel('OrderModel');
         $orders = $order_model->getAllOrdersWithDetails();
 
+        $orderStatus = $order_model->getOrderStatusCode();
+
 
         require 'application/views/admin/header.php';
         require 'application/views/admin/order_manager.php';
@@ -404,29 +406,13 @@ class Admin extends Controller
         header('location: ' . URL . 'admin/manageOrder');
     }
 
-    public function orderStatus0($id) {
+    public function orderStatus() {
+
+        $order_status = $_POST["orderstatus"];
+        $order_id = $_POST["order_id"];
 
         $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->updateOrderStatus($id, 0);
-
-
-        header('location: ' . URL . 'admin/manageOrder');
-    }
-
-    public function orderStatus1($id) {
-
-        $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->updateOrderStatus($id, 1);
-
-
-        header('location: ' . URL . 'admin/manageOrder');
-    }
-
-    public function orderStatus2($id) {
-
-        $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->updateOrderStatus($id, 2);
-
+        $orders = $order_model->updateOrderStatus($order_id, $order_status);
 
         header('location: ' . URL . 'admin/manageOrder');
     }
