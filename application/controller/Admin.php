@@ -394,4 +394,5 @@ class Admin extends Controller
     public function upload() {
         require 'application/views/admin/upload.php';
     }
+
 }

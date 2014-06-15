@@ -231,6 +231,13 @@
             </li>
             <li class="divider"></li>
             <li><a href="http://redteamux.com/avant/index.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>权限管理</span>
+                    <span class="badge badge-primary">5</span></a>
+                <ul class="acc-menu">
+                    <li><a href="role">角色管理</a></li>
+                    <li><a href="credential">人员管理</a></li>
+                </ul>
+            </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-th"></i> <span>资产中心</span> </a>
                 <ul class="acc-menu">
                     <li><a href="store"><span>店铺管理</span></a></li>
@@ -254,19 +261,7 @@
                     <li><a href="customer">客户管理</a></li>
                 </ul>
             </li>
-            <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Advanced Forms</span><span class="badge badge-primary">5</span></a>
-                <ul class="acc-menu">
-                    <li><a href="http://redteamux.com/avant/form-components.php">Components</a></li>
-                    <li><a href="http://redteamux.com/avant/form-wizard.php">Wizards</a></li>
-                    <li><a href="http://redteamux.com/avant/form-validation.php">Validation</a></li>
-                    <li><a href="http://redteamux.com/avant/form-masks.php">Masks</a></li>
-                    <li><a href="http://redteamux.com/avant/form-fileupload.php">Multiple File Uploads</a></li>
-                    <li><a href="http://redteamux.com/avant/form-dropzone.php">Dropzone File Uploads</a></li>
-                    <li><a href="http://redteamux.com/avant/form-ckeditor.php">WYSIWYG Editor</a></li>
-                    <li><a href="http://redteamux.com/avant/form-xeditable.php">Inline Editor</a></li>
-                    <li><a href="http://redteamux.com/avant/form-imagecrop.php">Image Cropping</a></li>
-                </ul>
-            </li>
+
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-map-marker"></i> <span>Maps</span></a>
                 <ul class="acc-menu">
                     <li><a href="http://redteamux.com/avant/maps-google.php">Google Maps</a></li>
