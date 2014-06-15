@@ -41,19 +41,12 @@ if (!session_id()) session_start();
     <script src="/orchard7/public/js/application.js"></script>
     <script src="/orchard7/public/js/demo.js"></script>
     <script src="/orchard7/public/js/lightbox-form.js" type="text/javascript"></script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" href="assets/css/ie8.css">
-    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/charts-flot/excanvas.min.js"></script>
-    <![endif]-->
 
     <!-- The following CSS are included as plugins and can be removed if unused-->
 </head>
 
 <body class="" style="">
-<script async="" src="/orchard7/public/js/analytics.js"></script>
+<!--<script async="" src="/orchard7/public/js/analytics.js"></script>-->
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

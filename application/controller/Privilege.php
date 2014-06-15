@@ -54,16 +54,22 @@ class Privilege extends Controller
         $credential_model = $this->loadModel('CredentialModel');
         $credentials = $credential_model->getAllCredentials();
 
-        $role_model = $this->loadModel('RoleModel');
-        $roles = $role_model->getAllRoles();
-
         require 'application/views/common/header.php';
         require 'application/views/privilege/credential.php';
         require 'application/views/common/footer.php';
     }
 
-
     public function addCredential()
+    {
+        $role_model = $this->loadModel('RoleModel');
+        $roles = $role_model->getAllRoles();
+
+        require 'application/views/common/header.php';
+        require 'application/views/privilege/add_credential.php';
+        require 'application/views/common/footer.php';
+    }
+
+    public function submitAddCredential()
     {
         if (isset($_POST["submit_add_credential"])) {
             $credential_model = $this->loadModel('CredentialModel');

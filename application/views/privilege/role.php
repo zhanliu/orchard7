@@ -36,7 +36,7 @@
 
                     <tbody>
                     <?php foreach ($roles as $role) { ?>
-                        <tr align="center">
+                        <tr>
                             <td><?php echo $role->id; ?></td>
                             <td><?php echo $role->name; ?></td>
                             <td><?php echo $role->description; ?></td>
