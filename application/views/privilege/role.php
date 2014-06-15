@@ -1,10 +1,9 @@
-
 <div id="page-content" style="min-height: 2911px;">
     <div id="wrap">
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li>水果7号</li>
+                <li>控制面板</li>
                 <li>权限管理</li>
                 <li class="active">角色管理</li>
             </ol>
@@ -41,29 +40,14 @@
                             <td><?php echo $role->id; ?></td>
                             <td><?php echo $role->name; ?></td>
                             <td><?php echo $role->description; ?></td>
-                            <td>[<a href="<?php echo URL . 'privilege/deleteRole/' . $role->id; ?>">X</a>]</td>
+                            <td><a href="<?php echo URL . 'privilege/deleteRole/' . $role->id; ?>" class="myButton">删除</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
                 </table>
             </div>
 
-            <div id="shadowing"></div>
-            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
-            <span id="boxtitle"></span>
-
-                <form id="myform" class="myform" action="<?php echo URL; ?>privilege/addRole" method="post" target="_parent">
-                    <input type="text" name="name" id="name" placeholder="角色名称" /><br><br>
-                    <input type="text" name="description" id="description" placeholder="角色" />
-                    <input type="hidden" name="submit_add_role">
-                    <br><br>
-                    <a href="#" class="myButton" onclick="submit()">保存</a>
-                    <a href="#" class="myButton" onclick="closebox('box')">取消</a>
-                </form>
-
-            </div>
-
-            <a href="#" onClick="openbox('box', '角色管理', 1)">添加新角色</a>
+            <a href="<?php echo URL; ?>privilege/addRole" class="myButton">添加新角色</a>
 
             <div class="panel"></DIV>
         </div>
@@ -73,8 +57,4 @@
     $(document).ready(function(){
         $('#role_data_table').dataTable();
     });
-    function submit() {
-        document.getElementById("myform").submit();
-        return false;
-    }
 </script>

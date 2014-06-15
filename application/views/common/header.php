@@ -25,6 +25,7 @@ if (!session_id()) session_start();
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
+    <script src="/orchard7/public/js/orchard7.js"></script>
     <script src="/orchard7/public/js/jquery.datatable.js"></script>
     <script src="/orchard7/public/js/jqueryui-1.10.3.min.js"></script>
     <script src="/orchard7/public/js/bootstrap.min.js"></script>

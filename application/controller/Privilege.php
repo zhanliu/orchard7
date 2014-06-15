@@ -21,7 +21,13 @@ class Privilege extends Controller
         require 'application/views/common/footer.php';
     }
 
-    public function addRole()
+    public function addRole() {
+        require 'application/views/common/header.php';
+        require 'application/views/privilege/add_role.php';
+        require 'application/views/common/footer.php';
+    }
+
+    public function submitAddRole()
     {
         if (isset($_POST["submit_add_role"])) {
 
@@ -30,7 +36,6 @@ class Privilege extends Controller
         }
 
         header('location: ' . URL . 'privilege/role');
-
     }
 
     public function deleteRole($id)
