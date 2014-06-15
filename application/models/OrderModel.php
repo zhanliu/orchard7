@@ -37,6 +37,17 @@ class OrderModel
         return $query->fetchAll();
     }
 
+    public function getOrderDetailById($order_id) {
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id ";
+        $sql = $sql . "WHERE ord.id=" . $order_id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addOrder($customer_id, $address_id, $is_diy, $total_amount)
     {
         // clean the input from javascript code for example

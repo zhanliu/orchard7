@@ -397,32 +397,6 @@ class Admin extends Controller
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $orderDetails = $order_detail_model->getAllOrderDetails();
 
-//        $order_id = -1;
-//        $suborder_start = 0;
-//        $orderDetailJson = "{";
-//        foreach ($orderDetails as $orderDetail) {
-//
-//            if($suborder_start == 0) {
-//                $order_id = $orderDetail->order_id;
-//                $orderDetailJson = $orderDetailJson . '"ID' . $orderDetail->order_id .'":{';
-//            }
-//
-//            if ($order_id == $orderDetail->order_id) {
-//                $suborder_start = 1;
-//                $orderDetailJson = $orderDetailJson . '"id' . $orderDetail->combo_id . '":{"id":"'.$orderDetail->combo_id . '","name":"' . $orderDetail->name . '","quantity":"' . $orderDetail->combo_quantity . '"},';
-////                echo $orderDetailJson;
-//            } else if ($suborder_start == 1) {
-//                $orderDetailJson = $orderDetailJson .'],';
-//                $orderDetailJson = $orderDetailJson . '"ID' . $orderDetail->order_id .'":[';
-//                $orderDetailJson = $orderDetailJson . '"id' . $orderDetail->combo_id . '":{"id":"'.$orderDetail->combo_id . '","name":"' . $orderDetail->name . '","quantity":"' . $orderDetail->combo_quantity . '"},';
-//
-//                $order_id = $orderDetail->order_id;
-////                $suborder_start = 0;
-//            }
-//        }
-//        $orderDetailJson = $orderDetailJson . '}}';
-//
-//        echo $orderDetailJson;
         //////////////////////
         require 'application/views/admin/header.php';
         require 'application/views/admin/order_manager.php';
@@ -449,15 +423,20 @@ class Admin extends Controller
         header('location: ' . URL . 'admin/manageOrder');
     }
 
-    public function updateOrder() {
+    public function updateOrder($id) {
 
-//        $order_status = $_POST["orderstatus"];
-//        $order_id = $_POST["order_id"];
-//
-//        $order_model = $this->loadModel('OrderModel');
-//        $orders = $order_model->updateOrderStatus($order_id, $order_status);
+        $order_model = $this->loadModel('OrderModel');
+        $order = $order_model->getOrderDetailById($id);
 
-        header('location: ' . URL . 'admin/manageOrder');
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
+
+        //////////////////////
+        $order_detail_model = $this->loadModel('OrderDetailModel');
+        $orderDetails = $order_detail_model->getAllOrderDetailsById($id);
+
+        require 'application/views/admin/update_order.php';
+
     }
 
 }
