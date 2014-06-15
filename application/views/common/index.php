@@ -3,23 +3,17 @@
         <div id="page-heading">
 
             <ol class="breadcrumb">
-                <li><a href="http://redteamux.com/avant/index.php">Dashboard</a></li>
-                <li>UI Elements</li>
-                <li class="active">Buttons</li>
+                <li><a href="">控制面板</a></li>
+                <li class="active">平台首页</li>
             </ol>
 
-            <h1>Hello World</h1>
+            <h1>欢迎使用果园七号管理系统</h1>
 
         </div>
 
         <div class="container">
 
-
-
-            In side the container
-
-
-
+            请从左侧菜单选择功能入口！
 
         </div>
     </div>
