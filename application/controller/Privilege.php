@@ -5,9 +5,9 @@ class Privilege extends Controller
     {
         // debug message to show where you are, just for the demo
         //echo 'Message from Controller: You are in the controller *admin, using the method index()';
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/index.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/common/index.php';
+        require 'application/views/common/footer.php';
         // load views. within the views we can echo out $songs and $amount_of_songs easily
     }
 
@@ -16,9 +16,9 @@ class Privilege extends Controller
         $role_model = $this->loadModel('RoleModel');
         $roles = $role_model->getAllRoles();
 
-        require 'application/views/admin/header.php';
+        require 'application/views/common/header.php';
         require 'application/views/privilege/role.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/footer.php';
     }
 
     public function addRole()
