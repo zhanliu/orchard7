@@ -26,8 +26,8 @@
         </div>
 
     </form>
-
-    <?php echo $error_msg; ?>
+    <br><br>
+    <?php if (isset($error_msg)) echo "Warning: ".$error_msg; ?>
 
 </div>
 <div class="gradient"></div>
