@@ -25,12 +25,14 @@ class Privilege extends Controller
     {
         // if we have POST data to create a new song entry
         if (isset($_POST["submit_add_role"])) {
+
             // load model, perform an action on the model
             $role_model = $this->loadModel('RoleModel');
             $role_model->addRole($_POST["name"], $_POST["description"]);
         }
 
         header('location: ' . URL . 'privilege/role');
+
     }
 
     public function deleteRole($id)
@@ -45,5 +47,4 @@ class Privilege extends Controller
         // where to go after song has been deleted
         header('location: ' . URL . 'privilege/role');
     }
-    
 }
