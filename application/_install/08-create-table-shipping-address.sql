@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS `shipping_address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `orchard7`.`shipping_address` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(20) NOT NULL,
+  `address_id` int(20) NOT NULL,
   `is_primary` int(1) NOT NULL DEFAULT 0,
   `created_time` datetime NOT NULL,
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS `combo_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `combo_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `orchard7`.`combo_detail` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `combo_id` int(20) NOT NULL,
+  `product_id` int(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `created_time` datetime NOT NULL,
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
