@@ -1,3 +1,9 @@
+<?php
+if (!session_id()) session_start();
+  if (!isset($_SESSION['login'])) {
+      header('location: ' . URL . 'common/login');
+  }
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://redteamux.com/avant/ui-buttons.php -->
 <html lang="en">
@@ -8,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="http://redteamux.com/avant/assets/css/styles.min.css?=121">
+    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
@@ -198,7 +204,7 @@
                 <li class="username">
                     <a href="http://redteamux.com/avant/ui-buttons.php#">
                         <div class="pull-left"><img src="/orchard7/public/img/dangerfield.png" alt="Jeff Dangerfield"></div>
-                        <div class="pull-right"><h5>Howdy, Jeru!</h5><small>Logged in as <span>Admin</span></small></div>
+                        <div class="pull-right"><h5>Hello <?php echo $_SESSION['login']; ?>!</h5><small>Logged in as <span>Admin</span></small></div>
                     </a>
                 </li>
                 <li class="userlinks">
@@ -207,7 +213,7 @@
                         <li><a href="http://redteamux.com/avant/ui-buttons.php#">Account <i class="pull-right fa fa-cog"></i></a></li>
                         <li><a href="http://redteamux.com/avant/ui-buttons.php#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
                         <li class="divider"></li>
-                        <li><a href="http://redteamux.com/avant/ui-buttons.php#" class="text-right">Sign Out</a></li>
+                        <li><a href="/orchard7/common/logout" class="text-right">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>

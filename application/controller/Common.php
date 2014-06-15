@@ -36,16 +36,24 @@ class Common extends Controller
         $credential_model = $this->loadModel('CredentialModel');
 
         $login_status = $credential_model->getLoginStatus($login, $password);
-        echo "===".$login_status;
         if($login_status==1){
             session_start();
             $_SESSION['login'] = $login;
+            require 'application/views/common/header.php';
             require 'application/views/common/index.php';
+            require 'application/views/common/footer.php';
         }
         else {
             $error_msg = "Wrong Username or Password";
             require 'application/views/common/login.php';
         }
+    }
+
+    public function logout() {
+        if (!session_id()) session_start();
+        $_SESSION['login'] = null;
+        session_destroy();
+        require 'application/views/common/login.php';
     }
 
 }

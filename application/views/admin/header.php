@@ -1,3 +1,9 @@
+<?php
+if (!session_id()) session_start();
+if (!isset($_SESSION['login'])) {
+    header('location: ' . URL . 'common/login');
+}
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://redteamux.com/avant/ui-buttons.php -->
 <html lang="en">
@@ -8,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="http://redteamux.com/avant/assets/css/styles.min.css?=121">
+    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
