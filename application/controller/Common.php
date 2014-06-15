@@ -38,7 +38,8 @@ class Common extends Controller
         $login_status = $credential_model->getLoginStatus($login, $password);
 
         if($login_status==1){
-            session_register($login);
+            session_start();
+            $_SESSION['login'] = $login;
             require 'application/views/common/index.php';
         }
         else {

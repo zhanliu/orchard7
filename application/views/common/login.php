@@ -27,6 +27,8 @@
 
     </form>
 
+    <?php echo $error_msg; ?>
+    
 </div>
 <div class="gradient"></div>
 </BODY>
