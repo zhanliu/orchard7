@@ -16,7 +16,7 @@
         <div class="container">
 
             <div>
-                <table id="category_data_table" class="display" cellspacing="0" width="100%">
+                <table id="role_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>标识</th>
@@ -52,9 +52,9 @@
             <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
             <span id="boxtitle"></span>
 
-                <form id="myform" class="myform" action="<?php echo URL; ?>admin/addRole" method="post" target="_parent">
-                    <input type="text" name="name" id="name" value="role name..." />
-                    <input type="text" name="description" id="description" value="role description..." />
+                <form id="myform" class="myform" action="<?php echo URL; ?>privilege/addRole" method="post" target="_parent">
+                    <input type="text" name="name" id="name" placeholder="角色名称" />
+                    <input type="text" name="description" id="description" placeholder="角色" />
                     <input type="hidden" name="submit_add_role">
                     <br><br>
                     <a href="#" class="myButton" onclick="submit()">保存</a>
@@ -71,7 +71,7 @@
 </div>
 <script>
     $(document).ready(function(){
-        $('#category_data_table').dataTable();
+        $('#role_data_table').dataTable();
     });
     function submit() {
         document.getElementById("myform").submit();

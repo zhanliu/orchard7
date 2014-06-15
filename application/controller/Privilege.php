@@ -30,6 +30,7 @@ class Privilege extends Controller
         }
 
         header('location: ' . URL . 'privilege/role');
+
     }
 
     public function deleteRole($id)
@@ -74,3 +75,4 @@ class Privilege extends Controller
         header('location: ' . URL . 'privilege/credential');
     }
 }
+

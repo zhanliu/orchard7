@@ -17,7 +17,7 @@ class RoleModel
 
     public function getAllRoles()
     {
-        $sql = "SELECT id, name FROM role";
+        $sql = "SELECT id, name,description FROM role";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -28,7 +28,7 @@ class RoleModel
     {
         // clean the input from javascript code for example
         $name = strip_tags($name);
-        $name = strip_tags($description);
+        $description = strip_tags($description);
 
         $sql = "INSERT INTO role (name, description) VALUES (:name, :description)";
         $query = $this->db->prepare($sql);
