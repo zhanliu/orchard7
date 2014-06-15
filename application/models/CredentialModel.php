@@ -32,7 +32,7 @@ class CredentialModel
         $password = strip_tags($password);
         $description = strip_tags($description);
 
-        $sql = "INSERT INTO role (role_id, login, password, description) VALUES (:role_id, :login, PASSWORD(:password), :description)";
+        $sql = "INSERT INTO credential (role_id, login, password, description) VALUES (:role_id, :login, PASSWORD(:password), :description)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':role_id' => $role_id, ':login' => $login, ':password' => $password, ':description' => $description));
     }

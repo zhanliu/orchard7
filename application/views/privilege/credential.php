@@ -56,8 +56,8 @@
             <span id="boxtitle"></span>
 
                 <form id="myform" class="myform" action="<?php echo URL; ?>privilege/addCredential" method="post" target="_parent">
-                    <input type="text" name="name" id="login" placeholder="登录名..." /><br><br>
-                    <input type="text" name="name" id="password" placeholder="密码..." /><br><br>
+                    <input type="text" name="login" id="login" placeholder="登录名..." /><br><br>
+                    <input type="text" name="password" id="password" placeholder="密码..." /><br><br>
                     选择角色*:
                     <select name="role_id" id="role">
                         <?php foreach ($roles as $role) { ?>

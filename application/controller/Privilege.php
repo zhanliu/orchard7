@@ -62,7 +62,7 @@ class Privilege extends Controller
     {
         if (isset($_POST["submit_add_credential"])) {
             $credential_model = $this->loadModel('CredentialModel');
-            $credential_model->addRole($_POST["role_id"], $_POST["login"], $_POST["password"], $_POST["description"]);
+            $credential_model->addCredential($_POST["role_id"], $_POST["login"], $_POST["password"], $_POST["description"]);
         }
 
         header('location: ' . URL . 'privilege/credential');
