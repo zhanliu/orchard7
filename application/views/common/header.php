@@ -199,7 +199,7 @@ if (!session_id()) session_start();
 
     <ul class="nav navbar-nav pull-right toolbar">
         <li class="dropdown">
-            <a href="http://redteamux.com/avant/ui-buttons.php#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">John McCartney <i class="fa fa-caret-down"></i></span><img src="/orchard7/public/dangerfield.png" alt="Dangerfield"></a>
+            <a href="http://redteamux.com/avant/ui-buttons.php#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">John McCartney <i class="fa fa-caret-down"></i></span><img src="/orchard7/public/img/dangerfield.png" alt="Dangerfield"></a>
             <ul class="dropdown-menu userinfo arrow">
                 <li class="username">
                     <a href="http://redteamux.com/avant/ui-buttons.php#">
