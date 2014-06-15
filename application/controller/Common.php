@@ -36,7 +36,7 @@ class Common extends Controller
         $credential_model = $this->loadModel('CredentialModel');
 
         $login_status = $credential_model->getLoginStatus($login, $password);
-
+        echo "===".$login_status;
         if($login_status==1){
             session_start();
             $_SESSION['login'] = $login;

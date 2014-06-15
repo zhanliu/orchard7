@@ -72,6 +72,16 @@ class OrderModel
         return $query->fetchAll();
     }
 
+    public function getOrderStatusCode()
+    {
+        $sql = "SELECT * ";
+        $sql.= "FROM order_status ";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function updateTotalAmount($order_id, $total_amount) {
 
         $order_id = strip_tags($order_id);
