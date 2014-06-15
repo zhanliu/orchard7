@@ -26,6 +26,17 @@ class OrderDetailModel
         return $query->fetchAll();
     }
 
+    public function getAllOrderDetailsById($id)
+    {
+        $sql = "SELECT od.order_id, od.combo_id, od.combo_quantity, c.name, c.price FROM order_details as od left join combo c on od.combo_id = c.id ";
+        $sql = $sql . ' WHERE od.order_id=' . $id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addOrderDetail($order_id, $combo_id, $combo_quantity)
     {
         // clean the input from javascript code for example
