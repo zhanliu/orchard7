@@ -384,4 +384,51 @@ class Admin extends Controller
         require 'application/views/admin/upload.php';
     }
 
+    public function manageOrder() {
+
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->getAllOrdersWithDetails();
+
+
+        require 'application/views/admin/header.php';
+        require 'application/views/admin/order_manager.php';
+        require 'application/views/admin/footer.php';
+    }
+
+    public function deleteOrder($id) {
+
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->deleteOrder($id);
+
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
+
+    public function orderStatus0($id) {
+
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->updateOrderStatus($id, 0);
+
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
+
+    public function orderStatus1($id) {
+
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->updateOrderStatus($id, 1);
+
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
+
+    public function orderStatus2($id) {
+
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->updateOrderStatus($id, 2);
+
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
+
 }

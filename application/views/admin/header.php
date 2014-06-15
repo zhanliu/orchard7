@@ -253,7 +253,7 @@
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-tasks"></i> <span>订单中心</span> <span class="badge badge-info">12</span></a>
                 <ul class="acc-menu">
                     <li><a href="/orchard7/admin/addOrderStepOne">订单添加</a></li>
-                    <li><a href="/orchard7/admin/order">订单管理</a></li>
+                    <li><a href="/orchard7/admin/manageOrder">订单管理</a></li>
                 </ul>
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>会员中心</span></a>
