@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS `address` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `orchard7`.`address` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `country` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `province` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
