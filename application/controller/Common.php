@@ -24,6 +24,10 @@ class Home extends Controller
         require 'application/views/_templates/footer.php';
     }
 
+    public function login() {
+        require 'application/views/common/login.php';
+    }
+
 
 
 }
