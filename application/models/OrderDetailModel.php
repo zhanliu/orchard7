@@ -19,7 +19,7 @@ class OrderDetailModel
      */
     public function getAllOrderDetails()
     {
-        $sql = "SELECT * FROM order_details";
+        $sql = "SELECT od.order_id, od.combo_id, od.combo_quantity, c.name, c.price FROM order_details as od left join combo c on od.combo_id = c.id order by od.id asc";
         $query = $this->db->prepare($sql);
         $query->execute();
 

@@ -50,7 +50,11 @@
                             <b><?php echo $order->status; ?></b>
                             <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
                             <?php foreach ($orderStatus as $status) { ?>
+                                <?php if ($status->status_code == $order->status) { ?>
+                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" selected>'.$status->status.'</option>'; ?>
+                                <?php } else { ?>
                                 <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                         <input type="hidden" name="order_id" value="<?php echo $order->id; ?>">
@@ -73,47 +77,59 @@
 
             <div id="shadowing"></div>
 
-            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
+            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 60%; ALIGN: CENTER">
                 <span id="boxtitle"></span>
 
                 <!--            <div class="panel">-->
                 <div id="boxcontent">
-                    <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
-                        <h2>修改</h2>
-                        <label for="name">套餐名称*</label>
-                        <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+                    <form id="myform" class="comboform" action="<?php echo URL; ?>admin/updateOrder" method="post" target="_parent">
+<!--                        <h2>修改订单</h2>-->
+                        <label><b>订单地址:</b></label>
+                        <br/>
+                        <label for="province">省*</label><input type="text" name="province" id="province" value="" data-clear-btn="true" data-mini="true"><br/>
+                        <label for="city">市*</label><input type="text" name="city" id="city" value="" data-clear-btn="true" data-mini="true"><br/>
+                        <label for="district">区*</label><input type="text" name="district" id="district" value="" data-clear-btn="true" data-mini="true"><br/>
+                        <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="" data-clear-btn="true" data-mini="true"><br/>
+                        <label for="address2">地址二*</label><input type="text" name="address2" id="address1" value="" data-clear-btn="true" data-mini="true"><br/>
 
-                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
-                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+                        <hr/>
+                        <label><b>订单详情:</b></label>
+                        <table id="order_combo_data_table" class="display" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>点选</th>
+                                <th>数量</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                            </tr>
+                            </thead>
+
+                            <tfoot>
+                            <tr>
+                                <th>点选</th>
+                                <th>数量</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                            </tr>
+                            </tfoot>
+
+                            <tbody>
+                            <?php foreach ($combos as $combo) { ?>
+                                <tr align="center">
+                                    <td><input type="checkbox" name="chk" class="chk" value="0" id="check<?php echo $combo->id; ?>" onclick=" check_change(<?php echo $combo->id; ?>)" /></td>
+                                    <td><input class="spinner" name="quantity[]" id="spinner<?php echo $combo->id; ?>" disabled="true"></td>
+                                    <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
+                                            <?php echo $combo->name; ?>
+                                        </a></td>
+                                    <td><?php echo $combo->price; ?></td>
+                                    <input type="hidden" name="comboIds[]" disabled="true" id="comboIdHidden<?php echo $combo->id; ?>" value="<?php echo $combo->id; ?>" />
+                                    <input type="hidden" name="comboPrices[]" disabled="true" id="comboPriceHidden<?php echo $combo->id; ?>" value="<?php echo $combo->price; ?>"/>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
                         <BR><BR>
                         <input type="hidden" name="submit_add_combo">
-                        <TABLE id="dataTable" width="100%" border="1">
-                            <TR>
-                                <TD><INPUT type="checkbox" name="chk"/>1</TD>
-                                <TD> 1 </TD>
-                                <TD>
-                                    <select name="product_id[]" id="mapping">
-                                        <?php
-                                        foreach ($products as $product) {
-                                            echo '<option value="'.$product->id.'">'.$product->name.'</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </TD>
-                                <TD><input type="text" name="quantity[]"></TD>
-                            </TR>
-                        </TABLE>
-
-                        <label for="price">价格*</label>
-                        <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-
-                        <div class="switch">
-                            <label for="is_archived">当前状态</label>
-                            <select name="is_archived" id="slider" data-role="slider" data-mini="true">
-                                <option value="on">激活</option>
-                                <option value="off">禁止</option>
-                            </select>
-                        </div>
 
                         <a href="#" class="myButton" onclick="submit()">保存</a>
                         <a href="#" class="myButton" onclick="closebox('box')">取消</a>
@@ -133,10 +149,32 @@
 
 
         function updateOrder(order_id) {
+            $("#order_combo_data_table").dataTable();
             openbox("box","订单-" + order_id, 1);
         }
 
         function optionClick(comboID) {
             $("#myform"+comboID).submit();
+        }
+
+        function check_change(id) {
+
+            if ($("#check"+id).attr("value") == 0) {
+                $("#check"+id).attr("value", 1);
+                $("#spinner"+id).attr("disabled", false);
+                $("#comboIdHidden"+id).attr("disabled", false);
+                $("#comboPriceHidden"+id).attr("disabled", false);
+            } else {
+                $("#check"+id).attr("value", 0);
+                $("#spinner"+id).attr("disabled", true);
+                $("#comboIdHidden"+id).attr("disabled", true);
+                $("#comboPriceHidden"+id).attr("disabled", true);
+                $("#spinner"+id).val("");
+            }
+        }
+
+        function submit() {
+            document.getElementById("myform").submit();
+            return false;
         }
     </script>
