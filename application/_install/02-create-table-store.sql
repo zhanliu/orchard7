@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `orchard7`.`store` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `state` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT "广东省",
   `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT "广州市",
   `district` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
