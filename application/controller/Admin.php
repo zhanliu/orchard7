@@ -396,19 +396,34 @@ class Admin extends Controller
         //////////////////////
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $orderDetails = $order_detail_model->getAllOrderDetails();
-        $orderDetailJson = "{";
-        foreach ($orderDetails as $orderDetail) {
-            $comboProducts = $product_model->getProductsByComboId($combo->id);
 
-            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
-            foreach ($comboProducts as $comboProduct) {
-                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
-            }
-            $comboDetailJson = $comboDetailJson .'],';
-        }
-        $comboDetailJson = $comboDetailJson . '}';
+//        $order_id = -1;
+//        $suborder_start = 0;
+//        $orderDetailJson = "{";
+//        foreach ($orderDetails as $orderDetail) {
+//
+//            if($suborder_start == 0) {
+//                $order_id = $orderDetail->order_id;
+//                $orderDetailJson = $orderDetailJson . '"ID' . $orderDetail->order_id .'":{';
+//            }
+//
+//            if ($order_id == $orderDetail->order_id) {
+//                $suborder_start = 1;
+//                $orderDetailJson = $orderDetailJson . '"id' . $orderDetail->combo_id . '":{"id":"'.$orderDetail->combo_id . '","name":"' . $orderDetail->name . '","quantity":"' . $orderDetail->combo_quantity . '"},';
+////                echo $orderDetailJson;
+//            } else if ($suborder_start == 1) {
+//                $orderDetailJson = $orderDetailJson .'],';
+//                $orderDetailJson = $orderDetailJson . '"ID' . $orderDetail->order_id .'":[';
+//                $orderDetailJson = $orderDetailJson . '"id' . $orderDetail->combo_id . '":{"id":"'.$orderDetail->combo_id . '","name":"' . $orderDetail->name . '","quantity":"' . $orderDetail->combo_quantity . '"},';
+//
+//                $order_id = $orderDetail->order_id;
+////                $suborder_start = 0;
+//            }
+//        }
+//        $orderDetailJson = $orderDetailJson . '}}';
+//
+//        echo $orderDetailJson;
         //////////////////////
-
         require 'application/views/admin/header.php';
         require 'application/views/admin/order_manager.php';
         require 'application/views/admin/footer.php';

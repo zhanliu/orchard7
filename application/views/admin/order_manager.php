@@ -90,7 +90,7 @@
                         <label for="city">市*</label><input type="text" name="city" id="city" value="" data-clear-btn="true" data-mini="true"><br/>
                         <label for="district">区*</label><input type="text" name="district" id="district" value="" data-clear-btn="true" data-mini="true"><br/>
                         <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="" data-clear-btn="true" data-mini="true"><br/>
-                        <label for="address2">地址二*</label><input type="text" name="address2" id="address1" value="" data-clear-btn="true" data-mini="true"><br/>
+                        <label for="address2">地址二*</label><input type="text" name="address2" id="address2" value="" data-clear-btn="true" data-mini="true"><br/>
 
                         <hr/>
                         <label><b>订单详情:</b></label>
@@ -150,7 +150,33 @@
 
         function updateOrder(order_id) {
             $("#order_combo_data_table").dataTable();
+
+<!--            $("#province").val("--><?php //echo $orders[0]->province; ?><!--");-->
+<!--            $("#city").val("--><?php //echo $orders[0]->city; ?><!--");-->
+<!--            $("#district").val("--><?php //echo $orders[0]->district; ?><!--");-->
+<!--            $("#address1").val("--><?php //echo $orders[0]->address1; ?><!--");-->
+<!--            $("#address2").val("--><?php //echo $orders[0]->address2; ?><!--");-->
+<!---->
+<!---->
+<!--            var orderDetail = eval('(' + '--><?php //echo $orderDetailJson; ?><!--' + ')');-->
+<!---->
+<!--            for (var n in eval('(' + 'comboDetail.' + combinedID + ')')) {-->
+<!--                var product = eval('(' + 'comboDetail.' + combinedID +'['+ n + ']' +  ')');-->
+<!--                str = str + '<tr><td>';-->
+<!--                str = str + product.name + '</td>';-->
+<!--                str = str + '<td>'+ product.quantity + '</td></tr>';-->
+<!--            }-->
+<!---->
+<!---->
+
+
+
+
             openbox("box","订单-" + order_id, 1);
+
+
+
+
         }
 
         function optionClick(comboID) {
@@ -174,7 +200,9 @@
         }
 
         function submit() {
+
             document.getElementById("myform").submit();
+
             return false;
         }
     </script>
