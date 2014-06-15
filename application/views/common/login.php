@@ -7,7 +7,7 @@
 <link type="text/css" rel="stylesheet" href="/orchard7/public/css/login-style.css">
 <div id="wrapper">
 
-    <form name="login-form" class="login-form" action="" method="post">
+    <form name="login-form" class="login-form" action="<?php echo URL; ?>common/validateLogin" method="post">
 
         <div class="header">
             <h1>果园7号平台登录</h1>

@@ -43,4 +43,12 @@ class CredentialModel
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }
+
+    // 1 means success, 2 means not found.
+    public function getLoginStatus($login, $password) {
+        $sql = "SELECT COUNT(id) as amount_of_login FROM credential WHERE login=':login' AND password=PASSWORD(':password')";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':login' => $login, ':password' => $password));
+        return $query->fetch()->amount_of_login;
+    }
 }

@@ -8,7 +8,7 @@
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-class Home extends Controller
+class Common extends Controller
 {
     /**
      * PAGE: index
@@ -28,6 +28,23 @@ class Home extends Controller
         require 'application/views/common/login.php';
     }
 
+    public function validateLogin() {
 
+        $login = $_POST["login"];
+        $password = $_POST["password"];
+
+        $credential_model = $this->loadModel('CredentialModel');
+
+        $login_status = $credential_model->getLoginStatus($login, $password);
+
+        if($login_status==1){
+            session_register($login);
+            require 'application/views/common/index.php';
+        }
+        else {
+            $error_msg = "Wrong Username or Password";
+            require 'application/views/common/login.php';
+        }
+    }
 
 }
