@@ -41,7 +41,7 @@
                 <?php foreach ($orders as $order) { ?>
                 <tr align="center">
                     <td>
-                        <a href="<?php echo URL . 'admin/updateOrder/' . $order->id; ?>" class="myButton" target="_blank">修改订单<?php echo $order->id; ?></a>
+                        <a href="<?php echo URL; ?>admin/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改订单<?php echo $order->id; ?></a>
                     </td>
                     <td><?php echo $order->cellphone; ?></td>
                     <td>

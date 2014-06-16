@@ -264,9 +264,10 @@ class Admin extends Controller
 
     public function addOrderStepFive() {
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/add_order_step_five.php';
-        require 'application/views/admin/footer.php';
+        header('location: ' . URL . 'admin/manageOrder');
+//        require 'application/views/admin/header.php';
+//        require 'application/views/admin/add_order_step_five.php';
+//        require 'application/views/admin/footer.php';
     }
 
     public function upload() {
@@ -297,6 +298,8 @@ class Admin extends Controller
         $order_model = $this->loadModel('OrderModel');
         $orders = $order_model->deleteOrder($id);
 
+        $order_detail_model = $this->loadModel('OrderDetailModel');
+        $order_detail_model->deleteOrderDetailByOrderId($id);
 
         header('location: ' . URL . 'admin/manageOrder');
     }
@@ -335,9 +338,9 @@ class Admin extends Controller
             }
         }
 
-
-
+        require 'application/views/admin/header.php';
         require 'application/views/admin/update_order.php';
+        require 'application/views/admin/footer.php';
     }
 
     function submitUpdateOrder() {
