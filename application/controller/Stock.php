@@ -86,8 +86,8 @@ class Stock extends Controller
     public function deleteProduct($id)
     {
         if (isset($id)) {
-            $products_model = $this->loadModel('ProductModel');
-            $products_model->deleteProduct($id);
+            $product_model = $this->loadModel('ProductModel');
+            $product_model->deleteProduct($id);
         }
         header('location: ' . URL . 'stock/product');
     }
@@ -98,6 +98,25 @@ class Stock extends Controller
 
         require 'application/views/common/header.php';
         require 'application/views/stock/product_detail.php';
+        require 'application/views/common/footer.php';
+    }
+
+    public function deleteCombo($id)
+    {
+        if (isset($id)) {
+            $combos_model = $this->loadModel('ComboModel');
+            $combos_model->deleteCombo($id);
+        }
+
+        header('location: ' . URL . 'stock/combo');
+    }
+
+    public function addCombo() {
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts();
+
+        require 'application/views/common/header.php';
+        require 'application/views/stock/add_combo.php';
         require 'application/views/common/footer.php';
     }
 

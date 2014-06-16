@@ -4,7 +4,7 @@
             <ol class="breadcrumb">
                 <li><a href="">控制面板</a></li>
                 <li>库存管理</li>
-                <li class="active">添加商品</li>
+                <li class="active">添加套餐</li>
             </ol>
         </div>
 
@@ -13,7 +13,7 @@
 
 
             <div class="panel-heading">
-                <h4>添加品类</h4>
+                <h4>添加套餐</h4>
                 <div class="options">
                     <a href="javascript:;"><i class="fa fa-cog"></i></a>
                     <a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -23,16 +23,19 @@
 
             <div class="panel-body collapse in">
             <div class="form-horizontal row-border">
-            <form id="myform" action="<?php echo URL; ?>stock/submitAddProduct" method="post" >
+            <form id="myform" action="<?php echo URL; ?>stock/submitAddCombo" method="post" >
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">商品名称</label>
+                    <label class="col-sm-3 control-label">套餐名称</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="name" id="name" placeholder="必填..." >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">类目</label>
+                    <label class="col-sm-3 control-label">
+                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
+                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
+                    </label>
                     <div class="col-sm-6">
                         <select class="form-control" id="category_id" name="category_id">
                             <?php foreach ($categories as $category) { ?>
@@ -50,13 +53,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">单位</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" size=10 name="unit" id="unit" placeholder="个/斤/公斤/份/盒..." >
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="col-sm-3 control-label">状态</label>
                     <div class="col-sm-6">
                         <select name="is_archived" id="slider" data-role="slider" data-mini="true">
@@ -66,7 +62,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="img_url" id="img_url">
-                <input type="hidden" name="submit_add_product">
+                <input type="hidden" name="submit_add_combo">
 
             </form>
                 <div class="form-group">
@@ -134,3 +130,59 @@
 
 <!-- The main CSS file -->
 <link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    function addRow(tableID) {
+        var table = document.getElementById(tableID);
+        var rowCount = table.rows.length;
+        var row = table.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+        var element1 = document.createElement("input");
+        element1.type = "checkbox";
+        element1.name="chkbox[]";
+        cell1.appendChild(element1);
+
+        var cell2 = row.insertCell(1);
+        cell2.innerHTML = rowCount + 1;
+
+        var cell3 = row.insertCell(2);
+        var element2 = document.createElement("select");
+        element2.name = "product_id[]";
+        //Create and append the options
+        <?php
+            foreach ($products as $product) {
+                echo 'var option = document.createElement("option");';
+                echo 'option.value = "'.$product->id.'";';
+                echo 'option.text = "'.$product->name.'";';
+                echo 'element2.appendChild(option);';
+            }
+        ?>
+        cell3.appendChild(element2);
+
+        var cell4 = row.insertCell(3);
+        var element3 = document.createElement("input");
+        element3.type = "text";
+        element3.name = "quantity[]";
+        cell4.appendChild(element3);
+    }
+
+    function deleteRow(tableID) {
+        try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+
+            for(var i=0; i<rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[0].childNodes[0];
+                if(null != chkbox && true == chkbox.checked) {
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+            }
+        }catch(e) {
+            alert(e);
+        }
+    }
+</SCRIPT>
