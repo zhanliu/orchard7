@@ -45,6 +45,13 @@ if (!isset($_SESSION['login'])) {
             $("#spinner"+id).val("");
         }
     }
+
+    function submit() {
+
+        document.getElementById("myform").submit();
+
+        return false;
+    }
 </script>
 
 <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 60%; ALIGN: CENTER">
@@ -52,15 +59,15 @@ if (!isset($_SESSION['login'])) {
 
     <!--            <div class="panel">-->
     <div id="boxcontent">
-        <form id="myform" class="comboform" action="<?php echo URL; ?>admin/updateOrder" method="post" target="_parent">
+        <form id="myform" class="comboform" action="<?php echo URL; ?>admin/submitUpdateOrder" method="post" target="_parent">
             <!--                        <h2>修改订单</h2>-->
             <label><b>订单地址:</b></label>
             <br/>
-            <label for="province">省*</label><input type="text" name="province" id="province" value="" data-clear-btn="true" data-mini="true"><br/>
-            <label for="city">市*</label><input type="text" name="city" id="city" value="" data-clear-btn="true" data-mini="true"><br/>
-            <label for="district">区*</label><input type="text" name="district" id="district" value="" data-clear-btn="true" data-mini="true"><br/>
-            <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="" data-clear-btn="true" data-mini="true"><br/>
-            <label for="address2">地址二*</label><input type="text" name="address2" id="address2" value="" data-clear-btn="true" data-mini="true"><br/>
+            <label for="province">省*</label><input type="text" name="province" id="province" value="<?php echo $order[0]->province; ?>" data-clear-btn="true" data-mini="true"><br/>
+            <label for="city">市*</label><input type="text" name="city" id="city" value="<?php echo $order[0]->city; ?>" data-clear-btn="true" data-mini="true"><br/>
+            <label for="district">区*</label><input type="text" name="district" id="district" value="<?php echo $order[0]->district; ?>" data-clear-btn="true" data-mini="true"><br/>
+            <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="<?php echo $order[0]->address1; ?>" data-clear-btn="true" data-mini="true"><br/>
+            <label for="address2">地址二*</label><input type="text" name="address2" id="address2" value="<?php echo $order[0]->address2; ?>" data-clear-btn="true" data-mini="true"><br/>
 
             <hr/>
             <label><b>订单详情:</b></label>
@@ -86,20 +93,20 @@ if (!isset($_SESSION['login'])) {
                 <tbody>
                 <?php foreach ($combos as $combo) { ?>
                     <tr align="center">
-                        <td><input type="checkbox" name="chk" class="chk" value="0" id="check<?php echo $combo->id; ?>" onclick=" check_change(<?php echo $combo->id; ?>)" /></td>
-                        <td><input class="spinner" name="quantity[]" id="spinner<?php echo $combo->id; ?>" disabled="true"></td>
-                        <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>)">
-                                <?php echo $combo->name; ?>
-                            </a></td>
+                        <td><input <?php if ($orderCombo[$combo->id] > 0) {echo "checked";} ?> type="checkbox" name="chk" class="chk" value="<?php if ($orderCombo[$combo->id] > 0) {echo "1";} else {echo "0";} ?>" id="check<?php echo $combo->id; ?>" onclick=" check_change(<?php echo $combo->id; ?>)" /></td>
+                        <td><input class="spinner" name="quantity[]" id="spinner<?php echo $combo->id; ?>" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> value="<?php echo $orderCombo[$combo->id]; ?>"></td>
+                        <td><?php echo $combo->name; ?></td>
                         <td><?php echo $combo->price; ?></td>
-                        <input type="hidden" name="comboIds[]" disabled="true" id="comboIdHidden<?php echo $combo->id; ?>" value="<?php echo $combo->id; ?>" />
-                        <input type="hidden" name="comboPrices[]" disabled="true" id="comboPriceHidden<?php echo $combo->id; ?>" value="<?php echo $combo->price; ?>"/>
+                        <input type="hidden" name="comboIds[]" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> id="comboIdHidden<?php echo $combo->id; ?>" value="<?php echo $combo->id; ?>" />
+                        <input type="hidden" name="comboPrices[]" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> id="comboPriceHidden<?php echo $combo->id; ?>" value="<?php echo $combo->price; ?>"/>
                     </tr>
                 <?php } ?>
                 </tbody>
             </table>
             <BR><BR>
-            <input type="hidden" name="submit_add_combo">
+            <input type="hidden" name="submit_update_order">
+            <input type="hidden" name="address_id" value="<?php echo $order[0]->addressid; ?>">
+            <input type="hidden" name="order_id" value="<?php echo $order[0]->id; ?>">
 
             <a href="#" class="myButton" onclick="submit()">保存</a>
             <a href="#" class="myButton" onclick="closebox('box')">取消</a>

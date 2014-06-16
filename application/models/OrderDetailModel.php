@@ -83,4 +83,11 @@ class OrderDetailModel
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }
+
+    public function deleteOrderDetailByOrderId($order_id)
+    {
+        $sql = "DELETE FROM order_details WHERE order_id = :order_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':order_id' => $order_id));
+    }
 }

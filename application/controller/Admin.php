@@ -435,8 +435,65 @@ class Admin extends Controller
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $orderDetails = $order_detail_model->getAllOrderDetailsById($id);
 
-        require 'application/views/admin/update_order.php';
+        ///////////////////// collect orderCombo, control quantity input
+        $orderCombo = NULL;
+        foreach ($combos as $combo) {
+            $orderCombo[$combo->id] = "";
+            foreach ($orderDetails as $orderDetail) {
+                if ($orderDetail->combo_id == $combo->id) {
+                    $orderCombo[$orderDetail->combo_id] = $orderDetail->combo_quantity;
+                }
+            }
+        }
 
+
+
+        require 'application/views/admin/update_order.php';
     }
 
+    function submitUpdateOrder() {
+
+        if (isset($_POST["submit_update_order"])) {
+            $province = $_POST['province'];
+            $city = $_POST['city'];
+            $district = $_POST['district'];
+            $address1 = $_POST['address1'];
+            $address2 = $_POST['address2'];
+            $address_id = $_POST['address_id'];
+
+            $quantities = $_POST['quantity'];
+            $comboIds = $_POST['comboIds'];
+            $comboPrices = $_POST['comboPrices'];
+            $order_id = $_POST['order_id'];
+
+            /////////////////////////////
+            $order_detail_model = $this->loadModel('OrderDetailModel');
+
+            // 1. delete order detail
+            $order_detail_model->deleteOrderDetailByOrderId($order_id);
+
+
+            // 2. add order detail
+            $total_amount = 0;
+            $quantity_index = 0;
+            foreach ($quantities as $quantity) {
+                if ($quantity > 0) {
+                    $order_detail_model->addOrderDetail($order_id, $comboIds[$quantity_index], $quantity);
+
+                    $total_amount = $total_amount + $comboPrices[$quantity_index] * $quantity;
+                }
+
+                $quantity_index++;
+            }
+
+            $order_model = $this->loadModel('OrderModel');
+            $order_model->updateTotalAmount($order_id, $total_amount);
+            //////////////////////////////
+
+            $address_model = $this->loadModel('AddressModel');
+            $address_model->updateAddressById($address_id, "", $province, $city, $district, $address1, $address2);
+        }
+
+        header('location: ' . URL . 'admin/manageOrder');
+    }
 }

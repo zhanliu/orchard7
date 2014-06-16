@@ -38,6 +38,8 @@ class OrderModel
     }
 
     public function getOrderDetailById($order_id) {
+
+        $order_id = strip_tags($order_id);
         $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id ";
         $sql = $sql . "WHERE ord.id=" . $order_id;

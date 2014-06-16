@@ -65,4 +65,27 @@ class AddressModel
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
     }
+
+    public function updateAddressById($address_id, $country, $province, $city, $district, $address1, $address2)
+    {
+        // clean the input from javascript code for example
+        $country = strip_tags($country);
+        $province = strip_tags($province);
+        $city = strip_tags($city);
+        $district = strip_tags($district);
+        $address1 = strip_tags($address1);
+        $address2 = strip_tags($address2);
+        //$postcode = strip_tags($postcode);
+        $address_id = strip_tags($address_id);
+
+        $now = time();
+//        $created_time = date("Y-m-d H:i:s" ,$now);
+        $updated_time = date("Y-m-d H:i:s" ,$now);
+
+        $sql = "update address set province = :province , city = :city, district = :district, address1= :address1,address2 = :address2, updated_time = :updated_time where id = :address_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2, ':updated_time'=>$updated_time, ':address_id'=>$address_id));
+//        $insertedId = $this->db->lastInsertId();
+//        return $insertedId;
+    }
 }
