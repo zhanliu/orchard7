@@ -69,10 +69,9 @@
                 <input type="hidden" name="submit_add_product">
 
             </form>
-                <div class="form-group">
+
+            <div class="form-group">
             <form id="upload" method="post" action="<?php echo URL; ?>common/upload" enctype="multipart/form-data">
-
-
 
                     <div id="drop" border="1">
                         拖放图片到这里
@@ -84,7 +83,9 @@
                         <!-- The file uploads will be shown here -->
                     </ul>
 
-            </form></div>
+            </form>
+            </div>
+
             </div>
 
             <div class="panel-footer">

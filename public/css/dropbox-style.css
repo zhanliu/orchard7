@@ -28,10 +28,7 @@ body{
     color: #4f4f4f;
 }
 
-a, a:visited {
-    outline:none;
-    color:#389dc1;
-}
+
 
 a:hover{
     text-decoration:none;

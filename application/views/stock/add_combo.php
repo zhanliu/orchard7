@@ -32,43 +32,70 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
-                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
-                    </label>
+                    <label class="col-sm-3 control-label">选择商品</label>
+
+                    <a href="#" class="btn btn-primary" onclick="addRow('dataTable')">加入商品</a>
+                        <a href="#" class="btn btn-danger" onclick="deleteRow('dataTable')">删除商品</a>
+
                     <div class="col-sm-6">
-                        <select class="form-control" id="category_id" name="category_id">
-                            <?php foreach ($categories as $category) { ?>
-                                <?php echo '<option value="'.$category->id.'">'.$category->name.'</option>'; ?>
-                            <?php } ?>
-                        </select>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <INPUT type="checkbox" name="chk"/>
+                            </span>
+
+                            <span>
+                            <input type="text" name="quantity[]" class="form-addon-control" >
+                            </span>
+
+                            <span>
+                                <select name="product_id[]" id="mapping" class="form-addon-control" >
+                                    <?php
+                                    foreach ($products as $product) {
+                                        echo '<option value="'.$product->id.'">'.$product->name.'</option>';
+                                    }
+                                    ?>
+                                </select>
+
+
+                            </span>
+
+                        </div>
+
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">价格</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" size=10 name="price" id="price" placeholder="价格只需输入金额..." >
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" size=10 name="price" id="price" placeholder="输入金额..." >
+                            <span class="input-group-addon">.00</span>
+                        </div>
                     </div>
                 </div>
 
+
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label">状态</label>
-                    <div class="col-sm-6">
-                        <select name="is_archived" id="slider" data-role="slider" data-mini="true">
-                            <option value="on">激活</option>
-                            <option value="off">禁止</option>
-                        </select>
+                    <div class="col-sm-3 control-label"> <!--  control-label needed for positioning -->
+                        <div class="toggle" style="height: 20px; width: 50px;">
+                            <div class="toggle-slide active">
+                                <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
+                                    <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">激活</div>
+                                    <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
+                                    <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">下架</div></div></div></div>
                     </div>
                 </div>
                 <input type="hidden" name="img_url" id="img_url">
                 <input type="hidden" name="submit_add_combo">
 
             </form>
-                <div class="form-group">
+
+            <div class="form-group">
             <form id="upload" method="post" action="<?php echo URL; ?>common/upload" enctype="multipart/form-data">
-
-
 
                     <div id="drop" border="1">
                         拖放图片到这里
@@ -80,7 +107,9 @@
                         <!-- The file uploads will be shown here -->
                     </ul>
 
-            </form></div>
+            </form>
+            </div>
+
             </div>
 
             <div class="panel-footer">

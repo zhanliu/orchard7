@@ -1227,6 +1227,24 @@ output {
     -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
 }
+
+.form-addon-control {
+    width:35%;
+    height:36px;
+    padding:5px 10px;
+    font-size:14px;
+    line-height:1.428571429;
+    color:#4d4d4d;
+    background-color:#fff;
+    background-image:none;
+    border:1px solid #d2d3d6;
+    border-radius:1px;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
 .form-control:focus {
     border-color:#4d4d4d;
     outline:0;
