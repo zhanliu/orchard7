@@ -3,8 +3,8 @@
         <div id="page-heading">
             <ol class="breadcrumb">
                 <li><a href="">控制面板</a></li>
-                <li>权限管理</li>
-                <li class="active">添加角色</li>
+                <li>库存管理</li>
+                <li class="active">添加品类</li>
             </ol>
         </div>
 
@@ -13,7 +13,7 @@
 
 
             <div class="panel-heading">
-                <h4>添加角色</h4>
+                <h4>添加品类</h4>
                 <div class="options">
                     <a href="javascript:;"><i class="fa fa-cog"></i></a>
                     <a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -22,32 +22,25 @@
             </div>
 
             <div class="panel-body collapse in">
-            <form id="myform" action="<?php echo URL; ?>privilege/submitAddRole" method="post" class="form-horizontal row-border">
+            <form id="myform" action="<?php echo URL; ?>stock/submitAddCategory" method="post" class="form-horizontal row-border">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">角色名称</label>
+                    <label class="col-sm-3 control-label">品类名称</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="必填..." >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">角色描述</label>
-                    <div class="col-sm-6">
-                        <textarea class="form-control" name="description" id="description"></textarea>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="必填, 例如水果切，果汁..." >
                     </div>
                 </div>
 
-                <input type="hidden" name="submit_add_role">
+                <input type="hidden" name="submit_add_category">
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
                             <div class="btn-toolbar">
                                 <a href="#" class="myButton" onclick="submit()">保存</a>
-                                <a href="<?php echo URL; ?>privilege/role" class="myButton">返回</a>
+                                <a href="<?php echo URL; ?>stock/category" class="myButton">返回</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </form>
             </div>
 
@@ -59,7 +52,7 @@
 <script type="text/javascript">
     function submit() {
         if ($('#name').val()=="") {
-            alert('角色名不能为空');
+            alert('品类名称不能为空');
         } else {
             document.getElementById("myform").submit();
         }

@@ -4,7 +4,6 @@
             <ol class="breadcrumb">
                 <li><a href="">控制面板</a></li>
                 <li>权限管理</li>
-                <li>人员管理</li>
                 <li class="active">添加人员</li>
             </ol>
         </div>
