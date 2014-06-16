@@ -34,11 +34,18 @@
 
                     <?php
                         if ($isCustomerExisted == true) {
+                            echo '<div id="old_address" style="display:block">';
                             foreach ($list_of_address as $address) {
-                                echo '<div id="old_address" style="display:block">';
-                                echo $address->district."-".$address->address1."-".$address->address2."--is primary ".$address->is_primary;
-                                echo '</div>';
+                                if ($address->is_primary == 1) {
+                                    echo '<input type="radio" name="primary_address_radio" value="'.$address->shipping_id.'" checked /> '.$address->district."-".$address->address1."-".$address->address2;
+                                } else {
+                                    echo '<input type="radio" name="primary_address_radio" value="'.$address->shipping_id.'" /> '.$address->district."-".$address->address1."-".$address->address2;
+                                }
+
+                                echo "<br />";
+
                             }
+                            echo '</div>';
                      ?>
                             <input type="hidden" name="submit_already_add_address">
                     <?php

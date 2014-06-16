@@ -185,10 +185,6 @@ class Admin extends Controller
         $shipping_address_id = NULL;
         $customer_id = NULL;
 
-        if (isset($_POST["submit_already_add_address"])) {
-            $customer_id = $_POST["customer_id"];
-        }
-
         if (isset($_POST["submit_add_address"])) {
             $customer_id = $_POST["customer_id"];
 
@@ -198,9 +194,7 @@ class Admin extends Controller
 
             $shipping_address_model = $this->loadModel('ShippingAddressModel');
             $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
-        }
-
-        if (isset($_POST["submit_add_address_new"]) && $_POST["submit_add_address_new"] == 1) {
+        } else if (isset($_POST["submit_add_address_new"]) && $_POST["submit_add_address_new"] == 1) {
             $customer_id = $_POST["customer_id"];
 
             $address_model = $this->loadModel('AddressModel');
@@ -209,7 +203,14 @@ class Admin extends Controller
             $shipping_address_model = $this->loadModel('ShippingAddressModel');
             $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
 
-            $shipping_address_model->unsetDefaultShippingAddress($shipping_address_id, $customer_id);
+            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
+        } else if (isset($_POST["submit_already_add_address"])) {
+            $customer_id = $_POST["customer_id"];
+
+            $shipping_address_id = $_POST["primary_address_radio"];
+
+            $shipping_address_model = $this->loadModel('ShippingAddressModel');
+            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
         }
 
         require 'application/views/admin/header.php';
@@ -229,8 +230,8 @@ class Admin extends Controller
             $customer_id = $_POST["customer_id"];
             $total_amount = 0;
 
-            $address_model = $this->loadModel('AddressModel');
-            $addresses = $address_model->getAddressesByCustomerId($customer_id);
+            $address_model = $this->loadModel('ShippingAddressModel');
+            $addresses = $address_model->getDefaultShippingAddressByCustomerId($customer_id);
             $address = $addresses[0];
             $address_str = $address->district."-".$address->address1."-".$address->address2;
 

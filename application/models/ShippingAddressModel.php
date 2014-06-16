@@ -33,11 +33,26 @@ class ShippingAddressModel
         return $insertedId;
     }
 
-    public function unsetDefaultShippingAddress($shipping_address_id, $customer_id) {
+    public function getDefaultShippingAddressByCustomerId($customer_id)
+    {
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, a.id, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql.= "WHERE sa.is_primary = 1 AND a.id=sa.address_id AND sa.customer_id=".$customer_id;
+//        echo $sql;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+    public function setDefaultShippingAddress($shipping_address_id, $customer_id) {
         $shipping_address_id = strip_tags($shipping_address_id);
         $customer_id = strip_tags($customer_id);
 
         $sql = "update shipping_address set is_primary = 0 where customer_id =" . $customer_id . " and id != " . $shipping_address_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        $sql = "update shipping_address set is_primary = 1 where customer_id =" . $customer_id . " and id = " . $shipping_address_id;
         $query = $this->db->prepare($sql);
         $query->execute();
     }
