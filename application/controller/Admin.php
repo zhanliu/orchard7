@@ -200,6 +200,16 @@ class Admin extends Controller
             $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
         }
 
+        if (isset($_POST["submit_add_address_new"]) && $_POST["submit_add_address_new"] == 1) {
+            $customer_id = $_POST["customer_id"];
+
+            $address_model = $this->loadModel('AddressModel');
+            $address_id = $address_model->addAddress($_POST["country_new"], $_POST["province_new"], $_POST["city_new"], $_POST["district_new"], $_POST["address1_new"], $_POST["address2_new"]);
+
+            $shipping_address_model = $this->loadModel('ShippingAddressModel');
+            $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+        }
+
         require 'application/views/admin/header.php';
         require 'application/views/admin/add_order_step_three.php';
         require 'application/views/admin/footer.php';

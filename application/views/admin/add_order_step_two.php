@@ -35,13 +35,16 @@
                     <?php
                         if ($isCustomerExisted == true) {
                             foreach ($list_of_address as $address) {
+                                echo '<div id="old_address" style="display:block">';
                                 echo $address->district."-".$address->address1."-".$address->address2;
+                                echo '</div>';
                             }
                      ?>
                             <input type="hidden" name="submit_already_add_address">
                     <?php
                         } else {
                     ?>
+
                             广州市 -
                             <select id="district" name="district">
                                 <option value="">请选择区</option>
@@ -55,10 +58,33 @@
                             <input type="hidden" name="province" value="广东省">
                             <input type="hidden" name="city" value="广州市">
                             <input type="hidden" name="submit_add_address">
+
                     <?php
                         }
                     ?>
 
+                    <div id="new_address" style="display:none">
+                        <br/>
+                        广州市 -
+                        <select id="district_new" name="district_new">
+                            <option value="">请选择区</option>
+                            <option value="荔湾区">荔湾区</option>
+                            <option value="海印区">海印区</option>
+                        </select>
+                        <BR>
+                        <input type="text" name="address1_new" size="30" placeholder="输入路名或小区..."><BR>
+                        <input type="text" name="address2_new" size="30" placeholder="输入详细地址, 如10弄5号...">
+                        <input type="hidden" name="country_new" value="中国">
+                        <input type="hidden" name="province_new" value="广东省">
+                        <input type="hidden" name="city_new" value="广州市">
+                        <input type="hidden" id="add_new_address_indicator" name="submit_add_address_new" value="0">
+                    </div>
+
+                    <?php
+                    if ($isCustomerExisted == true) {
+                    ?>
+                    <a id="add_new_address_button" href="#" class="myButton" onclick="addNewAddress()">使用新地址</a>
+                    <?php }?>
 <!--
                     <input type="text" name="address_keyword" size="30" placeholder="输入关键字, 搜索路名或小区...">
                     <a href="#" class="myButton" onclick="address_lookup();">查找</a>
@@ -83,6 +109,14 @@
 <script>
     function submit() {
         document.getElementById("myform").submit();
+    }
+
+    function addNewAddress() {
+        $("#new_address").toggle();
+        $("#old_address").toggle();
+        $("#add_new_address_button").toggle();
+        $("#add_new_address_indicator").val("1");
+
     }
 
 </script>
