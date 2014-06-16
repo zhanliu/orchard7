@@ -1,30 +1,3 @@
-<?php
-if (!session_id()) session_start();
-if (!isset($_SESSION['login'])) {
-    header('location: ' . URL . 'common/login');
-}
-?>
-<!DOCTYPE html>
-<!-- saved from url=(0041)http://redteamux.com/avant/ui-buttons.php -->
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Orchard7</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
-    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
-
-    <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
-    <script src="/orchard7/public/js/jquery.datatable.js"></script>
-    <script src="/orchard7/public/js/jqueryui-1.10.3.min.js"></script>
-</head>
-
-<body class="" style="">
-
 <script type="text/javascript">
     $(document).ready(function(){
         $('#order_combo_data_table').dataTable();
@@ -54,11 +27,22 @@ if (!isset($_SESSION['login'])) {
     }
 </script>
 
-<div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 60%; ALIGN: CENTER">
-    <span id="boxtitle"></span>
+<div id="page-content" style="min-height: 2911px;">
+    <div id="wrap">
+        <div id="page-heading">
+
+            <ol class="breadcrumb">
+                <li>水果7号</li>
+                <li>订单中心</li>
+                <li class="active">订单管理</li>
+            </ol>
+
+            <h1>订单管理->订单管理</h1>
+
+        </div>
 
     <!--            <div class="panel">-->
-    <div id="boxcontent">
+        <div class="container">
         <form id="myform" class="comboform" action="<?php echo URL; ?>admin/submitUpdateOrder" method="post" target="_parent">
             <!--                        <h2>修改订单</h2>-->
             <label><b>订单地址:</b></label>
@@ -112,6 +96,4 @@ if (!isset($_SESSION['login'])) {
             <a href="#" class="myButton" onclick="closebox('box')">取消</a>
         </form>
     </div>
-</div>
-
-</body>
+    </div>

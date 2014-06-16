@@ -446,9 +446,9 @@ class Admin extends Controller
             }
         }
 
-
-
+        require 'application/views/admin/header.php';
         require 'application/views/admin/update_order.php';
+        require 'application/views/admin/footer.php';
     }
 
     function submitUpdateOrder() {
