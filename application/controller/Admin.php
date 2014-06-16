@@ -208,6 +208,8 @@ class Admin extends Controller
 
             $shipping_address_model = $this->loadModel('ShippingAddressModel');
             $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+
+            $shipping_address_model->unsetDefaultShippingAddress($shipping_address_id, $customer_id);
         }
 
         require 'application/views/admin/header.php';

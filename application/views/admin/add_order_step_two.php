@@ -36,7 +36,7 @@
                         if ($isCustomerExisted == true) {
                             foreach ($list_of_address as $address) {
                                 echo '<div id="old_address" style="display:block">';
-                                echo $address->district."-".$address->address1."-".$address->address2;
+                                echo $address->district."-".$address->address1."-".$address->address2."--is primary ".$address->is_primary;
                                 echo '</div>';
                             }
                      ?>

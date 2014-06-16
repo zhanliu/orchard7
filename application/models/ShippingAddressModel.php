@@ -24,11 +24,22 @@ class ShippingAddressModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO shipping_address (customer_id, address_id, created_time, updated_time) VALUES (:customer_id, :address_id, :created_time, :updated_time)";
+        $sql = "INSERT INTO shipping_address (customer_id, address_id, is_primary, created_time, updated_time) VALUES (:customer_id, :address_id, :is_primary,:created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':customer_id' => $customer_id, ':address_id'=>$address_id, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':customer_id' => $customer_id, ':address_id'=>$address_id, ':is_primary'=>1, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
+
+
         return $insertedId;
+    }
+
+    public function unsetDefaultShippingAddress($shipping_address_id, $customer_id) {
+        $shipping_address_id = strip_tags($shipping_address_id);
+        $customer_id = strip_tags($customer_id);
+
+        $sql = "update shipping_address set is_primary = 0 where customer_id =" . $customer_id . " and id != " . $shipping_address_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
     }
 
     public function deleteShippingAddress($id)
