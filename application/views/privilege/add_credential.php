@@ -27,19 +27,19 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">登录名</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="login" id="login" placeholder="登录名..." >
+                        <input type="text" class="form-control" name="login" id="login" placeholder="必填..." >
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">密码</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="密码...">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="必填...">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">分配角色</label>
                     <div class="col-sm-6">
-                        <select class="form-control" id="source">
+                        <select class="form-control" id="role_id" name="role_id">
                             <?php foreach ($roles as $role) { ?>
                                 <?php echo '<option value="'.$role->id.'">'.$role->name.'</option>'; ?>
                             <?php } ?>
@@ -72,3 +72,17 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function submit() {
+        if ($('#login').val()=="") {
+            alert('登录名不能为空');
+        ｝else if ($('#password').val()=="") {
+            alert('密码不能为空');
+        } else if ($('#role_id').val()=="") {
+            alert('必须为用户分配角色');
+        } else {
+            document.getElementById("myform").submit();
+        }
+        return false;
+    }
+</script>

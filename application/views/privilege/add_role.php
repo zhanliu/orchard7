@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">角色名称</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="角色名称..." >
+                        <input type="text" class="form-control" name="name" id="name" placeholder="必填..." >
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,3 +56,14 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function submit() {
+        if ($('#name').val()=="") {
+            alert('角色名不能为空');
+        } else {
+            document.getElementById("myform").submit();
+        }
+        return false;
+    }
+</script>
