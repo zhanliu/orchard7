@@ -47,10 +47,10 @@
             <!--                        <h2>修改订单</h2>-->
             <label><b>订单地址:</b></label>
             <br/>
-            <label for="province">省*</label><input type="text" name="province" id="province" value="<?php echo $order[0]->province; ?>" data-clear-btn="true" data-mini="true"><br/>
-            <label for="city">市*</label><input type="text" name="city" id="city" value="<?php echo $order[0]->city; ?>" data-clear-btn="true" data-mini="true"><br/>
-            <label for="district">区*</label><input type="text" name="district" id="district" value="<?php echo $order[0]->district; ?>" data-clear-btn="true" data-mini="true"><br/>
-            <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="<?php echo $order[0]->address1; ?>" data-clear-btn="true" data-mini="true"><br/>
+            <label for="province">省*</label><input type="text" name="province" id="province" value="<?php echo $order[0]->province; ?>" data-clear-btn="true" data-mini="true">
+            <label for="city">市*</label><input type="text" name="city" id="city" value="<?php echo $order[0]->city; ?>" data-clear-btn="true" data-mini="true">
+            <label for="district">区*</label><input type="text" name="district" id="district" value="<?php echo $order[0]->district; ?>" data-clear-btn="true" data-mini="true">
+            <label for="address1">地址一*</label><input type="text" name="address1" id="address1" value="<?php echo $order[0]->address1; ?>" data-clear-btn="true" data-mini="true">
             <label for="address2">地址二*</label><input type="text" name="address2" id="address2" value="<?php echo $order[0]->address2; ?>" data-clear-btn="true" data-mini="true"><br/>
 
             <hr/>
@@ -93,7 +93,7 @@
             <input type="hidden" name="order_id" value="<?php echo $order[0]->id; ?>">
 
             <a href="#" class="myButton" onclick="submit()">保存</a>
-            <a href="#" class="myButton" onclick="closebox('box')">取消</a>
+            <a href="<?php echo URL . 'admin/manageOrder/'; ?>" class="myButton">取消</a>
         </form>
     </div>
     </div>
