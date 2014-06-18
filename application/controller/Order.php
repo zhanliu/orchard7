@@ -1,5 +1,5 @@
 <?php
-class Admin extends Controller
+class Order extends Controller
 {
     /**
     * PAGE: index
@@ -9,147 +9,18 @@ class Admin extends Controller
     {
         // debug message to show where you are, just for the demo
         //echo 'Message from Controller: You are in the controller *admin, using the method index()';
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/index.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/common/index.php';
+        require 'application/views/common/footer.php';
         // load views. within the views we can echo out $songs and $amount_of_songs easily
     }
 
-    public function store()
-    {
-        // load a model, perform an action, pass the returned data to a variable
-        // NOTE: please write the name of the model "LikeThis"
-        $store_model = $this->loadModel('StoreModel');
-        $stores = $store_model->getAllStores();
-
-        $stats_model = $this->loadModel('StoreStatsModel');
-        $amount_of_stores = $stats_model->getAmountOfStores();
-
-        // debug message to show where you are, just for the demo
-        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/store.php';
-        require 'application/views/admin/footer.php';
-        // load views. within the views we can echo out $songs and $amount_of_songs easily
-
-    }
-
-    public function addStore()
-    {
-        // simple message to show where you are
-        echo 'Message from Controller: You are in the Controller: Admin, using the method addStore().';
-
-        // if we have POST data to create a new song entry
-        if (isset($_POST["submit_add_store"])) {
-            // load model, perform an action on the model
-            $store_model = $this->loadModel('StoreModel');
-            $store_model->addStore($_POST["name"], $_POST["district"], $_POST["address"], $_POST["phone_number"]);
-        }
-
-        // where to go after song has been added
-        header('location: ' . URL . 'admin/store');
-    }
-
-    public function deleteStore($id)
-    {
-        // simple message to show where you are
-        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteStore().';
-
-        // if we have an id of a song that should be deleted
-        if (isset($id)) {
-            // load model, perform an action on the model
-            $stores_model = $this->loadModel('StoreModel');
-            $stores_model->deleteStore($id);
-        }
-
-        // where to go after song has been deleted
-        header('location: ' . URL . 'admin/store');
-    }
-
-    // *** COMBO MANAGEMENT *** //
-
-    public function combo()
-    {
-        $combo_model = $this->loadModel('ComboModel');
-        $combos = $combo_model->getAllCombos();
-
-        $stats_model = $this->loadModel('ComboStatsModel');
-        $amount_of_combos = $stats_model->getAmountOfCombos();
-
-        $product_model = $this->loadModel('ProductModel');
-        $products = $product_model->getAllProducts();
-
-        $comboDetailJson = "{";
-        foreach ($combos as $combo) {
-            $comboProducts = $product_model->getProductsByComboId($combo->id);
-
-            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
-            foreach ($comboProducts as $comboProduct) {
-                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
-            }
-            $comboDetailJson = $comboDetailJson .'],';
-        }
-        $comboDetailJson = $comboDetailJson . '}';
-
-        // debug message to show where you are, just for the demo
-        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/combo.php';
-        require 'application/views/admin/footer.php';
-        // load views. within the views we can echo out $songs and $amount_of_songs easily
-
-    }
-
-    public function addCombo()
-    {
-        // simple message to show where you are
-        echo 'Message from Controller: You are in the Controller: Admin, using the method addCombo().';
-
-        // if we have POST data to create a new song entry
-        if (isset($_POST["submit_add_combo"])) {
-            // load model, perform an action on the model
-            $combo_model = $this->loadModel('ComboModel');
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
-
-            // insert multiple records into mapping table
-            $product_ids = $_POST['product_id'];
-            $quantities = $_POST['quantity'];
-
-            $combo_detail_model = $this->loadModel('ComboDetailModel');
-            $index = 0;
-            foreach($product_ids as $product_id) {
-                $combo_detail_model->addMapping($combo_id, $product_id, $quantities[$index]);
-                $index++;
-            }
-
-        }
-
-        // where to go after song has been added
-        header('location: ' . URL . 'admin/combo');
-    }
-
-    public function deleteCombo($id)
-    {
-        // simple message to show where you are
-        echo 'Message from Controller: You are in the Controller: Admin, using the method deleteCombo().';
-
-        // if we have an id of a song that should be deleted
-        if (isset($id)) {
-            // load model, perform an action on the model
-            $combos_model = $this->loadModel('ComboModel');
-            $combos_model->deleteCombo($id);
-        }
-
-        // where to go after song has been deleted
-        header('location: ' . URL . 'admin/combo');
-    }
-
-    public function addOrderStepOne() {
+    public function addOrder() {
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
 
         require 'application/views/common/header.php';
-        require 'application/views/admin/add_order_step_one.php';
+        require 'application/views/order/add_order.php';
         require 'application/views/common/footer.php';
     }
 
@@ -301,9 +172,6 @@ class Admin extends Controller
 //        require 'application/views/admin/footer.php';
     }
 
-    public function upload() {
-        require 'application/views/admin/upload.php';
-    }
 
     public function manageOrder() {
 

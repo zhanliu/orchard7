@@ -80,13 +80,15 @@
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">状态</label>
-                    <div class="col-sm-3 control-label"> <!--  control-label needed for positioning -->
-                        <div class="toggle" style="height: 20px; width: 50px;">
-                            <div class="toggle-slide active">
-                                <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
-                                    <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">激活</div>
-                                    <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
-                                    <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">下架</div></div></div></div>
+                    <div class="col-sm-6">
+                        <div class="toggle-slide active">
+                            <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
+                                <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">ON</div>
+                                <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
+                                <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">OFF</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <input type="hidden" name="img_url" id="img_url">
