@@ -28,7 +28,7 @@ class CustomerModel
 
     public function getCustomerByCellphone($cellphone) {
         $sql = "SELECT * FROM customer WHERE cellphone='".$cellphone."'";
-        echo "Customer sql is ".$sql;
+//        echo "Customer sql is ".$sql;
         $query = $this->db->prepare($sql);
         $query->execute();
 
