@@ -120,5 +120,30 @@ class Stock extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function submitAddCombo() {
+        if (isset($_POST["submit_add_combo"])) {
+            // load model, perform an action on the model
+            $combo_model = $this->loadModel('ComboModel');
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+
+            // insert multiple records into mapping table
+            $product_ids = $_POST['product_id'];
+            $quantities = $_POST['quantity'];
+
+            $combo_detail_model = $this->loadModel('ComboDetailModel');
+            $index = 0;
+            foreach($product_ids as $product_id) {
+                $combo_detail_model->addMapping($combo_id, $product_id, $quantities[$index]);
+                $index++;
+            }
+
+        }
+
+        require 'application/views/common/header.php';
+        require 'application/views/stock/combo.php';
+        require 'application/views/common/footer.php';
+
+    }
+
 }
 
