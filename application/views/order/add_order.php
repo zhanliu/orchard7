@@ -210,6 +210,10 @@
         3. Existed user to create new address flagged as EXISTED_NEW
      */
     var address_flag;
+    var district;
+    var address1;
+    var address2;
+    var address_string;
 
     $(document).ready(function(){
         $("#order_combo_data_table").dataTable();
@@ -294,6 +298,10 @@
                      $('input[name=address_id]')[count].checked="checked";
                  } else {
                      $('input[name=address_id]')[checked_index].checked="checked";
+                     district = data[checked_index]['district'];
+                     address1 = data[checked_index]['address1'];
+                     address2 = data[checked_index]['address2'];
+                     address_string = district + address1 + address2;
                  }
 
                } else {
@@ -344,13 +352,16 @@
 
         $('#cellphone_preview').html(cellPhone);
 
-        if ($('input:radio:checked').val() == 'new_address') {
+        //if ($('input:radio:checked').val() == 'new_address') {
+        if (address_flag = 'EXISTED') {
+
+        } else {
             var district = $('#district').val();
             var address1 = $('#address1').val();
             var address2 = $('#address2').val();
-            var address = '广东省广州市' + district + address1 + address2;
+            var address = district + address1 + address2;
         }
-        $('#address_preview').html(address);
+        $('#address_preview').html('广东省广州市' + address_string);
 
     }
 
