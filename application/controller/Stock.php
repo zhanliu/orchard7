@@ -101,6 +101,35 @@ class Stock extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function Combo($id)
+    {
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
+
+        $stats_model = $this->loadModel('ComboStatsModel');
+        $amount_of_combos = $stats_model->getAmountOfCombos();
+
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts();
+
+        $comboDetailJson = "{";
+        foreach ($combos as $combo) {
+            $comboProducts = $product_model->getProductsByComboId($combo->id);
+
+            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
+            foreach ($comboProducts as $comboProduct) {
+                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
+            }
+            $comboDetailJson = $comboDetailJson .'],';
+        }
+        $comboDetailJson = $comboDetailJson . '}';
+
+        // debug message to show where you are, just for the demo
+        require 'application/views/common/header.php';
+        require 'application/views/stock/combo.php';
+        require 'application/views/common/footer.php';
+    }
+
     public function deleteCombo($id)
     {
         if (isset($id)) {
