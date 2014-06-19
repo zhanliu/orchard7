@@ -35,6 +35,7 @@
                     <label class="col-sm-3 control-label">类目</label>
                     <div class="col-sm-6">
                         <select class="form-control" id="category_id" name="category_id">
+                            <option value="">选择商品目录</option>
                             <?php foreach ($categories as $category) { ?>
                                 <?php echo '<option value="'.$category->id.'">'.$category->name.'</option>'; ?>
                             <?php } ?>
@@ -113,7 +114,7 @@
         } else if ($('#price').val()=="") {
             alert('价格不能为空');
         } else if ($('#unit').val()=="") {
-            alert('单位商品名称不能为空');
+            alert('单位名称不能为空');
         } else if ($('#img_url').val()=="") {
             alert('保存商品前请上传商品图片');
         } else {

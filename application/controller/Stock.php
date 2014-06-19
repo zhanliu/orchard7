@@ -58,15 +58,15 @@ class Stock extends Controller
         $stats_model = $this->loadModel('ProductStatsModel');
         $amount_of_products = $stats_model->getAmountOfProducts();
 
-        $category_model = $this->loadModel('CategoryModel');
-        $categories = $category_model->getAllCategories();
-
         require 'application/views/common/header.php';
         require 'application/views/stock/product.php';
         require 'application/views/common/footer.php';
     }
 
     public function addProduct() {
+        $category_model = $this->loadModel('CategoryModel');
+        $categories = $category_model->getAllCategories();
+
         require 'application/views/common/header.php';
         require 'application/views/stock/add_product.php';
         require 'application/views/common/footer.php';
@@ -99,6 +99,13 @@ class Stock extends Controller
         require 'application/views/common/header.php';
         require 'application/views/stock/product_detail.php';
         require 'application/views/common/footer.php';
+    }
+
+    public function getProductDetailById($id) {
+        $product_model = $this->loadModel('ProductModel');
+        $product = $product_model->getProductById($id);
+
+        echo json_encode($product[0]);
     }
 
     public function Combo($id)

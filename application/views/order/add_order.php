@@ -265,7 +265,7 @@
         $('#basicwizard-head-2').addClass('stepy-active');
 
         $.ajax({
-             url: '<?php echo URL; ?>admin/queryAddressByCellphone/' + $('#cellphone').val(),
+             url: '<?php echo URL; ?>order/queryAddressByCellphone/' + $('#cellphone').val(),
              data: "",
              dataType: 'json',
              success: function(data) {

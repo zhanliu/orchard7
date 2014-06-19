@@ -51,7 +51,9 @@
                             <td><?php echo $product->price; ?></td>
                             <td><?php echo $product->tag; ?></td>
                             <td><a href="<?php echo URL . 'admin/deleteproduct/' . $product->id; ?>" class="myButton">删除</a></td>
-                            <td><a href="<?php echo URL . 'admin/productDetail/' . $product->id; ?>" class="myButton" target="_blank">查看</a></td>
+                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">查看</a>
+                                <!--<a href="<?php echo URL . 'admin/productDetail/' . $product->id; ?>" class="myButton" target="_blank">查看</a>-->
+                            </td>
                         </tr>
                     <?php } ?>
                     </tbody>

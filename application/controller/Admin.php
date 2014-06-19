@@ -178,22 +178,6 @@ class Admin extends Controller
         require 'application/views/admin/footer.php';
     }
 
-    // for ajax callback
-    public function queryAddressByCellphone($cellphone) {
-
-        $customer_model = $this->loadModel('CustomerModel');
-        $customer = $customer_model->getCustomerByCellphone($cellphone);
-
-
-        if (sizeof($customer) == 1) {
-            $cid = $customer[0]->id;
-            $address_model = $this->loadModel('AddressModel');
-            $list_of_address = $address_model->getAddressesByCustomerId($cid);
-
-            echo json_encode($list_of_address);
-        }
-
-    }
 
     public function addOrderStepThree() {
 

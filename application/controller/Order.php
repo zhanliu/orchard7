@@ -63,7 +63,6 @@ class Order extends Controller
 
             echo json_encode($list_of_address);
         }
-
     }
 
     public function addOrderStepThree() {
