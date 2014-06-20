@@ -233,3 +233,30 @@
         width: 30%;
     }
 </style>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#product_data_table').dataTable();
+    });
+
+    function show_combo_detail(combo_id) {
+        $.ajax({
+            url: '<?php echo URL; ?>stock/getComboDetailById/' + combo_id,
+            data: "",
+            dataType: 'json',
+            success: function(data) {
+                var name = data['name'];
+                var description = data['description'];
+                var price = data['price'];
+                var unit = data['unit'];
+                var img_url = data['img_url'];
+                var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+                content+= '<p>商品名称: ' + name + '</p>';
+                content+= '<p>定价: ' + price + '/' + unit + '</p>';
+                content+= '<p>商品描述: ' + description + '</p>';
+                $('#modal-body').html(content);
+            }
+
+        })
+    }
+</script>
