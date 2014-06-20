@@ -83,7 +83,7 @@
                     <BR><BR>
                     <div class="switch">
                         当前状态:
-                        <select name="is_archived" id="slider" data-role="slider" data-mini="true">
+                        <select name="is_active" id="slider" data-role="slider" data-mini="true">
                             <option value="on">激活</option>
                             <option value="off">禁止</option>
                         </select>

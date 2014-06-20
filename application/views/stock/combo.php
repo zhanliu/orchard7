@@ -1,105 +1,3 @@
-<script type="text/javascript">
-    function addRow(tableID) {
-        var table = document.getElementById(tableID);
-        var rowCount = table.rows.length;
-        var row = table.insertRow(rowCount);
-
-        var cell1 = row.insertCell(0);
-        var element1 = document.createElement("input");
-        element1.type = "checkbox";
-        element1.name="chkbox[]";
-        cell1.appendChild(element1);
-
-        var cell2 = row.insertCell(1);
-        cell2.innerHTML = rowCount + 1;
-
-        var cell3 = row.insertCell(2);
-        var element2 = document.createElement("select");
-        element2.name = "product_id[]";
-        //Create and append the options
-        <?php
-            foreach ($products as $product) {
-                echo 'var option = document.createElement("option");';
-                echo 'option.value = "'.$product->id.'";';
-                echo 'option.text = "'.$product->name.'";';
-                echo 'element2.appendChild(option);';
-            }
-        ?>
-        cell3.appendChild(element2);
-
-        var cell4 = row.insertCell(3);
-        var element3 = document.createElement("input");
-        element3.type = "text";
-        element3.name = "quantity[]";
-        cell4.appendChild(element3);
-    }
-
-    function deleteRow(tableID) {
-        try {
-            var table = document.getElementById(tableID);
-            var rowCount = table.rows.length;
-
-            for(var i=0; i<rowCount; i++) {
-                var row = table.rows[i];
-                var chkbox = row.cells[0].childNodes[0];
-                if(null != chkbox && true == chkbox.checked) {
-                    table.deleteRow(i);
-                    rowCount--;
-                    i--;
-                }
-            }
-        }catch(e) {
-            alert(e);
-        }
-    }
-
-    $(document).ready(function(){
-//        $(".combo_add_button").click(function(){
-//            $(".panel").toggle("fast");
-//            $(this).toggleClass("active");
-//            return false;
-//        });
-
-        $('#combo_data_table').dataTable();
-    });
-
-    function submit() {
-        document.getElementById("myform").submit();
-        return false;
-    }
-
-    function showComboProduct(comboID, comboName) {
-        //p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, cd.combo_id, cd.product_id, cd.quantity
-
-//        var obj = eval ('{"5":[{"name":"芒果","quantity":"1"},{"name":"苹果","quantity":"1"}],"6":[{"name":"荔枝","quantity":"2"},{"name":"龙眼","quantity":"2"}],"7":[{"name":"芒果","quantity":"3"},{"name":"草莓","quantity":"3"}]}');
-
-        var comboDetail = eval('(' + '<?php echo $comboDetailJson; ?>' + ')');
-        var combinedID = "ID" +  comboID;
-
-
-        var str = '<table border="1"><thead><tr><th>名称</th><th>数量</th></tr></thead><tfoot><tr><th>名称</th><th>数量</th></tr></tfoot><tbody>';
-
-        for (var n in eval('(' + 'comboDetail.' + combinedID + ')')) {
-            var product = eval('(' + 'comboDetail.' + combinedID +'['+ n + ']' +  ')');
-            str = str + '<tr><td>';
-            str = str + product.name + '</td>';
-            str = str + '<td>'+ product.quantity + '</td></tr>';
-        }
-        str = str +'</tbody></table>';
-
-        $("#detailcontent").replaceWith('<div id="detailcontent">'+str + '<a href="#" class="myButton" onclick="closedetailbox();closebox(\'detailbox\'); ">确认</a>'+'</div>');
-        $(".detailboxtitle").replaceWith('<span id="boxtitle" class="detailboxtitle"></span>');
-        openbox("detailbox","套餐-" + comboName, 0);
-
-        return false;
-    }
-
-    function closedetailbox() {
-        $(".detailboxtitle").replaceWith('<span id="detailboxtitle" class="detailboxtitle"></span>');
-//        return closebox("detailbox", 1);
-    }
-</script>
-
 <div id="page-content" style="min-height: 2911px;">
     <div id="wrap">
         <div id="page-heading">
@@ -116,18 +14,14 @@
 
         <div class="container">
 
-
             <div>
                 <table id="combo_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
-                        <th>描述</th>
-                        <th>标签</th>
-                        <th>活跃</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
+                        <th>删除</th>
+                        <th>查看</th>
                     </tr>
                     </thead>
 
@@ -135,26 +29,19 @@
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
-                        <th>描述</th>
-                        <th>标签</th>
-                        <th>活跃</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
+                        <th>删除</th>
+                        <th>查看</th>
                     </tr>
                     </tfoot>
 
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
-                        <tr align="center">
-                            <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>, '<?php echo $combo->name; ?>')">
-                                    <?php echo $combo->name; ?>
-                            </a></td>
+                        <tr>
+                            <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
-                            <td><?php echo $combo->description; ?></td>
-                            <td><?php echo $combo->tag; ?></td>
-                            <td>[<a href="<?php echo URL . 'admin/deletecombo/' . $combo->id; ?>">X</a>]</td>
-                            <td><?php echo $product->created_time; ?></td>
-                            <td><?php echo $product->updated_time; ?></td>
+                            <td><a href="<?php echo URL . 'stock/deleteCombo/' . $combo->id; ?>" class="myButton">删除</a></td>
+                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail('<?php echo $combo->id; ?>')">查看</a>
+
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -162,64 +49,28 @@
 
             </div>
 
-            <div id="shadowing"></div>
-            <div id="detailbox" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 25%; height:35%; ALIGN: CENTER">
-                <span id="boxtitle" class="detailboxtitle"></span>
-                <div id="detailcontent">
-                </div>
-            </div>
-
-            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
-                <span id="boxtitle"></span>
-
-<!--            <div class="panel">-->
-                <div id="boxcontent">
-                    <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
-                        <h2>创建新套餐</h2>
-                        <label for="name">套餐名称*</label>
-                        <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-
-                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
-                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
-                        <BR><BR>
-                        <input type="hidden" name="submit_add_combo">
-                        <TABLE id="dataTable" width="100%" border="1">
-                            <TR>
-                                <TD><INPUT type="checkbox" name="chk"/>1</TD>
-                                <TD> 1 </TD>
-                                <TD>
-                                    <select name="product_id[]" id="mapping">
-                                        <?php
-                                        foreach ($products as $product) {
-                                            echo '<option value="'.$product->id.'">'.$product->name.'</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </TD>
-                                <TD><input type="text" name="quantity[]"></TD>
-                            </TR>
-                        </TABLE>
-
-                        <label for="price">价格*</label>
-                        <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-
-                        <div class="switch">
-                            <label for="is_archived">当前状态</label>
-                            <select name="is_archived" id="slider" data-role="slider" data-mini="true">
-                                <option value="on">激活</option>
-                                <option value="off">禁止</option>
-                            </select>
-                        </div>
-
-                        <a href="#" class="myButton" onclick="submit()">保存</a>
-                        <a href="#" class="myButton" onclick="closebox('box')">取消</a>
-                    </form>
-                </div>
-            </div>
-
-            <a href="#" onClick="openbox('box', '套餐管理', 1)">添加新套餐</a>
+            <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">套餐详情</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-body"></div>
+                <div id="modal-detail"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 
 <style>
@@ -236,7 +87,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#product_data_table').dataTable();
+        $('#combo_data_table').dataTable();
     });
 
     function show_combo_detail(combo_id) {
@@ -248,15 +99,36 @@
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
-                var unit = data['unit'];
-                var img_url = data['img_url'];
-                var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
-                content+= '<p>商品名称: ' + name + '</p>';
-                content+= '<p>定价: ' + price + '/' + unit + '</p>';
-                content+= '<p>商品描述: ' + description + '</p>';
+                //var img_url = data['img_url'];
+                //var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+                var content = '<p>套餐名称: ' + name + '</p>';
+                content+= '<p>定价: ' + price + '</p>';
+                content+= '<p>套餐描述: ' + description + '</p>';
                 $('#modal-body').html(content);
             }
 
+        })
+
+        $.ajax({
+            url: '<?php echo URL; ?>stock/getProductsByComboId/' + combo_id,
+            data: "",
+            dataType: 'json',
+            success: function(data) {
+                var content = '';
+                for (var i in data) {
+                    var name = data[i]['name'];
+                    var img_url = data[i]['img_url'];
+                    var price = data[i]['price'];
+                    var unit = data[i]['unit'];
+                    var description = data[i]['description'];
+                    content+= '<hr>';
+                    content+= '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+                    content+= '<p>商品名称: ' + name + '</p>';
+                    content+= '<p>定价: ' + price + '/' + unit + '</p>';
+                    content+= '<p>商品描述: ' + description + '</p>';
+                }
+                $('#modal-detail').html(content);
+            }
         })
     }
 </script>

@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `orchard7`.`product` (
   `description` text COLLATE utf8_unicode_ci,
   `tag` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `img_url` varchar(80) NULL,
-  `is_archived` int(1) NOT NULL DEFAULT '0',
+  `is_active` int(1) NOT NULL DEFAULT '1',
   `created_time` datetime NOT NULL,
   `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

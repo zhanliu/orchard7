@@ -77,7 +77,7 @@ class Stock extends Controller
         if (isset($_POST["submit_add_product"])) {
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
-            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["img_url"], $_POST["is_archived"]);
+            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["img_url"], $_POST["is_active"]);
         }
 
         header('location: ' . URL . 'admin/product');
@@ -108,28 +108,13 @@ class Stock extends Controller
         echo json_encode($product[0]);
     }
 
-    public function Combo($id)
+    public function combo()
     {
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
 
         $stats_model = $this->loadModel('ComboStatsModel');
         $amount_of_combos = $stats_model->getAmountOfCombos();
-
-        $product_model = $this->loadModel('ProductModel');
-        $products = $product_model->getAllProducts();
-
-        $comboDetailJson = "{";
-        foreach ($combos as $combo) {
-            $comboProducts = $product_model->getProductsByComboId($combo->id);
-
-            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
-            foreach ($comboProducts as $comboProduct) {
-                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
-            }
-            $comboDetailJson = $comboDetailJson .'],';
-        }
-        $comboDetailJson = $comboDetailJson . '}';
 
         // debug message to show where you are, just for the demo
         require 'application/views/common/header.php';
@@ -160,7 +145,7 @@ class Stock extends Controller
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
             $combo_model = $this->loadModel('ComboModel');
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["img_url"], $_POST["is_active"]);
 
             // insert multiple records into mapping table
             $product_ids = $_POST['product_id'];
@@ -179,6 +164,20 @@ class Stock extends Controller
         require 'application/views/stock/combo.php';
         require 'application/views/common/footer.php';
 
+    }
+
+    public function getComboDetailById($id) {
+        $combo_model = $this->loadModel('ComboModel');
+        $combo = $combo_model->getComboById($id);
+
+        echo json_encode($combo[0]);
+    }
+
+    public function getProductsByComboId($id) {
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getProductsByComboId($id);
+
+        echo json_encode($products);
     }
 
 }

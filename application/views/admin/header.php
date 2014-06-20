@@ -16,7 +16,7 @@ if (!isset($_SESSION['login'])) {
 
     <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
+
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
@@ -38,7 +38,6 @@ if (!isset($_SESSION['login'])) {
     <script src="/orchard7/public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="/orchard7/public/js/application.js"></script>
     <script src="/orchard7/public/js/demo.js"></script>
-    <script src="/orchard7/public/js/lightbox-form.js" type="text/javascript"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="assets/css/ie8.css">

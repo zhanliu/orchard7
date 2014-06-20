@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">状态</label>
                     <div class="col-sm-6">
-                        <select name="is_archived" id="slider" data-role="slider" data-mini="true">
+                        <select name="is_active" id="slider" data-role="slider" data-mini="true">
                             <option value="on">激活</option>
                             <option value="off">禁止</option>
                         </select>

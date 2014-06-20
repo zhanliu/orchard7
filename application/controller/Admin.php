@@ -68,7 +68,37 @@ class Admin extends Controller
 
     // *** COMBO MANAGEMENT *** //
 
-    public function combo()
+    public function Combo($id)
+    {
+        $combo_model = $this->loadModel('ComboModel');
+        $combos = $combo_model->getAllCombos();
+
+        $stats_model = $this->loadModel('ComboStatsModel');
+        $amount_of_combos = $stats_model->getAmountOfCombos();
+
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts();
+
+        $comboDetailJson = "{";
+        foreach ($combos as $combo) {
+            $comboProducts = $product_model->getProductsByComboId($combo->id);
+
+            $comboDetailJson = $comboDetailJson . '"ID' . $combo->id .'":[';
+            foreach ($comboProducts as $comboProduct) {
+                $comboDetailJson = $comboDetailJson . '{"name":"' . $comboProduct->name . '","quantity":"' . $comboProduct->quantity . '"},';
+            }
+            $comboDetailJson = $comboDetailJson .'],';
+        }
+        $comboDetailJson = $comboDetailJson . '}';
+
+        // debug message to show where you are, just for the demo
+        require 'application/views/common/header.php';
+        require 'application/views/stock/combo.php';
+        require 'application/views/common/footer.php';
+    }
+
+
+    public function combo1()
     {
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
@@ -109,7 +139,7 @@ class Admin extends Controller
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
             $combo_model = $this->loadModel('ComboModel');
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_archived"]);
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["is_active"]);
 
             // insert multiple records into mapping table
             $product_ids = $_POST['product_id'];

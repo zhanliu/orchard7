@@ -204,8 +204,8 @@
                         <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
 
                         <div class="switch">
-                            <label for="is_archived">当前状态</label>
-                            <select name="is_archived" id="slider" data-role="slider" data-mini="true">
+                            <label for="is_active">当前状态</label>
+                            <select name="is_active" id="slider" data-role="slider" data-mini="true">
                                 <option value="on">激活</option>
                                 <option value="off">禁止</option>
                             </select>

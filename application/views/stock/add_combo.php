@@ -86,6 +86,9 @@
 
                     </div>
                 </div>
+                <input type="hidden" name="description" id="img_url" value="">
+                <input type="hidden" name="tag" id="img_url" value="">
+                <input type="hidden" name="is_active" id="is_active" value="">
                 <input type="hidden" name="img_url" id="img_url">
                 <input type="hidden" name="submit_add_combo">
 

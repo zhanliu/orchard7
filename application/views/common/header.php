@@ -16,7 +16,6 @@ if (!session_id()) session_start();
 
 
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
@@ -34,13 +33,12 @@ if (!session_id()) session_start();
     <script src="/orchard7/public/js/jquery.cookie.js"></script>
     <script src="/orchard7/public/js/jquery.nicescroll.min.js"></script>
     <script src="/orchard7/public/js/prettify.js"></script>
-    <script src="/orchard7/public/js/jquery.easypiechart.min.js"></script>
-    <script src="/orchard7/public/js/jquery.sparklines.min.js"></script>
+    <!--<script src="/orchard7/public/js/jquery.easypiechart.min.js"></script>
+    <script src="/orchard7/public/js/jquery.sparklines.min.js"></script>-->
     <script src="/orchard7/public/js/toggle.min.js"></script>
     <script src="/orchard7/public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="/orchard7/public/js/application.js"></script>
-    <script src="/orchard7/public/js/demo.js"></script>
-    <script src="/orchard7/public/js/lightbox-form.js" type="text/javascript"></script>
+    <!--<script src="/orchard7/public/js/demo.js"></script>-->
 
     <!-- The following CSS are included as plugins and can be removed if unused-->
 </head>

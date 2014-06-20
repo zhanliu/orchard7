@@ -22,7 +22,6 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
-                        <th>标签</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -35,7 +34,6 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
-                        <th>标签</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -49,7 +47,6 @@
                             <td><?php echo $product->category_id; ?></td>
                             <td><?php echo $product->unit; ?></td>
                             <td><?php echo $product->price; ?></td>
-                            <td><?php echo $product->tag; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteProduct/' . $product->id; ?>" class="myButton">删除</a></td>
                             <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_product_detail('<?php echo $product->id; ?>')">查看</a>
 
