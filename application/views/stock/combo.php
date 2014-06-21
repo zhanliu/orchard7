@@ -169,55 +169,7 @@
                 </div>
             </div>
 
-            <div id="box" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 50%; ALIGN: CENTER">
-                <span id="boxtitle"></span>
-
-<!--            <div class="panel">-->
-                <div id="boxcontent">
-                    <form id="myform" class="comboform" action="<?php echo URL; ?>admin/addCombo" method="post" target="_parent">
-                        <h2>创建新套餐</h2>
-                        <label for="name">套餐名称*</label>
-                        <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-
-                        <INPUT type="button" value="加入商品" onclick="addRow('dataTable')" />
-                        <INPUT type="button" value="删除商品" onclick="deleteRow('dataTable')" />
-                        <BR><BR>
-                        <input type="hidden" name="submit_add_combo">
-                        <TABLE id="dataTable" width="100%" border="1">
-                            <TR>
-                                <TD><INPUT type="checkbox" name="chk"/>1</TD>
-                                <TD> 1 </TD>
-                                <TD>
-                                    <select name="product_id[]" id="mapping">
-                                        <?php
-                                        foreach ($products as $product) {
-                                            echo '<option value="'.$product->id.'">'.$product->name.'</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </TD>
-                                <TD><input type="text" name="quantity[]"></TD>
-                            </TR>
-                        </TABLE>
-
-                        <label for="price">价格*</label>
-                        <input type="text" name="price" id="price" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-
-                        <div class="switch">
-                            <label for="is_archived">当前状态</label>
-                            <select name="is_archived" id="slider" data-role="slider" data-mini="true">
-                                <option value="on">激活</option>
-                                <option value="off">禁止</option>
-                            </select>
-                        </div>
-
-                        <a href="#" class="myButton" onclick="submit()">保存</a>
-                        <a href="#" class="myButton" onclick="closebox('box')">取消</a>
-                    </form>
-                </div>
-            </div>
-
-            <a href="#" onClick="openbox('box', '套餐管理', 1)">添加新套餐</a>
+            <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
         </div>
     </div>
 </div>

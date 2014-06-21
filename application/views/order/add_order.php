@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="stepy-navigator panel-footer"><div class="pull-right">
                                                 <a href="#" class="btn btn-default" onclick="back4()"><i class="fa fa-long-arrow-left"></i> Back</a>
-                                                <input type="submit" class="finish btn-success btn" value="Submit"></div></div>
+                                                <input type="submit" class="finish btn-success btn" value="Submit" onclick="submit_add_order()"></div></div>
                                     </fieldset>
 
                                 </form>
@@ -241,6 +241,10 @@
           document.getElementById("myform").submit();
         }
         return true;
+    }
+
+    function submit_add_order() {
+        $("#basicwizard").submit();
     }
 
     function validateCellphone() {
