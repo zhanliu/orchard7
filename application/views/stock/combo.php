@@ -121,23 +121,23 @@
                 <table id="combo_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>名称</th>
-                        <th>价格</th>
-                        <th>描述</th>
-                        <th>标签</th>
-                        <th>活跃</th>
-                        <th>创建时间</th>
-                        <th>修改时间</th>
+                        <th text-align="right">名称</th>
+                        <th text-align="right">价格</th>
+                        <th text-align="right">描述</th>
+                        <th text-align="right">查看</th>
+                        <th text-align="right">删除</th>
+                        <th text-align="right">创建时间</th>
+                        <th text-align="right">修改时间</th>
                     </tr>
                     </thead>
 
                     <tfoot>
-                    <tr>
+                    <tr align="center">
                         <th>名称</th>
                         <th>价格</th>
                         <th>描述</th>
-                        <th>标签</th>
-                        <th>活跃</th>
+                        <th>查看</th>
+                        <th>删除</th>
                         <th>创建时间</th>
                         <th>修改时间</th>
                     </tr>
@@ -146,13 +146,11 @@
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
                         <tr align="center">
-                            <td><a href="#" onclick="showComboProduct(<?php echo $combo->id; ?>, '<?php echo $combo->name; ?>')">
-                                    <?php echo $combo->name; ?>
-                            </a></td>
+                            <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
                             <td><?php echo $combo->description; ?></td>
-                            <td><?php echo $combo->tag; ?></td>
-                            <td>[<a href="<?php echo URL . 'admin/deletecombo/' . $combo->id; ?>">X</a>]</td>
+                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail(<?php echo $combo->id; ?>)">查看</a></td>
+                            <td><a href="<?php echo URL . 'stock/deletecombo/' . $combo->id; ?>" class="myButton">删除</a></td>
                             <td><?php echo $product->created_time; ?></td>
                             <td><?php echo $product->updated_time; ?></td>
                         </tr>
@@ -162,29 +160,34 @@
 
             </div>
 
-            <div id="shadowing"></div>
-            <div id="detailbox" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 25%; height:35%; ALIGN: CENTER">
-                <span id="boxtitle" class="detailboxtitle"></span>
-                <div id="detailcontent">
-                </div>
-            </div>
+<!--            <div id="shadowing"></div>-->
+<!--            <div id="detailbox" class="box" STYLE="margin: 0 auto; border: 1px solid #F00; WIDTH: 25%; height:35%; ALIGN: CENTER">-->
+<!--                <span id="boxtitle" class="detailboxtitle"></span>-->
+<!--                <div id="detailcontent">-->
+<!--                </div>-->
+<!--            </div>-->
 
             <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
         </div>
     </div>
 </div>
 
-<style>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">商品详情</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
 
-    .comboform { padding:.8em 1.2em; }
-    .comboform h2 { color:#555; margin:0.3em 0 .8em 0; padding-bottom:.5em; border-bottom:1px solid rgba(0,0,0,.1); }
-    .comboform label { display:block; margin-top:1.2em; }
-    .switch .ui-slider-switch { width: 15.5em !important }
-    .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
-    .ui-panel {
-        width: 30%;
-    }
-</style>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -197,16 +200,16 @@
             data: "",
             dataType: 'json',
             success: function(data) {
-                var name = data['name'];
-                var description = data['description'];
-                var price = data['price'];
-                var unit = data['unit'];
-                var img_url = data['img_url'];
-                var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
-                content+= '<p>商品名称: ' + name + '</p>';
-                content+= '<p>定价: ' + price + '/' + unit + '</p>';
-                content+= '<p>商品描述: ' + description + '</p>';
-                $('#modal-body').html(content);
+//                var name = data['name'];
+//                var description = data['description'];
+//                var price = data['price'];
+//                var unit = data['unit'];
+//                var img_url = data['img_url'];
+//                var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+//                content+= '<p>商品名称: ' + name + '</p>';
+//                content+= '<p>定价: ' + price + '/' + unit + '</p>';
+//                content+= '<p>商品描述: ' + description + '</p>';
+                $('#modal-body').html("abc");
             }
 
         })

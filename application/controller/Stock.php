@@ -48,8 +48,6 @@ class Stock extends Controller
         header('location: ' . URL . 'stock/category');
     }
 
-
-
     public function product()
     {
         $product_model = $this->loadModel('ProductModel');
@@ -108,7 +106,15 @@ class Stock extends Controller
         echo json_encode($product[0]);
     }
 
-    public function Combo($id)
+    public function getComboDetailById($id) {
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getProductsByComboId($id);
+
+
+        echo json_encode($products);
+    }
+
+    public function Combo()
     {
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();

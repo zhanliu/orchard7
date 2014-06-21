@@ -23,8 +23,9 @@ if (!session_id()) session_start();
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
     <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
+
     <!-- The main CSS file -->
     <link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
 
