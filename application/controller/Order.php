@@ -15,7 +15,7 @@ class Order extends Controller
         // load views. within the views we can echo out $songs and $amount_of_songs easily
     }
 
-    public function addOrder() {
+    public function addOrder1() {
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
 
@@ -162,6 +162,9 @@ class Order extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function addOrder() {
+
+    }
 
     public function addOrderStepFive() {
 

@@ -47,7 +47,7 @@
                                         <div>第四步</div><span>确认订单</span>
                                     </li>
                                 </ul>
-                                <form action="#" id="basicwizard" class="form-horizontal">
+                                <form action="<?php echo URL; ?>order/addOrder" method="post" target="_parent" id="basicwizard" class="form-horizontal">
                                     <fieldset title="第一步" id="basicwizard-step-1" class="stepy-step" style="display: block;">
                                         <legend>输入手机号</legend>
                                         <div class="form-group">
