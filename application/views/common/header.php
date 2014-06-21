@@ -15,6 +15,7 @@ if (!session_id()) session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+
     <link href="/orchard7/public/css/css.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
     <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
@@ -24,6 +25,8 @@ if (!session_id()) session_start();
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
     <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
     <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
+    <!-- The main CSS file -->
+    <link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/orchard7.js"></script>
