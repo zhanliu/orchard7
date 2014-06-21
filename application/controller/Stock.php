@@ -78,7 +78,7 @@ class Stock extends Controller
             $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["img_url"], $_POST["is_archived"]);
         }
 
-        header('location: ' . URL . 'admin/product');
+        header('location: ' . URL . 'stock/product');
     }
 
     public function deleteProduct($id)

@@ -121,25 +121,25 @@
                 <table id="combo_data_table" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th text-align="right">名称</th>
-                        <th text-align="right">价格</th>
-                        <th text-align="right">描述</th>
-                        <th text-align="right">查看</th>
-                        <th text-align="right">删除</th>
-                        <th text-align="right">创建时间</th>
-                        <th text-align="right">修改时间</th>
+                        <th>名称</th>
+                        <th>价格</th>
+                        <th>描述</th>
+                        <th>创建时间</th>
+                        <th>修改时间</th>
+                        <th>删除</th>
+                        <th>查看</th>
                     </tr>
                     </thead>
 
                     <tfoot>
-                    <tr align="center">
+                    <tr>
                         <th>名称</th>
                         <th>价格</th>
                         <th>描述</th>
-                        <th>查看</th>
-                        <th>删除</th>
                         <th>创建时间</th>
                         <th>修改时间</th>
+                        <th>删除</th>
+                        <th>查看</th>
                     </tr>
                     </tfoot>
 
@@ -149,10 +149,10 @@
                             <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
                             <td><?php echo $combo->description; ?></td>
-                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail(<?php echo $combo->id; ?>)">查看</a></td>
-                            <td><a href="<?php echo URL . 'stock/deletecombo/' . $combo->id; ?>" class="myButton">删除</a></td>
                             <td><?php echo $product->created_time; ?></td>
                             <td><?php echo $product->updated_time; ?></td>
+                            <td><a href="<?php echo URL . 'stock/deletecombo/' . $combo->id; ?>" class="myButton">删除</a></td>
+                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail(<?php echo $combo->id; ?>)">查看</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -209,7 +209,15 @@
 //                content+= '<p>商品名称: ' + name + '</p>';
 //                content+= '<p>定价: ' + price + '/' + unit + '</p>';
 //                content+= '<p>商品描述: ' + description + '</p>';
-                $('#modal-body').html("abc");
+                var str = '<table border="1"><thead><tr><th>名称</th><th>数量</th></tr></thead><tfoot><tr><th>名称</th><th>数量</th></tr></tfoot><tbody>';
+
+                for (var n = 0; n < data.length; n++) {
+                    str = str + '<tr><td>';
+                    str = str + data[n]['name'] + '</td>';
+                    str = str + '<td>'+ data[n]['quantity'] + '</td></tr>';
+                }
+                str = str +'</tbody></table>';
+                $('#modal-body').html(str);
             }
 
         })
