@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 </HEAD>
 <BODY>
-<link type="text/css" rel="stylesheet" href="/orchard7/public/css/login-style.css">
+<link type="text/css" rel="stylesheet" href="<?php echo URL; ?>public/css/login-style.css">
 <div id="wrapper">
 
     <form name="login-form" class="login-form" action="<?php echo URL; ?>common/validateLogin" method="post">
