@@ -140,9 +140,10 @@ class Stock extends Controller
     }
 
     public function submitAddCombo() {
+        $combo_model = $this->loadModel('ComboModel');
+
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
-            $combo_model = $this->loadModel('ComboModel');
             $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["img_url"], $_POST["is_active"]);
 
             // insert multiple records into mapping table
@@ -157,6 +158,8 @@ class Stock extends Controller
             }
 
         }
+
+        $combos = $combo_model->getAllCombos();
 
         require 'application/views/common/header.php';
         require 'application/views/stock/combo.php';
