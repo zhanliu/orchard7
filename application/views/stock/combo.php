@@ -71,9 +71,9 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-            <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
-        </div>
-    </div>
+<!--            <a href="--><?php //echo URL; ?><!--stock/addCombo" class="myButton">添加新套餐</a>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </div>
 
@@ -133,7 +133,7 @@
                     var unit = data[i]['unit'];
                     var description = data[i]['description'];
                     content+= '<hr>';
-                    content+= '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+                    content+= '<p><img src="/orchard7/public/uploads/' + img_url + '" width="240" height="180"></p>';
                     content+= '<p>商品名称: ' + name + '</p>';
                     content+= '<p>定价: ' + price + '/' + unit + '</p>';
                     content+= '<p>商品描述: ' + description + '</p>';

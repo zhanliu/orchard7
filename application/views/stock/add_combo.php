@@ -86,11 +86,12 @@
 
                     </div>
                 </div>
-                <input type="hidden" name="description" id="img_url" value="">
-                <input type="hidden" name="tag" id="img_url" value="">
+                <input type="hidden" name="description" value="">
+                <input type="hidden" name="tag" value="">
                 <input type="hidden" name="is_active" id="is_active" value="">
                 <input type="hidden" name="img_url" id="img_url">
                 <input type="hidden" name="submit_add_combo">
+                <input type="hidden" name="upload_img_name_prefix" value="<?php echo $upload_prefix; ?>">
 
             </form>
 
@@ -106,7 +107,7 @@
                     <ul>
                         <!-- The file uploads will be shown here -->
                     </ul>
-
+                    <input type="hidden" name="upload_inner_img_name_prefix" value="<?php echo $upload_prefix; ?>">
             </form>
             </div>
 
