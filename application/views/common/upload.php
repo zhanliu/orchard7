@@ -13,7 +13,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 	}
 
     $now = time();
-    $file_name = $_FILES['upl']['name']."_".$now;
+    $file_name = $now."_".$_FILES['upl']['name'];
 
 	if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
 		echo '{"status":"success"}';
