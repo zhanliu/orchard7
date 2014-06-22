@@ -49,6 +49,10 @@ class Common extends Controller
         }
     }
 
+    public function upload() {
+        require 'application/views/common/upload.php';
+    }
+
     public function logout() {
         if (!session_id()) session_start();
         $_SESSION['login'] = null;
