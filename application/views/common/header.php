@@ -6,7 +6,7 @@ if (!session_id()) session_start();
 ?>
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://redteamux.com/avant/ui-buttons.php -->
-<html lang="en">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -15,14 +15,14 @@ if (!session_id()) session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="/orchard7/public/css/css.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
+    <link href="/orchard7/public/css/css.css" rel="stylesheet" charset="utf-8" >
+    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css" charset="utf-8" >
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
-    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css" charset="utf-8" >
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css" charset="utf-8" >
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css" charset="utf-8" >
+    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css" charset="utf-8" >
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/orchard7.js"></script>
