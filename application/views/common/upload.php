@@ -12,8 +12,8 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-    $now = time();
-    $file_name = $now."_".$_FILES['upl']['name'];
+    $prefix_name = $_POST["upload_inner_img_name_prefix"];
+    $file_name = $prefix_name."_".$_FILES['upl']['name'];
 
 	if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
 		echo '{"status":"success"}';
