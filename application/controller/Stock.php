@@ -65,6 +65,8 @@ class Stock extends Controller
         $category_model = $this->loadModel('CategoryModel');
         $categories = $category_model->getAllCategories();
 
+        $upload_prefix = time() . "";
+
         require 'application/views/common/header.php';
         require 'application/views/stock/add_product.php';
         require 'application/views/common/footer.php';
@@ -75,7 +77,7 @@ class Stock extends Controller
         if (isset($_POST["submit_add_product"])) {
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
-            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["img_url"], $_POST["is_active"]);
+            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
         }
 
         header('location: ' . URL . 'stock/product');
@@ -134,16 +136,19 @@ class Stock extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
+        $upload_prefix = time() . "";
+
         require 'application/views/common/header.php';
         require 'application/views/stock/add_combo.php';
         require 'application/views/common/footer.php';
     }
 
     public function submitAddCombo() {
+        $combo_model = $this->loadModel('ComboModel');
+
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
-            $combo_model = $this->loadModel('ComboModel');
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["img_url"], $_POST["is_active"]);
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
 
             // insert multiple records into mapping table
             $product_ids = $_POST['product_id'];
@@ -157,6 +162,8 @@ class Stock extends Controller
             }
 
         }
+
+        $combos = $combo_model->getAllCombos();
 
         require 'application/views/common/header.php';
         require 'application/views/stock/combo.php';

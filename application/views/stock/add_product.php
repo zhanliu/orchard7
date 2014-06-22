@@ -67,6 +67,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="img_url" id="img_url">
+                <input type="hidden" name="upload_img_name_prefix" value="<?php echo $upload_prefix; ?>">
                 <input type="hidden" name="submit_add_product">
 
             </form>
@@ -83,7 +84,7 @@
                     <ul>
                         <!-- The file uploads will be shown here -->
                     </ul>
-
+                    <input type="hidden" name="upload_inner_img_name_prefix" value="<?php echo $upload_prefix; ?>">
             </form>
             </div>
 

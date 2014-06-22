@@ -37,7 +37,7 @@
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
 
-                        <tr>
+                        <tr align="center">
                             <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteCombo/' . $combo->id; ?>" class="myButton">删除</a></td>
@@ -71,9 +71,9 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-            <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
-        </div>
-    </div>
+<!--            <a href="--><?php //echo URL; ?><!--stock/addCombo" class="myButton">添加新套餐</a>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </div>
 
