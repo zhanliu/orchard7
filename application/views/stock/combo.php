@@ -36,12 +36,12 @@
 
                     <tbody>
                     <?php foreach ($combos as $combo) { ?>
+
                         <tr>
                             <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteCombo/' . $combo->id; ?>" class="myButton">删除</a></td>
                             <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail('<?php echo $combo->id; ?>')">查看</a>
-
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -71,19 +71,28 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
+            <a href="<?php echo URL; ?>stock/addCombo" class="myButton">添加新套餐</a>
+        </div>
+    </div>
+
 </div>
 
-<style>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">商品详情</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
 
-    .comboform { padding:.8em 1.2em; }
-    .comboform h2 { color:#555; margin:0.3em 0 .8em 0; padding-bottom:.5em; border-bottom:1px solid rgba(0,0,0,.1); }
-    .comboform label { display:block; margin-top:1.2em; }
-    .switch .ui-slider-switch { width: 15.5em !important }
-    .ui-grid-a { margin-top:1em; padding-top:.8em; margin-top:1.4em; border-top:1px solid rgba(0,0,0,.1); }
-    .ui-panel {
-        width: 30%;
-    }
-</style>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -96,6 +105,7 @@
             data: "",
             dataType: 'json',
             success: function(data) {
+
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
@@ -105,6 +115,7 @@
                 content+= '<p>定价: ' + price + '</p>';
                 content+= '<p>套餐描述: ' + description + '</p>';
                 $('#modal-body').html(content);
+
             }
 
         })

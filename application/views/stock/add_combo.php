@@ -140,9 +140,6 @@
 <!-- Our main JS file -->
 <script src="/orchard7/public/js/upload-script.js"></script>
 
-<!-- The main CSS file -->
-<link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
-
 <script type="text/javascript">
 
     function submit() {

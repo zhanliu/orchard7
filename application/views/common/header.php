@@ -15,14 +15,19 @@ if (!session_id()) session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="/orchard7/public/css/css.css" rel="stylesheet" charset="utf-8" >
-    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css" charset="utf-8" >
+    <link href="/orchard7/public/css/css.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/lightbox-form.css">
+    <link type="text/css" rel="stylesheet" href="/orchard7/public/css/default.css">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="/orchard7/public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css" charset="utf-8" >
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css" charset="utf-8" >
-    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css" charset="utf-8" >
-    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css" charset="utf-8" >
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/prettify.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/toggles.css">
+    <link rel="stylesheet" href="/orchard7/public/css/styles.min.css">
+    <link rel="stylesheet" type="text/css" href="/orchard7/public/css/jquery.datatable.css">
+
+    <!-- The main CSS file -->
+    <link href="/orchard7/public/css/dropbox-style.css" rel="stylesheet" />
+
 
     <script src="/orchard7/public/js/jquery-1.10.2.js"></script>
     <script src="/orchard7/public/js/orchard7.js"></script>
@@ -89,8 +94,8 @@ if (!session_id()) session_start();
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-tasks"></i> <span>订单中心</span> <span class="badge badge-info">12</span></a>
                 <ul class="acc-menu">
-                    <li><a href="/orchard7/admin/addOrder">订单添加</a></li>
-                    <li><a href="/orchard7/admin/order">订单管理</a></li>
+                    <li><a href="/orchard7/order/addOrder">订单添加</a></li>
+                    <li><a href="/orchard7/order/manageOrder">订单管理</a></li>
                 </ul>
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>会员中心</span></a>

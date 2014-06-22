@@ -37,7 +37,7 @@
                         <tr align="center">
                             <td><?php echo $category->id; ?></td>
                             <td><?php echo $category->name; ?></td>
-                            <td><a href="<?php echo URL . 'admin/deleteCategory/' . $category->id; ?>" class="myButton">删除</a></td>
+                            <td><a href="<?php echo URL . 'stock/deleteCategory/' . $category->id; ?>" class="myButton">删除</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>

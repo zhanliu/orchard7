@@ -41,7 +41,7 @@
 
                     <tbody>
                     <?php foreach ($products as $product) { ?>
-                        <tr>
+                        <tr align="center">
                             <td><?php echo $product->id; ?></td>
                             <td><?php echo $product->name; ?></td>
                             <td><?php echo $product->category_id; ?></td>

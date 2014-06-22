@@ -47,7 +47,7 @@
                                         <div>第四步</div><span>确认订单</span>
                                     </li>
                                 </ul>
-                                <form action="#" id="basicwizard" class="form-horizontal">
+                                <form action="<?php echo URL; ?>order/addOrder" method="post" target="_parent" id="basicwizard" class="form-horizontal">
                                     <fieldset title="第一步" id="basicwizard-step-1" class="stepy-step" style="display: block;">
                                         <legend>输入手机号</legend>
                                         <div class="form-group">
@@ -178,7 +178,7 @@
                                         </div>
                                         <div class="stepy-navigator panel-footer"><div class="pull-right">
                                                 <a href="#" class="btn btn-default" onclick="back4()"><i class="fa fa-long-arrow-left"></i> Back</a>
-                                                <input type="submit" class="finish btn-success btn" value="Submit"></div></div>
+                                                <input type="submit" class="finish btn-success btn" value="Submit" onclick="submit_add_order()"></div></div>
                                     </fieldset>
 
                                 </form>
@@ -241,6 +241,10 @@
           document.getElementById("myform").submit();
         }
         return true;
+    }
+
+    function submit_add_order() {
+        $("#basicwizard").submit();
     }
 
     function validateCellphone() {

@@ -44,9 +44,9 @@ class Order extends Controller
             }
         }
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/add_order_step_two.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/order/add_order_step_two.php';
+        require 'application/views/common/footer.php';
     }
 
     // for ajax callback
@@ -101,9 +101,9 @@ class Order extends Controller
             $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
         }
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/add_order_step_three.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/order/add_order_step_three.php';
+        require 'application/views/common/footer.php';
     }
 
 
@@ -157,15 +157,18 @@ class Order extends Controller
 
         $order_details = $order_detail_model->getOrderDetailByOrderId($order_id);
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/add_order_step_four.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/order/add_order_step_four.php';
+        require 'application/views/common/footer.php';
     }
 
+    public function addSumbitOrder() {
+
+    }
 
     public function addOrderStepFive() {
 
-        header('location: ' . URL . 'admin/manageOrder');
+        header('location: ' . URL . 'order/manageOrder');
 //        require 'application/views/admin/header.php';
 //        require 'application/views/admin/add_order_step_five.php';
 //        require 'application/views/admin/footer.php';
@@ -186,9 +189,9 @@ class Order extends Controller
         $orderDetails = $order_detail_model->getAllOrderDetails();
 
         //////////////////////
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/order_manager.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/order/order_manager.php';
+        require 'application/views/common/footer.php';
     }
 
     public function deleteOrder($id) {
@@ -199,7 +202,7 @@ class Order extends Controller
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $order_detail_model->deleteOrderDetailByOrderId($id);
 
-        header('location: ' . URL . 'admin/manageOrder');
+        header('location: ' . URL . 'order/manageOrder');
     }
 
     public function orderStatus() {
@@ -210,7 +213,7 @@ class Order extends Controller
         $order_model = $this->loadModel('OrderModel');
         $orders = $order_model->updateOrderStatus($order_id, $order_status);
 
-        header('location: ' . URL . 'admin/manageOrder');
+        header('location: ' . URL . 'order/manageOrder');
     }
 
     public function updateOrder($id) {
@@ -236,9 +239,9 @@ class Order extends Controller
             }
         }
 
-        require 'application/views/admin/header.php';
-        require 'application/views/admin/update_order.php';
-        require 'application/views/admin/footer.php';
+        require 'application/views/common/header.php';
+        require 'application/views/order/update_order.php';
+        require 'application/views/common/footer.php';
     }
 
     function submitUpdateOrder() {
@@ -284,6 +287,6 @@ class Order extends Controller
             $address_model->updateAddressById($address_id, "", $province, $city, $district, $address1, $address2);
         }
 
-        header('location: ' . URL . 'admin/manageOrder');
+        header('location: ' . URL . 'order/manageOrder');
     }
 }
