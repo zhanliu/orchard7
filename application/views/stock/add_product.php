@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">价格</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" size=10 name="price" id="price" placeholder="价格只需输入金额..." >
+                        <input type="text" class="form-control" size=10 name="price" id="price" placeholder="输入金额..." >
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
     }
 </script>
 
-<script src="/orchard7/public/js/jquery.knob.js"></script>
+<script src="<?php echo URL; ?>public/js/jquery.knob.js"></script>
 
 <!-- jQuery File Upload Dependencies -->
 <script src="<?php echo URL; ?>public/js/jquery.ui.widget.js"></script>

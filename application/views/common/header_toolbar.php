@@ -8,7 +8,8 @@
 
     <ul class="nav navbar-nav pull-right toolbar">
         <li class="dropdown">
-            <a href="http://redteamux.com/avant/ui-buttons.php#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">John McCartney <i class="fa fa-caret-down"></i></span><img src="<?php echo URL; ?>public/img/dangerfield.png" alt="Dangerfield"></a>
+            <a href="http://redteamux.com/avant/ui-buttons.php#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs"><?php echo $_SESSION['login']; ?> <i class="fa fa-caret-down"></i></span>
+                <img src="<?php echo URL; ?>public/img/dangerfield.png" alt="Dangerfield"></a>
             <ul class="dropdown-menu userinfo arrow">
                 <li class="username">
                     <a href="http://redteamux.com/avant/ui-buttons.php#">
@@ -22,7 +23,7 @@
                         <li><a href="http://redteamux.com/avant/ui-buttons.php#">Account <i class="pull-right fa fa-cog"></i></a></li>
                         <li><a href="http://redteamux.com/avant/ui-buttons.php#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
                         <li class="divider"></li>
-                        <li><a href="/orchard7/common/logout" class="text-right">Sign Out</a></li>
+                        <li><a href="<?php echo URL; ?>common/logout" class="text-right">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
