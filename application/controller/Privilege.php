@@ -42,7 +42,7 @@ class Privilege extends Controller
     {
         if (isset($id)) {
             $role_model = $this->loadModel('RoleModel');
-            $role_model->deleteStore($id);
+            $role_model->deleteRole($id);
         }
 
         // where to go after song has been deleted

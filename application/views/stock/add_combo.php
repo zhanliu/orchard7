@@ -131,15 +131,15 @@
     </div>
 </div>
 
-<script src="/orchard7/public/js/jquery.knob.js"></script>
+<script src="<?php echo URL; ?>public/js/jquery.knob.js"></script>
 
 <!-- jQuery File Upload Dependencies -->
-<script src="/orchard7/public/js/jquery.ui.widget.js"></script>
-<script src="/orchard7/public/js/jquery.iframe-transport.js"></script>
-<script src="/orchard7/public/js/jquery.fileupload.js"></script>
+<script src="<?php echo URL; ?>public/js/jquery.ui.widget.js"></script>
+<script src="<?php echo URL; ?>public/js/jquery.iframe-transport.js"></script>
+<script src="<?php echo URL; ?>public/js/jquery.fileupload.js"></script>
 
 <!-- Our main JS file -->
-<script src="/orchard7/public/js/upload-script.js"></script>
+<script src="<?php echo URL; ?>public/js/upload-script.js"></script>
 
 <script type="text/javascript">
 

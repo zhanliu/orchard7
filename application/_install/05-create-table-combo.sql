@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `orchard7`.`combo` (
   `img_url` varchar(80) NULL,
   `is_active` int(1) NOT NULL DEFAULT '1',
   `created_time` datetime NOT NULL,
-  `updated_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;

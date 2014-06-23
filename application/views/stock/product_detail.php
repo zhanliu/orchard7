@@ -24,7 +24,7 @@ Created Time: <?php echo $product[0]->created_time; ?><br><br>
 Updated Time: <?php echo $product[0]->updated_time; ?>
 </td>
 <td>
-    <img src="/orchard7/public/uploads/<?php echo $product[0]->img_url; ?>"/>
+    <img src="<?php echo URL; ?>public/uploads/<?php echo $product[0]->img_url; ?>"/>
 </td>
 </tr>
 </table>
