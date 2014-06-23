@@ -4,8 +4,6 @@ if (!session_id()) session_start();
       header('location: ' . URL . 'common/login');
   }
 ?>
-<!DOCTYPE html>
-<!-- saved from url=(0041)http://redteamux.com/avant/ui-buttons.php -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

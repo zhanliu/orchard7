@@ -13,8 +13,8 @@ class Stock extends Controller
         $category_model = $this->loadModel('CategoryModel');
         $categories = $category_model->getAllCategories();
 
-        $stats_model = $this->loadModel('CategoryStatsModel');
-        $amount_of_categories = $stats_model->getAmountOfCategories();
+        //$stats_model = $this->loadModel('CategoryStatsModel');
+        //$amount_of_categories = $stats_model->getAmountOfCategories();
 
         require 'application/views/common/header.php';
         require 'application/views/stock/category.php';

@@ -56,7 +56,7 @@ class Application
             }
         } else {
             // invalid URL, so simply show home/index
-            require './application/controller/Home.php';
+            require './application/controller/home.php';
             $home = new Home();
             $home->index();
         }
@@ -68,11 +68,15 @@ class Application
     private function splitUrl()
     {
         if (isset($_GET['url'])) {
+            //echo "Origin url is ".$_GET['url'].'<br>';
 
             // split URL
             $url = rtrim($_GET['url'], '/');
+            //echo "2nd Origin url is ".$_GET['url'].'<br>';
             $url = filter_var($url, FILTER_SANITIZE_URL);
+            //echo "3rd Origin url is ".$_GET['url'].'<br>';
             $url = explode('/', $url);
+            //echo "url[0] is ".$url[0].'<br>';
 
             // Put URL parts into according properties
             // By the way, the syntax here is just a short form of if/else, called "Ternary Operators"
@@ -83,7 +87,7 @@ class Application
             $this->url_parameter_2 = (isset($url[3]) ? $url[3] : null);
             $this->url_parameter_3 = (isset($url[4]) ? $url[4] : null);
 
-            // for debugging. uncomment this if you have problems with the URL
+            //for debugging. uncomment this if you have problems with the URL
             // echo 'Controller: ' . $this->url_controller . '<br />';
             // echo 'Action: ' . $this->url_action . '<br />';
             // echo 'Parameter 1: ' . $this->url_parameter_1 . '<br />';
