@@ -26,14 +26,14 @@
             <form id="myform" action="<?php echo URL; ?>stock/submitAddProduct" method="post" >
                 <div class="form-group">
                     <label class="col-sm-3 control-label">商品名称</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <input type="text" class="form-control" name="name" id="name" placeholder="必填..." >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">类目</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <select class="form-control" id="category_id" name="category_id">
                             <option value="">选择商品目录</option>
                             <?php foreach ($categories as $category) { ?>
@@ -45,27 +45,37 @@
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">价格</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" size=10 name="price" id="price" placeholder="输入金额..." >
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" size=10 name="price" id="price" placeholder="输入金额..." >
+                            <span class="input-group-addon">.00</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">单位</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
                         <input type="text" class="form-control" size=10 name="unit" id="unit" placeholder="个/斤/公斤/份/盒..." >
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">状态</label>
+                <div class="form-group" style="height:50px">
+                    <label class="col-sm-3 control-label" for="myToggleButton">激活</label>
                     <div class="col-sm-6">
-                        <select name="is_active" id="slider" data-role="slider" data-mini="true">
-                            <option value="on">激活</option>
-                            <option value="off">禁止</option>
-                        </select>
+                        <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+                        <label for="cmn-toggle-1"></label>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">商品描述</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" name="description" id="description"></textarea>
+                    </div>
+                </div>
+
                 <input type="hidden" name="img_url" id="img_url">
                 <input type="hidden" name="upload_img_name_prefix" value="<?php echo $upload_prefix; ?>">
                 <input type="hidden" name="submit_add_product">

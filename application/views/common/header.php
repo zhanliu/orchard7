@@ -1,8 +1,8 @@
 <?php
 if (!session_id()) session_start();
-  if (!isset($_SESSION['login'])) {
-      header('location: ' . URL . 'common/login');
-  }
+if (!isset($_SESSION['login'])) {
+    header('location: ' . URL . 'common/login');
+}
 ?>
 <html>
 <head>
@@ -21,6 +21,7 @@ if (!session_id()) session_start();
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/toggles.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/styles.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/jquery.datatable.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/style.css">
 
     <!-- The main CSS file -->
     <link href="<?php echo URL; ?>public/css/dropbox-style.css" rel="stylesheet" />
@@ -35,11 +36,14 @@ if (!session_id()) session_start();
     <script src="<?php echo URL; ?>public/js/jquery.cookie.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.nicescroll.min.js"></script>
     <script src="<?php echo URL; ?>public/js/prettify.js"></script>
-    <script src="<?php echo URL; ?>public/js/jquery.sparklines.min.js"></script>
+    <!--<script src="/orchard7/public/js/jquery.easypiechart.min.js"></script>
+    <script src="/orchard7/public/js/jquery.sparklines.min.js"></script>-->
     <script src="<?php echo URL; ?>public/js/toggle.min.js"></script>
     <script src="<?php echo URL; ?>public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="<?php echo URL; ?>public/js/application.js"></script>
+    <!--<script src="/orchard7/public/js/demo.js"></script>-->
 
+    <!-- The following CSS are included as plugins and can be removed if unused-->
 </head>
 
 <body class="" style="">
@@ -61,21 +65,24 @@ if (!session_id()) session_start();
                 </form>
             </li>
             <li class="divider"></li>
-            <li><a href="<?php echo URL; ?>home/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="/home/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+
+
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>权限管理</span>
                     <span class="badge badge-primary">5</span></a>
                 <ul class="acc-menu">
-                    <li><a href="<?php echo URL; ?>privilege/addRole">添加角色</a></li>
-                    <li><a href="<?php echo URL; ?>privilege/role">角色管理</a></li>
-                    <li><a href="<?php echo URL; ?>privilege/credential">添加人员</a></li>
-                    <li><a href="<?php echo URL; ?>privilege/credential">人员管理</a></li>
+                    <li><a href="/orchard7/privilege/addRole">添加角色</a></li>
+                    <li><a href="/orchard7/privilege/role">角色管理</a></li>
+                    <li><a href="/orchard7/privilege/credential">添加人员</a></li>
+                    <li><a href="/orchard7/privilege/credential">人员管理</a></li>
                 </ul>
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-th"></i> <span>资产中心</span> </a>
                 <ul class="acc-menu">
-                    <li><a href="<?php echo URL; ?>admin/store"><span>店铺管理</span></a></li>
+                    <li><a href="/orchard7/admin/store"><span>店铺管理</span></a></li>
                 </ul>
             </li>
+-->
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-list-ol"></i> <span>库存管理</span> <span class="badge badge-indigo">4</span></a>
                 <ul class="acc-menu" style="display: none;">
                     <li><a href="<?php echo URL; ?>stock/addCategory">添加类目</a></li>
@@ -86,15 +93,17 @@ if (!session_id()) session_start();
                     <li><a href="<?php echo URL; ?>stock/combo">套餐管理</a></li>
                 </ul>
             </li>
+
+
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-tasks"></i> <span>订单中心</span> <span class="badge badge-info">12</span></a>
                 <ul class="acc-menu">
-                    <li><a href="<?php echo URL; ?>order/addOrder">订单添加</a></li>
-                    <li><a href="<?php echo URL; ?>order/manageOrder">订单管理</a></li>
+                    <li><a href="/orchard7/order/addOrder">订单添加</a></li>
+                    <li><a href="/orchard7/order/manageOrder">订单管理</a></li>
                 </ul>
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>会员中心</span></a>
                 <ul class="acc-menu">
-                    <li><a href="<?php echo URL; ?>admin/customer">客户管理</a></li>
+                    <li><a href="/orchard7/admin/customer">客户管理</a></li>
                 </ul>
             </li>
 

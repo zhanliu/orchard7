@@ -1272,7 +1272,7 @@ textarea.form-control {
     height:auto
 }
 .form-group {
-    margin-bottom:15px
+    margin-bottom:10px
 }
 .radio,.checkbox {
     display:block;
@@ -5678,12 +5678,12 @@ select.form-control {
     padding:6px 9px 5px 4px
 }
 .form-group {
-    margin-bottom:20px
+    margin-bottom:10px
 }
 .row-border .form-group {
     border-top:1px solid #e6e7e8;
-    padding-top:20px;
-    padding-bottom:20px;
+    padding-top:10px;
+    padding-bottom:10px;
     margin-bottom:0;
     margin-left:-20px;
     margin-right:-20px;

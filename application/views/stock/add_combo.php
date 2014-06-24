@@ -26,7 +26,7 @@
             <form id="myform" action="<?php echo URL; ?>stock/submitAddCombo" method="post" >
                 <div class="form-group">
                     <label class="col-sm-3 control-label">套餐名称</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <input type="text" class="form-control" name="name" id="name" placeholder="必填..." >
                     </div>
                 </div>
@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">价格</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input type="text" class="form-control" size=10 name="price" id="price" placeholder="输入金额..." >
@@ -71,24 +71,23 @@
                     </div>
                 </div>
 
-
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">状态</label>
+                <div class="form-group" style="height:50px">
+                    <label class="col-sm-3 control-label" for="myToggleButton">激活</label>
                     <div class="col-sm-6">
-                        <div class="toggle-slide active">
-                            <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
-                                <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">ON</div>
-                                <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
-                                <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">OFF</div>
-                            </div>
-                        </div>
-
+                        <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
+                        <label for="cmn-toggle-1"></label>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">套餐描述</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" name="description" id="description"></textarea>
+                    </div>
+                </div>
+
                 <input type="hidden" name="description" value="">
                 <input type="hidden" name="tag" value="">
-                <input type="hidden" name="is_active" id="is_active" value="">
                 <input type="hidden" name="img_url" id="img_url">
                 <input type="hidden" name="submit_add_combo">
                 <input type="hidden" name="upload_img_name_prefix" value="<?php echo $upload_prefix; ?>">
@@ -190,4 +189,8 @@
     function deleteRow() {
         $("input[name='chk']:checked").parent().parent().html("");
     }
+    $(document).ready(function(){
+        $("#myToggleButton").button();
+    });
+
 </SCRIPT>
