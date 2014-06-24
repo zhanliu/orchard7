@@ -3,7 +3,7 @@
     <a id="rightmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="left" title="" data-original-title="Toggle Infobar"></a>
 
     <div class="navbar-header pull-left">
-        <a class="navbar-brand" href="http://redteamux.com/avant/index.php">Avant</a>
+        <a class="navbar-brand" href="http://redteamux.com/avant/index.php">Orchard #7</a>
     </div>
 
     <ul class="nav navbar-nav pull-right toolbar">

@@ -35,7 +35,7 @@ if (!session_id()) session_start();
     <script src="<?php echo URL; ?>public/js/jquery.cookie.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.nicescroll.min.js"></script>
     <script src="<?php echo URL; ?>public/js/prettify.js"></script>
-    <script src="<?php echo URL; ?>public/js/jquery.sparklines.min.js"></script>-->
+    <script src="<?php echo URL; ?>public/js/jquery.sparklines.min.js"></script>
     <script src="<?php echo URL; ?>public/js/toggle.min.js"></script>
     <script src="<?php echo URL; ?>public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="<?php echo URL; ?>public/js/application.js"></script>

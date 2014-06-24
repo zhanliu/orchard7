@@ -44,7 +44,7 @@
                             </span>
 
                             <span>
-                            <input type="text" name="quantity[]" class="form-addon-control" >
+                            <input type="text" name="quantity[]" class="form-addon-control" placeholder="输入数量...">
                             </span>
 
                             <span>
@@ -168,7 +168,7 @@
         appendStr += '</span>';
 
         appendStr += '<span>';
-        appendStr += '<input type="text" name="quantity[]" class="form-addon-control" >';
+        appendStr += '<input type="text" name="quantity[]" class="form-addon-control" placeholder="输入数量...">';
         appendStr += '</span>';
 
         appendStr += '<span> \r\n';
