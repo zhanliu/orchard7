@@ -82,7 +82,7 @@ if (!isset($_SESSION['login'])) {
                     <li><a href="/orchard7/admin/store"><span>店铺管理</span></a></li>
                 </ul>
             </li>
--->
+
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-list-ol"></i> <span>库存管理</span> <span class="badge badge-indigo">4</span></a>
                 <ul class="acc-menu" style="display: none;">
                     <li><a href="<?php echo URL; ?>stock/addCategory">添加类目</a></li>
