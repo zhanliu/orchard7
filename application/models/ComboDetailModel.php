@@ -39,5 +39,19 @@ class ComboDetailModel
         $query->execute(array(':id' => $id));
     }
 
+    public function deleteMappingByProductId($id)
+    {
+        $sql = "DELETE FROM combo_detail WHERE product_id = :id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':id' => $id));
+    }
+
+    public function deleteMappingByComboId($id)
+    {
+        $sql = "DELETE FROM combo_detail WHERE combo_id = :id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':id' => $id));
+    }
+
 
 }

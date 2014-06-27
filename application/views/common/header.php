@@ -18,12 +18,10 @@ if (!isset($_SESSION['login'])) {
     <link href="<?php echo URL; ?>public/css/default.css" rel="stylesheet" type="text/css" media="all" id="styleswitcher">
     <link href="<?php echo URL; ?>public/css/default.css" rel="stylesheet" type="text/css" media="all" id="headerswitcher">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/prettify.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/toggles.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/styles.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/jquery.datatable.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/style.css">
 
-    <!-- The main CSS file -->
     <link href="<?php echo URL; ?>public/css/dropbox-style.css" rel="stylesheet" />
 
 
@@ -36,14 +34,9 @@ if (!isset($_SESSION['login'])) {
     <script src="<?php echo URL; ?>public/js/jquery.cookie.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.nicescroll.min.js"></script>
     <script src="<?php echo URL; ?>public/js/prettify.js"></script>
-    <!--<script src="/orchard7/public/js/jquery.easypiechart.min.js"></script>
-    <script src="/orchard7/public/js/jquery.sparklines.min.js"></script>-->
-    <script src="<?php echo URL; ?>public/js/toggle.min.js"></script>
     <script src="<?php echo URL; ?>public/js/placeholdr.js"></script><style>.placeholdr{color:#AAA;}</style>
     <script src="<?php echo URL; ?>public/js/application.js"></script>
-    <!--<script src="/orchard7/public/js/demo.js"></script>-->
 
-    <!-- The following CSS are included as plugins and can be removed if unused-->
 </head>
 
 <body class="" style="">

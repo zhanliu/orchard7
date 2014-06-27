@@ -77,7 +77,7 @@ class Stock extends Controller
         if (isset($_POST["submit_add_product"])) {
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
-            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["tag"], $_POST["description"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
+            $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
         }
 
         header('location: ' . URL . 'stock/product');
@@ -88,6 +88,9 @@ class Stock extends Controller
         if (isset($id)) {
             $product_model = $this->loadModel('ProductModel');
             $product_model->deleteProduct($id);
+
+            $combo_detail_model = $this->loadModel('ComboDetailModel');
+            $combo_detail_model->deleteMappingByProductId($id);
         }
         header('location: ' . URL . 'stock/product');
     }
@@ -127,6 +130,9 @@ class Stock extends Controller
         if (isset($id)) {
             $combos_model = $this->loadModel('ComboModel');
             $combos_model->deleteCombo($id);
+
+            $combo_detail_model = $this->loadModel('ComboDetailModel');
+            $combo_detail_model->deleteMappingByComboId($id);
         }
 
         header('location: ' . URL . 'stock/combo');
