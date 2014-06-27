@@ -78,6 +78,7 @@ class Stock extends Controller
             // load model, perform an action on the model
             $product_model = $this->loadModel('ProductModel');
             $product_model->addProduct($_POST["name"], $_POST["category_id"], $_POST["unit"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
+
         }
 
         header('location: ' . URL . 'stock/product');
