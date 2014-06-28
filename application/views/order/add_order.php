@@ -92,7 +92,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label"></label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入路名或小区...">
+                                                    <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入楼栋和门牌号...">
                                                 </div>
                                             </div>
                                         </div>

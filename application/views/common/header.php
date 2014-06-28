@@ -64,15 +64,16 @@ if (!isset($_SESSION['login'])) {
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>权限管理</span>
                     <span class="badge badge-primary">5</span></a>
                 <ul class="acc-menu">
-                    <li><a href="/orchard7/privilege/addRole">添加角色</a></li>
-                    <li><a href="/orchard7/privilege/role">角色管理</a></li>
-                    <li><a href="/orchard7/privilege/credential">添加人员</a></li>
-                    <li><a href="/orchard7/privilege/credential">人员管理</a></li>
+                    <li><a href="<?php echo URL; ?>privilege/addRole">添加角色</a></li>
+                    <li><a href="<?php echo URL; ?>privilege/role">角色管理</a></li>
+                    <li><a href="<?php echo URL; ?>privilege/credential">添加人员</a></li>
+                    <li><a href="<?php echo URL; ?>privilege/credential">人员管理</a></li>
                 </ul>
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-th"></i> <span>资产中心</span> </a>
                 <ul class="acc-menu">
-                    <li><a href="/orchard7/admin/store"><span>店铺管理</span></a></li>
+                    <li><a href="<?php echo URL; ?>asset/addStore">添加店铺</a></li>
+                    <li><a href="<?php echo URL; ?>asset/store"><span>店铺管理</span></a></li>
                 </ul>
             </li>
 
