@@ -30,6 +30,7 @@ class Common extends Controller
 
     public function validateLogin() {
 
+        if (isset($_POST['login']) && isset($_POST['password'])) {
         $login = $_POST["login"];
         $password = $_POST["password"];
 
@@ -45,6 +46,9 @@ class Common extends Controller
         }
         else {
             $error_msg = "Wrong Username or Password";
+            require 'application/views/common/login.php';
+        }
+        } else {
             require 'application/views/common/login.php';
         }
     }

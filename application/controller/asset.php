@@ -49,4 +49,10 @@ class Asset extends Controller
         header('location: ' . URL . 'asset/store');
     }
 
+    public function getStoreDetailById($id) {
+        $store_model = $this->loadModel('StoreModel');
+        $store = $store_model->getStoreById($id);
+        echo json_encode($store[0]);
+    }
+
 }

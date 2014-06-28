@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `store` (
   `lat` varchar(40) COLLATE utf8_unicode_ci,
   `lon` varchar(40) COLLATE utf8_unicode_ci,
   `phone_number` varchar(20) COLLATE utf8_unicode_ci,
-  `status` int(1) NOT NULL DEFAULT 1,
+  `is_active` int(1) NOT NULL DEFAULT 1,
   `tag` varchar(40) COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)

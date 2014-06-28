@@ -55,6 +55,23 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">店铺详情</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 
 <style>
     .storeform { padding:.8em 1.2em; }
@@ -69,6 +86,25 @@
     });
 
     function show_store_detail(store_id) {
+        $.ajax({
+            url: '<?php echo URL; ?>asset/getStoreDetailById/' + store_id,
+            data: "",
+            dataType: 'json',
+            success: function(data) {
+                var name = data['name'];
+                var state = data['state'];
+                var city = data['city'];
+                var district = data['district'];
+                var address1 = data['address1'];
+                var address2 = data['address2'];
+                var phone_number = data['phone_number'];
+                var full_address = state + city + district + address1 + address2;
+                var content = '<p>店铺名称: ' + name + '</p>';
+                content+= '<p>地址: ' + full_address + '</p>';
+                content+= '<p>电话: ' + phone_number + '</p>';
+                $('#modal-body').html(content);
+            }
 
+        })
     }
 </script>

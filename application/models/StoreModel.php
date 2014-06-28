@@ -26,6 +26,17 @@ class StoreModel
         return $query->fetchAll();
     }
 
+    public function getStoreById($id)
+    {
+        $sql = "SELECT id, name, state, city, district, address1, address2, phone_number, lat, lon FROM store ";
+        $sql.= "WHERE id=".$id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addStore($name, $district, $address1, $address2, $phone_number)
     {
         // clean the input from javascript code for example
