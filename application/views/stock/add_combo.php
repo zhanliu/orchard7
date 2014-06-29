@@ -127,7 +127,6 @@
             </div>
 
         </div>
-    </div>
 </div>
 
 <script src="<?php echo URL; ?>public/js/jquery.knob.js"></script>

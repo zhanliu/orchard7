@@ -58,7 +58,7 @@ if (!isset($_SESSION['login'])) {
                 </form>
             </li>
             <li class="divider"></li>
-            <li><a href="/home/"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="<?php echo URL; ?>"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
 
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-pencil"></i> <span>权限管理</span>

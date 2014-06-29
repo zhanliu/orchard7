@@ -74,8 +74,13 @@
                             </div>
                         </div>
 
-
+                        <input type="hidden" name="lat" id="lat"/>
+                        <input type="hidden" name="lng" id="lng"/>
+                        <input type="hidden" name="country" value="中国"/>
+                        <input type="hidden" name="province" value="广东省"/>
+                        <input type="hidden" name="city" value="广州市"/>
                         <input type="hidden" name="submit_add_store"/>
+
 
                         <div class="panel-footer">
                             <div class="row">
@@ -87,7 +92,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     </form>
                    </div>
@@ -97,14 +101,27 @@
         </div>
     </div>
 </div>
-
+<script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript"></script>
 <script type="text/javascript">
     function submit() {
         if ($('#name').val()=="") {
             alert('店铺名称不能为空');
         } else {
+            var full_address = '广东省广州市' + $('#district').val() + $('#address1').val() +$('#address2').val();
+            alert(full_address);
+            var myGeo = new BMap.Geocoder();
+            myGeo.getPoint(full_address, function (point) {
+                if (point) {
+                    alert(point.lat);
+                    alert(point.lng);
+                    $('#lat').val(point.lat);
+                    $('#lng').val(point.lng);
+                } else{
+                    alert('您输入的地址有误，百度地图获取不到！');
+                }
+            });
             document.getElementById("myform").submit();
         }
-        return false;
     }
 </script>
+

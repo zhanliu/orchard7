@@ -19,7 +19,8 @@ class StoreModel
      */
     public function getAllStores()
     {
-        $sql = "SELECT id, name, state, city, district, address1, address2, phone_number, lat, lon FROM store";
+        $sql = "SELECT s.id, s.name, s.phone_number, a.province, a.city, a.district, a.address1, a.address2 FROM store as s, address as a ";
+        $sql.= "WHERE a.id=s.address_id";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -28,8 +29,8 @@ class StoreModel
 
     public function getStoreById($id)
     {
-        $sql = "SELECT id, name, state, city, district, address1, address2, phone_number, lat, lon FROM store ";
-        $sql.= "WHERE id=".$id;
+        $sql = "SELECT s.id, s.name, s.phone_number, a.province, a.city, a.district, a.address1, a.address2 FROM store as s, address as a ";
+        $sql.= "WHERE a.id=s.address_id AND s.id=".$id;
 
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -37,18 +38,17 @@ class StoreModel
         return $query->fetchAll();
     }
 
-    public function addStore($name, $district, $address1, $address2, $phone_number)
+    public function addStore($name, $address_id, $phone_number)
     {
         // clean the input from javascript code for example
         $name = strip_tags($name);
-        $district = strip_tags($district);
-        $address1 = strip_tags($address1);
-        $address2 = strip_tags($address2);
+        $district = strip_tags($address_id);
         $phone_number = strip_tags($phone_number);
 
-        $sql = "INSERT INTO store (name, district, address1, address2, phone_number) VALUES (:name, :district, :address1, :address2, :phone_number)";
+        $sql = "INSERT INTO store (name, address_id, phone_number) VALUES (:name, :address_id, :phone_number)";
+
         $query = $this->db->prepare($sql);
-        $query->execute(array(':name' => $name, ':district' => $district, ':address1' => $address1, ':address2' => $address2, ':phone_number' => $phone_number));
+        $query->execute(array(':name' => $name, ':address_id' => $address_id, ':phone_number' => $phone_number));
     }
 
     public function deleteStore($store_id)

@@ -92,13 +92,13 @@
             dataType: 'json',
             success: function(data) {
                 var name = data['name'];
-                var state = data['state'];
+                var province = data['province'];
                 var city = data['city'];
                 var district = data['district'];
                 var address1 = data['address1'];
                 var address2 = data['address2'];
                 var phone_number = data['phone_number'];
-                var full_address = state + city + district + address1 + address2;
+                var full_address = province + city + district + address1 + address2;
                 var content = '<p>店铺名称: ' + name + '</p>';
                 content+= '<p>地址: ' + full_address + '</p>';
                 content+= '<p>电话: ' + phone_number + '</p>';

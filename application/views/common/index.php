@@ -13,7 +13,10 @@
 
         <div class="container">
 
-            请从左侧菜单选择功能入口！
+            请从左侧菜单选择功能入口！<p>
+
+            </p>
+            <a href="#" onclick="getLocation()">Test</a>
 
         </div>
     </div>

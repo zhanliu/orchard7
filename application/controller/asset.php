@@ -30,11 +30,12 @@ class Asset extends Controller
 
     public function submitAddStore()
     {
-        echo "function trigger with param ".$_POST["submit_add_store"];
         if (isset($_POST["submit_add_store"])) {
-
+            //insert row to address table
+            $address_model = $this->loadModel('AddressModel');
+            $address_id = $address_model->addAddress($_POST["country"], $_POST["province"], $_POST["city"], $_POST["district"], $_POST["address1"], $_POST["address2"]);
             $store_model = $this->loadModel('StoreModel');
-            $store_model->addStore($_POST["name"], $_POST["district"], $_POST["address1"], $_POST["address2"], $_POST["phone_number"]);
+            $store_model->addStore($_POST["name"], $address_id, $_POST["phone_number"]);
         }
 
         header('location: ' . URL . 'asset/store');

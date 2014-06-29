@@ -200,7 +200,6 @@
             <div class="panel">
             </div><!-- /panel -->
          </div>
-    </div>
 </div>
 <script>
     /*
