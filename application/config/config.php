@@ -19,7 +19,7 @@ ini_set("display_errors", 1);
  * Put your URL here, for local development "127.0.0.1" or "localhost" (plus sub-folder) is fine
  */
 define('URL', 'http://127.0.0.1/orchard7/');
-
+//define('URL', 'http://orchard7.sinaapp.com/');
 /**
  * Configuration for: Database
  * This is the place where you define your database credentials, database type etc.
@@ -29,3 +29,11 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'orchard7');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+/*
+define('DB_TYPE', 'mysql');
+define('DB_HOST', SAE_MYSQL_HOST_M);
+define('DB_PORT', SAE_MYSQL_PORT);
+define('DB_NAME', SAE_MYSQL_DB);
+define('DB_USER', SAE_MYSQL_USER);
+define('DB_PASS', SAE_MYSQL_PASS);
+*/
