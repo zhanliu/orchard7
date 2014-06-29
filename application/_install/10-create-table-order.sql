@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `orchard7`.`order1` (
+CREATE TABLE IF NOT EXISTS `order1` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `customer_id` varchar(20) NOT NULL,
   `status` varchar(10) NOT NULL,

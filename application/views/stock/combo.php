@@ -71,27 +71,7 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-<!--            <a href="--><?php //echo URL; ?><!--stock/addCombo" class="myButton">添加新套餐</a>-->
-<!--        </div>-->
-<!--    </div>-->
 
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">商品详情</h4>
-            </div>
-            <div class="modal-body" id="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
 </div>
 
 <script type="text/javascript">
@@ -109,11 +89,11 @@
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
-                //var img_url = data['img_url'];
-                //var content = '<p><img src="/orchard7/public/upload/' + img_url + '" width="240" height="180"></p>';
+                var img_url = data['img_url'];
                 var content = '<p>套餐名称: ' + name + '</p>';
                 content+= '<p>定价: ' + price + '</p>';
                 content+= '<p>套餐描述: ' + description + '</p>';
+                content+= '<p><img src="<?php echo URL; ?>public/uploads/' + img_url + '" width="240" height="180"></p>';
                 $('#modal-body').html(content);
 
             }
@@ -133,10 +113,10 @@
                     var unit = data[i]['unit'];
                     var description = data[i]['description'];
                     content+= '<hr>';
-                    content+= '<p><img src="<?php echo URL; ?>public/uploads/' + img_url + '" width="240" height="180"></p>';
                     content+= '<p>商品名称: ' + name + '</p>';
                     content+= '<p>定价: ' + price + '/' + unit + '</p>';
                     content+= '<p>商品描述: ' + description + '</p>';
+                    content+= '<p><img src="<?php echo URL; ?>public/uploads/' + img_url + '" width="240" height="180"></p>';
                 }
                 $('#modal-detail').html(content);
             }

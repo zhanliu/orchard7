@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `orchard7`.`combo` (
+CREATE TABLE IF NOT EXISTS `combo` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `price` double(10,2) NOT NULL,

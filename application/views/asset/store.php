@@ -19,6 +19,7 @@
                     <tr>
                         <th>标识</th>
                         <th>名称</th>
+                        <th>地址</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -28,6 +29,7 @@
                     <tr>
                         <th>标识</th>
                         <th>名称</th>
+                        <th>地址</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -38,8 +40,12 @@
                         <tr align="center">
                             <td><?php echo $store->id; ?></td>
                             <td><?php echo $store->name; ?></td>
+                            <?php
+                                $full_address = $store->city.$store->district.$store->address1.$store->address2;
+                            ?>
+                            <td><?php echo $full_address; ?></td>
                             <td><a href="<?php echo URL . 'asset/deleteStore/' . $store->id; ?>" class="myButton">删除</a></td>
-                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_store_detail('<?php echo $store->id; ?>')">查看</a>
+                            <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_store_detail('<?php echo $store->id; ?>', '<?php echo $store->address_id; ?>')">查看</a>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -65,6 +71,7 @@
             <div class="modal-body" id="modal-body">
 
             </div>
+            <div class="modal-body" id="modal-detail"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
@@ -85,24 +92,38 @@
         $('#store_data_table').dataTable();
     });
 
-    function show_store_detail(store_id) {
+    function show_store_detail(store_id, address_id) {
         $.ajax({
             url: '<?php echo URL; ?>asset/getStoreDetailById/' + store_id,
             data: "",
             dataType: 'json',
             success: function(data) {
                 var name = data['name'];
+                var phone_number = data['phone_number'];
+                var content = '<p>店铺名称: ' + name + '</p>';
+                content+= '<p>电话: ' + phone_number + '</p>';
+
+                $('#modal-body').html(content);
+            }
+
+        })
+
+        $.ajax({
+            url: '<?php echo URL; ?>common/getAddressById/' + address_id,
+            data: "",
+            dataType: 'json',
+            success: function(data) {
+
                 var province = data['province'];
                 var city = data['city'];
                 var district = data['district'];
                 var address1 = data['address1'];
                 var address2 = data['address2'];
-                var phone_number = data['phone_number'];
+
                 var full_address = province + city + district + address1 + address2;
-                var content = '<p>店铺名称: ' + name + '</p>';
-                content+= '<p>地址: ' + full_address + '</p>';
-                content+= '<p>电话: ' + phone_number + '</p>';
-                $('#modal-body').html(content);
+
+                var content = '<p>地址: ' + full_address + '</p>';
+                $('#modal-detail').html(content);
             }
 
         })

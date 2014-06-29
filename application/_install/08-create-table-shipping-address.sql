@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `orchard7`.`shipping_address` (
+CREATE TABLE IF NOT EXISTS `shipping_address` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `customer_id` int(20) NOT NULL,
   `address_id` int(20) NOT NULL,

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `orchard7`.`order_details` (
+CREATE TABLE IF NOT EXISTS `order_details` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `order_id` int(20) NOT NULL,
   `combo_id` int(20) NOT NULL,

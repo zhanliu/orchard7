@@ -64,4 +64,10 @@ class Common extends Controller
         require 'application/views/common/login.php';
     }
 
+    public function getAddressById($id) {
+        $address_model = $this->loadModel('AddressModel');
+        $address = $address_model->getAddressById($id);
+        echo json_encode($address[0]);
+    }
+
 }

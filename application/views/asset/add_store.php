@@ -108,19 +108,19 @@
             alert('店铺名称不能为空');
         } else {
             var full_address = '广东省广州市' + $('#district').val() + $('#address1').val() +$('#address2').val();
-            alert(full_address);
+            //alert(full_address);
             var myGeo = new BMap.Geocoder();
             myGeo.getPoint(full_address, function (point) {
                 if (point) {
-                    alert(point.lat);
-                    alert(point.lng);
+                    //alert(point.lat);
                     $('#lat').val(point.lat);
                     $('#lng').val(point.lng);
+                    document.getElementById("myform").submit();
                 } else{
                     alert('您输入的地址有误，百度地图获取不到！');
                 }
             });
-            document.getElementById("myform").submit();
+
         }
     }
 </script>
