@@ -90,10 +90,11 @@
                 var description = data['description'];
                 var price = data['price'];
                 var img_url = data['img_url'];
-                var content = '<p>套餐名称: ' + name + '</p>';
+
+<?php if (ONLINE == 'FALSE') {echo "var content = '<p><img src=\"" . URL . "public/uploads/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} else { echo "var content = '<p><img src=\"http://orchard7-product.stor.sinaapp.com/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} ?>
+                content+= '<p>套餐名称: ' + name + '</p>';
                 content+= '<p>定价: ' + price + '</p>';
                 content+= '<p>套餐描述: ' + description + '</p>';
-                content+= '<p><img src="<?php echo URL; ?>public/uploads/' + img_url + '" width="240" height="180"></p>';
                 $('#modal-body').html(content);
 
             }
@@ -113,10 +114,10 @@
                     var unit = data[i]['unit'];
                     var description = data[i]['description'];
                     content+= '<hr>';
+<?php if (ONLINE == 'FALSE') {echo "content+= '<p><img src=\"" . URL . "public/uploads/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} else { echo "content+= '<p><img src=\"http://orchard7-product.stor.sinaapp.com/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} ?>
                     content+= '<p>商品名称: ' + name + '</p>';
                     content+= '<p>定价: ' + price + '/' + unit + '</p>';
                     content+= '<p>商品描述: ' + description + '</p>';
-                    content+= '<p><img src="<?php echo URL; ?>public/uploads/' + img_url + '" width="240" height="180"></p>';
                 }
                 $('#modal-detail').html(content);
             }

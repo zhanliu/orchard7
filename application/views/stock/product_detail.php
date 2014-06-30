@@ -24,7 +24,7 @@ Created Time: <?php echo $product[0]->created_time; ?><br><br>
 Updated Time: <?php echo $product[0]->updated_time; ?>
 </td>
 <td>
-    <img src="<?php echo URL; ?>public/uploads/<?php echo $product[0]->img_url; ?>"/>
+    <img src="<?php if (ONLINE == 'FALSE') {echo URL . 'public/uploads/' . $product[0]->img_url;} else { echo 'http://orchard7-product.stor.sinaapp.com/' .  $product[0]->img_url;} ?>"/>
 </td>
 </tr>
 </table>
