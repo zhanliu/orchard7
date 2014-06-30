@@ -18,6 +18,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
     $file_name = $prefix_name."_".$_FILES['upl']['name'];
 
 	if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
+
 		echo '{"status":"success"}';
         //////////////////
         $filename = 'public/uploads/'.$file_name;
