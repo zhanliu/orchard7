@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="cleartype" content="on">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
+    <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
 </head>
 
 
@@ -46,59 +47,39 @@
                         <span><a class="lastDay" href="#">最新上市</a></span>
                     </h1><script id="compiledJs" type="text/javascript" src="<?php echo URL; ?>public/js/mobile.js"></script>
 
-                    <div class=" list list-large">
-                        <a href="#" class="inner-list pearl">
+                    <?php
+                    $index = 0;
+                    foreach ($products as $product) {
+                        $index++;
+                        $div_id = "div_".$index;
+                        $number_field_id = "number_field_".$index;
 
-                            <div class="image">
-                                <div class="inner-image">
-                                    <img src="<?php echo URL; ?>public/img/mobile/1602.jpg" class="loaded wasted">
-                                </div>
-                            </div>
-
-                            <div class="details">
-                                <div class="inner-details">
-                                    <h3>草莓</h3>
-                                    <p>table &amp; floor lamps</p>
-                                    <p class="bright">up to 45% off</p>
-                                </div>
-                            </div>
-
-                        </a>
-                    </div>
+                    ?>
 
                     <div class="list list-large">
                         <a href="#" class="inner-list pearl">
                             <div class="image">
                                 <div class="inner-image">
-                                    <img src="<?php echo URL; ?>public/img/mobile/1999.jpg" data-koh-imagetypeid="all" class="loaded wasted">
+                                    <img src="<?php echo 'http://orchard7-product.stor.sinaapp.com/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted">
                                 </div>
                             </div>
-                            <div class="details">
+                            <div class="details" id="<?php echo $div_id; ?>">
                                 <div class="inner-details">
-                                    <h3>热情果</h3>
-                                    <p>table &amp; floor lamps</p>
-                                    <p class="bright">up to 45% off</p>
+                                    <h3><?php echo $product->name; ?></h3>
+                                    <p><?php echo $product->description; ?></p>
+                                    <p class="bright"><?php echo $product->price; ?>/<?php echo $product->unit; ?></p>
+                                </div>
+                                <div class="pd_product-buy-num">
+                                    <div class="pd_product-num-wrap">
+                                        <span class="pd_product-num-minus" onclick="sub('<?php echo $number_field_id; ?>', '<?php echo $div_id; ?>')"></span>
+                                        <input class="pd_product-num-form" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
+                                        <span class="pd_product-num-plus" onclick="add('<?php echo $number_field_id; ?>', '<?php echo $div_id; ?>')"></span>
+                                    </div>
                                 </div>
                             </div>
                         </a>
                     </div>
-
-                    <div class="list list-large">
-                        <a href="#" class="inner-list pearl">
-                            <div class="image">
-                                <div class="inner-image">
-                                    <img src="<?php echo URL; ?>public/img/mobile/fruit-cut.jpg" data-koh-imagetypeid="all" class="loaded wasted">
-                                </div>
-                            </div>
-                            <div class="details">
-                                <div class="inner-details">
-                                    <h3>水果切</h3>
-                                    <p>精选热带水果</p>
-                                    <p class="bright">12元/杯</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    <?php } ?>
 
 
                     <div class="footer_menu">
@@ -130,6 +111,26 @@
 
 </div>
 
+<script type="text/javascript">
+    function add(number_field_id, div_id) {
+        var number_field = document.getElementById(number_field_id);
+        number_field.value++;
+        $('#'+div_id).css('background', '#eeeeff');
+    }
+
+    function sub(number_field_id, div_id) {
+        var number_field = document.getElementById(number_field_id);
+
+        if (number_field.value>0) {
+            number_field.value--;
+        }
+
+        if (number_field.value==0) {
+            $('#'+div_id).css('background', 'none');
+        }
+
+    }
+</script>
 <!-- END BrightTag -->
 
 </body></html>

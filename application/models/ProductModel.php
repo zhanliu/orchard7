@@ -17,7 +17,7 @@ class ProductModel
 
     public function getAllProducts()
     {
-        $sql = "SELECT id, name,category_id,unit, price, description, tag, img_url, is_active, created_time, updated_time FROM product";
+        $sql = "SELECT id, name,category_id, unit, price, description, tag, img_url, is_active, created_time, updated_time FROM product";
         $query = $this->db->prepare($sql);
         $query->execute();
 
