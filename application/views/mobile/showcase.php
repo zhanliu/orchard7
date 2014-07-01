@@ -57,7 +57,7 @@
 
                             <div class="details">
                                 <div class="inner-details">
-                                    <h3>Nova</h3>
+                                    <h3>草莓</h3>
                                     <p>table &amp; floor lamps</p>
                                     <p class="bright">up to 45% off</p>
                                 </div>
@@ -68,21 +68,35 @@
 
                     <div class="list list-large">
                         <a href="#" class="inner-list pearl">
-
                             <div class="image">
                                 <div class="inner-image">
                                     <img src="<?php echo URL; ?>public/img/mobile/1999.jpg" data-koh-imagetypeid="all" class="loaded wasted">
                                 </div>
                             </div>
-
                             <div class="details">
                                 <div class="inner-details">
-                                    <h3>Nova</h3>
+                                    <h3>热情果</h3>
                                     <p>table &amp; floor lamps</p>
                                     <p class="bright">up to 45% off</p>
                                 </div>
                             </div>
+                        </a>
+                    </div>
 
+                    <div class="list list-large">
+                        <a href="#" class="inner-list pearl">
+                            <div class="image">
+                                <div class="inner-image">
+                                    <img src="<?php echo URL; ?>public/img/mobile/fruit-cut.jpg" data-koh-imagetypeid="all" class="loaded wasted">
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="inner-details">
+                                    <h3>水果切</h3>
+                                    <p>精选热带水果</p>
+                                    <p class="bright">12元/杯</p>
+                                </div>
+                            </div>
                         </a>
                     </div>
 
@@ -100,7 +114,7 @@
 
                     </div>
                     <footer>
-                        <nav class="shine dropShadow ">
+                        <nav>
                             <div style="text-align: center">
                                 <a href="#" class="nohash" target="about-us">关于我们</a>
                                 <a href="#" class="nohash kohTagging" target="">联系我们</a>
