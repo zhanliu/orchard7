@@ -410,6 +410,9 @@ div.image div.inner-image {
 
 div.image div.inner-image img {
     width: 100%;
+}
+
+#product-img {
     height: 180px;
 }
 
@@ -687,4 +690,224 @@ input[type="text"], input[type="tel"], input[type="number"], textarea {
 }
 .hide {
     display: none;
+}
+
+/* checkout */
+h1.continue a:after {
+    content: "";
+    display: block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 1px solid #fff;
+    background: transparent url(images/bkg_fwdbk.png) no-repeat center 9px;
+    background-size: 12px auto;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* =============================================================================
+   Checkout RTS View
+   ========================================================================== */
+#checkoutRTSView button[href] {
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 100%;
+    font-weight: normal;
+    text-transform: none;
+    border: 1px solid #999;
+    padding: 5px 15px 5px 5px;
+}
+
+#checkoutRTSView button[href] > div {
+    background: transparent url(images/bkg_fwdbk.png) no-repeat right center;
+    background-size: 12px auto;
+    -moz-background-origin: content-box;
+    background-origin: content-box;
+}
+
+#checkoutRTSView button.payment[href] {
+    padding: 0 15px 0 5px;
+}
+
+#checkoutRTSView button[href] p {
+    margin: 0 25px 0 0;
+    overflow: hidden;
+}
+
+#checkoutRTSView button.payment[href] p {
+    padding-bottom:9px;
+}
+
+#checkoutRTSView button.shipping[href] p {
+    padding: 3px 0;
+}
+
+#checkoutRTSView button[href] strong {
+    width: 60px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+#checkoutRTSView button[href] strong, span {
+    display: inline-block;
+}
+
+#checkoutRTSView form {
+    padding: 5px;
+}
+
+#checkoutRTSView form fieldset {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#checkoutRTSView form fieldset.buttonGroup {
+    text-align: center;
+    border-bottom: none;
+    margin-top:10px;
+}
+
+#checkoutRTSView form fieldset.buttonGroup button {
+    width: 49%;
+}
+
+#checkoutRTSView div.item-speed {
+    margin:20px 0 0;
+    font-size:12px;
+    text-transform: uppercase;
+    color: #A51A10;
+}
+
+#checkoutRTSView .icon-readyship {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    background: url(../mobileimages/readyship/rocket-ship-icon.png);
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+
+#checkoutRTSView div.quickship {
+    margin:10px 0;
+    padding: 10px 0;
+    border-top:1px solid #dedede;
+    border-bottom:1px solid #dedede;
+}
+
+#checkoutRTSView h2 {
+    padding-bottom:5px;
+    margin-top:5px;
+    font-weight: normal;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+#checkoutRTSView table {
+    width: 100%;
+    text-align: left;
+}
+
+#checkoutRTSView td {
+    max-width: 140px;
+}
+
+#checkoutRTSView td,
+#checkoutRTSView th {
+    padding: 3px;
+}
+
+#checkoutRTSView td a {
+    color: #333;
+}
+
+#checkoutRTSView thead {
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #666;
+}
+
+#checkoutRTSView tbody td strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#checkoutRTSView .list {
+    border-top: 1px solid #dedede;
+    margin-top: 5px;
+}
+
+#checkoutRTSView .list .inner-list > div {
+    padding: 0 5px 5px 0;
+    vertical-align: top;
+}
+
+#checkoutRTSView .list .details h3 {
+    font-size: 13px;
+}
+
+#checkoutRTSView div.list:last-child {
+    padding-bottom: 62px;
+}
+
+#checkoutRTSView div.list .inner-list > div.image {
+    width: 80px;
+    height: auto;
+}
+
+#checkoutRTSView div.list .inner-list > div.image div.inner-image {
+    /* margin: 10px 0 10px 10px; */
+    width: 80px;
+    height: auto;
+    margin: 0;
+}
+
+#checkoutRTSView div.details {
+    background: none;
+    vertical-align: top;
+}
+
+#checkoutRTSView div.inner-details {
+    min-height: 1px;
+    /*	padding-bottom: 30px; */
+    padding-right: 60px;
+}
+
+#checkoutRTSView .qty {
+    color:#666;
+}
+
+#checkoutRTSView .details .price {
+    font-size:12px;
+    color:#000;
+}
+
+#checkoutRTSView button {
+    width: 49%;
+}
+
+.numeric {
+    text-align: right;
+}
+
+.ok {
+    border: 1px solid #0b9131;
+    background: #00ad0b;
+    background: -moz-linear-gradient(top, #00ad0b 0%, #0b9131 50%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00ad0b), color-stop(50%,#0b9131));
+    background: -webkit-linear-gradient(top, #00ad0b 0%,#0b9131 50%);
+    background: -o-linear-gradient(top, #00ad0b 0%,#0b9131 50%);
+    background: -ms-linear-gradient(top, #00ad0b 0%,#0b9131 50%);
+    background: linear-gradient(to bottom, #00ad0b 0%,#0b9131 50%);
+    color: white;
 }
