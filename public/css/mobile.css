@@ -662,3 +662,21 @@ input[type="text"], input[type="tel"], input[type="number"], textarea {
     border: 1px solid;
     border-radius: 0;
 }
+
+/* cart */
+.num_cart {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    line-height: 14px;
+    background: #f02387;
+    border-radius: 7px;
+    color: #fff;
+    z-index: 2;
+}
+.hide {
+    display: none;
+}
