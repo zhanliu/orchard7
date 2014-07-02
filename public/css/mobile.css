@@ -662,3 +662,12 @@ input[type="text"], input[type="tel"], input[type="number"], textarea {
     border: 1px solid;
     border-radius: 0;
 }
+
+.gray_price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.highlight_price {
+    font: 700 15px/30px arial;
+}
