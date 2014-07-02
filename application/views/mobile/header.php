@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
+?>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Orchard7 | Something fresh every day</title>

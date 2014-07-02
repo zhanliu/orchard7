@@ -13,7 +13,7 @@
                 </style>
                 <h1 class="drrrty continue keep-shopping">
                     <a href="#">
-                        <strong>查看订单</strong>
+                        <strong>继续购物</strong>
                     </a>
                 </h1>
 
@@ -99,9 +99,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="add-to-wrap" style="width: 98%;">
-                        <button type="submit" class="paypal" href="/checkout/paypal"></button>
-                        <button type="submit" class="ok">submit order</button>
+                    <div class="add-to-wrap" align="center" style="width: 98%";>
+                        <button type="submit" class="ok">提交订单</button>
                     </div>
 
                 </form>

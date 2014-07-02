@@ -903,3 +903,40 @@ h1.continue a:after {
     background: linear-gradient(to bottom, #00ad0b 0%,#0b9131 50%);
     color: white;
 }
+
+button, input[type="button"], input[type="reset"], input[type="submit"], [role="button"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
+h1.keep-shopping {
+    line-height: 30px;
+}
+
+h1.continue {
+    position: relative;
+    height: 40px;
+    line-height: 15px;
+    text-transform: none;
+    text-align: left;
+    padding-left: 50px;
+}
+
+h1.continue strong {
+    display: block;
+    padding-top: 12px;
+}
+b, strong, th {
+    font-weight: bold;
+    font-family: arial, sans-serif;
+}
+
+.original {
+    font-size: 12px;
+    color: #666;
+}
