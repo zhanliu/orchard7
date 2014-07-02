@@ -155,7 +155,7 @@ class Stock extends Controller
 
         if (isset($_POST["submit_add_combo"])) {
             // load model, perform an action on the model
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"], $_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
+            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"],  $_POST["original_price"],$_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
 
             // insert multiple records into mapping table
             $product_ids = $_POST['product_id'];

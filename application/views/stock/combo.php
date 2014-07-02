@@ -92,11 +92,15 @@
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
+                var original_price = data['original_price'];
                 var img_url = data['img_url'];
 
 <?php if (ONLINE == 'FALSE') {echo "var content = '<p><img src=\"" . URL . "public/uploads/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} else { echo "var content = '<p><img src=\"http://orchard7-product.stor.sinaapp.com/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} ?>
                 content+= '<p>套餐名称: ' + name + '</p>';
                 content+= '<p>定价: ' + price + '</p>';
+                if (original_price != null) {
+                    content+= '<p>原价: ' + original_price + '</p>';
+                }
                 content+= '<p>套餐描述: ' + description + '</p>';
                 $('#modal-body').html(content);
 
