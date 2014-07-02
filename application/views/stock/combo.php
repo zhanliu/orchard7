@@ -20,6 +20,7 @@
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -29,6 +30,7 @@
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -40,6 +42,7 @@
                         <tr align="center">
                             <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
+                            <td><?php echo $combo->original_price; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteCombo/' . $combo->id; ?>" class="myButton">删除</a></td>
                             <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail('<?php echo $combo->id; ?>')">查看</a>
                         </tr>
@@ -89,11 +92,15 @@
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
+                var original_price = data['original_price'];
                 var img_url = data['img_url'];
 
 <?php if (ONLINE == 'FALSE') {echo "var content = '<p><img src=\"" . URL . "public/uploads/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} else { echo "var content = '<p><img src=\"http://orchard7-product.stor.sinaapp.com/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} ?>
                 content+= '<p>套餐名称: ' + name + '</p>';
                 content+= '<p>定价: ' + price + '</p>';
+                if (original_price != null) {
+                    content+= '<p>原价: ' + original_price + '</p>';
+                }
                 content+= '<p>套餐描述: ' + description + '</p>';
                 $('#modal-body').html(content);
 

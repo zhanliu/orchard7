@@ -40,7 +40,7 @@
                                 <div class="inner-details">
                                     <h3><?php echo $product->name; ?></h3>
                                     <p><?php echo $product->description; ?></p>
-                                    <p class="bright"><span id="<?php echo $price_id; ?>"><?php echo $product->price; ?></span>元/<?php echo $product->unit; ?></p>
+                                    <p><span  class="bright highlight_price" id="<?php echo $price_id; ?>"><?php echo $product->price; ?>元/<?php echo $product->unit; ?></span> <span id="<?php echo $price_id . '_original'; ?>" class="gray_price" <?php if ($product->original_price == null) { echo "style='display:none'";} ?>><?php echo $product->original_price; ?>元/<?php echo $product->unit; ?></span></span></p>
                                 </div>
                                 <div class="pd_product-buy-num">
                                     <div class="pd_product-num-wrap">

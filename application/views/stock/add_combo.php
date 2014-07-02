@@ -71,6 +71,17 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">原价</label>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" size=10 name="original_price" id="original_price" placeholder="输入金额..." >
+                            <span class="input-group-addon">.00</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group" style="height:50px">
                     <label class="col-sm-3 control-label" for="myToggleButton">激活</label>
                     <div class="col-sm-6">
