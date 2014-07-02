@@ -1,6 +1,3 @@
-
-
-
 <div id="snap-container">
 
     <div id="container" class="snap-content  scrollable">
@@ -36,7 +33,7 @@
                         <a href="#" class="inner-list pearl">
                             <div class="image">
                                 <div class="inner-image">
-                                    <img src="<?php echo 'http://orchard7-product.stor.sinaapp.com/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted">
+                                    <img src="<?php echo 'http://orchard7-product.stor.sinaapp.com/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted product-img">
                                 </div>
                             </div>
                             <div class="details" id="<?php echo $div_id; ?>">

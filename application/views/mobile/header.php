@@ -20,7 +20,7 @@
             <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
         </a>
         <em id="num_cart" class="num_cart hide"></em>
-        <a href="#" class="floatRight"><span class="cart"></span></a>
+        <a href="<?php echo URL; ?>mobile/checkout" class="floatRight"><span class="cart"></span></a>
         <div id="menuIcon" class="floatRight" data-event="toggle-menu"><span id="menuDown" class="menu down"></span></div>
     </nav>
 </header>
