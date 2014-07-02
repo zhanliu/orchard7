@@ -53,7 +53,7 @@
                         $index++;
                         $div_id = "div_".$index;
                         $number_field_id = "number_field_".$index;
-
+                        $price_id = "price_".$index;
                     ?>
 
                     <div class="list list-large">
@@ -67,13 +67,13 @@
                                 <div class="inner-details">
                                     <h3><?php echo $product->name; ?></h3>
                                     <p><?php echo $product->description; ?></p>
-                                    <p class="bright"><?php echo $product->price; ?>/<?php echo $product->unit; ?></p>
+                                    <p class="bright"><span id="<?php echo $price_id; ?>"><?php echo $product->price; ?></span>元/<?php echo $product->unit; ?></p>
                                 </div>
                                 <div class="pd_product-buy-num">
                                     <div class="pd_product-num-wrap">
-                                        <span class="pd_product-num-minus" onclick="sub('<?php echo $number_field_id; ?>', '<?php echo $div_id; ?>')"></span>
+                                        <span class="pd_product-num-minus" onclick="sub('<?php echo $index ?>')"></span>
                                         <input class="pd_product-num-form" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
-                                        <span class="pd_product-num-plus" onclick="add('<?php echo $number_field_id; ?>', '<?php echo $div_id; ?>')"></span>
+                                        <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
                                     </div>
                                 </div>
                             </div>
@@ -112,22 +112,41 @@
 </div>
 
 <script type="text/javascript">
-    function add(number_field_id, div_id) {
+    var total_price = 0;
+    var unit = 0;
+    function add(index) {
+
+        var number_field_id = 'number_field_' + index;
+        var div_id = 'div_' + index;
+        var price_id = 'price_' + index;
+
         var number_field = document.getElementById(number_field_id);
         number_field.value++;
+        unit++;
+
         $('#'+div_id).css('background', '#eeeeff');
+        total_price+= Number($('#'+price_id).text());
+        alert(unit);
     }
 
-    function sub(number_field_id, div_id) {
+    function sub(index) {
+        var number_field_id = 'number_field_' + index;
+        var div_id = 'div_' + index;
+        var price_id = 'price_' + index;
+
         var number_field = document.getElementById(number_field_id);
 
         if (number_field.value>0) {
             number_field.value--;
+            unit--;
+            total_price-= Number($('#'+price_id).text());
+            alert(unit);
         }
 
         if (number_field.value==0) {
             $('#'+div_id).css('background', 'none');
         }
+
 
     }
 </script>
