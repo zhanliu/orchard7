@@ -369,9 +369,9 @@ html.interstitial header,
 html.interstitial footer,
 html.interstitial #contentWrapper,
 
-/* =============================================================================
-   App Downloading
-   ========================================================================== */
+    /* =============================================================================
+       App Downloading
+       ========================================================================== */
 #appBanner.download {
     background-color: #878787;
     /*background-image: url(../mobileimages/download-app-3.png);*/
@@ -666,14 +666,6 @@ input[type="text"], input[type="tel"], input[type="number"], textarea {
     border-radius: 0;
 }
 
-.gray_price {
-    text-decoration: line-through;
-    color: gray;
-}
-
-.highlight_price {
-    font: 700 15px/30px arial;
-
 /* cart */
 .num_cart {
     position: absolute;
@@ -942,9 +934,4 @@ h1.continue strong {
 b, strong, th {
     font-weight: bold;
     font-family: arial, sans-serif;
-}
-
-.original {
-    font-size: 12px;
-    color: #666;
 }
