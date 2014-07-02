@@ -219,7 +219,14 @@ header nav .cart {
     background-size: 25px !important;
 }
 
+.gray_price {
+    text-decoration: line-through;
+    color: gray;
+}
 
+.highlight_price {
+    font: 700 15px/30px arial;
+}
 /* =============================================================================
    Custom Loader
    ========================================================================== */
@@ -412,7 +419,7 @@ div.image div.inner-image img {
     width: 100%;
 }
 
-#product-img {
+img.product-img {
     height: 180px;
 }
 
@@ -589,7 +596,7 @@ footer nav a .menu {
     display: -ms-flexbox;
     display: flex;
     margin-left: 10px;
-    margin-top: 40px;
+    margin-top: 10px;
     -webkit-box-align: center;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;

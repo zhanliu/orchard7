@@ -30,9 +30,9 @@
                     ?>
 
                     <div class="list list-large">
-                        <a href="#" class="inner-list pearl">
+                        <div class="inner-list pearl">
                             <div class="image">
-                                <div class="inner-image">
+                                <div class="inner-image product-image">
                                     <img src="<?php echo 'http://orchard7-product.stor.sinaapp.com/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted product-img">
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <?php } ?>
 
