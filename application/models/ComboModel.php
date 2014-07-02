@@ -17,7 +17,7 @@ class ComboModel
 
     public function getAllCombos()
     {
-        $sql = "SELECT id, name, price, description, tag, img_url, is_active, created_time, updated_time FROM combo";
+        $sql = "SELECT id, name, price,original_price, description, tag, img_url, is_active, created_time, updated_time FROM combo";
         $query = $this->db->prepare($sql);
         $query->execute();
 

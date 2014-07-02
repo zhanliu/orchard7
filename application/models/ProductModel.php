@@ -26,7 +26,7 @@ class ProductModel
 
     public function getProductById($product_id)
     {
-        $sql = "SELECT id, name,category_id,unit, price, description, tag, img_url, is_active, created_time, updated_time FROM product ";
+        $sql = "SELECT id, name,category_id,unit, price,original_price, description, tag, img_url, is_active, created_time, updated_time FROM product ";
         $sql.= "WHERE id=".$product_id;
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -44,13 +44,14 @@ class ProductModel
         return $query->fetchAll();
     }
 
-    public function addProduct($name, $category_id, $unit, $price, $description, $tag, $img_url, $is_active)
+    public function addProduct($name, $category_id, $unit, $price,$original_price, $description, $tag, $img_url, $is_active)
     {
         // clean the input from javascript code for example
         $name = strip_tags($name);
         $category_id = strip_tags($category_id);
         $unit = strip_tags($unit);
         $price = strip_tags($price);
+        $original_price = strip_tags($original_price);
         $description = strip_tags($description);
         $tag = strip_tags($tag);
         $img_url = strip_tags($img_url);
@@ -60,9 +61,9 @@ class ProductModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO product (name, category_id, unit, price, description, tag, img_url, is_active, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:description,:tag, :img_url, :is_active, :created_time, :updated_time)";
+        $sql = "INSERT INTO product (name, category_id, unit, price,original_price, description, tag, img_url, is_active, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:original_price,:description,:tag, :img_url, :is_active, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price, ':description'=>$description, ':tag'=>$tag, ':img_url'=>$img_url, ':is_active'=>$is_active, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price,':original_price'=>$original_price , ':description'=>$description, ':tag'=>$tag, ':img_url'=>$img_url, ':is_active'=>$is_active, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
     }
 
     public function deleteProduct($id)

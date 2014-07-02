@@ -55,6 +55,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-3 control-label">原价格</label>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" size=10 name="original_price" id="original_price" placeholder="输入金额..." >
+                            <span class="input-group-addon">.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-3 control-label">单位</label>
                     <div class="col-sm-2">
                         <input type="text" class="form-control" size=10 name="unit" id="unit" placeholder="个/斤/公斤/份/盒..." >

@@ -20,6 +20,7 @@
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -29,6 +30,7 @@
                     <tr>
                         <th>名称</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -40,6 +42,7 @@
                         <tr align="center">
                             <td><?php echo $combo->name; ?></td>
                             <td><?php echo $combo->price; ?></td>
+                            <td><?php echo $combo->original_price; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteCombo/' . $combo->id; ?>" class="myButton">删除</a></td>
                             <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_combo_detail('<?php echo $combo->id; ?>')">查看</a>
                         </tr>

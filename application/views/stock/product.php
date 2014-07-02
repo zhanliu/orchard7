@@ -22,6 +22,7 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -34,6 +35,7 @@
                         <th>类别</th>
                         <th>单位</th>
                         <th>价格</th>
+                        <th>原价</th>
                         <th>删除</th>
                         <th>查看</th>
                     </tr>
@@ -47,6 +49,7 @@
                             <td><?php echo $product->category_id; ?></td>
                             <td><?php echo $product->unit; ?></td>
                             <td><?php echo $product->price; ?></td>
+                            <td><?php echo $product->original_price; ?></td>
                             <td><a href="<?php echo URL . 'stock/deleteProduct/' . $product->id; ?>" class="myButton">删除</a></td>
                             <td><a data-toggle="modal" href="#myModal" class="btn btn-primary" onclick="show_product_detail('<?php echo $product->id; ?>')">查看</a>
 
@@ -97,11 +100,15 @@
                 var name = data['name'];
                 var description = data['description'];
                 var price = data['price'];
+                var original_price = data['original_price'];
                 var unit = data['unit'];
                 var img_url = data['img_url'];
 <?php if (ONLINE == 'FALSE') {echo "var content = '<p><img src=\"" . URL. "public/uploads/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} else { echo "var content = '<p><img src=\"http://orchard7-product.stor.sinaapp.com/' + img_url + '\" width=\"240\" height=\"180\"></p>';";} ?>
 		content+= '<p>商品名称: ' + name + '</p>';
                 content+= '<p>定价: ' + price + '/' + unit + '</p>';
+                if (original_price != null) {
+                    content+= '<p>原价: ' + original_price + '/' + unit + '</p>';
+                }
                 content+= '<p>商品描述: ' + description + '</p>';
                 $('#modal-body').html(content);
              }
