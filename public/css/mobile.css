@@ -942,3 +942,11 @@ b, strong, th {
     font-weight: bold;
     font-family: arial, sans-serif;
 }
+
+div.checkout_summary {
+    padding: 20px;
+}
+
+stepy-hide {
+    display: none;
+}
