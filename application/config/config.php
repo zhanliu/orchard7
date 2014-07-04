@@ -41,5 +41,5 @@ define('DB_PASS', SAE_MYSQL_PASS);
 /* online version or offline development version
  */
  
-// define('ONLINE', 'TRUE');
-define('ONLINE', 'FALSE');
+define('ONLINE', 'TRUE');
+//define('ONLINE', 'FALSE');

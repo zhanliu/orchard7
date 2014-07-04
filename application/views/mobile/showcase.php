@@ -121,8 +121,26 @@
             $('#num_cart').css('display', 'none');
             $('#'+div_id).css('background', 'none');
         }
-
-
     }
+
+    // location service
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else{
+            alert("disabled");
+        }
+    }
+
+    function showPosition(position)
+    {
+        alert("Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude);
+    }
+
+    $(document).ready(function(){
+        getLocation();
+    });
 </script>
 <!-- END BrightTag -->
