@@ -13,6 +13,11 @@ class Mobile extends Controller
     }
 
     public function checkout() {
+
+        $product_ids = $_POST['product_id'];
+        $quantities = $_POST['quantity'];
+
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/checkout.php';
         require 'application/views/mobile/footer.php';

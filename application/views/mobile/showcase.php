@@ -28,7 +28,7 @@
                         </h1>
                     </div>
 
-                    <form>
+                    <form action="<?php echo URL; ?>mobile/checkout" method="post">
                     <?php
                     $index = 0;
                     foreach ($products as $product) {
@@ -39,7 +39,8 @@
                         $price_id = "price_".$index;
                     ?>
 
-                    <div class="list list-large" id="<?php echo $list_id; ?>">
+		            <a href="/cart/delete/73343866" class="deleteCheckout" data-item="9322789"> &nbsp;</a>
+		            <div class="list list-large" id="<?php echo $list_id; ?>">
                         <div class="inner-list pearl">
                             <div class="image">
                                 <div class="inner-image product-image">
@@ -54,9 +55,10 @@
                                        <span id="<?php echo $price_id . '_original'; ?>" class="gray_price" <?php if ($product->original_price == null) { echo "style='display:none'";} ?>><?php echo $product->original_price; ?>元/<?php echo $product->unit; ?></span></span></p>
                                 </div>
                                 <div class="pd_product-buy-num">
-                                    <div class="pd_product-num-wrap">
+                                    <div class="pd_product-num-wrap" id="form-element">
                                         <span class="pd_product-num-minus" onclick="sub('<?php echo $index ?>')"></span>
-                                        <input class="pd_product-num-form" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
+                                        <input class="pd_product-num-form" name="quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
+                                        <input type="hidden" name="product_id[]" value="<?php echo $product->id; ?>" />
                                         <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
                                     </div>
                                 </div>
@@ -167,6 +169,7 @@
         $(".list").each(function() {
             index++;
             var price_id = 'price_' + index;
+            var div_id = 'div_' + index;
             var number_field_id = 'number_field_' + index;
             var number_field = document.getElementById(number_field_id);
             //alert(number_field.value);
@@ -174,11 +177,9 @@
             if (number_field.value==0) {
                 $('#'+list_id).addClass('stepy-hide');
             } else {
-                //total_price+= Number($('#'+price_id).text()) * (number_field.value);
+
             }
         })
-        //$('#total_price').text(total_price);
-        //alert(total_price);
     }
 
     function reset() {
