@@ -18,9 +18,9 @@
                         <span><a class="newToday" href="#">热卖单品</a></span>
                         <span><a class="endsSoon" href="#">精选套餐</a></span>
                         <span><a class="lastDay" href="#">最新上市</a></span>
-                    </h1><script id="compiledJs" type="text/javascript" src="<?php echo URL; ?>public/js/mobile.js"></script>
+                    </h1>
 
-                    <div id="checkoutRTSView" class="current checkout_div" data-url="/checkout" style="display:none">
+                    <div id="checkoutRTSView" class="current checkout_div stepy-hide" data-url="/checkout">
                         <h1 class="drrrty continue keep-shopping">
                             <a href="#" onclick="reset()">
                                 <strong>继续购物</strong>
@@ -28,6 +28,7 @@
                         </h1>
                     </div>
 
+                    <form>
                     <?php
                     $index = 0;
                     foreach ($products as $product) {
@@ -42,7 +43,7 @@
                         <div class="inner-list pearl">
                             <div class="image">
                                 <div class="inner-image product-image">
-                                    <img src="<?php echo 'http://orchard7-product.stor.sinaapp.com/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted product-img">
+                                    <img src="<?php echo URL.'public/uploads/'.$product->img_url; ?>" data-koh-imagetypeid="all" class="loaded wasted product-img">
                                 </div>
                             </div>
                             <div class="details" id="<?php echo $div_id; ?>">
@@ -64,7 +65,7 @@
                     </div>
                     <?php } ?>
 
-                    <div id="checkoutRTSView" class="checkout_div checkout_summary" style="display:none">
+                    <div id="checkoutRTSView" class="checkout_div checkout_summary stepy-hide">
                         <h2 style="border-bottom:1px solid #dedede; margin:20px 0 3px;">订单明细</h2>
                         <table>
                             <tbody>
@@ -84,6 +85,7 @@
                             <button type="submit" class="ok">提交订单</button>
                         </div>
                     </div>
+                    </form>
 
                     <div class="footer_menu">
                         <a href="#">
@@ -117,6 +119,8 @@
 <script type="text/javascript">
     var total_price = 0;
     var unit = 0;
+    var is_checkout = false;
+    
     function add(index) {
 
         var number_field_id = 'number_field_' + index;
@@ -158,8 +162,8 @@
 
     function checkout() {
         var index = 0;
-
-        $('.checkout_div').css('display', 'block');
+        $('.checkout_div').removeClass('stepy-hide');
+        //$('.checkout_div').css('display', 'block');
         $(".list").each(function() {
             index++;
             var price_id = 'price_' + index;
@@ -168,7 +172,7 @@
             //alert(number_field.value);
             var list_id = 'list_' + index;
             if (number_field.value==0) {
-                $('#'+list_id).css('display', 'none');
+                $('#'+list_id).addClass('stepy-hide');
             } else {
                 //total_price+= Number($('#'+price_id).text()) * (number_field.value);
             }
@@ -178,11 +182,30 @@
     }
 
     function reset() {
-
         //$('#basicwizard-head-2').addClass('stepy-active');
         //$('#basicwizard-head-3').removeClass('stepy-active');
-        $('.checkout_div').addClass('stepy-active');
-        $('.list').removeClass('stepy-active');
+        $('.checkout_div').addClass('stepy-hide');
+        $('.list').removeClass('stepy-hide');
     }
+
+    // location service
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else{
+            alert("disabled");
+        }
+    }
+
+    function showPosition(position)
+    {
+        alert("Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude);
+    }
+
+    $(document).ready(function(){
+        getLocation();
+    });
 </script>
 <!-- END BrightTag -->

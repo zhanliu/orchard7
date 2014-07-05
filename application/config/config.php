@@ -40,6 +40,7 @@ define('DB_PASS', SAE_MYSQL_PASS);
 
 /* online version or offline development version
  */
- 
-// define('ONLINE', 'TRUE');
-define('ONLINE', 'FALSE');
+
+//Wrong design, instead of doing this you better define IMG_URL_PREFIX variable.
+define('ONLINE', 'TRUE');
+//define('ONLINE', 'FALSE');
