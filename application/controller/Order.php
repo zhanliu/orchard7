@@ -62,7 +62,11 @@ class Order extends Controller
             $list_of_address = $address_model->getAddressesByCustomerId($cid);
 
             echo json_encode($list_of_address);
+        } else {
+            echo json_encode("");
         }
+
+
     }
 
     public function addOrderStepThree() {
@@ -160,10 +164,6 @@ class Order extends Controller
         require 'application/views/common/header.php';
         require 'application/views/order/add_order_step_four.php';
         require 'application/views/common/footer.php';
-    }
-
-    public function addSumbitOrder() {
-
     }
 
     public function addOrderStepFive() {
@@ -288,5 +288,9 @@ class Order extends Controller
         }
 
         header('location: ' . URL . 'order/manageOrder');
+    }
+
+    public function submitAddOrder() {
+
     }
 }

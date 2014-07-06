@@ -42,5 +42,5 @@ define('DB_PASS', SAE_MYSQL_PASS);
  */
 
 //Wrong design, instead of doing this you better define IMG_URL_PREFIX variable.
-define('ONLINE', 'TRUE');
-//define('ONLINE', 'FALSE');
+//define('ONLINE', 'TRUE');
+define('ONLINE', 'FALSE');
