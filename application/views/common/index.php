@@ -16,7 +16,7 @@
             请从左侧菜单选择功能入口！<p>
 
             </p>
-            <a href="#" onclick="getLocation()">Test</a>
+            <a href="<?php echo URL; ?>order/queryAddressByCellphone/18601603184">Test</a>
 
         </div>
     </div>

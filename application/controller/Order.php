@@ -60,8 +60,10 @@ class Order extends Controller
             $cid = $customer[0]->id;
             $address_model = $this->loadModel('AddressModel');
             $list_of_address = $address_model->getAddressesByCustomerId($cid);
-
+            //echo "size of address is ".sizeof($list_of_address);
             echo json_encode($list_of_address);
+        } else {
+            echo json_encode('Customer not found!');
         }
     }
 

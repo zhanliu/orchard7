@@ -13,6 +13,7 @@ if(!isset($_SESSION['cart'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="cleartype" content="on">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
+    <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
     <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
 </head>
 
