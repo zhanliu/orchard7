@@ -95,9 +95,13 @@
                                                     <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入楼栋和门牌号...">
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="country" value="中国">
+                                            <input type="hidden" name="province" value="广东省">
+                                            <input type="hidden" name="city" value="广州市">
+
+                                            <span id="isAddNewAddressFlag" /></span>
+
                                         </div>
-
-
 
 
                                         <div class="stepy-navigator panel-footer"><div class="pull-right">
@@ -393,11 +397,14 @@
     function add_address() {
         address_flag = 'EXISTED_NEW';
         $('#new_address').css('display', 'block');
+        $('#isAddNewAddressFlag').html('<input type="hidden" name="submit_add_address" >');
+
     }
 
     function hide_address() {
         address_flag = 'EXISTED';
         $('#new_address').css('display', 'none');
+        $('#isAddNewAddressFlag').html('');
     }
 
 </script>
