@@ -58,8 +58,8 @@
 <script type="text/javascript">
     var total_price = 0;
     var unit = 0;
-    var vip_x = 23.105962;
-    var vip_y = 113.237056;
+    //var vip_x = 23.105962;
+    //var vip_y = 113.237056;
 
     // location service
     function getLocation()
@@ -74,7 +74,24 @@
 
     function showPosition(position)
     {
-        alert("Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude);
+        $.ajax({
+                url: '<?php echo URL; ?>location/getDistance/' + position.coords.latitude + '/' + position.coords.longitude,
+                data: "",
+                dataType: 'json',
+                success: function(data) {
+
+                    if (data != '') {
+                        alert('您的位置距离维品会' + data + " 千米");
+
+                    } else {
+                        alert("nothing");
+                    }
+
+
+                }
+            }
+        )
+
     }
 
     $(document).ready(function(){
