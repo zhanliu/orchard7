@@ -1170,3 +1170,18 @@ fieldset {
 body {
     background-image: url('images/fruit-bg.jpg');
 }
+
+.alert-info {
+    background-color: #ddf4fa;
+    border-color: #84d8ed;
+    color: #157890;
+}
+.alert-dismissable {
+    padding-right: 35px;
+}
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 1px;
+}

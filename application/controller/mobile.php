@@ -5,10 +5,8 @@ class Mobile extends Controller
 
     public function index()
     {
-        $product_model = $this->loadModel('ProductModel');
-        $products = $product_model->getAllProducts();
         require 'application/views/mobile/header.php';
-        require 'application/views/mobile/showcase.php';
+        require 'application/views/mobile/index.php';
         require 'application/views/mobile/footer.php';
     }
 

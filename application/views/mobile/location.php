@@ -7,6 +7,7 @@
                 </div>
 
                 <div class="panel-body">
+
                     <div class="form-padding">
                         <div id="form-bg">
                             <form action="<?php echo URL; ?>mobile/showcase" method="post" target="_parent" id="locationform" class="form-horizontal">
@@ -19,7 +20,9 @@
                                 <a title="start shopping now" class="ok" id="shopNowButton" onclick="submit()">开始查找</a>
                             </form>
                         </div>
+
                     </div>
+
 
                     <div id="why-join">
                         <div class="centerbox">
