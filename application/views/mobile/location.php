@@ -101,6 +101,8 @@
                     alert(addComp.province);
                     alert(addComp.city);
                     alert(addComp.district);
+                    alert(addComp.street);
+                    alert(addComp.streetNumber);
                 });
                 //document.cookie = 'address1='+point.lat;
             }
