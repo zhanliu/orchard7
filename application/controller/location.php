@@ -10,8 +10,8 @@ class Location extends Controller
 
     public function getDistance($x, $y) {
 
-        $vip_x = 23.120049102076;
-        $vip_y = 113.30764967515;
+        $vip_x = 23.120748;
+        $vip_y = 113.291059;
         $distance = $this->distance($vip_x, $vip_y, $x, $y);
 
         echo json_encode($distance);
