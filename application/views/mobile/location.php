@@ -7,19 +7,22 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="form-padding">
-                        <div id="form-bg">
+                    <div class="alert alert-info">
+                        <strong>注意!</strong> 当前配送范围仅限广州市越秀区
+                    </div>
 
-                                <fieldset>
-                                    <div class="form-item">
+                    <div id="form-bg">
+
+                       <fieldset>
+                           <div class="form-item">
                                         <input required="required" placeholder="您要配送的大楼或小区..." id="address" name="address" class="form-control"/>
                                     </div>
                                 </fieldset>
 
-                                <button type="submit" title="start shopping now" class="ok" id="shopNowButton" onclick="submit()">开始查找</button>
+                       <button type="submit" title="start shopping now" class="ok" id="shopNowButton" onclick="submit()">开始查找</button>
 
-                        </div>
                     </div>
+
 
                     <div id="why-join">
                         <div class="centerbox">
