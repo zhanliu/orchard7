@@ -1,7 +1,5 @@
 <?php
 
-requirehttp;
-
 class Mobile extends Controller
 {
 

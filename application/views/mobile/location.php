@@ -12,7 +12,7 @@
 
                                 <fieldset>
                                     <div class="form-item">
-                                        <input required="required" placeholder="您要配送的大楼或小区..." type="address" name="address" class="form-control"/>
+                                        <input id= "address" required="required" placeholder="您要配送的大楼或小区..." type="address" name="address" class="form-control"/>
                                     </div>
                                 </fieldset>
 
@@ -43,8 +43,11 @@
 <script type="text/javascript">
 
     var distanceAllowed = 5;
-    //var vip_x = 23.105962;
-    //var vip_y = 113.237056;
+    var shop_x = 23.120748;
+    var shop_y = 113.291059;
+    var your_x;
+    var your_y;
+
 
     // location service
     function getLocation()
@@ -59,28 +62,22 @@
 
     function showPosition(position)
     {
-        $.ajax({
-                url: '<?php echo URL; ?>location/getDistance/' + position.coords.latitude + '/' + position.coords.longitude,
-                data: "",
-                dataType: 'json',
-                success: function(data) {
+        your_x = position.coords.latitude;
+        your_y = position.coords.longitude;
 
-                    if (data != '') {
-
-                        var alertResult = "";
-                        if (data < distanceAllowed) {
-                            alert('您的位置距离维品会' + data + " 千米, 在配送范围！");
-                        } else {
-                            alert('您的位置距离维品会' + data + " 千米, 不在配送范围。。。");
-                        }
-
-                    } else {
-                        alert("nothing");
-                    }
-                }
+        //alert(value_address_1);
+        var myGeo = new BMap.Geocoder();
+        myGeo.getLocation(new BMap.Point(your_y, your_x), function(result){
+            if (result){
+                alert(result.province + ";" + result.city + ";" + result.district);
             }
-        )
+        });
 
+//        myGeo.getPoint(value_address_1, function(point){
+//            if (point) {
+//                alert(point.lat + ";" + point.lng);
+//            }
+//        }, "全国");
     }
 
     $(document).ready(function(){
@@ -91,10 +88,11 @@
     var myGeo = new BMap.Geocoder();
     //地址解析的函数
     function submit(){
-        var value_address_1 = '海印广场';
+        var value_address_1 = $("#address").val();
+        //alert(value_address_1);
         myGeo.getPoint(value_address_1, function(point){
             if (point) {
-                alert(point.lat);
+                alert(point.lat + ";" + point.lng);
             }
         }, "全国");
     }
