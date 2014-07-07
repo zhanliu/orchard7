@@ -204,6 +204,7 @@
             <div class="panel">
             </div><!-- /panel -->
          </div>
+    </div>
 </div>
 <script>
     /*
@@ -265,7 +266,7 @@
     function next1() {
 
         if (validateCellphone()) {
-
+        alert($('#cellphone').val());
         $('#basicwizard-step-1').css('display', 'none');
         $('#basicwizard-step-2').css('display', 'block');
         $('#basicwizard-head-1').removeClass('stepy-active');
@@ -274,8 +275,9 @@
         $.ajax({
              url: '<?php echo URL; ?>order/queryAddressByCellphone/' + $('#cellphone').val(),
              data: "",
-             dataType: 'json',
+             dataType: 'text json',
              success: function(data) {
+               alert('go');
                var content = '';
                var count = 0;
                if (data != '') {
@@ -299,7 +301,7 @@
                  content+= '添加新的配送地址</label></div>';
 
                  $('#output').html(content);
-
+                 alert(address_flag);
                  $('#address_hint').html('选择已有配送地址');
                  if (address_flag == 'EXISTED_NEW') {
                      $('input[name=address_id]')[count].checked="checked";
@@ -320,6 +322,7 @@
 
 
              }
+
            }
         )
 

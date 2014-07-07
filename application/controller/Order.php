@@ -59,9 +59,8 @@ class Order extends Controller
         if (sizeof($customer) == 1) {
             $cid = $customer[0]->id;
             $address_model = $this->loadModel('AddressModel');
-            $list_of_address = $address_model->getAddressesByCustomerId($cid);
-
-            echo json_encode($list_of_address);
+            $address = $address_model->getAddressesByCustomerId($cid);
+            echo json_encode($address);
         } else {
             echo json_encode("");
         }

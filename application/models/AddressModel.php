@@ -28,9 +28,8 @@ class AddressModel
 
     public function getAddressesByCustomerId($customer_id)
     {
-        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, a.id, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id FROM address as a, shipping_address as sa ";
         $sql.= "WHERE a.id=sa.address_id AND sa.customer_id=".$customer_id;
-//        echo $sql;
         $query = $this->db->prepare($sql);
         $query->execute();
 
