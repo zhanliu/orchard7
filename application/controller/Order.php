@@ -59,12 +59,13 @@ class Order extends Controller
         if (sizeof($customer) == 1) {
             $cid = $customer[0]->id;
             $address_model = $this->loadModel('AddressModel');
-            $list_of_address = $address_model->getAddressesByCustomerId($cid);
-            //echo "size of address is ".sizeof($list_of_address);
-            echo json_encode($list_of_address);
+            $address = $address_model->getAddressesByCustomerId($cid);
+            echo json_encode($address);
         } else {
-            echo json_encode('Customer not found!');
+            echo json_encode("");
         }
+
+
     }
 
     public function addOrderStepThree() {
@@ -162,10 +163,6 @@ class Order extends Controller
         require 'application/views/common/header.php';
         require 'application/views/order/add_order_step_four.php';
         require 'application/views/common/footer.php';
-    }
-
-    public function addSumbitOrder() {
-
     }
 
     public function addOrderStepFive() {
@@ -290,5 +287,42 @@ class Order extends Controller
         }
 
         header('location: ' . URL . 'order/manageOrder');
+    }
+
+    public function submitAddOrder() {
+
+        //add Customer
+        $customer_model = $this->loadModel('CustomerModel');
+        $isCustomerExisted = false;
+        $cellphone = $_POST["cellphone"];
+        $customer = $customer_model->getCustomerByCellphone($cellphone);
+        $customer_id = NULL;;
+
+        if (sizeof($customer) == 1) {
+            $isCustomerExisted = true;
+            $customer_id = $customer[0]->id;
+        } else {
+            $customer_id = $customer_model->addCustomer($cellphone);
+        }
+
+        //add Address
+        $shipping_address_id = NULL;
+        $address_model = $this->loadModel('AddressModel');
+        $shipping_address_model = $this->loadModel('ShippingAddressModel');
+
+        if (isset($_POST["submit_add_address"])) {
+            //insert row to address table
+            $address_id = $address_model->addAddress($_POST["country"], $_POST["province"], $_POST["city"], $_POST["district"], $_POST["address1"], $_POST["address2"], "","");
+
+            $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
+        } else if (isset($_POST["submit_already_add_address"])) {
+
+            $shipping_address_id = $_POST["primary_address_radio"];
+            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
+        }
+
+        //add Order
+
     }
 }

@@ -65,7 +65,7 @@ td { vertical-align: top; }
    ========================================================================== */
 header, footer {
     height: 40px;
-    background: #293e6b url('../mobileimages/bkg_tile_x.png') 0 -124px;
+    background: #293e6b url('images/bkg_tile_x.png') 0 -124px;
 }
 
 .ios header {
@@ -981,6 +981,7 @@ div.stepy-hide {
 
 .panel-danger {
     border-color: #e73c3c;
+    padding: 20px;
 }
 .panel {
     margin: 0 0 20px;
@@ -1160,4 +1161,12 @@ fieldset {
     clear: both;
 }
 
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .btn-default {
+    color: #333;
+    background-color: #d1d3d4;
+    border-color: #c6c8cb;
+}
 
+body {
+    background-image: url('images/fruit-bg.jpg');
+}

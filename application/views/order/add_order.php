@@ -47,7 +47,7 @@
                                         <div>第四步</div><span>确认订单</span>
                                     </li>
                                 </ul>
-                                <form action="<?php echo URL; ?>order/addOrder" method="post" target="_parent" id="basicwizard" class="form-horizontal">
+                                <form action="<?php echo URL; ?>order/submitAddOrder" method="post" target="_parent" id="basicwizard" class="form-horizontal">
                                     <fieldset title="第一步" id="basicwizard-step-1" class="stepy-step" style="display: block;">
                                         <legend>输入手机号</legend>
                                         <div class="form-group">
@@ -95,9 +95,13 @@
                                                     <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入楼栋和门牌号...">
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="country" value="中国">
+                                            <input type="hidden" name="province" value="广东省">
+                                            <input type="hidden" name="city" value="广州市">
+
+                                            <span id="isAddNewAddressFlag" /></span>
+
                                         </div>
-
-
 
 
                                         <div class="stepy-navigator panel-footer"><div class="pull-right">
@@ -271,7 +275,7 @@
         $.ajax({
              url: '<?php echo URL; ?>order/queryAddressByCellphone/' + $('#cellphone').val(),
              data: "",
-             dataType: 'json',
+             dataType: 'text json',
              success: function(data) {
                alert('go');
                var content = '';
@@ -318,6 +322,7 @@
 
 
              }
+
            }
         )
 
@@ -395,11 +400,14 @@
     function add_address() {
         address_flag = 'EXISTED_NEW';
         $('#new_address').css('display', 'block');
+        $('#isAddNewAddressFlag').html('<input type="hidden" name="submit_add_address" >');
+
     }
 
     function hide_address() {
         address_flag = 'EXISTED';
         $('#new_address').css('display', 'none');
+        $('#isAddNewAddressFlag').html('');
     }
 
 </script>
