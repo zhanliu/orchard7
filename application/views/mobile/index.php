@@ -11,12 +11,13 @@
                         <strong>注意!</strong> 当前配送范围仅限广州市越秀区
                     </div>
 
-                    <form id="locationform" action="<?php echo URL; ?>mobile/showcase" method="post" class="form-horizontal">
-                        <input type="hidden" name="province" value="广东省">
-                        <input type="hidden" name="city" value="广州市">
-                        <input type="hidden" name="district" value="越秀区">
+
                     <div id="form-bg">
                         <fieldset>
+                            <form id="location_form" action="<?php echo URL; ?>mobile/showcase" method="post" class="form-horizontal">
+                                <input type="hidden" name="province" value="广东省">
+                                <input type="hidden" name="city" value="广州市">
+                                <input type="hidden" name="district" value="越秀区">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">广东省-广州市-越秀区</label>
                                 <div class="col-sm-6">
@@ -30,15 +31,14 @@
                                     <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入楼栋和门牌号...">
                                 </div>
                             </div>
-
+                    </form>
                             <div class="stepy-navigator panel-footer"><div class="pull-right">
-
-                                    <a href="#" onclick="submit()" class="btn btn-primary">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    <a href="#" onclick="next();" class="btn btn-primary">下一步<i class="fa fa-long-arrow-right"></i></a>
                                 </div></div>
                         </fieldset>
 
                     </div>
-                    </form>
+
 
                 </div>
 
@@ -54,64 +54,42 @@
     var shop_x = 23.120748;
     var shop_y = 113.291059;
 
-
-    // location service
-    function getLocation()
-    {
-        if (navigator.geolocation)
-        {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else{
-            alert("disabled");
-        }
-    }
-
-    function showPosition(position)
-    {
-        your_x = position.coords.latitude;
-        your_y = position.coords.longitude;
-
-        var myGeo = new BMap.Geocoder();
-        myGeo.getLocation(new BMap.Point(your_y, your_x), function(result){
-            if (result){
-                var addComp = rs.addressComponents;
-                alert(addComp.province);
-                alert(addComp.city);
-                alert(addComp.district);
-            }
-        });
-    };
-
-
-
     var myGeo = new BMap.Geocoder();
 
-    function submit(){
-        var value_address_1 = "广东省广州市越秀区" + $("#address1").val() + $("#address2").val();
-        myGeo.getPoint(value_address_1, function(point){
+    function next(){
+        var address = '广东省广州市越秀区' + $("#address1").val() + $("#address2").val();
+        myGeo.getPoint(address, function(point){
             if (point) {
-                $.ajax({
-                        url: '<?php echo URL; ?>location/getDistance/' + point.lat + '/' + point.lng,
-                        data: "",
-                        dataType: 'json',
-                        success: function(data) {
-
-                            if (data != '') {
-                                if (data < distanceAllowed) {
-                                    alert('您的位置距离海印广场' + data + " 千米, 在配送范围！");
-                                    document.getElementById("locationform").submit();
-                                } else {
-                                    alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
-                                }
-                            } else {
-                                alert("nothing");
-                            }
-                        }
-                    }
-                )
-
+                alert(point.lat);
+                alert(point.lng);
+                var distance = getDistance(point.lat, point.lng);
+                if (distance < distanceAllowed) {
+                    alert('您的位置距离海印广场' + distance + " 千米, 在配送范围！");
+                    document.getElementById("location_form").submit();
+                } else {
+                    alert('您的位置距离海印广场' + distance + " 千米, 不在配送范围。。。");
+                }
+            } else {
+                alert("定位失败");
             }
         }, "全国");
-    };
+
+    }
+
+    function calculate_distance(lat1, lng1, lat2, lng2) {
+        var R = 6371;
+        var dLat = (lat1 - lat2) * Math.PI / 180;
+        var dLon = (lng1 - lng2) * Math.PI / 180;
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
+    function getDistance(x, y) {
+        return calculate_distance(shop_x, shop_y, x, y);
+
+    }
 
 </script>
