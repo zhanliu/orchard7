@@ -12,7 +12,7 @@
 
                                 <fieldset>
                                     <div class="form-item">
-                                        <input required="required" placeholder="您要配送的大楼或小区..." type="address" name="address" class="form-control"/>
+                                        <input required="required" placeholder="您要配送的大楼或小区..." id="address" name="address" class="form-control"/>
                                     </div>
                                 </fieldset>
 
@@ -91,10 +91,18 @@
     var myGeo = new BMap.Geocoder();
     //地址解析的函数
     function submit(){
-        var value_address_1 = '海印广场';
+        var value_address_1 = document.getElementById("address").value;
         myGeo.getPoint(value_address_1, function(point){
             if (point) {
                 alert(point.lat);
+                myGeo.getLocation(point, function(rs){
+                    var addComp = rs.addressComponents;
+                    //document.getElementById("address_2").innerHTML = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                    alert(addComp.province);
+                    alert(addComp.city);
+                    alert(addComp.district);
+                });
+                //document.cookie = 'address1='+point.lat;
             }
         }, "全国");
     }
