@@ -41,3 +41,72 @@
         </div>
     </div>
 </div>
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
+<script type="text/javascript">
+
+    var distanceAllowed = 5;
+    var shop_x = 23.120748;
+    var shop_y = 113.291059;
+
+
+    // location service
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else{
+            alert("disabled");
+        }
+    }
+
+    function showPosition(position)
+    {
+        your_x = position.coords.latitude;
+        your_y = position.coords.longitude;
+
+        var myGeo = new BMap.Geocoder();
+        myGeo.getLocation(new BMap.Point(your_y, your_x), function(result){
+            if (result){
+                var addComp = rs.addressComponents;
+                alert(addComp.province);
+                alert(addComp.city);
+                alert(addComp.district);
+            }
+        });
+    };
+
+
+
+    var myGeo = new BMap.Geocoder();
+
+    function submit(){
+        var value_address_1 = $("#address").val();
+        myGeo.getPoint(value_address_1, function(point){
+            if (point) {
+                $.ajax({
+                        url: '<?php echo URL; ?>location/getDistance/' + point.lat + '/' + point.lng,
+                        data: "",
+                        dataType: 'json',
+                        success: function(data) {
+
+                            if (data != '') {
+                                if (data < distanceAllowed) {
+                                    alert('您的位置距离海印广场' + data + " 千米, 在配送范围！");
+                                    document.getElementById("locationform").submit();
+                                } else {
+                                    alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
+                                }
+                            } else {
+                                alert("nothing");
+                            }
+                        }
+                    }
+                )
+
+            }
+        }, "全国");
+    };
+
+</script>
