@@ -41,8 +41,8 @@
 
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
-    var total_price = 0;
-    var unit = 0;
+
+    var distanceAllowed = 5;
     //var vip_x = 23.105962;
     //var vip_y = 113.237056;
 
@@ -66,13 +66,17 @@
                 success: function(data) {
 
                     if (data != '') {
-                        alert('您的位置距离维品会' + data + " 千米");
+
+                        var alertResult = "";
+                        if (data < distanceAllowed) {
+                            alert('您的位置距离维品会' + data + " 千米, 在配送范围！");
+                        } else {
+                            alert('您的位置距离维品会' + data + " 千米, 不在配送范围。。。");
+                        }
 
                     } else {
                         alert("nothing");
                     }
-
-
                 }
             }
         )
