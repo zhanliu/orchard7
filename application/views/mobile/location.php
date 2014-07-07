@@ -17,7 +17,7 @@
                                     </div>
                                 </fieldset>
 
-                                <button type="submit" title="start shopping now" class="ok" id="shopNowButton">开始查找</button>
+                                <button type="submit" title="start shopping now" class="ok" id="shopNowButton" onclick="submit()">开始查找</button>
                             </form>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-
+<script src="http://api.map.baidu.com/api?v=1.3&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
     var total_price = 0;
     var unit = 0;
@@ -83,4 +83,18 @@
     $(document).ready(function(){
         getLocation();
     });
+
+    var myGeo = new BMap.Geocoder();
+    function submit() {
+
+        var address = "上海市益江路286弄玉兰香苑广场内(近盛夏路)";
+        myGeo.getPoint(address, function(point) {
+            if (point) {
+                alert(point.lat);
+            } else {
+                alert('not found');
+            }
+        }, "上海市");
+    }
+
 </script>
