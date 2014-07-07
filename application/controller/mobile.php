@@ -5,6 +5,7 @@ class Mobile extends Controller
 
     public function index()
     {
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/index.php';
         require 'application/views/mobile/footer.php';
@@ -28,7 +29,6 @@ class Mobile extends Controller
 
         $product_ids = $_POST['product_id'];
         $quantities = $_POST['quantity'];
-
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/checkout.php';
