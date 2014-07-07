@@ -19,6 +19,9 @@ ini_set("display_errors", 1);
  * Put your URL here, for local development "127.0.0.1" or "localhost" (plus sub-folder) is fine
  */
 define('URL', 'http://127.0.0.1/orchard7/');
+
+define('BAIDU_API_KEY', '8c8974690b10c942a37e0904f952ce35');
+
 //define('URL', 'http://orchard7.sinaapp.com/');
 /**
  * Configuration for: Database
@@ -42,5 +45,5 @@ define('DB_PASS', SAE_MYSQL_PASS);
  */
 
 //Wrong design, instead of doing this you better define IMG_URL_PREFIX variable.
-define('ONLINE', 'TRUE');
-//define('ONLINE', 'FALSE');
+//define('ONLINE', 'TRUE');
+define('ONLINE', 'FALSE');
