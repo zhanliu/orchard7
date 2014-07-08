@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="alert alert-info">
+                    <div class="alert alert-info" id="alert_note">
                         <strong>注意!</strong> 当前配送范围仅限广州市越秀区
                     </div>
 
@@ -25,17 +25,17 @@
                                 </div>
                             </div>
 
-
+                            <!--
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"></label>
                                 <div class="col-sm-6">
                                     <input type="text" id="address2" name="address2" size="30" required="required" class="form-control" placeholder="输入楼栋和门牌号...">
                                 </div>
-                            </div>
-                    </form>
+                            </div>-->
+                            </form>
                             <div class="stepy-navigator panel-footer"><div class="pull-right">
-                                    <a href="#" onclick="next();" class="btn btn-primary">下一步<i class="fa fa-long-arrow-right"></i></a>
-                                </div></div>
+                                <a href="#" onclick="next();" class="btn btn-primary">下一步<i class="fa fa-long-arrow-right"></i></a>
+                            </div></div>
                         </fieldset>
 
                     </div>
@@ -83,12 +83,10 @@
         });
     };
 
-
-
     var myGeo = new BMap.Geocoder();
 
     function next(){
-        var address = '广东省广州市越秀区' + $("#address1").val() + $("#address2").val();
+        var address = '广东省广州市越秀区' + $("#address1").val();// + $("#address2").val();
         myGeo.getPoint(address, function(point){
             if (point) {
                 $.ajax({
@@ -102,7 +100,9 @@
                                     alert('您的位置距离海印广场' + data + " 千米, 在配送范围！");
                                     document.getElementById("location_form").submit();
                                 } else {
-                                    alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
+                                    //alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
+                                    $('#form-bg').html('');
+                                    $('#alert_note').html('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
                                 }
                             } else {
                                 alert("定位失败");
