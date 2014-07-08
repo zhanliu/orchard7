@@ -25,6 +25,7 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"></label>
                                 <div class="col-sm-6">
@@ -54,21 +55,61 @@
     var shop_x = 23.120748;
     var shop_y = 113.291059;
 
+
+    // location service
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else{
+            alert("disabled");
+        }
+    }
+
+    function showPosition(position)
+    {
+        your_x = position.coords.latitude;
+        your_y = position.coords.longitude;
+
+        var myGeo = new BMap.Geocoder();
+        myGeo.getLocation(new BMap.Point(your_y, your_x), function(result){
+            if (result){
+                var addComp = rs.addressComponents;
+                alert(addComp.province);
+                alert(addComp.city);
+                alert(addComp.district);
+            }
+        });
+    };
+
+
+
     var myGeo = new BMap.Geocoder();
 
     function next(){
         var address = '广东省广州市越秀区' + $("#address1").val() + $("#address2").val();
         myGeo.getPoint(address, function(point){
             if (point) {
-                alert(point.lat);
-                alert(point.lng);
-                var distance = getDistance(point.lat, point.lng);
-                if (distance < distanceAllowed) {
-                    alert('您的位置距离海印广场' + distance + " 千米, 在配送范围！");
-                    document.getElementById("location_form").submit();
-                } else {
-                    alert('您的位置距离海印广场' + distance + " 千米, 不在配送范围。。。");
-                }
+                $.ajax({
+                        url: '<?php echo URL; ?>location/getDistance/' + point.lat + '/' + point.lng,
+                        data: "",
+                        dataType: 'json',
+                        success: function(data) {
+
+                            if (data != '') {
+                                if (data < distanceAllowed) {
+                                    alert('您的位置距离海印广场' + data + " 千米, 在配送范围！");
+                                    document.getElementById("location_form").submit();
+                                } else {
+                                    alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
+                                }
+                            } else {
+                                alert("定位失败");
+                            }
+                        }
+                    }
+                )
             } else {
                 alert("定位失败");
             }
