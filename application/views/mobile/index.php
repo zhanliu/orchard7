@@ -63,9 +63,16 @@
                 alert(point.lat);
                 alert(point.lng);
                 var distance = getDistance(point.lat, point.lng);
+
                 if (distance < distanceAllowed) {
                     alert('您的位置距离海印广场' + distance + " 千米, 在配送范围！");
-                    document.getElementById("location_form").submit();
+                    myGeo.getLocation(point, function(rs){
+                        var addComp = rs.addressComponents;
+                        var full_address = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                        alert(full_address);
+                        document.getElementById("location_form").submit();
+                    }, "广州市");
+
                 } else {
                     alert('您的位置距离海印广场' + distance + " 千米, 不在配送范围。。。");
                 }

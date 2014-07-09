@@ -11,6 +11,15 @@ class Mobile extends Controller
         require 'application/views/mobile/footer.php';
     }
 
+    public function sorry()
+    {
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/sorry.php';
+        require 'application/views/mobile/footer.php';
+    }
+
+
     public function showcase()
     {
         $product_model = $this->loadModel('ProductModel');
