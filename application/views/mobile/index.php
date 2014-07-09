@@ -1,3 +1,14 @@
+<?php
+
+//if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);}
+//else {
+//    setcookie('uif','',time()-3600);
+//    setcookie('uif','zzz',time()+3600*24*365);
+//    //echo "8888";
+//}
+
+?>
+
 <div id="container">
     <div id="main" role="main">
         <div id="contentWrapper">
@@ -21,7 +32,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">广东省-广州市-越秀区</label>
                                 <div class="col-sm-6">
-                                    <input type="text" id="address1" name="address1" size="30" required="required" class="form-control" placeholder="输入路名和小区...">
+                                    <input type="text" id="address1" name="address1" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
                                 </div>
                             </div>
 

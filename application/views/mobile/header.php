@@ -2,6 +2,7 @@
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
+
 ?>
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

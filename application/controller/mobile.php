@@ -16,6 +16,10 @@ class Mobile extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
+        // set cookie
+        setcookie('uif','',time()-3600);
+        setcookie('uif',$_POST['address1'],time()+3600*24*365);
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
         require 'application/views/mobile/footer.php';
