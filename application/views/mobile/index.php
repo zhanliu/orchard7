@@ -97,11 +97,11 @@
 
                             if (data != '') {
                                 if (data < distanceAllowed) {
-                                    alert('您的位置距离海印广场' + data + " 千米, 在配送范围！");
+                                    alert('您的位置距离配送中心' + data + " 千米, 在配送范围！");
                                     document.getElementById("location_form").submit();
                                 } else {
-                                    //alert('您的位置距离海印广场' + data + " 千米, 不在配送范围。。。");
-                                    $('#form-bg').html('');
+                                    //alert('您的位置距离配送中心' + data + " 千米, 不在配送范围。。。");
+                                    //$('#form-bg').html('');
                                     $('#alert_note').html('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
                                 }
                             } else {
