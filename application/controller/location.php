@@ -10,15 +10,45 @@ class Location extends Controller
 
     public function getDistance($x, $y) {
 
-        $vip_x = 23.120748;
-        $vip_y = 113.291059;
-        $distance = $this->distance($vip_x, $vip_y, $x, $y);
-        // fix the bug, if distance is exactly the same, make them close to each other
-        if ($distance == 0) {
-            $distance = 0.0000001;
+        $store_x = 0;
+        $store_y = 0;
+        $address = "";
+        $nearest_distance = 10000;
+        $nearest_store_id = 0;
+        $store_model = $this->loadModel('StoreModel');
+        $stores = $store_model->getAllStores();
+
+        $stats_model = $this->loadModel('StoreStatsModel');
+        $amount_of_stores = $stats_model->getAmountOfStores();
+
+        if ($amount_of_stores > 0) {
+
+            foreach($stores as $store) {
+                $store_x = $store->lat;
+                $store_y = $store->lng;
+
+                $distance = $this->distance($store_x, $store_y, $x, $y);
+                // fix the bug, if distance is exactly the same, make them close to each other
+                if ($distance == 0) {
+                    $distance = 0.0000001;
+                }
+
+                if ($distance < $nearest_distance) {
+                    $nearest_distance = $distance;
+                    if ($nearest_distance < DELIVERY_DISTANCE) {
+                        $address = $store->city . $store->district . $store->address1 . $store->address2;
+                        $nearest_store_id = $store->id;
+                    }
+                }
+            }
         }
 
-        echo json_encode($distance);
+        $result = array ('distance'=>$nearest_distance,'store_id'=>$nearest_store_id,'address'=>$address);
+
+        echo json_encode($result);
+
+
+        //echo json_encode($distance);
     }
 
     public function rad($d)

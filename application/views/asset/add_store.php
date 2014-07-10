@@ -101,7 +101,7 @@
         </div>
     </div>
 </div>
-<script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
     function submit() {
         if ($('#name').val()=="") {
