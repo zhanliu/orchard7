@@ -13,6 +13,10 @@ class Location extends Controller
         $vip_x = 23.120748;
         $vip_y = 113.291059;
         $distance = $this->distance($vip_x, $vip_y, $x, $y);
+        // fix the bug, if distance is exactly the same, make them close to each other
+        if ($distance == 0) {
+            $distance = 0.0000001;
+        }
 
         echo json_encode($distance);
     }
@@ -31,10 +35,6 @@ class Location extends Controller
         $b = $this->rad($lng1) - $this->rad($lng2);
         $s = 2 * asin(sqrt(pow(sin($a/2),2) + cos($radLat1)*cos($radLat2)*pow(sin($b/2),2)));
 
-        // fix the bug, if distance is exactly the same, make them close to each other
-        if ($s == 0) {
-            $s = 0.0000001;
-        }
         return round($s * 10000 * $EARTH_RADIUS) / 10000;
     }
 }
