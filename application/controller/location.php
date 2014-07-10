@@ -13,6 +13,10 @@ class Location extends Controller
         $vip_x = 23.121748;
         $vip_y = 113.291059;
         $distance = $this->distance($vip_x, $vip_y, $x, $y);
+        // fix the bug, if distance is exactly the same, make them close to each other
+        if ($distance == 0) {
+            $distance = 0.0000001;
+        }
 
         echo json_encode($distance);
     }
