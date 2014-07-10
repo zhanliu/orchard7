@@ -30,7 +30,7 @@ class Location extends Controller
                 $distance = $this->distance($store_x, $store_y, $x, $y);
                 // fix the bug, if distance is exactly the same, make them close to each other
                 if ($distance == 0) {
-                    $distance = 0.0000001;
+                    $distance = 0.0001;
                 }
 
                 if ($distance < $nearest_distance) {
