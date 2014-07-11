@@ -44,6 +44,15 @@ class CustomerModel
         return $query->fetchAll();
     }
 
+    public function getCustomerByWechatId($wechat_id) {
+        $sql = "SELECT * FROM customer WHERE wechat_id='".$wechat_id."'";
+//        echo "Customer sql is ".$sql;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function addCustomer($cellphone)
     {
         // clean the input from javascript code for example
