@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">广东省-广州市-越秀区</label>
                                 <div class="col-sm-6">
-                                    <input type="text" id="address1" name="block" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
+                                    <input type="text" id="block" name="block" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
                                 </div>
                             </div>
 
