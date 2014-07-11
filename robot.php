@@ -125,7 +125,7 @@ class wechatCallbackapiTest
             $contentStr = "参观水果市场请回复1\n查看分店请回复2";
         }
 
-        $url = "<![CDATA[" . "http://orchard7.sinaapp.com/mobile/wechatindex?wechatid=" .$fromUsername  . "]]>";
+        $url = "<![CDATA[" . "http://orchard7.sinaapp.com/mobile/wechatindex/" .$fromUsername  . "]]>";
 
         $textTpl = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>

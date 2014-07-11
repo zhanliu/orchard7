@@ -36,6 +36,18 @@ class AddressModel
         return $query->fetchAll();
     }
 
+    public function getLastAddressesByCustomerId($customer_id)
+    {
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql.= "WHERE a.id=sa.address_id AND sa.customer_id=".$customer_id;
+        $sql.= " order by sa.id desc ";
+        $sql.= " limit 0, 1 ";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function getAddressById($id) {
         //, city, district, address1, address2, lat, lng
         $sql = "SELECT province, city, district, address1, address2, lat, lng FROM address where id=".$id;

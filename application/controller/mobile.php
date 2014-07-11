@@ -14,8 +14,15 @@ class Mobile extends Controller
 
     public function wechatindex($wechat_id) {
 
-        $customers = $this->getCustomer($wechat_id);
+        $customer = $this->getCustomer($wechat_id);
+        $wechatid_session = $wechat_id;
+        $addresses = null;
 
+        if ($wechatid_session != null && $customer != null) {
+            $address_model = $this->loadModel('AddressModel');
+            $addresses =$address_model->getLastAddressesByCustomerId($customer->id);
+            //$address = $addresses[0];
+        }
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/index.php';
