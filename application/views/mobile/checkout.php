@@ -55,7 +55,7 @@
 
                 <div class="stepy-navigator panel-footer"><div class="pull-right">
                         <a href="#" class="btn btn-default" onclick="back2()"><i class="fa fa-long-arrow-left"></i> Back</a>
-                        <a href="#" onclick="next2()" class="btn btn-primary">Next <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#" onclick="next2()" class="btn btn-primary">完成 <i class="fa fa-long-arrow-right"></i></a>
                     </div></div>
             </fieldset>
 
