@@ -62,9 +62,9 @@
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
 
-    var distanceAllowed = 2;
-    var shop_x = 23.120748;
-    var shop_y = 113.291059;
+    var distanceAllowed = <?php echo DELIVERY_DISTANCE; ?>;
+   //var shop_x = 23.120748;
+    //var shop_y = 113.291059;
 
 
     // location service
@@ -108,11 +108,16 @@ alert(point.lat);
                         success: function(data) {
 
                             if (data != '') {
-                                if (data < distanceAllowed) {
-                                    //alert('您的位置距离配送中心' + data + " 千米, 在配送范围！");
+
+                                var distance = data['distance'];
+                                var store_id = data['store_id'];
+                                var address = data['address'];
+
+                                if (distance < distanceAllowed) {
+                                    alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
                                     document.getElementById("location_form").submit();
                                 } else {
-                                    //alert('您的位置距离配送中心' + data + " 千米, 不在配送范围。。。");
+                                    alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
                                     //$('#form-bg').html('');
                                     $('#alert_note').html('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
                                 }
