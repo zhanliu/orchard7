@@ -28,7 +28,7 @@
                         </h1>
                     </div>
 
-                    <form action="<?php echo URL; ?>mobile/checkout" method="post">
+                    <form action="<?php echo URL; ?>mobile/submitAddItem" method="post">
                     <?php
                     $index = 0;
                     foreach ($products as $product) {
@@ -60,7 +60,8 @@
                                         <input class="pd_product-num-form" name="item_quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
                                         <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
                                         <input type="hidden" name="item_type" value="product">
-                                        <input type="hidden" name="block" value="<?php echo block; ?>">
+                                        <input type="hidden" name="block" value="<?php echo $block; ?>">
+                                        <input type="hidden" name="submit_add_item" value="true">
                                         <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
                                     </div>
                                 </div>

@@ -37,21 +37,22 @@ class OrderDetailModel
         return $query->fetchAll();
     }
 
-    public function addOrderDetail($order_id, $combo_id, $combo_quantity)
+    public function addOrderDetail($order_id, $item_type, $item_id, $item_quantity)
     {
         // clean the input from javascript code for example
         $order_id = strip_tags($order_id);
-        $combo_id = strip_tags($combo_id);
-        $combo_quantity = strip_tags($combo_quantity);
+        $item_type = strip_tags($item_type);
+        $item_id = strip_tags($item_id);
+        $item_quantity = strip_tags($item_quantity);
 
         $now = time();
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order_details (order_id, combo_id, combo_quantity, created_time, updated_time) VALUES (:order_id, :combo_id, :combo_quantity, :created_time, :updated_time)";
+        $sql = "insert into order_details (order_id, item_type, item_id, item_quantity, created_time, updated_time) VALUES (:order_id, :item_type, :item_id, :item_quantity, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
-        $query->execute(array(':order_id' => $order_id, ':combo_id'=> $combo_id ,':combo_quantity' => $combo_quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':order_id' => $order_id, ':item_type' => $item_type, ':item_id'=> $item_id ,':item_quantity' => $item_quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
 
         return $insertedId;

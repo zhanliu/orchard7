@@ -47,43 +47,86 @@ class Mobile extends Controller
         $item_ids = $_POST['item_id'];
         $item_quantities = $_POST['item_quantity'];
         $item_type = $_POST['item_type'];
-/*
-        if (isset($_POST["submit_add_order"])) {
-            $order_model = $this->loadModel('OrderModel');
-            $order_id = $order_model->addOrder();
-        }*/
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/checkout.php';
         require 'application/views/mobile/footer.php';
     }
 
-    public function submitAddCombo() {
-        $combo_model = $this->loadModel('ComboModel');
+    public function submitAddItem() {
+        if (isset($_POST["submit_add_item"])) {
+            $block = $_POST["block"];
+            $item_type = $_POST['item_type'];
+            $item_ids = $_POST['item_id'];
+            $item_quantities = $_POST['item_quantity'];
 
-        if (isset($_POST["submit_add_combo"])) {
-            // load model, perform an action on the model
-            $combo_id = $combo_model->addCombo($_POST["name"], $_POST["price"],  $_POST["original_price"],$_POST["description"], $_POST["tag"], $_POST["upload_img_name_prefix"]."_".$_POST["img_url"], $_POST["is_active"]);
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/checkout.php';
+            require 'application/views/mobile/footer.php';
+        }
+    }
 
-            // insert multiple records into mapping table
-            $product_ids = $_POST['product_id'];
-            $quantities = $_POST['quantity'];
+    public function submitOrder() {
+        if (isset($_POST["submit_order"])) {
+            $item_type = $_POST['item_type'];
+            $item_ids = $_POST['item_id'];
+            $item_quantities = $_POST['item_quantity'];
+            $district = $_POST['district'];
+            $address1 = $_POST['address1'];
+            $address2 = $_POST['address2'];
+            $cellphone = $_POST['cellphone'];
 
-            $combo_detail_model = $this->loadModel('ComboDetailModel');
-            $index = 0;
-            foreach($product_ids as $product_id) {
-                $combo_detail_model->addMapping($combo_id, $product_id, $quantities[$index]);
-                $index++;
+            //add Customer
+            $customer_model = $this->loadModel('CustomerModel');
+            $isCustomerExisted = false;
+            $customer = $customer_model->getCustomerByCellphone($cellphone);
+            $customer_id = NULL;
+
+            if (sizeof($customer) == 1) {
+                $isCustomerExisted = true;
+                $customer_id = $customer[0]->id;
+            } else {
+                $customer_id = $customer_model->addCustomer($cellphone);
             }
 
+            //add SHIPPING_ADDRESS
+            $address_model = $this->loadModel('AddressModel');
+            $shipping_address_model = $this->loadModel('ShippingAddressModel');
+
+            if ($isCustomerExisted == false) {
+                //TODO: WE NEED TO LOCATE LAT AND LNG LATER
+                $address_id = $address_model->addAddress("中国", "广东省", "广州市", $_POST["district"], $_POST["address1"], $_POST["address2"], "", "");
+
+                $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+                $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
+
+
+            }
+
+            //add order
+            $order_model = $this->loadModel('OrderModel');
+            //TODO: calculate total price
+            //CID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
+            $order_id = $order_model->addOrder($customer_id, $address_id, 1, 0);
+
+
+            //add order detail
+            $order_detail_model = $this->loadModel('OrderDetailModel');
+
+            $quantity_index = 0;
+            $total_amount = 0;
+            //TODO: do not submit the item with qty 0
+            foreach ($item_quantities as $quantity) {
+                if ($quantity > 0) {
+                    $order_detail_model->addOrderDetail($order_id, $item_type, $item_ids[$quantity_index], $quantity);
+
+                    //$total_amount = $total_amount + $comboPrices[$quantity_index] * $quantity;
+                }
+                $quantity_index++;
+            }
+            //$order_model->updateTotalAmount($order_id, $total_amount);
+
         }
-
-        $combos = $combo_model->getAllCombos();
-
-        require 'application/views/common/header.php';
-        require 'application/views/stock/combo.php';
-        require 'application/views/common/footer.php';
-
     }
 
 }

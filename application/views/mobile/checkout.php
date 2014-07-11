@@ -1,8 +1,16 @@
+<?php
+echo $block;
+foreach ($item_ids as $item_id) {
+    echo $item_id;
+}
+?>
 <div class="col-md-12 fruit-bg">
     <div class="panel panel-danger">
         <div class="panel-heading">
             <h4>确认订单</h4>
         </div>
+
+        <form action="<?php echo URL; ?>mobile/submitOrder" id="myform" method="post">
 
         <div class="panel-body">
         <fieldset title="确认订单" id="basicwizard-step-1" class="stepy-step" style="display: block;">
@@ -30,9 +38,7 @@
                         <label class="col-sm-3 control-label">广东省广州市 -</label>
                         <div class="col-md-6">
                             <select id="district" name="district" class="form-control">
-                                <option value="">请选择区</option>
-                                <option value="荔湾区">荔湾区</option>
-                                <option value="海印区">海印区</option>
+                                <option value="海珠区">海珠区</option>
                             </select>
                         </div>
 
@@ -54,13 +60,18 @@
                 </div>
 
                 <div class="stepy-navigator panel-footer"><div class="pull-right">
-                        <a href="#" class="btn btn-default" onclick="back2()"><i class="fa fa-long-arrow-left"></i> Back</a>
-                        <a href="#" onclick="next2()" class="btn btn-primary">完成 <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#" class="btn btn-default" onclick="back2()"><i class="fa fa-long-arrow-left"></i>Back</a>
+                        <a href="#" onclick="submit()" class="btn btn-primary">完成<i class="fa fa-long-arrow-right"></i></a>
                     </div></div>
             </fieldset>
 
         </div>
-
+            <input type="hidden" name="item_quantity[]" value="<?php echo $item_quantities; ?>" >
+            <input type="hidden" name="item_id[]" value="<?php echo $item_ids; ?>" >
+            <input type="hidden" name="item_type" value="<?php echo $item_type; ?>">
+            <input type="hidden" name="block" value="<?php echo $block; ?>">
+            <input type="hidden" name="submit_order" value="true">
+        </form>
     </div>
 </div>
 
