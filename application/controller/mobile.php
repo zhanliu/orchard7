@@ -28,7 +28,7 @@ class Mobile extends Controller
         $block = $_POST["block"];
         // set cookie
         setcookie('uif','',time()-3600);
-        setcookie('uif',$_POST['address1'],time()+3600*24*365);
+        setcookie('uif',$_POST['block'],time()+3600*24*365);
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';

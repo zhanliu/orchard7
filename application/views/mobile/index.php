@@ -19,7 +19,7 @@
 
                 <div class="panel-body">
                     <div class="alert alert-info" id="alert_note">
-                        <strong>注意!</strong> 当前配送范围仅限广州市越秀区
+                        <strong>注意!</strong> 当前配送范围仅限广州市海珠区部分区域
                     </div>
 
 
@@ -28,9 +28,9 @@
                             <form id="location_form" action="<?php echo URL; ?>mobile/showcase" method="post" class="form-horizontal">
                                 <input type="hidden" name="province" value="广东省">
                                 <input type="hidden" name="city" value="广州市">
-                                <input type="hidden" name="district" value="越秀区">
+                                <input type="hidden" name="district" value="海珠区">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">广东省-广州市-越秀区</label>
+                                <label class="col-sm-3 control-label">广东省-广州市-海珠区</label>
                                 <div class="col-sm-6">
                                     <input type="text" id="block" name="block" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
                                 </div>
@@ -90,7 +90,7 @@
     var myGeo = new BMap.Geocoder();
 
     function next(){
-        var address = '广东省广州市越秀区' + $("#block").val();
+        var address = '广东省广州市海珠区' + $("#block").val();
         myGeo.getPoint(address, function(point){
             if (point) {
 

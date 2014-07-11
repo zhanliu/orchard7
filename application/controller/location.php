@@ -10,19 +10,13 @@ class Location extends Controller
 
     public function getDistance($x, $y) {
 
-<<<<<<< HEAD
-        $vip_x = 23.121748;
-        $vip_y = 113.291059;
-        $distance = $this->distance($vip_x, $vip_y, $x, $y);
-        // fix the bug, if distance is exactly the same, make them close to each other
-        if ($distance == 0) {
-            $distance = 0.0000001;
-=======
+
         $store_x = 0;
         $store_y = 0;
         $address = "";
         $nearest_distance = 10000;
         $nearest_store_id = 0;
+
         $store_model = $this->loadModel('StoreModel');
         $stores = $store_model->getAllStores();
 
@@ -49,7 +43,7 @@ class Location extends Controller
                     }
                 }
             }
->>>>>>> baf7306bb3af272c94f2eb6782748a979a3590c2
+
         }
 
         $result = array ('distance'=>$nearest_distance,'store_id'=>$nearest_store_id,'address'=>$address);
@@ -57,7 +51,6 @@ class Location extends Controller
         echo json_encode($result);
 
 
-        //echo json_encode($distance);
     }
 
     public function rad($d)
