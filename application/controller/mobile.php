@@ -11,6 +11,16 @@ class Mobile extends Controller
         require 'application/views/mobile/footer.php';
     }
 
+    public function wechatindex($wechat_id) {
+
+        $customers = $this->getCustomer($wechat_id);
+
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/index.php';
+        require 'application/views/mobile/footer.php';
+    }
+
     public function showcase()
     {
         $product_model = $this->loadModel('ProductModel');
@@ -23,6 +33,17 @@ class Mobile extends Controller
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
         require 'application/views/mobile/footer.php';
+    }
+
+    public function getCustomer($wechat_id) {
+        $custom_model = $this->loadModel('CustomerModel');
+        $customers = $custom_model->getCustomerByWechatId($wechat_id);
+
+        if ($customers != null && sizeof($customers) > 0) {
+            return $customers[0];
+        }
+
+        return null;
     }
 
     public function location()

@@ -125,6 +125,8 @@ class wechatCallbackapiTest
             $contentStr = "参观水果市场请回复1\n查看分店请回复2";
         }
 
+        $url = "<![CDATA[" . "http://orchard7.sinaapp.com/mobile/wechatindex?wechatid=" .$fromUsername  . "]]>";
+
         $textTpl = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>
                         <FromUserName><![CDATA[%s]]></FromUserName>
@@ -137,13 +139,13 @@ class wechatCallbackapiTest
                                 <Title><![CDATA[30分钟水果快送，货到付款，猛击下单]]></Title>
                                 <Description><![CDATA[关注我就是关注健康生活，今后我会帮您挑选新鲜美味的水果切和百分百纯果汁，绝无转基因食品哦。]]></Description>
                                 <PicUrl><![CDATA[http://orchard7-product.stor.sinaapp.com/1404193499_1602.jpg]]></PicUrl>
-                                <Url><![CDATA[http://orchard7.sinaapp.com/mobile]]></Url>
+                                <Url>". $url ."</Url>
                             </item>
                             <item>
                                 <Title><![CDATA[今日推荐！增城新鲜荔枝，核小味鲜]]></Title>
                                 <Description><![CDATA[关注我就是关注健康生活，今后我会帮您挑选新鲜美味的水果切和百分百纯果汁，绝无转基因食品哦。]]></Description>
                                 <PicUrl><![CDATA[http://orchard7-product.stor.sinaapp.com/1404193668_leeche.jpeg]]></PicUrl>
-                                <Url><![CDATA[http://orchard7.sinaapp.com/mobile/location]]></Url>
+                                <Url><![CDATA[http://orchard7.sinaapp.com/mobile]]></Url>
                             </item>
                             <item>
                                 <Title><![CDATA[味美价廉！阳光农庄原生态草莓]]></Title>
