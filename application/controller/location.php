@@ -10,11 +10,13 @@ class Location extends Controller
 
     public function getDistance($x, $y) {
 
+
         $store_x = 0;
         $store_y = 0;
         $address = "";
         $nearest_distance = 10000;
         $nearest_store_id = 0;
+
         $store_model = $this->loadModel('StoreModel');
         $stores = $store_model->getAllStores();
 
@@ -41,6 +43,7 @@ class Location extends Controller
                     }
                 }
             }
+
         }
 
         $result = array ('distance'=>$nearest_distance,'store_id'=>$nearest_store_id,'address'=>$address);
@@ -48,7 +51,6 @@ class Location extends Controller
         echo json_encode($result);
 
 
-        //echo json_encode($distance);
     }
 
     public function rad($d)
