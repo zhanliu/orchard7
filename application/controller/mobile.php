@@ -25,6 +25,7 @@ class Mobile extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
+        $block = $_POST["block"];
         // set cookie
         setcookie('uif','',time()-3600);
         setcookie('uif',$_POST['address1'],time()+3600*24*365);

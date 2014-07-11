@@ -60,6 +60,7 @@
                                         <input class="pd_product-num-form" name="item_quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
                                         <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
                                         <input type="hidden" name="item_type" value="product">
+                                        <input type="hidden" name="block" value="<?php echo block; ?>">
                                         <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
                                     </div>
                                 </div>
