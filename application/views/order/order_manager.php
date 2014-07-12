@@ -60,19 +60,11 @@
                     </td>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
-                    <td>[<a href="<?php echo URL . 'order/deleteorder/' . $order->id; ?>">X</a>]</td>
+                    <td><a href="<?php echo URL . 'order/deleteOrder/' . $order->id; ?>" class="myButton">删除</a></td>
                 </tr>
                 <?php } ?>
                 </tbody>
             </table>
-<!--            <input type="hidden" name="customer_id" value="--><?php //echo $customer_id; ?><!--">-->
-<!--            <input type="hidden" name="submit_add_order">-->
-<!--            <input type="hidden" name="is_diy" value="0">-->
-
-<!--            <BR><BR>-->
-<!---->
-<!--            <a href="#" class="myButton" onclick="submit()">确认订单</a>-->
-<!--            <a href="#" onClick="openbox('box', '套餐管理', 1)">添加新套餐</a>-->
 
         </div>
     </div>

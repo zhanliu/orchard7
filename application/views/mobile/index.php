@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-
+<div id="map"></div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -59,7 +59,7 @@
    //var shop_x = 23.120748;
     //var shop_y = 113.291059;
 
-
+/*
     // location service
     function getLocation()
     {
@@ -86,11 +86,36 @@
             }
         });
     };
-
+*/
     var myGeo = new BMap.Geocoder();
+    var map = new BMap.Map("map");
+    map.centerAndZoom("广州市",12);         //初始化地图。设置中心点和地图级别
+    var options = {renderOptions: {map: map, panel: "map"}};
+    var myLocalsearch = new BMap.LocalSearch(map,options);
+    var is_valid_address = false;
+
+    //模糊查询search方法
+    function validate_address() {
+        if (myLocalsearch.getStatus()==0) {
+            is_valid_address = true;
+        }
+    }
+
+
 
     function next(){
         var address = '广东省广州市海珠区' + $("#block").val();
+
+        myLocalsearch.search(address);
+        setTimeout("calculate_distance('"+address+"')",600);
+    }
+
+    function calculate_distance(address) {
+        validate_address();
+        if (is_valid_address==false) {
+            alert('地址不合法或超出了广州海珠区，请重新尝试');
+            return;
+        }
         myGeo.getPoint(address, function(point){
             if (point) {
 
@@ -125,9 +150,8 @@
                 alert("定位失败");
             }
         }, "全国");
-
     }
-
+/*
     function calculate_distance(lat1, lng1, lat2, lng2) {
         var R = 6371;
         var dLat = (lat1 - lat2) * Math.PI / 180;
@@ -143,5 +167,5 @@
         return calculate_distance(shop_x, shop_y, x, y);
 
     }
-
+*/
 </script>

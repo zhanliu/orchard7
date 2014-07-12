@@ -128,8 +128,8 @@ class Mobile extends Controller
 
                 $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
                 $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
-
-
+            } else {
+                $address_id = $_POST["address_id"];
             }
 
             //add order

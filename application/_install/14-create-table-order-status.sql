@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS `order_status` (
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
-insert into order_status (status_code, status) values ("0", "init");
-insert into order_status (status_code, status) values ("1", "start_operate");
-insert into order_status (status_code, status) values ("2", "start_deliver");
-insert into order_status (status_code, status) values ("3", "success");
-insert into order_status (status_code, status) values ("4", "user_drop");
-insert into order_status (status_code, status) values ("5", "cancel");
+insert into order_status (status_code, status) values ("0", "初始状态");
+insert into order_status (status_code, status) values ("1", "订单确认");
+insert into order_status (status_code, status) values ("2", "发货");
+insert into order_status (status_code, status) values ("3", "订单完成");
+insert into order_status (status_code, status) values ("4", "用户放弃");
+insert into order_status (status_code, status) values ("5", "取消");
