@@ -55,14 +55,13 @@ class Order extends Controller
         $customer_model = $this->loadModel('CustomerModel');
         $customer = $customer_model->getCustomerByCellphone($cellphone);
 
-
         if (sizeof($customer) == 1) {
             $cid = $customer[0]->id;
             $address_model = $this->loadModel('AddressModel');
             $address = $address_model->getAddressesByCustomerId($cid);
             echo json_encode($address);
         } else {
-            echo json_encode("");
+            echo json_encode('');
         }
 
 
@@ -220,20 +219,20 @@ class Order extends Controller
         $order_model = $this->loadModel('OrderModel');
         $order = $order_model->getOrderDetailById($id);
 
-        $combo_model = $this->loadModel('ComboModel');
-        $combos = $combo_model->getAllCombos();
-
-        //////////////////////
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $orderDetails = $order_detail_model->getAllOrderDetailsById($id);
 
+        $product_model = $this->loadModel('ProductModel');
+        $items = $product_model->getProductsByOrderId($id);
+
         ///////////////////// collect orderCombo, control quantity input
-        $orderCombo = NULL;
-        foreach ($combos as $combo) {
-            $orderCombo[$combo->id] = "";
+        $orderItem = NULL;
+        foreach ($items as $item) {
+            //echo "size is ".sizeof($items);
+            $orderItem[$item->id] = "";
             foreach ($orderDetails as $orderDetail) {
-                if ($orderDetail->combo_id == $combo->id) {
-                    $orderCombo[$orderDetail->combo_id] = $orderDetail->combo_quantity;
+                if ($orderDetail->item_id == $item->id) {
+                    $orderItem[$orderDetail->item_id] = $orderDetail->item_quantity;
                 }
             }
         }

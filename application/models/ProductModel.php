@@ -66,10 +66,19 @@ class ProductModel
         $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price,':original_price'=>$original_price , ':description'=>$description, ':tag'=>$tag, ':img_url'=>$img_url, ':is_active'=>$is_active, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
     }
 
-    public function deleteProduct($id)
-    {
+    public function deleteProduct($id) {
         $sql = "DELETE FROM product WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
+    }
+
+    public function getProductsByOrderId($order_id) {
+        $sql = "SELECT p.id, p.name, p.price from product as p, order_details as od ";
+        $sql.= "WHERE od.item_id=p.id and od.order_id=".$order_id;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
     }
 }

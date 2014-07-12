@@ -75,14 +75,14 @@
                 </tfoot>
 
                 <tbody>
-                <?php foreach ($combos as $combo) { ?>
+                <?php foreach ($items as $item) { ?>
                     <tr align="center">
-                        <td><input <?php if ($orderCombo[$combo->id] > 0) {echo "checked";} ?> type="checkbox" name="chk" class="chk" value="<?php if ($orderCombo[$combo->id] > 0) {echo "1";} else {echo "0";} ?>" id="check<?php echo $combo->id; ?>" onclick=" check_change(<?php echo $combo->id; ?>)" /></td>
-                        <td><input class="spinner" name="quantity[]" id="spinner<?php echo $combo->id; ?>" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> value="<?php echo $orderCombo[$combo->id]; ?>"></td>
-                        <td><?php echo $combo->name; ?></td>
-                        <td><?php echo $combo->price; ?></td>
-                        <input type="hidden" name="comboIds[]" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> id="comboIdHidden<?php echo $combo->id; ?>" value="<?php echo $combo->id; ?>" />
-                        <input type="hidden" name="comboPrices[]" <?php if ($orderCombo[$combo->id] > 0) { } else {echo "disabled";}?> id="comboPriceHidden<?php echo $combo->id; ?>" value="<?php echo $combo->price; ?>"/>
+                        <td><input <?php if ($orderItem[$item->id] > 0) {echo "checked";} ?> type="checkbox" name="chk" class="chk" value="<?php if ($orderItem[$item->id] > 0) {echo "1";} else {echo "0";} ?>" id="check<?php echo $item->id; ?>" onclick="check_change(<?php echo $item->id; ?>)"></td>
+                        <td><input class="spinner" name="quantity[]" id="spinner<?php echo $item->id; ?>" <?php if ($orderItem[$item->id] <= 0) {echo "disabled";}?> value="<?php echo $orderItem[$item->id]; ?>"></td>
+                        <td><?php echo $item->name; ?></td>
+                        <td><?php echo $item->price; ?></td>
+                        <input type="hidden" name="itemIds[]" <?php if ($orderItem[$item->id] > 0) { } else {echo "disabled";}?> id="comboIdHidden<?php echo $item->id; ?>" value="<?php echo $item->id; ?>" />
+                        <input type="hidden" name="itemPrices[]" <?php if ($orderItem[$item->id] > 0) { } else {echo "disabled";}?> id="comboPriceHidden<?php echo $item->id; ?>" value="<?php echo $item->price; ?>"/>
                     </tr>
                 <?php } ?>
                 </tbody>

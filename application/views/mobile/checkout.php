@@ -1,9 +1,3 @@
-<?php
-echo $block;
-foreach ($item_ids as $item_id) {
-    echo $item_id;
-}
-?>
 <div class="col-md-12 fruit-bg">
     <div class="panel panel-danger">
         <div class="panel-heading">
@@ -29,7 +23,7 @@ foreach ($item_ids as $item_id) {
 
         <fieldset title="Step 2" id="basicwizard-step-2" class="stepy-step" style="display: none;">
                 <div class="form-group">
-                    <label id="address_hint" class="col-sm-3 control-label">选择已有地址</label>
+                    <label id="address_hint" class="col-sm-3 control-label"></label>
                     <div class="col-sm-6" id="output"></div>
                 </div>
 
@@ -66,8 +60,8 @@ foreach ($item_ids as $item_id) {
             </fieldset>
 
         </div>
-            <input type="hidden" name="item_quantity[]" value="<?php echo $item_quantities; ?>" >
-            <input type="hidden" name="item_id[]" value="<?php echo $item_ids; ?>" >
+            <input type="hidden" name="item_quantities" value="<?php echo $item_quantities; ?>" >
+            <input type="hidden" name="item_ids" value="<?php echo $item_ids; ?>" >
             <input type="hidden" name="item_type" value="<?php echo $item_type; ?>">
             <input type="hidden" name="block" value="<?php echo $block; ?>">
             <input type="hidden" name="submit_order" value="true">
@@ -89,36 +83,12 @@ foreach ($item_ids as $item_id) {
     var address2;
     var address_string;
 
-    $(document).ready(function(){
-        $("#order_combo_data_table").dataTable();
-    });
-
-    function check_change(id) {
-
-        if ($("#check"+id).attr("value") == 0) {
-            $("#check"+id).attr("value", 1);
-            $("#spinner"+id).attr("disabled", false);
-            $("#comboIdHidden"+id).attr("disabled", false);
-            $("#comboPriceHidden"+id).attr("disabled", false);
-        } else {
-            $("#check"+id).attr("value", 0);
-            $("#spinner"+id).attr("disabled", true);
-            $("#comboIdHidden"+id).attr("disabled", true);
-            $("#comboPriceHidden"+id).attr("disabled", true);
-            $("#spinner"+id).val("");
-        }
-    }
-
     function submit() {
         var isValid = validateCellphone();
         if (isValid) {
             document.getElementById("myform").submit();
         }
         return true;
-    }
-
-    function submit_add_order() {
-        $("#basicwizard").submit();
     }
 
     function validateCellphone() {
@@ -147,10 +117,12 @@ foreach ($item_ids as $item_id) {
                     data: "",
                     dataType: 'json',
                     success: function(data) {
+                        //alert('hi');
                         var content = '';
                         var count = 0;
                         if (data != '') {
                             var checked_index = '';
+                            alert(data);
                             for (var i in data) {
                                 var item = data[i];
                                 var id = item['id'];
@@ -249,20 +221,6 @@ foreach ($item_ids as $item_id) {
         $('#basicwizard-step-2').css('display', 'none');
         $('#basicwizard-head-1').addClass('stepy-active');
         $('#basicwizard-head-2').removeClass('stepy-active');
-    }
-
-    function back3() {
-        $('#basicwizard-step-2').css('display', 'block');
-        $('#basicwizard-step-3').css('display', 'none');
-        $('#basicwizard-head-2').addClass('stepy-active');
-        $('#basicwizard-head-3').removeClass('stepy-active');
-    }
-
-    function back4() {
-        $('#basicwizard-step-3').css('display', 'block');
-        $('#basicwizard-step-4').css('display', 'none');
-        $('#basicwizard-head-3').addClass('stepy-active');
-        $('#basicwizard-head-4').removeClass('stepy-active');
     }
 
     function add_address() {

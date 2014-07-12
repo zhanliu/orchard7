@@ -85,8 +85,8 @@ class Mobile extends Controller
         if (isset($_POST["submit_add_item"])) {
             $block = $_POST["block"];
             $item_type = $_POST['item_type'];
-            $item_ids = $_POST['item_id'];
-            $item_quantities = $_POST['item_quantity'];
+            $item_ids = base64_encode(json_encode($_POST['item_id']));
+            $item_quantities = base64_encode(json_encode($_POST['item_quantity']));
 
             require 'application/views/mobile/header.php';
             require 'application/views/mobile/checkout.php';
@@ -97,8 +97,9 @@ class Mobile extends Controller
     public function submitOrder() {
         if (isset($_POST["submit_order"])) {
             $item_type = $_POST['item_type'];
-            $item_ids = $_POST['item_id'];
-            $item_quantities = $_POST['item_quantity'];
+            echo "item id are ".$_POST['item_ids'];
+            $item_ids = json_decode(base64_decode($_POST['item_ids']));
+            $item_quantities = json_decode(base64_decode($_POST['item_quantities']));
             $district = $_POST['district'];
             $address1 = $_POST['address1'];
             $address2 = $_POST['address2'];

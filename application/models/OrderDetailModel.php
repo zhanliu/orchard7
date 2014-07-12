@@ -19,7 +19,8 @@ class OrderDetailModel
      */
     public function getAllOrderDetails()
     {
-        $sql = "SELECT od.order_id, od.combo_id, od.combo_quantity, c.name, c.price FROM order_details as od left join combo c on od.combo_id = c.id order by od.id asc";
+        $sql = "SELECT od.order_id, od.item_id, od.item_quantity, p.name, p.price ";
+        $sql.= "FROM order_details as od, product as p WHERE od.item_id = p.id order by od.id asc";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -28,8 +29,9 @@ class OrderDetailModel
 
     public function getAllOrderDetailsById($id)
     {
-        $sql = "SELECT od.order_id, od.combo_id, od.combo_quantity, c.name, c.price FROM order_details as od left join combo c on od.combo_id = c.id ";
-        $sql = $sql . ' WHERE od.order_id=' . $id;
+        $sql = "SELECT od.order_id, od.item_id, od.item_quantity, p.name, p.price ";
+        $sql.= "FROM order_details as od, product as p ";
+        $sql.= "WHERE od.item_id = p.id AND od.order_id=" . $id;
 
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -49,7 +51,8 @@ class OrderDetailModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order_details (order_id, item_type, item_id, item_quantity, created_time, updated_time) VALUES (:order_id, :item_type, :item_id, :item_quantity, :created_time, :updated_time)";
+        $sql = "insert into order_details (order_id, item_type, item_id, item_quantity, created_time, updated_time) ";
+        $sql.= "VALUES (:order_id, :item_type, :item_id, :item_quantity, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
         $query->execute(array(':order_id' => $order_id, ':item_type' => $item_type, ':item_id'=> $item_id ,':item_quantity' => $item_quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
@@ -59,9 +62,7 @@ class OrderDetailModel
     }
 
     public function getOrderDetailByOrderDetailId($order_detail_id) {
-        $sql = "SELECT * ";
-        $sql.= "FROM order_details o ";
-        $sql.= "WHERE o.id=".$order_detail_id;
+        $sql = "SELECT * FROM order_details WHERE order_details.id=".$order_detail_id;
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -69,9 +70,9 @@ class OrderDetailModel
     }
 
     public function getOrderDetailByOrderId($order_id) {
-        $sql = "SELECT od.combo_id, od.combo_quantity, c.name, c.price ";
-        $sql.= "FROM order_details as od, combo as c ";
-        $sql.= "WHERE od.order_id=".$order_id . " and od.combo_id = c.id ";
+        $sql = "SELECT od.item_id, od.item_quantity, p.name, p.price ";
+        $sql.= "FROM order_details as od, product as p ";
+        $sql.= "WHERE od.order_id=".$order_id . " and od.product_id = p.id ";
         $query = $this->db->prepare($sql);
         $query->execute();
 
