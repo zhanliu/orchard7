@@ -56,8 +56,6 @@
 <script type="text/javascript">
 
     var distanceAllowed = <?php echo DELIVERY_DISTANCE; ?>;
-   //var shop_x = 23.120748;
-    //var shop_y = 113.291059;
 
 /*
     // location service
@@ -92,30 +90,21 @@
     map.centerAndZoom("广州市",12);         //初始化地图。设置中心点和地图级别
     var options = {renderOptions: {map: map, panel: "map"}};
     var myLocalsearch = new BMap.LocalSearch(map,options);
-    var is_valid_address = false;
-
-    //模糊查询search方法
-    function validate_address() {
-        if (myLocalsearch.getStatus()==0) {
-            is_valid_address = true;
-        }
-    }
-
-
+    var address = "";
 
     function next(){
-        var address = '广东省广州市海珠区' + $("#block").val();
+        address = '广东省广州市海珠区' + $("#block").val();
 
+        myLocalsearch.setSearchCompleteCallback(calculate_distance);
         myLocalsearch.search(address);
-        setTimeout("calculate_distance('"+address+"')",600);
     }
 
-    function calculate_distance(address) {
-        validate_address();
-        if (is_valid_address==false) {
+    function calculate_distance() {
+        if (myLocalsearch.getStatus()!=0) {
             alert('地址不合法或超出了广州海珠区，请重新尝试');
             return;
         }
+
         myGeo.getPoint(address, function(point){
             if (point) {
 
