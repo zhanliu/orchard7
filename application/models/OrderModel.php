@@ -29,8 +29,8 @@ class OrderModel
 
     public function getAllOrdersWithDetails()
     {
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
-        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id ";
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -50,11 +50,12 @@ class OrderModel
         return $query->fetchAll();
     }
 
-    public function addOrder($customer_id, $address_id, $is_diy, $total_amount)
+    public function addOrder($customer_id, $store_id, $address_id, $is_diy, $total_amount)
     {
         // clean the input from javascript code for example
         $customer_id = strip_tags($customer_id);
         $address_id = strip_tags($address_id);
+        $store_id = strip_tags($store_id);
         $is_diy = strip_tags($is_diy);
 
         $status = 0;
@@ -63,10 +64,10 @@ class OrderModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order1 (customer_id, status,  is_diy, total_amount, address_id, created_time, updated_time) VALUES (:customer_id, :status, :is_diy, :total_amount, :address_id, :created_time, :updated_time)";
+        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, total_amount, address_id, created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :total_amount, :address_id, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
-        $query->execute(array(':customer_id' => $customer_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':customer_id' => $customer_id,':store_id'=>$store_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
 
         return $insertedId;

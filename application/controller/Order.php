@@ -179,8 +179,12 @@ class Order extends Controller
         $orders = $order_model->getAllOrdersWithDetails();
         $orderStatus = $order_model->getOrderStatusCode();
 
+        //TODO: revise logic to handle order mapping with product and combo
         $combo_model = $this->loadModel('ComboModel');
         $combos = $combo_model->getAllCombos();
+//        $product_model = $this->loadModel('ProductModel');
+//        $products = $product_model->getAllProducts();
+
 
         //////////////////////
         $order_detail_model = $this->loadModel('OrderDetailModel');
@@ -253,8 +257,8 @@ class Order extends Controller
             $address_id = $_POST['address_id'];
 
             $quantities = $_POST['quantity'];
-            $comboIds = $_POST['comboIds'];
-            $comboPrices = $_POST['comboPrices'];
+            $itemIds = $_POST['itemIds'];
+            $itemPrices = $_POST['itemPrices'];
             $order_id = $_POST['order_id'];
 
             /////////////////////////////
@@ -267,11 +271,12 @@ class Order extends Controller
             // 2. add order detail
             $total_amount = 0;
             $quantity_index = 0;
+            $item_type = "product";
             foreach ($quantities as $quantity) {
                 if ($quantity > 0) {
-                    $order_detail_model->addOrderDetail($order_id, $comboIds[$quantity_index], $quantity);
+                    $order_detail_model->addOrderDetail($order_id, $item_type,$itemIds[$quantity_index], $quantity);
 
-                    $total_amount = $total_amount + $comboPrices[$quantity_index] * $quantity;
+                    $total_amount = $total_amount + $itemPrices[$quantity_index] * $quantity;
                 }
 
                 $quantity_index++;

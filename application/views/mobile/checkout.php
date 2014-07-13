@@ -65,6 +65,7 @@
             <input type="hidden" name="item_ids" value="<?php echo $item_ids; ?>" >
             <input type="hidden" name="item_type" value="<?php echo $item_type; ?>">
             <input type="hidden" name="block" value="<?php echo $block; ?>">
+            <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="<?php echo $nearest_store_id; ?>" >
             <input type="hidden" name="submit_order" value="true">
         </form>
     </div>

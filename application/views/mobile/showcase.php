@@ -62,6 +62,7 @@
                                         <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
                                         <input type="hidden" name="item_type" value="product">
                                         <input type="hidden" name="block" value="<?php echo $block; ?>">
+                                        <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="<?php echo $nearest_store_id; ?>" >
                                         <input type="hidden" name="submit_add_item" value="true">
                                         <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
                                     </div>

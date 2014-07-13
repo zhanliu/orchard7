@@ -28,3 +28,7 @@ alter table `order_details` drop combo_quantity;
 alter table `order_details` add column item_id int(20) after `order_id`;
 alter table `order_details` add column item_quantity int(11) after `item_id`;
 alter table `order_details` add column item_type varchar(40) after `item_quantity`;
+
+
+/* ----------- 2014/7/13 ------------mapping order and store --------------*/
+alter table `order1` add column store_id int(20) after `customer_id`;

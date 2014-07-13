@@ -21,6 +21,7 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>配送店铺</th>
                     <th>修改</th>
                     <th>订单删除</th>
                 </tr>
@@ -33,6 +34,7 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>配送店铺</th>
                     <th>修改</th>
                     <th>订单删除</th>
                 </tr>
@@ -60,7 +62,8 @@
                     </td>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
-                    <td><a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改订单</a></td>
+                    <td><?php echo $order->storename ?></td>
+                    <td><a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改</a></td>
                     <td><a href="<?php echo URL . 'order/deleteOrder/' . $order->id; ?>" class="myButton">删除</a></td>
                 </tr>
                 <?php } ?>
