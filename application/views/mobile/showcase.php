@@ -58,6 +58,7 @@
                                     <div class="pd_product-num-wrap" id="form-element">
                                         <span class="pd_product-num-minus" onclick="sub('<?php echo $index ?>')"></span>
                                         <input class="pd_product-num-form" name="item_quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
+                                        <input type="hidden" name="item_prices[]" value="<?php echo $product->price; ?>" />
                                         <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
                                         <input type="hidden" name="item_type" value="product">
                                         <input type="hidden" name="block" value="<?php echo $block; ?>">
@@ -209,7 +210,7 @@
     }
 
     $(document).ready(function(){
-        getLocation();
+        //getLocation();
     });
 </script>
 <!-- END BrightTag -->

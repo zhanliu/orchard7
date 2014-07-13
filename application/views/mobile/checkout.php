@@ -61,6 +61,7 @@
 
         </div>
             <input type="hidden" name="item_quantities" value="<?php echo $item_quantities; ?>" >
+            <input type="hidden" name="item_prices" value="<?php echo $item_prices; ?>" >
             <input type="hidden" name="item_ids" value="<?php echo $item_ids; ?>" >
             <input type="hidden" name="item_type" value="<?php echo $item_type; ?>">
             <input type="hidden" name="block" value="<?php echo $block; ?>">

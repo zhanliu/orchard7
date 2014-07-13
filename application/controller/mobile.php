@@ -75,6 +75,7 @@ class Mobile extends Controller
         $item_ids = $_POST['item_id'];
         $item_quantities = $_POST['item_quantity'];
         $item_type = $_POST['item_type'];
+        $item_prices = $_POST['item_prices'];
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/checkout.php';
@@ -87,6 +88,7 @@ class Mobile extends Controller
             $item_type = $_POST['item_type'];
             $item_ids = base64_encode(json_encode($_POST['item_id']));
             $item_quantities = base64_encode(json_encode($_POST['item_quantity']));
+            $item_prices = base64_encode(json_encode($_POST['item_prices']));
 
             require 'application/views/mobile/header.php';
             require 'application/views/mobile/checkout.php';
@@ -100,6 +102,7 @@ class Mobile extends Controller
             echo "item id are ".$_POST['item_ids'];
             $item_ids = json_decode(base64_decode($_POST['item_ids']));
             $item_quantities = json_decode(base64_decode($_POST['item_quantities']));
+            $item_prices = json_decode(base64_decode($_POST['item_prices']));
             $district = $_POST['district'];
             $address1 = $_POST['address1'];
             $address2 = $_POST['address2'];
@@ -149,11 +152,11 @@ class Mobile extends Controller
                 if ($quantity > 0) {
                     $order_detail_model->addOrderDetail($order_id, $item_type, $item_ids[$quantity_index], $quantity);
 
-                    //$total_amount = $total_amount + $comboPrices[$quantity_index] * $quantity;
+                    $total_amount = $total_amount + $item_prices[$quantity_index] * $quantity;
                 }
                 $quantity_index++;
             }
-            //$order_model->updateTotalAmount($order_id, $total_amount);
+            $order_model->updateTotalAmount($order_id, $total_amount);
 
         }
     }
