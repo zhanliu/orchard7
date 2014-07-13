@@ -31,9 +31,15 @@ class Mobile extends Controller
 
     public function sorry()
     {
-
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/sorry.php';
+        require 'application/views/mobile/footer.php';
+    }
+
+    public function success()
+    {
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/success.php';
         require 'application/views/mobile/footer.php';
     }
 
