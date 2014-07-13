@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<div id="map"></div>
+<div id="map" style="display:none"></div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -101,7 +101,9 @@
 
     function calculate_distance() {
         if (myLocalsearch.getStatus()!=0) {
-            alert('地址不合法或超出了广州海珠区，请重新尝试');
+            //alert('地址不合法或超出了广州海珠区，请重新尝试');
+            $('#alert_note').html('地址不合法或超出了广州海珠区，请重新尝试');
+            $('#alert_note').addClass("alert-warning");
             return;
         }
 
@@ -121,15 +123,18 @@
                                 var address = data['address'];
 
                                 if (distance < distanceAllowed) {
-                                    alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
+                                    //alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
                                     document.getElementById("location_form").submit();
                                 } else {
-                                    alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
+                                    //alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
                                     //$('#form-bg').html('');
                                     $('#alert_note').html('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
+                                    $('#alert_note').addClass("alert-warning");
                                 }
                             } else {
-                                alert("计算距离失败");
+                                //alert("计算距离失败");
+                                $('#alert_note').html('计算距离失败!');
+                                $('#alert_note').addClass("alert-warning");
                             }
                         }
                     }

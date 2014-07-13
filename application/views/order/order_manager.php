@@ -21,6 +21,7 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>修改</th>
                     <th>订单删除</th>
                 </tr>
                 </thead>
@@ -32,6 +33,7 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>修改</th>
                     <th>订单删除</th>
                 </tr>
                 </tfoot>
@@ -39,9 +41,7 @@
                 <tbody>
                 <?php foreach ($orders as $order) { ?>
                 <tr align="center">
-                    <td>
-                        <a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改订单<?php echo $order->id; ?></a>
-                    </td>
+                    <td><?php echo $order->id; ?></td>
                     <td><?php echo $order->cellphone; ?></td>
                     <td>
                         <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>order/orderstatus" method="post" target="_parent">
@@ -60,6 +60,7 @@
                     </td>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
+                    <td><a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改订单</a></td>
                     <td><a href="<?php echo URL . 'order/deleteOrder/' . $order->id; ?>" class="myButton">删除</a></td>
                 </tr>
                 <?php } ?>
