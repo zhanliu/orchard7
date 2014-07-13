@@ -11,7 +11,7 @@
         <div class="form-group">
             <label class="col-md-3 control-label">填写您的手机号码</label>
             <div class="col-md-6">
-                <input type="text" id="cellphone" name="cellphone" class="form-control">
+                <input type="text" id="cellphone" name="cellphone" class="form-control" value="<?php if (!empty($_COOKIE['ucellphone'])) {echo($_COOKIE['ucellphone']);} ?>" />
             </div>
         </div>
         <div class="stepy-navigator panel-footer">

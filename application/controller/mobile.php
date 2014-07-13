@@ -6,6 +6,14 @@ class Mobile extends Controller
     public function index()
     {
 
+        //add user access to Cookie
+        $cookie_model = $this->loadModel('CookieModel');
+        if ($cookie_model->getCookie('uaccess_time') != null) {
+            $cookie_model->setCookie('uaccess_time', $cookie_model->getCookie('uaccess_time') + 1, false);
+        } else {
+            $cookie_model->setCookie('uaccess_time', 1, false);
+        }
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/index.php';
         require 'application/views/mobile/footer.php';
@@ -13,6 +21,14 @@ class Mobile extends Controller
 
 
     public function wechatindex($wechat_id) {
+
+        //add user access to Cookie
+        $cookie_model = $this->loadModel('CookieModel');
+        if ($cookie_model->getCookie('uaccess_time') != null) {
+            $cookie_model->setCookie('uaccess_time', $cookie_model->getCookie('uaccess_time') + 1, false);
+        } else {
+            $cookie_model->setCookie('uaccess_time', 1, false);
+        }
 
         $customer = $this->getCustomer($wechat_id);
         $wechatid_session = $wechat_id;
@@ -49,9 +65,8 @@ class Mobile extends Controller
         $products = $product_model->getAllProducts();
 
         $block = $_POST["block"];
-        // set cookie
-        setcookie('uif','',time()-3600);
-        setcookie('uif',$_POST['block'],time()+3600*24*365);
+        $cookie_model = $this->loadModel('CookieModel');
+        $cookie_model->setCookie('uif', $block, false);
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
@@ -120,6 +135,10 @@ class Mobile extends Controller
             $customer = $customer_model->getCustomerByCellphone($cellphone);
             $customer_id = NULL;
 
+            //add cellphone to Cookie
+            $cookie_model = $this->loadModel('CookieModel');
+            $cookie_model->setCookie('ucellphone', $cellphone, false);
+
             if (sizeof($customer) == 1) {
                 $isCustomerExisted = true;
                 $customer_id = $customer[0]->id;
@@ -166,5 +185,7 @@ class Mobile extends Controller
 
         }
     }
+
+
 
 }
