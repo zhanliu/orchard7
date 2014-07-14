@@ -1,34 +1,25 @@
 <?php
 
-class Mobile extends Controller
-{
+class Mobile extends Controller {
 
-    public function index()
-    {
-
+    public function index() {
         //add user access to Cookie
         $cookie_model = $this->loadModel('CookieModel');
         if ($cookie_model->getCookie('uaccess_time') != null) {
             $cookie_model->setCookie('uaccess_time', $cookie_model->getCookie('uaccess_time') + 1, false);
+            $this->showcase();
         } else {
             $cookie_model->setCookie('uaccess_time', 1, false);
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/confirm_range.php';
+            require 'application/views/mobile/footer.php';
         }
 
-        require 'application/views/mobile/header.php';
-        require 'application/views/mobile/index.php';
-        require 'application/views/mobile/footer.php';
+
     }
 
 
     public function wechatindex($wechat_id) {
-
-        //add user access to Cookie
-        $cookie_model = $this->loadModel('CookieModel');
-        if ($cookie_model->getCookie('uaccess_time') != null) {
-            $cookie_model->setCookie('uaccess_time', $cookie_model->getCookie('uaccess_time') + 1, false);
-        } else {
-            $cookie_model->setCookie('uaccess_time', 1, false);
-        }
 
         $customer = $this->getCustomer($wechat_id);
         $wechatid_session = $wechat_id;
@@ -64,20 +55,23 @@ class Mobile extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
-<<<<<<< HEAD
+        $block = isset($_POST["block"]) ? $_POST["block"]:null;
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/showcase.php';
+        require 'application/views/mobile/footer.php';
+/*
         //$block = $_POST["block"];
         //$cookie_model = $this->loadModel('CookieModel');
         //$cookie_model->setCookie('uif', $block, false);
-=======
+
         $block = $_POST["block"];
         $nearest_store_id = $_POST["nearest_store_id"];
         $cookie_model = $this->loadModel('CookieModel');
         $cookie_model->setCookie('uif', $block, false);
->>>>>>> e6546092540f5d67dec9be1b87433140324e0731
 
         //require 'application/views/mobile/header.php';
-        require 'application/views/mobile/showcase.php';
-        //require 'application/views/mobile/footer.php';
+
+        //require 'application/views/mobile/footer.php';*/
     }
 
     public function getCustomer($wechat_id) {

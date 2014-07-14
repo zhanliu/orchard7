@@ -1,21 +1,14 @@
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Eternity Mobile Template</title>
-
-    <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
-    <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
-    <link rel="stylesheet" href="<?php echo URL; ?>public/css/mobile-style.css" type="text/css" media="screen">
-
-    <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
-
-
-</head>
 <body>
+
+<?php
+if (!empty($_COOKIE['uaccess_time'])) {
+    $count = $_COOKIE['uaccess_time'];
+} else {
+    $count = 0;
+}
+?>
 
 <div id="st-container" class="st-container">
     <div class="st-pusher">
@@ -24,16 +17,16 @@
         <div class="st-content">
             <div class="st-content-inner">
                 <div id="page-content">
+
                     <header class="newTodayView">
-                    <nav class="shine dropShadow">
-                        <a href="#">
-                            <span class="logo floatLeft">Daily Fresh</span>
-                            <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
-                        </a>
+                        <nav class="shine dropShadow">
+                            <a href="#">
+                                <span class="logo floatLeft">Daily Fresh</span>
+                                <span class="tagline floatLeft">新鲜健康 <br>每一天 － <?php echo $count; ?></span>
+                            </a>
 
-                    </nav>
+                        </nav>
                     </header>
-
                     <div class="clr"></div>
 
                     <div id="page-inside">
@@ -63,39 +56,38 @@
                             <?php
                             $index = 0;
                             foreach ($products as $product) {
-                            $index++;
-                            $div_id = "div_".$index;
-                            $list_id = "list_".$index;
-                            $number_field_id = "number_field_".$index;
-                            $price_id = "price_".$index;
-                            ?>
+                                $index++;
+                                $div_id = "div_".$index;
+                                $list_id = "list_".$index;
+                                $number_field_id = "number_field_".$index;
+                                $price_id = "price_".$index;
+                                ?>
 
 
-                            <div class="latest" id="<?php echo $div_id; ?>">
-                                <h3> <?php echo $product->name; ?> </h3>
-                                <img src="<?php echo URL.'public/uploads/'.$product->img_url; ?>" />
-                                <p><?php echo $product->description; ?></p>
-                                <p><span  class="bright highlight_price" id="<?php echo $price_id; ?>">
+                                <div class="latest" id="<?php echo $div_id; ?>">
+                                    <h3> <?php echo $product->name; ?> </h3>
+                                    <img src="<?php echo URL.'public/uploads/'.$product->img_url; ?>" />
+                                    <p><?php echo $product->description; ?></p>
+                                    <p><span  class="bright highlight_price" id="<?php echo $price_id; ?>">
                                         <?php echo $product->price; ?></span>
-                                    <span  class="bright highlight_price">元/<?php echo $product->unit; ?></span>
+                                        <span  class="bright highlight_price">元/<?php echo $product->unit; ?></span>
                                     <span id="<?php echo $price_id . '_original'; ?>" class="gray_price" <?php if ($product->original_price == null) { echo "style='display:none'";} ?>>
                                         <?php echo $product->original_price; ?>元/<?php echo $product->unit; ?></span></span></p>
-                                <div class="pd_product-buy-num">
-                                    <div class="pd_product-num-wrap" id="form-element">
-                                        <span class="pd_product-num-minus" onclick="sub('<?php echo $index ?>')"></span>
-                                        <input class="pd_product-num-form" name="item_quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
-                                        <input type="hidden" name="item_prices[]" value="<?php echo $product->price; ?>" />
-                                        <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
-                                        <input type="hidden" name="item_type" value="product">
-                                        <input type="hidden" name="block" value="<?php echo $block; ?>">
-                                        <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="<?php echo $nearest_store_id; ?>" >
-                                        <input type="hidden" name="submit_add_item" value="true">
-                                        <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
+                                    <div class="pd_product-buy-num">
+                                        <div class="pd_product-num-wrap" id="form-element">
+                                            <span class="pd_product-num-minus" onclick="sub('<?php echo $index ?>')"></span>
+                                            <input class="pd_product-num-form" name="item_quantity[]" type="number" min="0" max="999" ;="" value="0" id="<?php echo $number_field_id; ?>" required="">
+                                            <input type="hidden" name="item_prices[]" value="<?php echo $product->price; ?>" />
+                                            <input type="hidden" name="item_id[]" value="<?php echo $product->id; ?>" />
+                                            <input type="hidden" name="item_type" value="product">
+                                            <input type="hidden" name="block" value="<?php echo $block; ?>">
+                                            <input type="hidden" name="submit_add_item" value="true">
+                                            <span class="pd_product-num-plus" onclick="add('<?php echo $index; ?>')"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <hr />
+                                <hr />
 
                             <?php } ?>
 
@@ -150,13 +142,10 @@
         if (number_field.value>0) {
             number_field.value--;
             unit--;
-            //total_price-= Number($('#'+price_id).text());
-            //$('#total_price').text(total_price+'元');
             $('#cart_num').text(unit);
         }
 
         if (number_field.value==0) {
-
             $('#'+div_id).css('background', 'none');
         }
 
@@ -188,5 +177,3 @@
 </script>
 <!-- END BrightTag -->
 
-</body>
-</html>

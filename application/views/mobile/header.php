@@ -5,6 +5,7 @@ if(!isset($_SESSION['cart'])){
 }
 
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Orchard7 | Something fresh every day</title>
@@ -20,16 +21,3 @@ if(!isset($_SESSION['cart'])){
     <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
 </head>
 
-
-<body class="newTodayView">
-<header>
-    <nav class="shine dropShadow">
-        <a href="#">
-            <span class="logo floatLeft"></span>
-            <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
-        </a>
-        <em id="num_cart" class="num_cart hide"></em>
-        <a href="#" class="floatRight" onclick="checkout()"><span class="cart"></span></a>
-        <div id="menuIcon" class="floatRight" data-event="toggle-menu"><span id="menuDown" class="menu down"></span></div>
-    </nav>
-</header>
