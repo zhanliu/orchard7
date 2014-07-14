@@ -29,13 +29,13 @@
                                 <input type="hidden" name="province" value="广东省">
                                 <input type="hidden" name="city" value="广州市">
                                 <input type="hidden" name="district" value="海珠区">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">广东省-广州市-海珠区</label>
-                                <div class="col-sm-6">
-                                    <input type="text" id="block" name="block" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">广东省-广州市-海珠区</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="block" name="block" size="30" required="required" class="form-control" placeholder="输入路名和小区..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
+                                    </div>
                                 </div>
-                            </div>
-
+                                <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="" >
                             </form>
                             <div class="stepy-navigator panel-footer"><div class="pull-right">
                                 <a href="#" onclick="next();" class="btn btn-primary">下一步<i class="fa fa-long-arrow-right"></i></a>
@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<div id="map"></div>
+<div id="map" style="display:none"></div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -101,7 +101,9 @@
 
     function calculate_distance() {
         if (myLocalsearch.getStatus()!=0) {
-            alert('地址不合法或超出了广州海珠区，请重新尝试');
+            //alert('地址不合法或超出了广州海珠区，请重新尝试');
+            $('#alert_note').html('地址不合法或超出了广州海珠区，请重新尝试');
+            $('#alert_note').addClass("alert-warning");
             return;
         }
 
@@ -121,15 +123,19 @@
                                 var address = data['address'];
 
                                 if (distance < distanceAllowed) {
-                                    alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
+                                    //alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
+                                    $("#nearest_store_id").val(store_id);
                                     document.getElementById("location_form").submit();
                                 } else {
-                                    alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
+                                    //alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
                                     //$('#form-bg').html('');
                                     $('#alert_note').html('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
+                                    $('#alert_note').addClass("alert-warning");
                                 }
                             } else {
-                                alert("计算距离失败");
+                                //alert("计算距离失败");
+                                $('#alert_note').html('计算距离失败!');
+                                $('#alert_note').addClass("alert-warning");
                             }
                         }
                     }

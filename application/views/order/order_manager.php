@@ -21,6 +21,8 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>配送店铺</th>
+                    <th>修改</th>
                     <th>订单删除</th>
                 </tr>
                 </thead>
@@ -32,6 +34,8 @@
                     <th>订单状态</th>
                     <th>订单金额</th>
                     <th>订单地址</th>
+                    <th>配送店铺</th>
+                    <th>修改</th>
                     <th>订单删除</th>
                 </tr>
                 </tfoot>
@@ -39,27 +43,27 @@
                 <tbody>
                 <?php foreach ($orders as $order) { ?>
                 <tr align="center">
-                    <td>
-                        <a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改订单<?php echo $order->id; ?></a>
-                    </td>
+                    <td><?php echo $order->id; ?></td>
                     <td><?php echo $order->cellphone; ?></td>
+                    <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>order/orderstatus" method="post" target="_parent">
                     <td>
-                        <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>order/orderstatus" method="post" target="_parent">
-                            <b><?php echo $order->status; ?></b>
-                            <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
-                            <?php foreach ($orderStatus as $status) { ?>
-                                <?php if ($status->status_code == $order->status) { ?>
-                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" selected>'.$status->status.'</option>'; ?>
-                                <?php } else { ?>
-                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
-                                <?php } ?>
+                        <b><?php echo $order->status; ?></b>
+                        <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
+                        <?php foreach ($orderStatus as $status) { ?>
+                            <?php if ($status->status_code == $order->status) { ?>
+                            <?php echo '<option class="statusoption" value="'.$status->status_code.'" selected>'.$status->status.'</option>'; ?>
+                            <?php } else { ?>
+                            <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
                             <?php } ?>
+                        <?php } ?>
                         </select>
                         <input type="hidden" name="order_id" value="<?php echo $order->id; ?>">
-                        </form>
                     </td>
+                    </form>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
+                    <td><?php echo $order->storename ?></td>
+                    <td><a href="<?php echo URL; ?>order/updateOrder/<?php echo $order->id; ?>" class="myButton" >修改</a></td>
                     <td><a href="<?php echo URL . 'order/deleteOrder/' . $order->id; ?>" class="myButton">删除</a></td>
                 </tr>
                 <?php } ?>

@@ -64,9 +64,16 @@ class Mobile extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
+<<<<<<< HEAD
         //$block = $_POST["block"];
         //$cookie_model = $this->loadModel('CookieModel');
         //$cookie_model->setCookie('uif', $block, false);
+=======
+        $block = $_POST["block"];
+        $nearest_store_id = $_POST["nearest_store_id"];
+        $cookie_model = $this->loadModel('CookieModel');
+        $cookie_model->setCookie('uif', $block, false);
+>>>>>>> e6546092540f5d67dec9be1b87433140324e0731
 
         //require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
@@ -93,6 +100,7 @@ class Mobile extends Controller
 
     public function checkout() {
 
+        $nearest_store_id = $_POST["nearest_store_id"];
         $item_ids = $_POST['item_id'];
         $item_quantities = $_POST['item_quantity'];
         $item_type = $_POST['item_type'];
@@ -106,6 +114,7 @@ class Mobile extends Controller
     public function submitAddItem() {
         if (isset($_POST["submit_add_item"])) {
             $block = $_POST["block"];
+            $nearest_store_id = $_POST["nearest_store_id"];
             $item_type = $_POST['item_type'];
             $item_ids = base64_encode(json_encode($_POST['item_id']));
             $item_quantities = base64_encode(json_encode($_POST['item_quantity']));
@@ -162,9 +171,10 @@ class Mobile extends Controller
 
             //add order
             $order_model = $this->loadModel('OrderModel');
-            //TODO: calculate total price
-            //CID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
-            $order_id = $order_model->addOrder($customer_id, $address_id, 1, 0);
+            //CID, STORE_ID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
+            $nearest_store_id = $_POST["nearest_store_id"];
+            $order_id = $order_model->addOrder($customer_id, $nearest_store_id, $address_id, 1, 0);
+
 
 
             //add order detail

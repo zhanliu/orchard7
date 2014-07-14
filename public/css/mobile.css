@@ -1189,6 +1189,7 @@ fieldset {
     border: 1px solid transparent;
     border-radius: 1px;
 }
+<<<<<<< HEAD
 
 /* --- meituan --- */
 
@@ -1380,4 +1381,27 @@ a.react {
 
 dl.list dt:last-child, dl.list dd:last-child, dl.list db:last-child {
     border-bottom: 0;
+
+.alert-warning {
+    background-color:#fcf3d0;
+    border-color:#f7dc6f;
+    color:#927608
+}
+.alert-warning hr {
+    border-top-color:#f5d657
+}
+.alert-warning .alert-link {
+    color:#614f06
+}
+.alert-danger {
+    background-color:#fdf2f2;
+    border-color:#f29797;
+    color:#a81515
+}
+.alert-danger hr {
+    border-top-color:#ef8080
+}
+.alert-danger .alert-link {
+    color:#7b0f0f
+
 }
