@@ -45,21 +45,21 @@
                 <tr align="center">
                     <td><?php echo $order->id; ?></td>
                     <td><?php echo $order->cellphone; ?></td>
+                    <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>order/orderstatus" method="post" target="_parent">
                     <td>
-                        <form id="myform<?php echo $order->id; ?>" class="comboform" action="<?php echo URL; ?>order/orderstatus" method="post" target="_parent">
-                            <b><?php echo $order->status; ?></b>
-                            <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
-                            <?php foreach ($orderStatus as $status) { ?>
-                                <?php if ($status->status_code == $order->status) { ?>
-                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" selected>'.$status->status.'</option>'; ?>
-                                <?php } else { ?>
-                                <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
-                                <?php } ?>
+                        <b><?php echo $order->status; ?></b>
+                        <select name="orderstatus" id="orderstatus<?php echo $order->id; ?>" onchange="optionClick(<?php echo $order->id; ?>)">
+                        <?php foreach ($orderStatus as $status) { ?>
+                            <?php if ($status->status_code == $order->status) { ?>
+                            <?php echo '<option class="statusoption" value="'.$status->status_code.'" selected>'.$status->status.'</option>'; ?>
+                            <?php } else { ?>
+                            <?php echo '<option class="statusoption" value="'.$status->status_code.'" >'.$status->status.'</option>'; ?>
                             <?php } ?>
+                        <?php } ?>
                         </select>
                         <input type="hidden" name="order_id" value="<?php echo $order->id; ?>">
-                        </form>
                     </td>
+                    </form>
                     <td><?php echo $order->total_amount ?></td>
                     <td><?php echo $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2; ?></td>
                     <td><?php echo $order->storename ?></td>
