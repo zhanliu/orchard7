@@ -1,5 +1,5 @@
 <?php
-
+include('application/views/mobile/ShoppingCart.class.php');
 class Mobile extends Controller {
 
     public function index() {
@@ -190,6 +190,27 @@ class Mobile extends Controller {
         }
     }
 
+    public function addToCart($id) {
+        if (!session_id()) session_start();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
+        $cart = $_SESSION['cart'];
+        $cart->addItem($id);
+    }
 
+    public function removeFromCart($id) {
+        if (!session_id()) session_start();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
+        $cart = $_SESSION['cart'];
+        $cart->deleteItem($id);
+    }
 
+    public function preview() {
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/preview.php';
+        require 'application/views/mobile/footer.php';
+    }
 }

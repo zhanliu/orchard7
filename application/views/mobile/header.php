@@ -1,7 +1,7 @@
 <?php
-//if (!session_id()) session_start();
+if (!session_id()) session_start();
 if(!isset($_SESSION['cart'])){
-    $_SESSION['cart'] = array();
+    $_SESSION['cart'] = new ShoppingCart();
 }
 
 ?>

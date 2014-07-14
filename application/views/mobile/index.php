@@ -46,28 +46,34 @@ if (!empty($_COOKIE['uaccess_time'])) {
                             </div>
 
 
+                            <div id="form-bg">
+                                <fieldset>
+                                    <form id="location_form" action="<?php echo URL; ?>mobile/showcase" method="post"
+                                          class="form-horizontal">
+                                        <input type="hidden" name="province" value="广东省">
+                                        <input type="hidden" name="city" value="广州市">
+                                        <input type="hidden" name="district" value="海珠区">
 
+                                        <div class="form-group">
+                                            <!--<label class="col-sm-3 control-label">广东省-广州市-海珠区</label>-->
+                                            <div class="alert alert-info" id="alert_note" style="display:none"></div>
+                                            <input type="text" id="block" name="block" style="width:90%;" size="20"
+                                                   required="required" class="form-control" placeholder="输入小区名或楼宇名..."
+                                                   value="<?php if (!empty($_COOKIE['uif'])) {
+                                                       echo($_COOKIE['uif']);
+                                                   } ?>">
 
-                                    <div id="form-bg">
-                                        <fieldset>
-                                            <form id="location_form" action="<?php echo URL; ?>mobile/showcase" method="post" class="form-horizontal">
-                                                <input type="hidden" name="province" value="广东省">
-                                                <input type="hidden" name="city" value="广州市">
-                                                <input type="hidden" name="district" value="海珠区">
-                                                <div class="form-group">
-                                                    <!--<label class="col-sm-3 control-label">广东省-广州市-海珠区</label>-->
-                                                <div class="alert alert-info" id="alert_note" style="display:none"></div>
-                                                <input type="text" id="block" name="block" style="width:90%;" size="20" required="required" class="form-control" placeholder="输入小区名或楼宇名..." value="<?php if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);} ?>">
-
-                                                </div>
-                                                <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="" >
-                                            </form>
-                                            <div class="stepy-navigator panel-footer"><div class="pull-right">
-                                                    <a href="#" onclick="next();" class="btn btn-primary">下一步</a>
-                                                </div></div>
-                                        </fieldset>
-
+                                        </div>
+                                        <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="">
+                                    </form>
+                                    <div class="stepy-navigator panel-footer">
+                                        <div class="pull-right">
+                                            <a href="#" onclick="next();" class="btn btn-primary">下一步</a>
+                                        </div>
                                     </div>
+                                </fieldset>
+
+                            </div>
 
 
                         </div>
@@ -82,7 +88,9 @@ if (!empty($_COOKIE['uaccess_time'])) {
     </div>
 </div>
 <style>
-    a:visited {color:white;}
+    a:visited {
+        color: white;
+    }
 </style>
 
 <div id="map" style="display:none"></div>
@@ -93,13 +101,13 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
     var myGeo = new BMap.Geocoder();
     var map = new BMap.Map("map");
-    map.centerAndZoom("广州市",12);         //初始化地图。设置中心点和地图级别
+    map.centerAndZoom("广州市", 12);         //初始化地图。设置中心点和地图级别
     var options = {renderOptions: {map: map, panel: "map"}};
-    var myLocalsearch = new BMap.LocalSearch(map,options);
+    var myLocalsearch = new BMap.LocalSearch(map, options);
     var address = "";
 
-    function next(){
-        if ($.trim($("#block").val())=='') {
+    function next() {
+        if ($.trim($("#block").val()) == '') {
             setAlert('地址不合法或超出了广州海珠区，请重新尝试');
         } else {
             address = '广东省广州市海珠区' + $("#block").val();
@@ -110,20 +118,20 @@ if (!empty($_COOKIE['uaccess_time'])) {
     }
 
     function calculate_distance() {
-        if (myLocalsearch.getStatus()!=0) {
+        if (myLocalsearch.getStatus() != 0) {
             //alert('地址不合法或超出了广州海珠区，请重新尝试');
             setAlert('地址不合法或超出了广州海珠区，请重新尝试');
             return;
         }
 
-        myGeo.getPoint(address, function(point){
+        myGeo.getPoint(address, function (point) {
             if (point) {
 
                 $.ajax({
                         url: '<?php echo URL; ?>location/getDistance/' + point.lat + '/' + point.lng,
                         data: "",
                         dataType: 'json',
-                        success: function(data) {
+                        success: function (data) {
 
                             if (data != '') {
 
