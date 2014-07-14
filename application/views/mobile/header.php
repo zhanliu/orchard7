@@ -15,6 +15,7 @@ if(!isset($_SESSION['cart'])){
     <meta http-equiv="cleartype" content="on">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
+    <link rel="stylesheet" href="<?php echo URL; ?>public/css/mobile-style.css" type="text/css" media="screen">
     <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
 </head>
 

@@ -1,0 +1,7 @@
+.rs-slider 						{ position:relative; z-index:20;  }
+.rs-slider > li 				{ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.rs-slider > li img 			{ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.rs-thumb-wrap 					{ margin: 21px 0px 10px 0px; position:relative; float:right; }
+.rs-thumb-wrap > a > img 		{ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+.rs-thumb-wrap > a:first-child 	{ margin-left: 0!important }
+

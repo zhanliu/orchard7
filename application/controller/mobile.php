@@ -64,13 +64,13 @@ class Mobile extends Controller
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getAllProducts();
 
-        $block = $_POST["block"];
-        $cookie_model = $this->loadModel('CookieModel');
-        $cookie_model->setCookie('uif', $block, false);
+        //$block = $_POST["block"];
+        //$cookie_model = $this->loadModel('CookieModel');
+        //$cookie_model->setCookie('uif', $block, false);
 
-        require 'application/views/mobile/header.php';
+        //require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
-        require 'application/views/mobile/footer.php';
+        //require 'application/views/mobile/footer.php';
     }
 
     public function getCustomer($wechat_id) {
