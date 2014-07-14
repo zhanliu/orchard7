@@ -14,8 +14,6 @@ class Mobile extends Controller {
             require 'application/views/mobile/confirm_range.php';
             require 'application/views/mobile/footer.php';
         }
-
-
     }
 
 
@@ -93,7 +91,6 @@ class Mobile extends Controller {
     }
 
     public function checkout() {
-
         $nearest_store_id = $_POST["nearest_store_id"];
         $item_ids = $_POST['item_id'];
         $item_quantities = $_POST['item_quantity'];
@@ -169,8 +166,6 @@ class Mobile extends Controller {
             $nearest_store_id = $_POST["nearest_store_id"];
             $order_id = $order_model->addOrder($customer_id, $nearest_store_id, $address_id, 1, 0);
 
-
-
             //add order detail
             $order_detail_model = $this->loadModel('OrderDetailModel');
 
@@ -186,7 +181,6 @@ class Mobile extends Controller {
                 $quantity_index++;
             }
             $order_model->updateTotalAmount($order_id, $total_amount);
-
         }
     }
 
