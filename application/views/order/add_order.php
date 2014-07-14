@@ -167,7 +167,6 @@
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
                                                     <h4>联系方式</h4>
-
                                                 </div>
                                                 <div class="panel-body">您的联系电话是: <span id="cellphone_preview"></span></div>
                                             </div>
@@ -175,7 +174,6 @@
                                             <div class="panel panel-orange">
                                                 <div class="panel-heading">
                                                     <h4>配送地址</h4>
-
                                                 </div>
                                                 <div class="panel-body">您的配送地址是: <span id="address_preview"></span></div>
                                             </div>
@@ -184,21 +182,11 @@
                                                 <a href="#" class="btn btn-default" onclick="back4()"><i class="fa fa-long-arrow-left"></i> Back</a>
                                                 <input type="submit" class="finish btn-success btn" value="Submit" onclick="submit_add_order()"></div></div>
                                     </fieldset>
-
                                 </form>
                             </div>
-
-
-
                         </div>
-
-
-
-
                     </div>
                 </div>
-
-
             </div>
 
             <div class="panel">
@@ -312,20 +300,14 @@
                      address2 = data[checked_index]['address2'];
                      address_string = district + address1 + address2;
                  }
-
                } else {
                    address_flag = 'NEW';
                    //$('input:radio:checked').val() == 'new_address';
                    $('#address_hint').html('添加新的配送地址');
                    add_address();
                }
-
-
              }
-
-           }
-        )
-
+           })
         }
     }
 

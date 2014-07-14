@@ -73,42 +73,39 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function(){
-            $('#order_manager_table').dataTable();
-        });
+<script>
+    $(document).ready(function(){
+        $('#order_manager_table').dataTable();
+    });
 
 
-        function updateOrder(order_id) {
-            $("#order_combo_data_table").dataTable();
-            openbox("box","订单-" + order_id, 1);
+    function updateOrder(order_id) {
+        $("#order_combo_data_table").dataTable();
+        openbox("box","订单-" + order_id, 1);
 
+    }
+
+    function optionClick(comboID) {
+        $("#myform"+comboID).submit();
+    }
+
+    function check_change(id) {
+        if ($("#check"+id).attr("value") == 0) {
+            $("#check"+id).attr("value", 1);
+            $("#spinner"+id).attr("disabled", false);
+            $("#comboIdHidden"+id).attr("disabled", false);
+            $("#comboPriceHidden"+id).attr("disabled", false);
+        } else {
+            $("#check"+id).attr("value", 0);
+            $("#spinner"+id).attr("disabled", true);
+            $("#comboIdHidden"+id).attr("disabled", true);
+            $("#comboPriceHidden"+id).attr("disabled", true);
+            $("#spinner"+id).val("");
         }
+    }
 
-        function optionClick(comboID) {
-            $("#myform"+comboID).submit();
-        }
-
-        function check_change(id) {
-
-            if ($("#check"+id).attr("value") == 0) {
-                $("#check"+id).attr("value", 1);
-                $("#spinner"+id).attr("disabled", false);
-                $("#comboIdHidden"+id).attr("disabled", false);
-                $("#comboPriceHidden"+id).attr("disabled", false);
-            } else {
-                $("#check"+id).attr("value", 0);
-                $("#spinner"+id).attr("disabled", true);
-                $("#comboIdHidden"+id).attr("disabled", true);
-                $("#comboPriceHidden"+id).attr("disabled", true);
-                $("#spinner"+id).val("");
-            }
-        }
-
-        function submit() {
-
-            document.getElementById("myform").submit();
-
-            return false;
-        }
-    </script>
+    function submit() {
+        document.getElementById("myform").submit();
+        return false;
+    }
+</script>
