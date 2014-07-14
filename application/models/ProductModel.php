@@ -24,6 +24,24 @@ class ProductModel
         return $query->fetchAll();
     }
 
+    public function getProductsByIds($product_ids) {
+        $id_group = "";
+        foreach ($product_ids as $product_id) {
+            $id_group.= $product_id.",";
+        }
+        $id_group = substr_replace($id_group, '', -1);
+
+        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, created_time, updated_time FROM product ";
+        $sql.= "WHERE id in (".$id_group.")";
+
+        //return $sql;
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function getProductById($product_id)
     {
         $sql = "SELECT id, name,category_id,unit, price,original_price, description, tag, img_url, is_active, created_time, updated_time FROM product ";

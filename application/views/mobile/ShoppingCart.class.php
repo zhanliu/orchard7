@@ -35,7 +35,21 @@ class ShoppingCart {
     }
 
     public function count() {
-        return sizeof($this->items);
+        $count = 0;
+        foreach ($this->items as $key => $value) {
+            $count+= $value;
+        }
+        return $count;
+    }
+
+    public function getIds() {
+        $ids = array();
+        $index = 0;
+        foreach ($this->items as $key => $value) {
+            $ids[$index] = $key;
+            $index++;
+        }
+        return $ids;
     }
 
     /*--------------------------------*/

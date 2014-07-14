@@ -191,6 +191,8 @@ class Mobile extends Controller {
         }
         $cart = $_SESSION['cart'];
         $cart->addItem($id);
+
+        echo $cart->count();
     }
 
     public function removeFromCart($id) {
@@ -200,9 +202,20 @@ class Mobile extends Controller {
         }
         $cart = $_SESSION['cart'];
         $cart->deleteItem($id);
+
+        echo $cart->count();
     }
 
     public function preview() {
+        if (!session_id()) session_start();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
+        $cart = $_SESSION['cart'];
+
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getProductsByIds($cart->getIds());
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/preview.php';
         require 'application/views/mobile/footer.php';

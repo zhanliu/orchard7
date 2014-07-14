@@ -81,14 +81,13 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
                                     <div class="buy-item">
 
-                                        <image src="<?php echo URL; ?>public/img/add-to-cart.png" onclick="add(<?php echo $index; ?>)">
+                                        <image src="<?php echo URL; ?>public/img/add-to-cart.png" onclick="addToCart(<?php echo $index; ?>)">
 
                                     </div>
 
                                 </div>
 
                                 <hr/>
-
                             <?php } ?>
                                 <input type="hidden" name="item_type" value="product">
                                 <input type="hidden" name="block" value="<?php echo $block; ?>">
@@ -119,42 +118,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
 </div>
 
 <script type="text/javascript">
-    var total_price = 0;
-    var unit = 0;
-    var is_checkout = false;
-    var count = <?php echo $_SESSION['cart']->count(); ?>;
-    function add(index) {
-        var div_id = 'div_' + index;
-        count ++;
-        $('#' + div_id).css('background', '#eeeeff');
-        $('#cart_num').text(count);
-        $('#cart_num').css('display', 'inline');
 
-        addToCart(index);
-    }
-/*
-    function sub(index) {
-        var div_id = 'div_' + index;
-
-
-        if (number_field.value > 0) {
-            number_field.value--;
-            unit--;
-            $('#cart_num').text(unit);
-            removeFromCart(index);
-        }
-
-        if (number_field.value == 0) {
-            $('#' + div_id).css('background', 'none');
-        }
-
-        if (unit == 0) {
-            $('#cart_num').css('display', 'none');
-        }
-
-
-    }
-*/
     function addToCart(id) {
         $.ajax({
                 url: '<?php echo URL; ?>mobile/addToCart/' + id,
@@ -162,6 +126,8 @@ if (!empty($_COOKIE['uaccess_time'])) {
                 dataType: 'json',
                 success: function (data) {
                     if (data != '') {
+                        $('#cart_num').text(data);
+                        $('#cart_num').css('display', 'inline');
                     }
                 }
             }
@@ -183,10 +149,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
     }
 */
     function submit() {
-        alert('hi');
         document.getElementById("myform").submit();
     }
 
 </script>
-<!-- END BrightTag -->
-
