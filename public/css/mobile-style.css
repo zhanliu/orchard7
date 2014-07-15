@@ -495,3 +495,205 @@ tr:nth-child(odd) 	{ background: #FFF; }
     width: 80px;
     height: 80px;
 }
+
+.shoppingCart-overview {
+    padding: 10px 16px 10px 11px;
+}
+
+.shoppingCart-list li {
+    position: relative;
+    border-top: 1px solid #CCC;
+    padding: 0 0 0 0;
+}
+
+.shoppingCart-list .name {
+    margin-left: 44px;
+    font-size: 16px;
+    line-height: 18px;
+    padding: 15px 0 8px 0;
+}
+
+.shoppingCart-list .widget-num {
+    float: right;
+    margin: 16px 16px 0 0;
+    border: 1px solid #d7d7d7;
+}
+.widget-num {
+    background-color: #FFF;
+    height: 30px;
+}
+
+.shoppingCart-list .delete {
+    width: 30px;
+    height: 30px;
+    background: url(images/button-del.png) no-repeat center center;
+    background-size: 30px 30px;
+    position: absolute;
+    left: 5px;
+    top: 33px;
+    margin: -15px 0 0 0;
+}
+
+.shoppingCart-list .desc {
+    margin-left: 44px;
+    line-height: 14px;
+    color: #858585;
+    font-size: 13px;
+    padding: 0 0 10px 0;
+    position: relative;
+}
+
+.widget-num .left {
+    float: left;
+    height: 30px;
+    width: 32px;
+    background: url(images/icon-reduce.png) no-repeat center center;
+    background-size: 30px 30px;
+}
+
+.widget-num .right {
+    height: 30px;
+    width: 32px;
+    float: right;
+    background: url(images/icon-plus.png) no-repeat center center;
+    background-size: 30px 30px;
+}
+
+.widget-num .text {
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    width: 34px;
+    text-align: center;
+    line-height: 30px;
+    margin: 0 32px;
+    font-size: 16px;
+}
+
+ul, dl, ol {
+    list-style: none;
+}
+
+.shoppingCart-overview .amount {
+    font-size: 16px;
+}
+
+.shoppingCart-overview .tag {
+    float: left;
+    line-height: 21px;
+    padding-top: 6px;
+    width: 58px;
+    color: #ff0000;
+}
+
+.shoppingCart-overview .total {
+    line-height: 28px;
+    height: 28px;
+    color: #ff0000;
+    font-size: 18px;
+}
+
+.shoppingCart-overview .subtotal {
+    line-height: 18px;
+    font-size: 13px;
+    color: #868585;
+}
+
+.shoppingCart-overview.bottom {
+    height: 50px;
+}
+
+.page-button.submit {
+    height: 38px;
+    line-height: 38px;
+    width: 83%;
+    margin: 0 auto;
+}
+.page-button {
+    line-height: 35px;
+    height: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+    font-size: 18px;
+    background: #ff5961;
+}
+
+.confirm-form .value {
+    height: 35px;
+    border: 1px solid #d5d5d5;
+    background-color: #FFF;
+    margin-bottom: 13px;
+}
+
+.confirm-form .icon.username {
+    background: url(images/icon-username.png) no-repeat center center;
+    background-size: 25px 25px;
+}
+.confirm-form .icon {
+    width: 40px;
+    float: left;
+    height: 35px;
+    border-right: 1px solid #d5d5d5;
+    position: relative;
+}
+
+.confirm-form .input {
+    margin-left: 50px;
+}
+
+.confirm-form input {
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    font-size: 15px;
+    color: #6c6c6c;
+}
+
+.confirm-form .close-btn {
+    display: block;
+    width: 30px;
+    height: 35px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: url(images/inputClear.png) no-repeat center center;
+    background-size: 20px 20px;
+}
+
+.confirm-form .label {
+    padding-left: 5px;
+    line-height: 30px;
+    color: #555;
+}
+
+.email-list {
+    border: 1px solid #d5d5d5;
+    border-top: none;
+    position: absolute;
+    top: 32px;
+    left: -10px;
+    width: 100%;
+    padding: 2px 0 0 9px;
+    background: #FFF;
+    font-size: 15px;
+}
+
+a, input, div, textarea {
+    outline: none;
+}
+
+.page-tipsTitle {
+    margin-top: 20px;
+    line-height: 23px;
+    border-bottom: 1px solid #cccccc;
+    padding-left: 20px;
+    background: url(images/icon-tips.png) no-repeat left center;
+    background-size: 20px 20px;
+    color: #6c6c6c;
+}
+.page-tipsContent p {
+    font-family: "微软雅黑","华文细黑",Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #6c6c6c;
+}

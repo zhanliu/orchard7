@@ -24,19 +24,50 @@
 
                         <div class="full-content">
 
-                            <?php
-                            foreach ($_SESSION['cart']->getItems() as $key => $value) {
-                                echo "key is " . $key . " and value is " . $value . "<br>";
-                            }
+                            <div class="shoppingCart-overview">
+                                <div class="amount">
+                                    <div class="tag">总金额:</div>
+                                    <div class="total"><span>59.5</span>元</div>
+                                    <div class="subtotal">(小计:50.5元, 外送费:9.0元)</div>
+                                </div>
+                            </div>
+                            <ul class="shoppingCart-list">
 
-                            //echo $products;
+                                <?php
+                                $items = $_SESSION['cart']->getItems();
+                                foreach ($products as $product) {
+                                    $qty = $items[$product->id];
+                                ?>
 
-                            foreach ($products as $product) {
-                                echo "Product name is ". $product->name;
-                            }
+                                <li><div id="delItem_1" class="delete"></div>
+                                    <div class="widget-num">
+                                        <div id="minusItem_1" class="left am-clickable"></div>
+                                        <div id="addItem_1" class="right am-clickable"></div>
+                                        <div class="text"><?php echo $qty; ?></div>
+                                    </div>
 
-                            ?>
+                                    <div class="name"><?php echo $product->name; ?></div>
+                                    <div class="desc">
+                                        <span>单价:<?php echo $product->price; ?>, </span>
+                                        <span>小计:<?php echo $product->price * $qty; ?></span>
+                                    </div>
+                                </li>
+                                <?php } ?>
 
+                            </ul>
+
+                            <div class="shoppingCart-overview bottom">
+                                <div class="amount">
+                                    <div class="tag">总金额:</div>
+                                    <p class="total"><span>59.5</span>元</p>
+
+                                    <p class="subtotal">(小计:50.5元, 外送费:9.0元)</p>
+                                </div>
+                            </div>
+
+                            <div class="page-button submit">
+                                <a href="<?php echo URL; ?>mobile/confirmCellphone"><span class="text">进入结算</span></a>
+                            </div>
 
                         </div>
 

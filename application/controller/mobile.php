@@ -54,6 +54,11 @@ class Mobile extends Controller {
         $products = $product_model->getAllProducts();
 
         $block = isset($_POST["block"]) ? $_POST["block"]:null;
+        $nearest_store_id = isset($_POST["nearest_store_id"]) ? $_POST["nearest_store_id"]:null;
+
+        $_SESSION['block'] = $block;
+        $_SESSION['nearest_store_id'] = $nearest_store_id;
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/showcase.php';
         require 'application/views/mobile/footer.php';
@@ -90,15 +95,15 @@ class Mobile extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
-    public function checkout() {
-        $nearest_store_id = $_POST["nearest_store_id"];
-        $item_ids = $_POST['item_id'];
-        $item_quantities = $_POST['item_quantity'];
-        $item_type = $_POST['item_type'];
-        $item_prices = $_POST['item_prices'];
+    public function confirmCellphone() {
+        //$nearest_store_id = $_POST["nearest_store_id"];
+        //$item_ids = $_POST['item_id'];
+        //$item_quantities = $_POST['item_quantity'];
+        //$item_type = $_POST['item_type'];
+        //$item_prices = $_POST['item_prices'];
 
         require 'application/views/mobile/header.php';
-        require 'application/views/mobile/checkout.php';
+        require 'application/views/mobile/confirm_cellphone.php';
         require 'application/views/mobile/footer.php';
     }
 
