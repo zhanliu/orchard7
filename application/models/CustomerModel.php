@@ -51,9 +51,9 @@ class CustomerModel
         return $query->fetchAll();
     }
 
-    public function addCustomer($cellphone)
+    public function addCustomer($name, $cellphone)
     {
-        $name = strip_tags(name);
+        $name = strip_tags($name);
         $cellphone = strip_tags($cellphone);
 
         $now = time();
@@ -62,7 +62,7 @@ class CustomerModel
 
         $sql = "INSERT INTO customer (name, cellphone, created_time, updated_time) VALUES (:name, :cellphone, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':cellphone' => $cellphone, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':name' => $name,':cellphone' => $cellphone, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
         return $insertedId;
     }

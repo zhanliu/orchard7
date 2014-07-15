@@ -14,6 +14,7 @@ class ShippingAddressModel
         }
     }
 
+    //TODO: to fix the hardcoded primary address
     public function addShippingAddress($customer_id, $address_id)
     {
         // clean the input from javascript code for example

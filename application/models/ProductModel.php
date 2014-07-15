@@ -52,6 +52,18 @@ class ProductModel
         return $query->fetchAll();
     }
 
+    public function getPriceById($product_id)
+    {
+        $sql = "SELECT price FROM product ";
+        $sql.= "WHERE id=".$product_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        $result = $query->fetchAll();
+
+        return $result[0]->price;
+    }
+
     public function getProductsByComboId($combo_id) {
         $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, p.img_url, cd.combo_id, cd.product_id, cd.quantity ";
         $sql.= "FROM product as p, combo_detail as cd ";

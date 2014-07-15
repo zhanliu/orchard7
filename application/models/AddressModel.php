@@ -36,6 +36,17 @@ class AddressModel
         return $query->fetchAll();
     }
 
+    public function getPrimaryAddressByCustomerId($customer_id)
+    {
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql.= "WHERE a.id=sa.address_id AND sa.is_primary=1 AND sa.customer_id=".$customer_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+    //TODO: what is is for?
     public function getLastAddressesByCustomerId($customer_id)
     {
         $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id FROM address as a, shipping_address as sa ";

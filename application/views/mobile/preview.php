@@ -27,8 +27,8 @@
                             <div class="shoppingCart-overview">
                                 <div class="amount">
                                     <div class="tag">总金额:</div>
-                                    <div class="total"><span>59.5</span>元</div>
-                                    <div class="subtotal">(小计:50.5元, 外送费:9.0元)</div>
+                                    <div class="total"><span><?php echo $total_price; ?></span>元</div>
+                                    <div class="subtotal">(小计:<?php echo $total_price; ?>元, 外送费:0.0元)</div>
                                 </div>
                             </div>
                             <ul class="shoppingCart-list">
@@ -59,9 +59,9 @@
                             <div class="shoppingCart-overview bottom">
                                 <div class="amount">
                                     <div class="tag">总金额:</div>
-                                    <p class="total"><span>59.5</span>元</p>
+                                    <p class="total"><span><?php echo $total_price; ?></span>元</p>
 
-                                    <p class="subtotal">(小计:50.5元, 外送费:9.0元)</p>
+                                    <p class="subtotal">(小计:<?php echo $total_price; ?>元, 外送费:0元)</p>
                                 </div>
                             </div>
 

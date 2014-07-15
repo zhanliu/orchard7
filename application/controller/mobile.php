@@ -46,6 +46,11 @@ class Mobile extends Controller {
         $product_model = $this->loadModel('ProductModel');
         $products = $product_model->getProductsByIds($cart->getIds());
 
+        $total_price = 0;
+        foreach ($cart->getItems() as $item_id => $qty) {
+            $total_price+= $qty * $product_model->getPriceById($item_id);
+        }
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/preview.php';
         require 'application/views/mobile/footer.php';
@@ -74,22 +79,8 @@ class Mobile extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
-    public function location()
-    {
-        require 'application/views/mobile/header.php';
-        require 'application/views/mobile/location.php';
-        require 'application/views/mobile/footer.php';
-    }
-
     public function submitOrder() {
         if (isset($_POST["submit_order"])) {
-
-            //echo "item id are ".$_POST['item_ids'];
-            //$item_ids = json_decode(base64_decode($_POST['item_ids']));
-            //$item_quantities = json_decode(base64_decode($_POST['item_quantities']));
-            //$item_prices = json_decode(base64_decode($_POST['item_prices']));
-
-
 
             //TODO: some variables are hardcoded for the time being, fix them later
             $item_type = "product";
@@ -108,12 +99,6 @@ class Mobile extends Controller {
             setcookie('address1', $_POST["address1"], time()+3600*24*365*10);
             setcookie('address2', $_POST["address2"], time()+3600*24*365*10);
 
-
-            echo "cell phone is ".$cellphone."<br>";
-            echo "name is ".$name."<br>";
-            echo "address1 is ".$address1."<br>";
-            echo "address2 is ".$address2."<br>";
-
             //add Customer
             $customer_model = $this->loadModel('CustomerModel');
             $isCustomerExisted = false;
@@ -124,7 +109,8 @@ class Mobile extends Controller {
             $cookie_model = $this->loadModel('CookieModel');
             $cookie_model->setCookie('cellphone', $cellphone, false);
 
-
+            //TODO: if customer updated information we will have to update customer table accordingly
+            //TODO: to validate name and cellphone are the same
             if (sizeof($customer) == 1) {
                 $isCustomerExisted = true;
                 $customer_id = $customer[0]->id;
@@ -132,42 +118,42 @@ class Mobile extends Controller {
                 $customer_id = $customer_model->addCustomer($name, $cellphone);
             }
 
-            /*
+
             //add SHIPPING_ADDRESS
             $address_model = $this->loadModel('AddressModel');
             $shipping_address_model = $this->loadModel('ShippingAddressModel');
 
             if ($isCustomerExisted == false) {
                 //TODO: WE NEED TO LOCATE LAT AND LNG LATER
-                $address_id = $address_model->addAddress("中国", "广东省", "广州市", $_POST["district"], $_POST["address1"], $_POST["address2"], "", "");
+                $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $_POST["address1"], $_POST["address2"], "", "");
 
                 $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
                 $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
             } else {
-                $address_id = $_POST["address_id"];
+                $primary_address = $address_model->getPrimaryAddressByCustomerId($customer_id);
+                $address_id = $primary_address[0]->id;
             }
 
             //add order
             $order_model = $this->loadModel('OrderModel');
             //CID, STORE_ID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
-            $nearest_store_id = $_POST["nearest_store_id"];
-            $order_id = $order_model->addOrder($customer_id, $nearest_store_id, $address_id, 1, 0);
+            //TODO: add nearest store id here
+            //TODO: order status is not set yet!
+            $order_id = $order_model->addOrder($customer_id, '', $address_id, 1, 0);
 
             //add order detail
             $order_detail_model = $this->loadModel('OrderDetailModel');
-
-            $quantity_index = 0;
             $total_amount = 0;
 
-            foreach ($item_quantities as $quantity) {
-
-                    $order_detail_model->addOrderDetail($order_id, $item_type, $item_ids[$quantity_index], $quantity);
-
-                    $total_amount = $total_amount + $item_prices[$quantity_index] * $quantity;
-
-                $quantity_index++;
+            $product_model = $this->loadModel('ProductModel');
+            foreach ($cart->getItems() as $item_id => $qty) {
+                $order_detail_model->addOrderDetail($order_id, $item_type, $item_id, $qty);
+                $total_amount+= $product_model->getPriceById($item_id) * $qty;
             }
-            $order_model->updateTotalAmount($order_id, $total_amount);*/
+
+            $order_model->updateTotalAmount($order_id, $total_amount);
+
+            $this->success();
         }
     }
 

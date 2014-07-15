@@ -65,7 +65,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
                                 <div class="latest" id="<?php echo $div_id; ?>">
                                     <h3> <?php echo $product->name; ?> </h3>
-                                    <img src="<?php echo URL . 'public/uploads/' . $product->img_url; ?>"/>
+                                    <img src="<?php echo UPLOAD_URL . $product->img_url; ?>"/>
 
                                     <p><?php echo $product->description; ?></p>
 
@@ -119,6 +119,8 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
 <script type="text/javascript">
 
+    var count = <?php echo $_SESSION['cart']->count();?>;
+
     function addToCart(id) {
         $.ajax({
                 url: '<?php echo URL; ?>mobile/addToCart/' + id,
@@ -148,8 +150,21 @@ if (!empty($_COOKIE['uaccess_time'])) {
         )
     }
 */
+    /*TODO: THIS VALIDATION IS NOT TESTED YET*/
     function submit() {
-        document.getElementById("myform").submit();
+
+        if (count>0) {
+            document.getElementById("myform").submit();
+        } else {
+            alert('您的购物车还是空的呢');
+        }
     }
+
+    $(document).ready(function(){
+        if (count>0) {
+            $('#cart_num').text(count);
+            $('#cart_num').css('display', 'inline');
+        }
+    });
 
 </script>
