@@ -107,6 +107,16 @@ class Mobile extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function submitCellphone() {
+        if (isset($_POST["submit_cellphone"])) {
+            $cellphone = $_POST["cellphone"];
+
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/confirm_detail.php';
+            require 'application/views/mobile/footer.php';
+        }
+    }
+
     public function submitAddItem() {
         if (isset($_POST["submit_add_item"])) {
             $block = $_POST["block"];
@@ -125,14 +135,16 @@ class Mobile extends Controller {
     public function submitOrder() {
         if (isset($_POST["submit_order"])) {
             $item_type = $_POST['item_type'];
-            echo "item id are ".$_POST['item_ids'];
+            //echo "item id are ".$_POST['item_ids'];
             $item_ids = json_decode(base64_decode($_POST['item_ids']));
             $item_quantities = json_decode(base64_decode($_POST['item_quantities']));
             $item_prices = json_decode(base64_decode($_POST['item_prices']));
             $district = $_POST['district'];
             $address1 = $_POST['address1'];
             $address2 = $_POST['address2'];
+
             $cellphone = $_POST['cellphone'];
+            $name = $_POST['name'];
 
             //add Customer
             $customer_model = $this->loadModel('CustomerModel');
@@ -148,7 +160,7 @@ class Mobile extends Controller {
                 $isCustomerExisted = true;
                 $customer_id = $customer[0]->id;
             } else {
-                $customer_id = $customer_model->addCustomer($cellphone);
+                $customer_id = $customer_model->addCustomer($name, $cellphone);
             }
 
             //add SHIPPING_ADDRESS

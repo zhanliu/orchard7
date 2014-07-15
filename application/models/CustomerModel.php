@@ -37,7 +37,6 @@ class CustomerModel
 
     public function getCustomerByID($id) {
         $sql = "SELECT * FROM customer WHERE id='".$id."'";
-//        echo "Customer sql is ".$sql;
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -46,7 +45,6 @@ class CustomerModel
 
     public function getCustomerByWechatId($wechat_id) {
         $sql = "SELECT * FROM customer WHERE wechat_id='".$wechat_id."'";
-//        echo "Customer sql is ".$sql;
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -55,14 +53,14 @@ class CustomerModel
 
     public function addCustomer($cellphone)
     {
-        // clean the input from javascript code for example
+        $name = strip_tags(name);
         $cellphone = strip_tags($cellphone);
 
         $now = time();
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO customer (cellphone, created_time, updated_time) VALUES (:cellphone, :created_time, :updated_time)";
+        $sql = "INSERT INTO customer (name, cellphone, created_time, updated_time) VALUES (:name, :cellphone, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':cellphone' => $cellphone, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();

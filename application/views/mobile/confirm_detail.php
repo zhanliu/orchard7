@@ -15,77 +15,103 @@
                     </header>
                     <div class="clr"></div>
 
-                    <div id="page-inside">
+                    <div class="page-app userinfo">
+                        <div class="userInfo-msg" style="">
+                            这是您第一次订餐,请完善您的送餐信息
+                        </div>
 
-
-
-                            <form action="<?php echo URL; ?>mobile/submitOrder" id="myform" class="form-horizontal confirm-form" method="post">
-
-                                <div class="panel-body">
-
-
-                                    <fieldset title="Step 2" id="basicwizard-step-2" class="stepy-step"
-                                              style="display: none;">
-                                        <div class="form-group">
-                                            <label id="address_hint" class="col-sm-3 control-label"></label>
-
-                                            <div class="col-sm-6" id="output"></div>
-                                        </div>
-
-                                        <div class="col-md-12" id="new_address" style="display:none">
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">广东省广州市 -</label>
-
-                                                <div class="col-md-6">
-                                                    <select id="district" name="district" class="form-control">
-                                                        <option value="海珠区">海珠区</option>
-                                                    </select>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label"></label>
-
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="address1" name="address1" size="30"
-                                                           required="required" class="form-control"
-                                                           placeholder="输入街道和号码...">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label"></label>
-
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="address2" name="address2" size="30"
-                                                           required="required" value="<?php echo $block; ?>"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="stepy-navigator panel-footer">
-                                            <div class="pull-right">
-                                                <a href="#" class="btn btn-default" onclick="back2()"><i
-                                                        class="fa fa-long-arrow-left"></i>Back</a>
-                                                <a href="#" onclick="submit()" class="btn btn-primary">完成</a>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-
+                        <div class="userInfo-form">
+                            <div class="userInfo-stepTitle selected">
+                                <div class="num">
+                                    <span>1</span>
                                 </div>
-                                <input type="hidden" name="item_quantities" value="<?php echo $item_quantities; ?>">
-                                <input type="hidden" name="item_prices" value="<?php echo $item_prices; ?>">
-                                <input type="hidden" name="item_ids" value="<?php echo $item_ids; ?>">
-                                <input type="hidden" name="item_type" value="<?php echo $item_type; ?>">
-                                <input type="hidden" name="block" value="<?php echo $block; ?>">
-                                <input type="hidden" name="nearest_store_id" id="nearest_store_id"
-                                       value="<?php echo $nearest_store_id; ?>">
-                                <input type="hidden" name="submit_order" value="true">
-                            </form>
+                                <div class="arrow"></div>
+                                <p>
+                                    基本信息
+                                </p>
+                            </div>
+                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
 
 
+                                    <div class="value">
+                                        <div class="icon nick">
+                                            <span></span>
+                                        </div>
+                                        <div class="input">
+                                            <input type="text" name="nick" value="" placeholder="输入姓名">
+                                        </div>
+                                    </div>
+
+
+                            </div>
+                            <div class="userInfo_notSltText name am-clickable" style="display: none;"></div>
+                            <div class="userInfo-stepTitle">
+                                <div class="num">
+                                    <span>2</span>
+                                </div>
+                                <div class="arrow"></div>
+                                <p>
+                                    联系电话
+                                </p>
+                            </div>
+                            <div class="userInfo-stepBox" style="display: none; padding: 0px; height: 0px;">
+                                <ul class="userInfo-group telGroup"><li id="phone_0" class="selected"><p>18122208902</p><div id="delP_0" class="del"></div></li></ul>
+                                <div id="newphone" style="display: none;">
+                                    <div class="value">
+                                        <div class="icon tel">
+                                            <span></span>
+                                        </div>
+                                        <div class="input">
+                                            <input type="tel" name="cellphone" value="" placeholder="请填写手机号码">
+                                        </div>
+                                    </div>
+                                </div>
+                                <a onclick="showNewPhoneField()" id="newPhoneLink" style="color:red;float:right;font-size: 16px;text-decoration: underline;line-height:36px;padding:0 10px;margin: -5px -10px -5px 0;">新增电话</a>
+                                <div class="clear" style="height:5px"></div>
+                                <div class="page-button ok" style="display: none;">
+                                    <span class="text">确定</span>
+                                </div>
+
+                            </div>
+                            <div class="userInfo_notSltText am-clickable" style="">18122208902</div>
+
+                            <div class="userInfo-stepTitle selected">
+                                <div class="num">
+                                    <span>3</span>
+                                </div>
+                                <div class="arrow"></div>
+                                <p>
+                                    送餐地址与时间
+                                </p>
+                            </div>
+
+                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
+
+                                <div id="addressList"></div>
+                                <br>
+                                <div id="newaddress" style="">
+                                    <div class="userInfo-addAddrBox">
+                                        <div class="value userInfo-fullInput" id="search_address">
+                                            <input type="text" name="key" placeholder="输入关键字,搜索路名或小区">
+                                        </div>
+                                        <div class="newaddress_fullInput">
+
+                                            <div class="value userInfo-fullInput">
+                                                <input type="text" name="search" value="" placeholder="输入详细地址,如10弄5号">
+                                            </div>
+                                        </div>
+                                        <div class="clear" style="height:5px"></div>
+                                    </div>
+                                </div>
+                                <a onclick="showNewAddressField()" id="newAddressLink" style="color: red; float: right; font-size: 16px; text-decoration: underline; line-height: 36px; padding: 0px 10px; margin: -5px -10px -5px 0px; display: none;">新增地址</a>
+                                <div class="page-button add ok" style="display: block;">
+                                    <span class="text">确定</span>
+                                </div>
+                            </div>
+                            <div class="userInfo_notSltText am-clickable" style="display: none;"></div>
+                            <div class="userInfo_notSltText am-clickable" style="display: none;"></div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -241,14 +267,6 @@
         }
         $('#address_preview').html('广东省广州市' + address_string);
 
-    }
-
-    function back2() {
-        $('#output').html('');
-        $('#basicwizard-step-1').css('display', 'block');
-        $('#basicwizard-step-2').css('display', 'none');
-        $('#basicwizard-head-1').addClass('stepy-active');
-        $('#basicwizard-head-2').removeClass('stepy-active');
     }
 
     function add_address() {
