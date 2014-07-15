@@ -1,20 +1,4 @@
-<?php
-//if (!empty($_COOKIE['uif'])) {echo($_COOKIE['uif']);}
-//else {
-//    setcookie('uif','',time()-3600);
-//    setcookie('uif','zzz',time()+3600*24*365);
-//    //echo "8888";
-//}
-?>
 <body>
-
-<?php
-if (!empty($_COOKIE['uaccess_time'])) {
-    $count = $_COOKIE['uaccess_time'];
-} else {
-    $count = 0;
-}
-?>
 
 <div id="st-container" class="st-container">
     <div class="st-pusher">
@@ -54,11 +38,11 @@ if (!empty($_COOKIE['uaccess_time'])) {
                                         <div class="form-group">
                                             <!--<label class="col-sm-3 control-label">广东省-广州市-海珠区</label>-->
                                             <div class="alert alert-info" id="alert_note" style="display:none"></div>
-                                            <input type="text" id="block" name="block" style="width:90%;" size="20"
-                                                   required="required" class="form-control" placeholder="输入小区名或楼宇名..."
-                                                   value="<?php if (!empty($_COOKIE['uif'])) {
-                                                       echo($_COOKIE['uif']);
-                                                   } ?>">
+                                            <?php $address1 = empty($_COOKIE['address1']) ? "" : $_COOKIE['address1']; ?>
+
+                                            <input type="text" id="address1" name="address1" style="width:90%;" size="20"
+                                                   required="required" class="form-control" placeholder="输入小区名或大厦名..."
+                                                   value="<?php echo $address1 ?>">
 
                                         </div>
                                         <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="">
@@ -97,16 +81,16 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
     var myGeo = new BMap.Geocoder();
     var map = new BMap.Map("map");
-    map.centerAndZoom("广州市", 12);         //初始化地图。设置中心点和地图级别
+    map.centerAndZoom("广州市", 12);         //初始化地图,设置中心点和地图级别
     var options = {renderOptions: {map: map, panel: "map"}};
     var myLocalsearch = new BMap.LocalSearch(map, options);
     var address = "";
 
     function next() {
-        if ($.trim($("#block").val()) == '') {
+        if ($.trim($("#address1").val()) == '') {
             setAlert('地址不合法或超出了广州海珠区，请重新尝试');
         } else {
-            address = '广东省广州市海珠区' + $("#block").val();
+            address = '广东省广州市海珠区' + $("#address1").val();
             myLocalsearch.setSearchCompleteCallback(calculate_distance);
             myLocalsearch.search(address);
         }
@@ -130,19 +114,14 @@ if (!empty($_COOKIE['uaccess_time'])) {
                         if (data != '') {
 
                             var distance = data['distance'];
-                            var store_id = data['store_id'];
                             var address = data['address'];
 
                             if (distance < distanceAllowed) {
-                                //alert('您的位置距离配送中心' + address + distance + " 千米, 在配送范围！");
-                                $("#nearest_store_id").val(store_id);
                                 document.getElementById("location_form").submit();
                             } else {
-                                //alert('您的位置距离配送中心' + address + distance + " 千米, 不在配送范围。。。");
                                 setAlert('本小区尚未开通宅急送服务，请稍候时日，多谢支持！');
                             }
                         } else {
-                                //alert("计算距离失败");
                                 setAlert('计算距离失败!');
                         }
                     }
@@ -150,7 +129,6 @@ if (!empty($_COOKIE['uaccess_time'])) {
 
             } else {
                 setAlert('定位失败!');
-                //alert("定位失败");
             }
         }, "广州市");
     }

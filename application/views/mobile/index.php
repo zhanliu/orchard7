@@ -8,14 +8,6 @@
 ?>
 <body>
 
-<?php
-if (!empty($_COOKIE['uaccess_time'])) {
-    $count = $_COOKIE['uaccess_time'];
-} else {
-    $count = 0;
-}
-?>
-
 <div id="st-container" class="st-container">
     <div class="st-pusher">
 

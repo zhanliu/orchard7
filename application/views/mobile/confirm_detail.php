@@ -19,7 +19,8 @@
                         <div class="userInfo-msg" style="">
                             这是您第一次订餐,请完善您的送餐信息
                         </div>
-
+                        <form action="<?php echo URL; ?>mobile/submitOrder" id="myform"
+                              class="form-horizontal confirm-form" method="post">
                         <div class="userInfo-form">
                             <div class="userInfo-stepTitle selected">
                                 <div class="num">
@@ -37,8 +38,9 @@
                                         <div class="icon nick">
                                             <span></span>
                                         </div>
+                                        <?php $name = empty($_COOKIE['name']) ? "" : $_COOKIE['name']; ?>
                                         <div class="input">
-                                            <input type="text" name="nick" value="" placeholder="输入姓名">
+                                            <input type="text" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
                                         </div>
                                     </div>
 
@@ -55,7 +57,7 @@
                                 </p>
                             </div>
                             <div class="userInfo-stepBox" style="display: none; padding: 0px; height: 0px;">
-                                <ul class="userInfo-group telGroup"><li id="phone_0" class="selected"><p>18122208902</p><div id="delP_0" class="del"></div></li></ul>
+                                <ul class="userInfo-group telGroup"><li id="phone_0" class="selected"><p><?php echo $cellphone; ?></p><div id="delP_0" class="del"></div></li></ul>
                                 <div id="newphone" style="display: none;">
                                     <div class="value">
                                         <div class="icon tel">
@@ -66,23 +68,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a onclick="showNewPhoneField()" id="newPhoneLink" style="color:red;float:right;font-size: 16px;text-decoration: underline;line-height:36px;padding:0 10px;margin: -5px -10px -5px 0;">新增电话</a>
-                                <div class="clear" style="height:5px"></div>
-                                <div class="page-button ok" style="display: none;">
-                                    <span class="text">确定</span>
-                                </div>
 
                             </div>
-                            <div class="userInfo_notSltText am-clickable" style="">18122208902</div>
+                            <div class="userInfo_notSltText" style=""><?php echo $cellphone; ?></div>
 
                             <div class="userInfo-stepTitle selected">
                                 <div class="num">
                                     <span>3</span>
                                 </div>
                                 <div class="arrow"></div>
-                                <p>
-                                    送餐地址与时间
-                                </p>
+                                <p>送餐地址</p>
                             </div>
 
                             <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
@@ -92,27 +87,27 @@
                                 <div id="newaddress" style="">
                                     <div class="userInfo-addAddrBox">
                                         <div class="value userInfo-fullInput" id="search_address">
-                                            <input type="text" name="key" placeholder="输入关键字,搜索路名或小区">
+                                            <input type="text" name="address1" placeholder="输入关键字,搜索路名或小区" value="<?php echo $_COOKIE['address1'];?>">
                                         </div>
                                         <div class="newaddress_fullInput">
-
+                                            <?php $address2 = empty($_COOKIE['address2']) ? "" : $_COOKIE['address2']; ?>
                                             <div class="value userInfo-fullInput">
-                                                <input type="text" name="search" value="" placeholder="输入详细地址,如10弄5号">
+                                                <input type="text" name="address2" value="<?php echo $address2; ?>" placeholder="输入详细地址,如10弄5号">
                                             </div>
                                         </div>
                                         <div class="clear" style="height:5px"></div>
                                     </div>
                                 </div>
-                                <a onclick="showNewAddressField()" id="newAddressLink" style="color: red; float: right; font-size: 16px; text-decoration: underline; line-height: 36px; padding: 0px 10px; margin: -5px -10px -5px 0px; display: none;">新增地址</a>
+
                                 <div class="page-button add ok" style="display: block;">
-                                    <span class="text">确定</span>
+                                    <span class="text" onclick="submit();">确定</span>
                                 </div>
                             </div>
-                            <div class="userInfo_notSltText am-clickable" style="display: none;"></div>
-                            <div class="userInfo_notSltText am-clickable" style="display: none;"></div>
 
                         </div>
-
+                        <input type="hidden" name="cellphone" value="<?php echo $cellphone; ?>">
+                        <input type="hidden" name="submit_order" value="true">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -138,33 +133,14 @@
     var address_string;
 
     function submit() {
-        var isValid = validateCellphone();
-        if (isValid) {
-            document.getElementById("myform").submit();
-        }
-        return true;
-    }
+        document.getElementById("myform").submit();
 
-    function validateCellphone() {
-        var cellPhone = $("#cellphone").val();
-        var RegCellPhone = /^([0-9]{11})?$/;
-        var flag = cellPhone.search(RegCellPhone);
-        if (cellPhone.length == 0 || flag == -1) {
-            alert("手机号不合法!");
-            return false;
-        } else {
-            return true;
-        }
+        return true;
     }
 
     function next1() {
 
-        if (validateCellphone()) {
-
-            $('#basicwizard-step-1').css('display', 'none');
-            $('#basicwizard-step-2').css('display', 'block');
-            $('#basicwizard-head-1').removeClass('stepy-active');
-            $('#basicwizard-head-2').addClass('stepy-active');
+        if (true) {
 
             $.ajax({
                     url: '<?php echo URL; ?>order/queryAddressByCellphone/' + $('#cellphone').val(),

@@ -18,8 +18,8 @@ class CookieModel
 
         if ($should_expire == false) {
             // set cookie
-            setcookie($cookie_name,'',time()-3600);
-            setcookie($cookie_name,$cookie_value,time()+3600*24*365);
+            setcookie($cookie_name, '', time()-3600);
+            setcookie($cookie_name, $cookie_value, time()+3600*24*365);
         }
 
     }
