@@ -135,7 +135,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
             }
         )
     }
-/*
+
     function removeFromCart(id) {
         $.ajax({
                 url: '<?php echo URL; ?>mobile/RemoveFromCart/' + id,
@@ -149,7 +149,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
             }
         )
     }
-*/
+
     /*TODO: THIS VALIDATION IS NOT TESTED YET*/
     function submit() {
 

@@ -125,7 +125,10 @@ class Mobile extends Controller {
 
             if ($isCustomerExisted == false) {
                 //TODO: WE NEED TO LOCATE LAT AND LNG LATER
-                $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $_POST["address1"], $_POST["address2"], "", "");
+
+                $address_lat = $_POST['address_lat'];
+                $address_lng = $_POST['address_lng'];
+                $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $_POST["address1"], $_POST["address2"], $address_lat, $address_lng);
 
                 $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
                 $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
@@ -137,9 +140,9 @@ class Mobile extends Controller {
             //add order
             $order_model = $this->loadModel('OrderModel');
             //CID, STORE_ID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
-            //TODO: add nearest store id here
             //TODO: order status is not set yet!
-            $order_id = $order_model->addOrder($customer_id, '', $address_id, 1, 0);
+            $store_id = $_POST['store_id'];
+            $order_id = $order_model->addOrder($customer_id, $store_id, $address_id, 1, 0);
 
             //add order detail
             $order_detail_model = $this->loadModel('OrderDetailModel');
