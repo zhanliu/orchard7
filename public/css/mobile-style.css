@@ -851,3 +851,16 @@ a, input, div, textarea {
     padding: 0 10px;
     margin-bottom: 10px;
 }
+
+#message_box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #ffc;
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    font-weight: bold;
+    width: 99%;
+}

@@ -1,13 +1,5 @@
 <body>
 
-<?php
-if (!empty($_COOKIE['uaccess_time'])) {
-    $visit_count = $_COOKIE['uaccess_time'];
-} else {
-    $visit_count = 0;
-}
-?>
-
 <div id="st-container" class="st-container">
     <div class="st-pusher">
 
@@ -113,7 +105,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
         </div>
 
         <div class="clr"></div>
-
+        <div id="message_box">Your message goes here</div>
     </div>
 </div>
 
@@ -122,6 +114,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
     var count = <?php echo $_SESSION['cart']->count();?>;
 
     function addToCart(id) {
+        count++;
         $.ajax({
                 url: '<?php echo URL; ?>mobile/addToCart/' + id,
                 data: "",
@@ -134,25 +127,12 @@ if (!empty($_COOKIE['uaccess_time'])) {
                 }
             }
         )
+        setupMessageBox();
+        //showMessage();
     }
-/*
-    function removeFromCart(id) {
-        $.ajax({
-                url: '<?php echo URL; ?>mobile/RemoveFromCart/' + id,
-                data: "",
-                dataType: 'json',
-                success: function (data) {
-                    if (data != '') {
 
-                    }
-                }
-            }
-        )
-    }
-*/
     /*TODO: THIS VALIDATION IS NOT TESTED YET*/
     function submit() {
-
         if (count>0) {
             document.getElementById("myform").submit();
         } else {
@@ -166,5 +146,23 @@ if (!empty($_COOKIE['uaccess_time'])) {
             $('#cart_num').css('display', 'inline');
         }
     });
+
+    var updateTimer = 0;
+    function setupMessageBox(){
+        //showMessage(); //displays message on page load
+        jQuery(window).scroll(function() {
+            showMessage();
+        });
+        clearTimeout(updateTimer);
+        activateTimer();
+    }
+
+    function activateTimer() {
+        updateTimer = setTimeout('jQuery("#message_box").remove()', 5000);
+    }
+
+    function showMessage(){
+        jQuery('#message_box').animate({top:jQuery(window).scrollTop() + "px" }, {queue: false,duration:350});
+    }
 
 </script>
