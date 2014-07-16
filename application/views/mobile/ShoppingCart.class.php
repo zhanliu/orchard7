@@ -24,6 +24,10 @@ class ShoppingCart {
         }
     }
 
+    public function reduceItem($id) {
+        $this->updateItem($id, $this->items[$id] - 1);
+    }
+
     public function deleteItem($id) {
         if (isset($this->items[$id])) {
             unset($this->items[$id]);
@@ -50,6 +54,17 @@ class ShoppingCart {
             $index++;
         }
         return $ids;
+    }
+
+    public function getTotalPrice() {
+        $product_model = $this->loadModel('ProductModel');
+
+        $total_price = 0;
+        foreach ($this->items as $item_id => $qty) {
+            $total_price+= $qty * $product_model->getPriceById($item_id);
+        }
+
+        return $total_price;
     }
 
     /*--------------------------------*/

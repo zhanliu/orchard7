@@ -130,27 +130,8 @@
         setupMessageBox();
         //showMessage();
     }
-<<<<<<< HEAD
-
-    /*TODO: THIS VALIDATION IS NOT TESTED YET*/
-=======
-
-    function removeFromCart(id) {
-        $.ajax({
-                url: '<?php echo URL; ?>mobile/RemoveFromCart/' + id,
-                data: "",
-                dataType: 'json',
-                success: function (data) {
-                    if (data != '') {
-
-                    }
-                }
-            }
-        )
-    }
 
     //TODO: THIS VALIDATION IS NOT TESTED YET
->>>>>>> f42eac578b36d9c6ca27fc78f62abc3da8bb3041
     function submit() {
         if (count>0) {
             document.getElementById("myform").submit();

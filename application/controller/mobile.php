@@ -2,7 +2,11 @@
 include('application/views/mobile/ShoppingCart.class.php');
 class Mobile extends Controller {
 
+    private $product_model;
+
     public function index() {
+
+
         if (isset($_COOKIE['address1'])) {
             $this->showcase();
         } else {
@@ -23,8 +27,8 @@ class Mobile extends Controller {
     // on locate success, show product list
     public function showcase()
     {
-        $product_model = $this->loadModel('ProductModel');
-        $products = $product_model->getAllProducts();
+        $this->product_model = $this->loadModel('ProductModel');
+        $products = $this->product_model->getAllProducts();
 
         if (isset($_POST["address1"])) {
             setcookie('address1', $_POST["address1"], time()+3600*24*365*10);
@@ -42,18 +46,38 @@ class Mobile extends Controller {
             $_SESSION['cart'] = new ShoppingCart();
         }
         $cart = $_SESSION['cart'];
+        $this->product_model = $this->loadModel('ProductModel');
+        $products = $this->product_model->getProductsByIds($cart->getIds());
 
-        $product_model = $this->loadModel('ProductModel');
-        $products = $product_model->getProductsByIds($cart->getIds());
-
-        $total_price = 0;
-        foreach ($cart->getItems() as $item_id => $qty) {
-            $total_price+= $qty * $product_model->getPriceById($item_id);
-        }
+        $total_price = $this->getTotalPrice();
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/preview.php';
         require 'application/views/mobile/footer.php';
+    }
+
+    public function getTotalPrice() {
+        if (!session_id()) session_start();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
+        $cart = $_SESSION['cart'];
+
+
+        if ($this->product_model==null) {$this->product_model = $this->loadModel('ProductModel');}
+        $products = $this->product_model->getProductsByIds($cart->getIds());
+
+        $total_price = 0;
+
+        foreach ($cart->getItems() as $item_id => $qty) {
+            $total_price+= $qty * $this->product_model->getPriceById($item_id);
+        }
+
+        return $total_price;
+    }
+
+    public function callTotalPrice() {
+        echo $this->getTotalPrice();
     }
 
     public function confirmCellphone() {
@@ -167,6 +191,17 @@ class Mobile extends Controller {
         }
         $cart = $_SESSION['cart'];
         $cart->addItem($id);
+
+        echo $cart->count();
+    }
+
+    public function reduceToCart($id) {
+        if (!session_id()) session_start();
+        if(!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
+        $cart = $_SESSION['cart'];
+        $cart->reduceItem($id);
 
         echo $cart->count();
     }

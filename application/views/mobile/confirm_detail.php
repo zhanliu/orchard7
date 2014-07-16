@@ -124,88 +124,20 @@
 
 <div id="map" style="display:none"></div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
+
 <script>
-    /*
-     Address presentation should have three status:
-     1. A brand new user flagged as NEW
-     2. Existed user choosing existed address flagged as EXISTED
-     3. Existed user to create new address flagged as EXISTED_NEW
-     */
-    var address_flag;
+
     var district;
     var address1;
     var address2;
     var address_string;
 
-
-    function next1() {
-
-        if (true) {
-
-            $.ajax({
-                    url: '<?php echo URL; ?>order/queryAddressByCellphone/' + $('#cellphone').val(),
-                    data: "",
-                    dataType: 'json',
-                    success: function (data) {
-                        //alert('hi');
-                        var content = '';
-                        var count = 0;
-                        if (data != '') {
-                            var checked_index = '';
-                            alert(data);
-                            for (var i in data) {
-                                var item = data[i];
-                                var id = item['id'];
-                                var radio_id = 'radio_existed' + i;
-                                var address = item['province'] + item['city'] + item['district'] + item['address1'] + item['address2'];
-                                content += '<div class="radio"><lable>';
-                                content += '<input type="radio" name="address_id" id="' + radio_id + '" value="' + id + '" onclick="hide_address()">';
-                                content += address + '</label></div>';
-
-                                if (item['is_primary'] == 1) {
-                                    var checked_index = i;
-                                }
-                                count++;
-                            }
-                            content += '<label class="col-sm-3 control-label"></label><div class="radio"><lable>';
-                            content += '<input type="radio" name="address_id" id="radio_new" value="new_address" onclick="add_address()">';
-                            content += '添加新的配送地址</label></div>';
-
-                            $('#output').html(content);
-
-                            $('#address_hint').html('选择已有配送地址');
-                            if (address_flag == 'EXISTED_NEW') {
-                                $('input[name=address_id]')[count].checked = "checked";
-                            } else {
-                                $('input[name=address_id]')[checked_index].checked = "checked";
-                                district = data[checked_index]['district'];
-                                address1 = data[checked_index]['address1'];
-                                address2 = data[checked_index]['address2'];
-                                address_string = district + address1 + address2;
-                            }
-
-                        } else {
-                            address_flag = 'NEW';
-                            //$('input:radio:checked').val() == 'new_address';
-                            $('#address_hint').html('添加新的配送地址');
-                            add_address();
-                        }
-
-
-                    }
-                }
-            )
-
-        }
-    }
-
     function validateAddress() {
-        var is_new_address = ($('input:radio:checked').val() == null || $('input:radio:checked').val() == 'new_address');
         var district = $('#district').val();
         var address1 = $('#address1').val();
         var address2 = $('#address2').val();
 
-        if (is_new_address && (district == '' || address1 == '' || address2 == '')) {
+        if (district == '' || address1 == '' || address2 == '') {
             alert('请添加完整地址');
             return false;
         } else {
@@ -213,48 +145,7 @@
         }
     }
 
-    function next2() {
-        if (validateAddress()) {
-            $('#basicwizard-step-2').css('display', 'none');
-            $('#basicwizard-step-3').css('display', 'block');
-            $('#basicwizard-head-2').removeClass('stepy-active');
-            $('#basicwizard-head-3').addClass('stepy-active');
-        }
-    }
-
-    function next3() {
-        $('#basicwizard-step-3').css('display', 'none');
-        $('#basicwizard-step-4').css('display', 'block');
-        $('#basicwizard-head-3').removeClass('stepy-active');
-        $('#basicwizard-head-4').addClass('stepy-active');
-
-        var cellPhone = $("#cellphone").val();
-
-        $('#cellphone_preview').html(cellPhone);
-
-        //if ($('input:radio:checked').val() == 'new_address') {
-        if (address_flag = 'EXISTED') {
-
-        } else {
-            var district = $('#district').val();
-            var address1 = $('#address1').val();
-            var address2 = $('#address2').val();
-            var address = district + address1 + address2;
-        }
-        $('#address_preview').html('广东省广州市' + address_string);
-
-    }
-
-    function add_address() {
-        address_flag = 'EXISTED_NEW';
-        $('#new_address').css('display', 'block');
-    }
-
-    function hide_address() {
-        address_flag = 'EXISTED';
-        $('#new_address').css('display', 'none');
-    }
-
+    //TODO: REMOVE DUPLICATION
     ///////////////////get nearest store/////////////////
     var distanceAllowed = <?php echo DELIVERY_DISTANCE; ?>;
 
@@ -266,6 +157,7 @@
     var address = "";
 
     function check_address_location() {
+        validateAddress();
         if ($.trim($("#address1").val()) == '') {
             setAlert('地址不合法或超出了广州海珠区，请重新尝试');
         } else {
