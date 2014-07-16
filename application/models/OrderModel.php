@@ -101,7 +101,12 @@ class OrderModel
         $order_id = strip_tags($order_id);
         $total_amount = strip_tags($total_amount);
 
-        $sql = "update order1 set total_amount = " . $total_amount ;
+        $delivery_fee = 0;
+        if ($total_amount<50) {
+            $delivery_fee = 7;
+        }
+
+        $sql = "update order1 set total_amount = " . $total_amount . ", delivery_fee = " . $delivery_fee;
         $sql.= " where id = " . $order_id;
 
         $query = $this->db->prepare($sql);

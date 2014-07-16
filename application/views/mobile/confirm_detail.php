@@ -158,13 +158,9 @@
 
     function check_address_location() {
         validateAddress();
-        if ($.trim($("#address1").val()) == '') {
-            setAlert('地址不合法或超出了广州海珠区，请重新尝试');
-        } else {
-            address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
-            myLocalsearch.setSearchCompleteCallback(calculate_distance);
-            myLocalsearch.search(address);
-        }
+        address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
+        myLocalsearch.setSearchCompleteCallback(calculate_distance);
+        myLocalsearch.search(address);
     }
 
     function calculate_distance() {

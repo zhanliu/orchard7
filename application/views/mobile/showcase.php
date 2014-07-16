@@ -127,7 +127,7 @@
                 }
             }
         )
-        setupMessageBox();
+        //setupMessageBox();
         //showMessage();
     }
 

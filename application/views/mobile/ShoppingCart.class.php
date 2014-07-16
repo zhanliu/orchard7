@@ -56,17 +56,6 @@ class ShoppingCart {
         return $ids;
     }
 
-    public function getTotalPrice() {
-        $product_model = $this->loadModel('ProductModel');
-
-        $total_price = 0;
-        foreach ($this->items as $item_id => $qty) {
-            $total_price+= $qty * $product_model->getPriceById($item_id);
-        }
-
-        return $total_price;
-    }
-
     /*--------------------------------*/
 
 }

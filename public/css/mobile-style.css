@@ -864,3 +864,7 @@ a, input, div, textarea {
     font-weight: bold;
     width: 99%;
 }
+
+.page-button a {
+    color: #ffffff;
+}

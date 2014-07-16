@@ -65,8 +65,10 @@ class Mobile extends Controller {
 
 
         if ($this->product_model==null) {$this->product_model = $this->loadModel('ProductModel');}
-        $products = $this->product_model->getProductsByIds($cart->getIds());
 
+        if (sizeof($cart->getIds())>0) {
+            $products = $this->product_model->getProductsByIds($cart->getIds());
+        }
         $total_price = 0;
 
         foreach ($cart->getItems() as $item_id => $qty) {

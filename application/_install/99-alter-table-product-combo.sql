@@ -32,3 +32,6 @@ alter table `order_details` add column item_type varchar(40) after `item_quantit
 
 /* ----------- 2014/7/13 ------------mapping order and store --------------*/
 alter table `order1` add column store_id int(20) after `customer_id`;
+/* ----------- 2014/7/17 ------------add order delivery fee --------------*/
+alter table `order1` add column delivery_fee int(10) after `total_amount`;
+
