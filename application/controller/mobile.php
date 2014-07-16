@@ -182,7 +182,7 @@ class Mobile extends Controller {
 
             // unset session
             session_unset();
-            session_destroy();
+            //session_destroy();
 
             $this->success();
         }
