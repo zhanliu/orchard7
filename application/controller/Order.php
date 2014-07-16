@@ -140,7 +140,7 @@ class Order extends Controller
             $order_model->updateTotalAmount($order_id, $total_amount);
 
             $address_model = $this->loadModel('AddressModel');
-            $address_model->updateAddressById($address_id, "", $province, $city, $district, $address1, $address2);
+            $address_model->updateAddressById($address_id, "", $province, $city, $district, $address1, $address2, null, null);
         }
 
         header('location: ' . URL . 'order/manageOrder');
