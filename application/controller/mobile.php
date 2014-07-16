@@ -180,6 +180,10 @@ class Mobile extends Controller {
 
             $order_model->updateTotalAmount($order_id, $total_amount);
 
+            // unset session
+            session_unset();
+            session_destroy();
+
             $this->success();
         }
     }
