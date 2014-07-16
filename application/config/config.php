@@ -31,7 +31,7 @@ define('DELIVERY_DISTANCE', 2);
 
 if (ONLINE=='TRUE') {
     define('URL', 'http://orchard7.sinaapp.com/');
-    define('UPLOAD_URL', 'http://orchard7-upload.stor.sinaapp.com/public/uploads/');
+    define('UPLOAD_URL', 'http://orchard7-product.stor.sinaapp.com/');
 
     define('DB_TYPE', 'mysql');
     define('DB_HOST', SAE_MYSQL_HOST_M);

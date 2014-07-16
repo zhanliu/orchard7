@@ -150,7 +150,7 @@ if (!empty($_COOKIE['uaccess_time'])) {
         )
     }
 
-    /*TODO: THIS VALIDATION IS NOT TESTED YET*/
+    //TODO: THIS VALIDATION IS NOT TESTED YET
     function submit() {
 
         if (count>0) {
