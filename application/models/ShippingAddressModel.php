@@ -65,13 +65,14 @@ class ShippingAddressModel
         $query->execute(array(':id' => $id));
     }
 
-    public function setPrimary($id, $is_primary) {
+    public function setPrimary($address_id, $is_primary) {
         $now = time();
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "UPDATE shipping_address SET is_primary = :is_primary, updated_time = :updated_time";
+        $sql = "UPDATE shipping_address SET is_primary = :is_primary, updated_time = :updated_time ";
+        $sql.= "WHERE address_id = :address_id";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':is_primary' => $is_primary, ':updated_time' => $updated_time));
+        $query->execute(array(':is_primary' => $is_primary, ':updated_time' => $updated_time, ':address_id' => $address_id));
 
     }
 

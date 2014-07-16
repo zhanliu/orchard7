@@ -119,6 +119,19 @@ class AddressModel
         $sql = "update address set province = :province , city = :city, district = :district, address1 = :address1, address2 = :address2, lat = :lat, lng = :lng, updated_time = :updated_time where id = :address_id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2, ':lat' => $lat, ':lng' => $lng, ':updated_time'=>$updated_time, ':address_id'=>$address_id));
+    }
 
+    public function updateShortAddressById($address_id, $address1, $address2) {
+        $address1 = strip_tags($address1);
+        $address2 = strip_tags($address2);
+
+        $address_id = strip_tags($address_id);
+
+        $now = time();
+        $updated_time = date("Y-m-d H:i:s" ,$now);
+
+        $sql = "update address set address1 = :address1, address2 = :address2, updated_time = :updated_time where id = :address_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':address1' => $address1, ':address2' => $address2, ':updated_time'=>$updated_time, ':address_id'=>$address_id));
     }
 }

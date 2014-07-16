@@ -157,10 +157,11 @@
     var address = "";
 
     function check_address_location() {
-        validateAddress();
-        address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
-        myLocalsearch.setSearchCompleteCallback(calculate_distance);
-        myLocalsearch.search(address);
+        if (validateAddress()) {
+            address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
+            myLocalsearch.setSearchCompleteCallback(calculate_distance);
+            myLocalsearch.search(address);
+        }
     }
 
     function calculate_distance() {

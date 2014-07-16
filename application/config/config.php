@@ -27,7 +27,7 @@ define('BAIDU_API_KEY', '8c8974690b10c942a37e0904f952ce35');
  * This is the place where you define your database credentials, database type etc.
  */
 define('ONLINE', 'FALSE');
-define('DELIVERY_DISTANCE', 2);
+define('DELIVERY_DISTANCE', 10);
 
 if (ONLINE=='TRUE') {
     define('URL', 'http://orchard7.sinaapp.com/');

@@ -120,10 +120,12 @@ class Mobile extends Controller {
             $name = $_POST['name'];
             $address1 = $_POST['address1'];
             $address2 = $_POST['address2'];
+            $address_lat = $_POST['address_lat'];
+            $address_lng = $_POST['address_lng'];
 
-            setcookie('name', $_POST["name"], time()+3600*24*365*10);
-            setcookie('address1', $_POST["address1"], time()+3600*24*365*10);
-            setcookie('address2', $_POST["address2"], time()+3600*24*365*10);
+            setcookie('name', $name, time()+3600*24*365*10);
+            setcookie('address1', $address1, time()+3600*24*365*10);
+            setcookie('address2', $address2, time()+3600*24*365*10);
 
             //add Customer
             $customer_model = $this->loadModel('CustomerModel');
@@ -151,18 +153,20 @@ class Mobile extends Controller {
 
             if ($isCustomerExisted == false) {
                 //TODO: WE NEED TO LOCATE LAT AND LNG LATER
-
-                $address_lat = $_POST['address_lat'];
-                $address_lng = $_POST['address_lng'];
-                $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $_POST["address1"], $_POST["address2"], $address_lat, $address_lng);
-
-                $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
-                $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
+                $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $address1, $address2, $address_lat, $address_lng);
             } else {
                 //TODO: if address updated we will have to update address on the same.
                 $primary_address = $address_model->getPrimaryAddressByCustomerId($customer_id);
                 $address_id = $primary_address[0]->id;
+
+                if ($address1 != $primary_address[0]->address1 || $address2 != $primary_address[0]->address2) {
+                    $old_address_id = $address_id;
+                    $shipping_address_model->setPrimary($old_address_id, 0);
+                    $address_id = $address_model->addAddress("中国", "广东省", "广州市", "海珠区", $address1, $address2, $address_lat, $address_lng);
+                }
             }
+            $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
+            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
 
             //add order
             $order_model = $this->loadModel('OrderModel');
