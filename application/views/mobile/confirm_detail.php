@@ -101,7 +101,7 @@
                                 </div>
 
                                 <div class="page-button add ok" style="display: block;">
-                                    <span class="text" onclick="submit();">确定</span>
+                                    <span class="text" onclick="check_address_location()">确定</span>
                                 </div>
                             </div>
 
@@ -137,9 +137,6 @@
     var address2;
     var address_string;
 
-    function submit() {
-        check_address_location();
-    }
 
     function next1() {
 
