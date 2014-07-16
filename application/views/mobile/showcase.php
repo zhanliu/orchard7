@@ -105,7 +105,7 @@
         </div>
 
         <div class="clr"></div>
-        <div id="message_box">Your message goes here</div>
+        <!--<div id="message_box">Your message goes here</div>-->
     </div>
 </div>
 

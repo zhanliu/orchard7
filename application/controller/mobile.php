@@ -159,6 +159,7 @@ class Mobile extends Controller {
                 $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
                 $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
             } else {
+                //TODO: if address updated we will have to update address on the same.
                 $primary_address = $address_model->getPrimaryAddressByCustomerId($customer_id);
                 $address_id = $primary_address[0]->id;
             }
