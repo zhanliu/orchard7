@@ -1,9 +1,17 @@
 <?php
+// expire session if timeout
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time
+    session_destroy();   // destroy session data in storage
+}
+
 if (!session_id()) session_start();
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = new ShoppingCart();
 }
-
+// refresh session time
+$_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
