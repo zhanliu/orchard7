@@ -32,6 +32,7 @@ define('DELIVERY_DISTANCE', 10);
 if (ONLINE=='TRUE') {
     define('URL', 'http://orchard7.sinaapp.com/');
     define('UPLOAD_URL', 'http://orchard7-product.stor.sinaapp.com/');
+    define('SESSION_TIMEOUT', 1200);
 
     define('DB_TYPE', 'mysql');
     define('DB_HOST', SAE_MYSQL_HOST_M);
@@ -42,6 +43,7 @@ if (ONLINE=='TRUE') {
 } else {
     define('URL', 'http://127.0.0.1/orchard7/');
     define('UPLOAD_URL', URL.'public/uploads/');
+    define('SESSION_TIMEOUT', 1200);
 
     define('DB_TYPE', 'mysql');
     define('DB_HOST', 'localhost');
