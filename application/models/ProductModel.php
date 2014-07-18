@@ -2,13 +2,12 @@
 
 class ProductModel
 {
-    /**
-     * Every model needs a database connection, passed to the model
-     * @param object $db A PDO database connection
-     */
+    protected $select_clause;
     function __construct($db) {
         try {
             $this->db = $db;
+            $select_clause = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+            $select_clause.= "created_time, updated_time FROM product ";
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
         }
@@ -17,7 +16,7 @@ class ProductModel
 
     public function getAllProducts()
     {
-        $sql = "SELECT id, name,category_id, unit, price, original_price, description, tag, img_url, is_active, created_time, updated_time FROM product";
+        $sql = $this->select_clause;
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -31,8 +30,7 @@ class ProductModel
         }
         $id_group = substr_replace($id_group, '', -1);
 
-        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, created_time, updated_time FROM product ";
-        $sql.= "WHERE id in (".$id_group.")";
+        $sql = $this->select_clause." WHERE id in (".$id_group.")";
 
         //return $sql;
 
@@ -44,8 +42,7 @@ class ProductModel
 
     public function getProductById($product_id)
     {
-        $sql = "SELECT id, name,category_id,unit, price,original_price, description, tag, img_url, is_active, created_time, updated_time FROM product ";
-        $sql.= "WHERE id=".$product_id;
+        $sql = $this->select_clause." WHERE id=".$product_id;
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -65,7 +62,8 @@ class ProductModel
     }
 
     public function getProductsByComboId($combo_id) {
-        $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, p.img_url, cd.combo_id, cd.product_id, cd.quantity ";
+        $sql = "SELECT p.id, p.name, p.category_id, p.unit, p.price, p.description, p.tag, p.img_url, cd.combo_id, ";
+        $sql.= "cd.product_id, cd.quantity ";
         $sql.= "FROM product as p, combo_detail as cd ";
         $sql.= "WHERE p.id=cd.product_id AND cd.combo_id=".$combo_id;
         $query = $this->db->prepare($sql);
@@ -91,7 +89,9 @@ class ProductModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO product (name, category_id, unit, price,original_price, description, tag, img_url, is_active, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:original_price,:description,:tag, :img_url, :is_active, :created_time, :updated_time)";
+        $sql = "INSERT INTO product (name, category_id, unit, price,original_price, description, tag, img_url, ";
+        $sql.= "is_active, created_time, updated_time) VALUES (:name,:category_id, :unit, :price,:original_price, ";
+        $sql.= ":description,:tag, :img_url, :is_active, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':name' => $name, ':category_id'=> $category_id, ':unit'=>$unit, ':price'=>$price,':original_price'=>$original_price , ':description'=>$description, ':tag'=>$tag, ':img_url'=>$img_url, ':is_active'=>$is_active, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
     }

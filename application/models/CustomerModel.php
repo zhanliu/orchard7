@@ -2,10 +2,6 @@
 
 class CustomerModel
 {
-    /**
-     * Every model needs a database connection, passed to the model
-     * @param object $db A PDO database connection
-     */
     function __construct($db) {
         try {
             $this->db = $db;
@@ -60,7 +56,8 @@ class CustomerModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO customer (name, cellphone, created_time, updated_time) VALUES (:name, :cellphone, :created_time, :updated_time)";
+        $sql = "INSERT INTO customer (name, cellphone, created_time, updated_time) ";
+        $sql.= "VALUES (:name, :cellphone, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':name' => $name,':cellphone' => $cellphone, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();

@@ -3,8 +3,6 @@ class Privilege extends Controller
 {
     public function index()
     {
-        // debug message to show where you are, just for the demo
-        //echo 'Message from Controller: You are in the controller *admin, using the method index()';
         require 'application/views/common/header.php';
         require 'application/views/common/index.php';
         require 'application/views/common/footer.php';
@@ -21,7 +19,8 @@ class Privilege extends Controller
         require 'application/views/common/footer.php';
     }
 
-    public function addRole() {
+    public function addRole()
+    {
         require 'application/views/common/header.php';
         require 'application/views/privilege/add_role.php';
         require 'application/views/common/footer.php';

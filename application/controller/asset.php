@@ -33,7 +33,6 @@ class Asset extends Controller
         if (isset($_POST["submit_add_store"])) {
             //insert row to address table
             $address_model = $this->loadModel('AddressModel');
-            //echo $_POST['lat'];
             $address_id = $address_model->addAddress($_POST["country"], $_POST["province"], $_POST["city"], $_POST["district"], $_POST["address1"], $_POST["address2"], $_POST['lat'], $_POST['lng']);
             $store_model = $this->loadModel('StoreModel');
             $store_model->addStore($_POST["name"], $address_id, $_POST["phone_number"]);

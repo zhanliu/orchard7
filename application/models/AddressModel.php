@@ -2,10 +2,6 @@
 
 class AddressModel
 {
-    /**
-     * Every model needs a database connection, passed to the model
-     * @param object $db A PDO database connection
-     */
     function __construct($db) {
         try {
             $this->db = $db;
@@ -28,7 +24,8 @@ class AddressModel
 
     public function getAddressesByCustomerId($customer_id)
     {
-        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id ";
+        $sql.= "FROM address as a, shipping_address as sa ";
         $sql.= "WHERE a.id=sa.address_id AND sa.customer_id=".$customer_id;
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -38,7 +35,8 @@ class AddressModel
 
     public function getPrimaryAddressByCustomerId($customer_id)
     {
-        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.id as shipping_id ";
+        $sql.= "FROM address as a, shipping_address as sa ";
         $sql.= "WHERE a.id=sa.address_id AND sa.is_primary=1 AND sa.customer_id=".$customer_id;
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -49,7 +47,8 @@ class AddressModel
     //TODO: what is is for?
     public function getLastAddressesByCustomerId($customer_id)
     {
-        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id FROM address as a, shipping_address as sa ";
+        $sql = "SELECT a.province, a.city, a.district, a.address1, a.address2, a.id, sa.is_primary, sa.id as shipping_id ";
+        $sql.= "FROM address as a, shipping_address as sa ";
         $sql.= "WHERE a.id=sa.address_id AND sa.customer_id=".$customer_id;
         $sql.= " order by sa.id desc ";
         $sql.= " limit 0, 1 ";
@@ -85,7 +84,8 @@ class AddressModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO address (country, province, city, district, address1, address2, lat, lng, created_time, updated_time) VALUES (:country, :province, :city, :district, :address1, :address2, :lat, :lng, :created_time, :updated_time)";
+        $sql = "INSERT INTO address (country, province, city, district, address1, address2, lat, lng, created_time, updated_time) ";
+        $sql.= "VALUES (:country, :province, :city, :district, :address1, :address2, :lat, :lng, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':country' => $country, ':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2, ':lat' => $lat, ':lng' => $lng, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
@@ -116,7 +116,9 @@ class AddressModel
         $now = time();
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "update address set province = :province , city = :city, district = :district, address1 = :address1, address2 = :address2, lat = :lat, lng = :lng, updated_time = :updated_time where id = :address_id";
+        $sql = "UPDATE address SET province = :province , city = :city, district = :district, ";
+        $sql.= "address1 = :address1, address2 = :address2, lat = :lat, lng = :lng, updated_time = :updated_time ";
+        $sql.= "WHERE id = :address_id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':province' => $province, ':city' => $city, ':district' => $district, ':address1' => $address1, ':address2' => $address2, ':lat' => $lat, ':lng' => $lng, ':updated_time'=>$updated_time, ':address_id'=>$address_id));
     }
@@ -130,7 +132,8 @@ class AddressModel
         $now = time();
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "update address set address1 = :address1, address2 = :address2, updated_time = :updated_time where id = :address_id";
+        $sql = "update address set address1 = :address1, address2 = :address2, updated_time = :updated_time ";
+        $sql.= "where id = :address_id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':address1' => $address1, ':address2' => $address2, ':updated_time'=>$updated_time, ':address_id'=>$address_id));
     }

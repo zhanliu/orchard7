@@ -29,8 +29,10 @@ class OrderModel
 
     public function getAllOrdersWithDetails()
     {
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
-        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, ";
+        $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
+        $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -40,8 +42,10 @@ class OrderModel
     public function getOrderDetailById($order_id) {
 
         $order_id = strip_tags($order_id);
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
-        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id left join address as addr on ord.address_id = addr.id ";
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, ";
+        $sql.= "addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
+        $sql.= "left join address as addr on ord.address_id = addr.id ";
         $sql = $sql . "WHERE ord.id=" . $order_id;
 
         $query = $this->db->prepare($sql);
@@ -64,7 +68,9 @@ class OrderModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, total_amount, address_id, created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :total_amount, :address_id, :created_time, :updated_time)";
+        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, total_amount, address_id, ";
+        $sql.= "created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :total_amount, :address_id, ";
+        $sql.= ":created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
         $query->execute(array(':customer_id' => $customer_id,':store_id'=>$store_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
@@ -106,7 +112,7 @@ class OrderModel
             $delivery_fee = 7;
         }
 
-        $sql = "update order1 set total_amount = " . $total_amount . ", delivery_fee = " . $delivery_fee;
+        $sql = "UPDATE order1 SET total_amount = " . $total_amount . ", delivery_fee = " . $delivery_fee;
         $sql.= " where id = " . $order_id;
 
         $query = $this->db->prepare($sql);
@@ -127,7 +133,7 @@ class OrderModel
         $id = strip_tags($id);
         $status = strip_tags($status);
 
-        $sql = "update order1 set status = :status WHERE id = :id";
+        $sql = "UPDATE order1 set status = :status WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id, ':status' => $status));
     }

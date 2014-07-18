@@ -19,7 +19,8 @@ class StoreModel
      */
     public function getAllStores()
     {
-        $sql = "SELECT s.id, s.name, s.phone_number, s.address_id, a.province, a.city, a.district, a.address1, a.address2, a.lat, a.lng FROM store as s, address as a ";
+        $sql = "SELECT s.id, s.name, s.phone_number, s.address_id, a.province, a.city, a.district, a.address1, a.address2, ";
+        $sql.= "a.lat, a.lng FROM store as s, address as a ";
         $sql.= "WHERE s.address_id=a.id";
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -29,10 +30,6 @@ class StoreModel
 
     public function getStoreById($id)
     {
-        //$sql = "SELECT s.id id, s.name name, s.phone_number phone_number, a.province province, a.city city, a.district district, ";
-        //$sql.= "a.address1 address1, a.address2 address2, a.lat lat, a.lng lng FROM store as s, address as a ";
-        //$sql.= "WHERE s.address_id=a.id AND s.id=".$id;
-
         $sql = "SELECT name, phone_number from store WHERE id=".$id;
 
         $query = $this->db->prepare($sql);

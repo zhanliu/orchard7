@@ -14,25 +14,14 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-/**
- * Configuration for: Project URL
- * Put your URL here, for local development "127.0.0.1" or "localhost" (plus sub-folder) is fine
- */
-
-
 define('BAIDU_API_KEY', '8c8974690b10c942a37e0904f952ce35');
-
-/**
- * Configuration for: Database
- * This is the place where you define your database credentials, database type etc.
- */
 define('ONLINE', 'FALSE');
 define('DELIVERY_DISTANCE', 10);
+define('SESSION_TIMEOUT', 1200);
 
 if (ONLINE=='TRUE') {
     define('URL', 'http://orchard7.sinaapp.com/');
     define('UPLOAD_URL', 'http://orchard7-product.stor.sinaapp.com/');
-    define('SESSION_TIMEOUT', 1200);
 
     define('DB_TYPE', 'mysql');
     define('DB_HOST', SAE_MYSQL_HOST_M);
@@ -43,7 +32,6 @@ if (ONLINE=='TRUE') {
 } else {
     define('URL', 'http://127.0.0.1/orchard7/');
     define('UPLOAD_URL', URL.'public/uploads/');
-    define('SESSION_TIMEOUT', 1200);
 
     define('DB_TYPE', 'mysql');
     define('DB_HOST', 'localhost');

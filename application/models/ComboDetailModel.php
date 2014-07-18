@@ -2,10 +2,6 @@
 
 class ComboDetailModel
 {
-    /**
-     * Every model needs a database connection, passed to the model
-     * @param object $db A PDO database connection
-     */
     function __construct($db) {
         try {
             $this->db = $db;
@@ -25,7 +21,8 @@ class ComboDetailModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "INSERT INTO combo_detail (combo_id, product_id, quantity, created_time, updated_time) VALUES (:combo_id, :product_id, :quantity, :created_time, :updated_time)";
+        $sql = "INSERT INTO combo_detail (combo_id, product_id, quantity, created_time, updated_time) ";
+        $sql.= "VALUES (:combo_id, :product_id, :quantity, :created_time, :updated_time)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':combo_id' => $combo_id, ':product_id'=>$product_id, ':quantity'=>$quantity, ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();

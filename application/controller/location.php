@@ -9,8 +9,6 @@ class Location extends Controller
     }
 
     public function getDistance($x, $y) {
-
-
         $store_x = 0;
         $store_y = 0;
         $address = "";
