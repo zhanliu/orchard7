@@ -41,26 +41,24 @@ class Mobile extends Controller {
 
     // preview shopping cart
     public function preview() {
-        if (!session_id()) session_start();
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = new ShoppingCart();
+        if ($this->validateSession()) {
+            $this->refreshShoppingCart();
+
+            $cart = $_SESSION['cart'];
+            $this->product_model = $this->loadModel('ProductModel');
+            $products = $this->product_model->getProductsByIds($cart->getIds());
+
+            $total_price = $this->getTotalPrice();
+
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/preview.php';
+            require 'application/views/mobile/footer.php';
         }
-        $cart = $_SESSION['cart'];
-        $this->product_model = $this->loadModel('ProductModel');
-        $products = $this->product_model->getProductsByIds($cart->getIds());
-
-        $total_price = $this->getTotalPrice();
-
-        require 'application/views/mobile/header.php';
-        require 'application/views/mobile/preview.php';
-        require 'application/views/mobile/footer.php';
     }
 
     public function getTotalPrice() {
-        if (!session_id()) session_start();
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = new ShoppingCart();
-        }
+        $this->refreshShoppingCart();
+
         $cart = $_SESSION['cart'];
 
 
@@ -83,18 +81,22 @@ class Mobile extends Controller {
     }
 
     public function confirmCellphone() {
-        require 'application/views/mobile/header.php';
-        require 'application/views/mobile/confirm_cellphone.php';
-        require 'application/views/mobile/footer.php';
+        if ($this->validateSession()) {
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/confirm_cellphone.php';
+            require 'application/views/mobile/footer.php';
+        }
     }
 
     public function submitCellphone() {
-        if (isset($_POST["submit_cellphone"])) {
-            $cellphone = $_POST["cellphone"];
-            setcookie('cellphone', $_POST["cellphone"], time()+3600*24*365*10);
-            require 'application/views/mobile/header.php';
-            require 'application/views/mobile/confirm_detail.php';
-            require 'application/views/mobile/footer.php';
+        if ($this->validateSession()) {
+            if (isset($_POST["submit_cellphone"])) {
+                $cellphone = $_POST["cellphone"];
+                setcookie('cellphone', $_POST["cellphone"], time()+3600*24*365*10);
+                require 'application/views/mobile/header.php';
+                require 'application/views/mobile/confirm_detail.php';
+                require 'application/views/mobile/footer.php';
+            }
         }
     }
 
@@ -196,10 +198,9 @@ class Mobile extends Controller {
     }
 
     public function addToCart($id) {
-        if (!session_id()) session_start();
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = new ShoppingCart();
-        }
+        $this->refreshSession();
+        $this->refreshShoppingCart();
+
         $cart = $_SESSION['cart'];
         $cart->addItem($id);
 
@@ -207,10 +208,9 @@ class Mobile extends Controller {
     }
 
     public function reduceToCart($id) {
-        if (!session_id()) session_start();
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = new ShoppingCart();
-        }
+        $this->refreshSession();
+        $this->refreshShoppingCart();
+
         $cart = $_SESSION['cart'];
         $cart->reduceItem($id);
 
@@ -218,13 +218,43 @@ class Mobile extends Controller {
     }
 
     public function removeFromCart($id) {
-        if (!session_id()) session_start();
-        if(!isset($_SESSION['cart'])){
-            $_SESSION['cart'] = new ShoppingCart();
-        }
+        $this->refreshSession();
+        $this->refreshShoppingCart();
+
         $cart = $_SESSION['cart'];
         $cart->deleteItem($id);
 
         echo $cart->count();
+    }
+
+    /**
+     * validate session timeout
+     */
+    public function validateSession() {
+        if (!session_id()) session_start();
+        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > SESSION_TIMEOUT)) {
+            $this->showcase();
+            return false;
+        }
+        $_SESSION['LAST_ACTIVITY'] = time();
+        return true;
+    }
+
+    /**
+     * refresh session to max timeout
+     */
+    public function refreshSession() {
+        if (!session_id()) session_start();
+        $_SESSION['LAST_ACTIVITY'] = time();
+    }
+
+    /**
+     * refresh shopping cart
+     */
+    public function refreshShoppingCart() {
+        if (!session_id()) session_start();
+        if (!isset($_SESSION['cart'])){
+            $_SESSION['cart'] = new ShoppingCart();
+        }
     }
 }
