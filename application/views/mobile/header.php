@@ -16,6 +16,7 @@ if(!isset($_SESSION['cart'])){
 // refresh session time
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,5 +31,6 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/mobile-style.css" type="text/css" media="screen">
     <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
+    <script type='application/javascript' src='<?php echo URL; ?>public/js/fastclick.min.js'></script>
 </head>
 

@@ -96,6 +96,9 @@
 </div>
 
 <script type="text/javascript">
+    $(function() {
+        FastClick.attach(document.body);
+    });
 
     function addToCart(id) {
         var number = Number($('#qty_' + id).text());

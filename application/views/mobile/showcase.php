@@ -10,10 +10,13 @@
 
                     <header class="newTodayView">
                         <nav class="shine dropShadow">
-                            <a href="#">
-                                <span class="logo floatLeft">Daily Fresh</span>
+                                <span class="logo floatLeft">
+                                    <a gaevent="imt/hd/index" href="/">
+                                        <i class="text-icon fa fa-home"></i>
+
+                                    </a>
+                                </span>
                                 <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
-                            </a>
 
                         </nav>
                     </header>

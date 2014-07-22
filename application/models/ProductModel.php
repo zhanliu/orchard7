@@ -16,7 +16,8 @@ class ProductModel
 
     public function getAllProducts()
     {
-        $sql = $this->select_clause;
+        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+        $sql.= "created_time, updated_time FROM product ";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -30,7 +31,9 @@ class ProductModel
         }
         $id_group = substr_replace($id_group, '', -1);
 
-        $sql = $this->select_clause." WHERE id in (".$id_group.")";
+        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+        $sql.= "created_time, updated_time FROM product ";
+        $sql.= " WHERE id in (".$id_group.")";
 
         //return $sql;
 
@@ -42,7 +45,9 @@ class ProductModel
 
     public function getProductById($product_id)
     {
-        $sql = $this->select_clause." WHERE id=".$product_id;
+        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+        $sql.= "created_time, updated_time FROM product ";
+        $sql.= " WHERE id=".$product_id;
         $query = $this->db->prepare($sql);
         $query->execute();
 

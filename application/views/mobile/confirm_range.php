@@ -138,4 +138,49 @@
         $('#alert_note').addClass("alert-warning");
         $('#alert_note').css('display', 'block');
     }
+
+    $("#search_address_button").click(function() {
+        searchAddress();
+    })
+
+    var searchAddress = function() {
+        $("#search_address input").blur();
+        if (!tempCity) {
+            utilities.ui.msg($("#userinfo_message_chooseCity").val())
+            return
+        } else {
+            utilities.ui.showBusy()
+            ajax1(API_SEARCH_ADDRESS, {
+                cityCode : tempCity.citycode,
+                keyword : $("#search_address input").val()
+            }, function(ret) {
+                utilities.ui.hideBusy()
+                if (ret.err != -1) {
+                    var data = JSON.parse(ret.cot);
+                    console.log(data)
+                    showSearchAddressPage(data)
+
+                } else {
+                    utilities.ui.msg(ret.msg)
+                }
+            })
+        }
+    }
+    var showSearchAddressPage = function(data) {
+        selector.open({
+            title : $("#userinfo_message_residenceArea").val(),
+            tip : $("#userinfo_message_inputKeyAddress").val(),
+            display : 2,
+            placeholder : $("#userinfo_message_inputResidenceKeyword").val(),
+            specialtype : 2,
+            searchable : true,
+            citycode : tempCity.citycode,
+            data : data,
+            keyword : $("#search_address input").val()
+
+        }, function(ret) {
+            tempDisct = ret
+            $(".userInfo-search input").val(tempDisct.streetName)
+        })
+    }
 </script>
