@@ -11,7 +11,7 @@
                     <header class="newTodayView">
                         <nav class="shine dropShadow">
                             <a href="#">
-                                <span class="logo floatLeft">Daily Fresh</span>
+                                <span class="logo floatLeft"></span>
                                 <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
                             </a>
                         </nav>
@@ -20,10 +20,9 @@
 
                     <div id="page-inside">
 
-                        <div class="full-content">
 
                             <div class="alert alert-danger">
-                                <h3>欢迎访问 Daily Fresh, 我猜您是首次访问我们吧, 为了确定您所在地区在配送范围内, 请输入配送地址的小区或者楼宇名。</h3>
+                                <h3>欢迎访问 Daily Fresh 鲜果快递, 您是首次访问我们吧, 为了确定您所在地区在配送范围内, 请输入配送地址的小区或楼宇名。</h3>
                                 <strong>注意:</strong> 当前配送范围仅限广州市海珠区部分区域
                             </div>
 
@@ -41,22 +40,24 @@
                                             <?php $address1 = empty($_COOKIE['address1']) ? "" : $_COOKIE['address1']; ?>
 
                                             <input type="text" id="address1" name="address1" style="width:90%;" size="20"
-                                                   required="required" class="form-control" placeholder="输入小区名或大厦名..."
+                                                   required="required" class="form-control" placeholder="输入小区名或楼宇名..."
                                                    value="<?php echo $address1 ?>">
 
                                         </div>
                                         <input type="hidden" name="nearest_store_id" id="nearest_store_id" value="">
                                     </form>
                                     <div class="stepy-navigator panel-footer">
-                                        <div class="pull-right">
-                                            <a href="#" onclick="next();" class="btn btn-primary">下一步</a>
+                                        <div class="page-button add ok" onclick="next()">
+                                            <span class="text">确定</span>
                                         </div>
                                     </div>
+
+                                    <img src="<?php echo URL; ?>public/img/mobile/full_map.jpg" style="width: 100%; height: auto">
                                 </fieldset>
 
                             </div>
 
-                        </div>
+
 
                     </div>
                 </div>
