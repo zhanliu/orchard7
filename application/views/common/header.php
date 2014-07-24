@@ -74,6 +74,7 @@ if (!isset($_SESSION['login'])) {
                 <ul class="acc-menu">
                     <li><a href="<?php echo URL; ?>asset/addStore">添加店铺</a></li>
                     <li><a href="<?php echo URL; ?>asset/store"><span>店铺管理</span></a></li>
+                    <li><a href="<?php echo URL; ?>asset/storeStaff"><span>店员管理</span></a></li>
                 </ul>
             </li>
 

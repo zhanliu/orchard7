@@ -22,6 +22,32 @@ class Asset extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function storeStaff()
+    {
+        $store_model = $this->loadModel('StoreModel');
+        $store_staffs = $store_model->getAllStoreStaffs();
+
+        require 'application/views/common/header.php';
+        require 'application/views/asset/store_staff.php';
+        require 'application/views/common/footer.php';
+    }
+
+    public function enableStoreStaff($id)
+    {
+        $store_model = $this->loadModel('StoreModel');
+        $store_staffs = $store_model->enableStoreStaff($id);
+
+        header('location: ' . URL . 'asset/storeStaff');
+    }
+
+    public function deleteStoreStaff($id)
+    {
+        $store_model = $this->loadModel('StoreModel');
+        $store_staffs = $store_model->deleteStoreStaff($id);
+
+        header('location: ' . URL . 'asset/storeStaff');
+    }
+
     public function addStore() {
         require 'application/views/common/header.php';
         require 'application/views/asset/add_store.php';
