@@ -27,10 +27,17 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="cleartype" content="on">
+
+    <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/jquery-ui-1.8.21.custom.css">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/mobile-style.css" type="text/css" media="screen">
-    <script src="<?php echo URL; ?>public/js/jquery-1.10.2.js"></script>
+    <script src="<?php echo URL; ?>public/js/jquery-1.7.2.min.js"></script>
+
+    <script src="<?php echo URL; ?>public/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script src="<?php echo URL; ?>public/js/jquery.ui.Mask.js"></script>
+
+
     <script type='application/javascript' src='<?php echo URL; ?>public/js/fastclick.min.js'></script>
 </head>
 

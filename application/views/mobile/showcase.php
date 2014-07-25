@@ -117,21 +117,28 @@
     var count = <?php echo $_SESSION['cart']->count();?>;
 
     function addToCart(id) {
+        jQuery.ui.Mask.show('正在更新购物车...');
+
         count++;
         $.ajax({
                 url: '<?php echo URL; ?>mobile/addToCart/' + id,
                 data: "",
                 dataType: 'json',
+                complete:function() {
+                    setTimeout(function () {
+                        jQuery.ui.Mask.hide();
+                    }, 300);                    // hides loader.
+                },
                 success: function (data) {
                     if (data != '') {
                         $('#cart_num').text(data);
                         $('#cart_num').css('display', 'inline');
+
                     }
                 }
+
             }
         )
-        //setupMessageBox();
-        //showMessage();
     }
 
     //TODO: THIS VALIDATION IS NOT TESTED YET
@@ -149,23 +156,5 @@
             $('#cart_num').css('display', 'inline');
         }
     });
-
-    var updateTimer = 0;
-    function setupMessageBox(){
-        //showMessage(); //displays message on page load
-        jQuery(window).scroll(function() {
-            showMessage();
-        });
-        clearTimeout(updateTimer);
-        activateTimer();
-    }
-
-    function activateTimer() {
-        updateTimer = setTimeout('jQuery("#message_box").remove()', 5000);
-    }
-
-    function showMessage(){
-        jQuery('#message_box').animate({top:jQuery(window).scrollTop() + "px" }, {queue: false,duration:350});
-    }
 
 </script>
