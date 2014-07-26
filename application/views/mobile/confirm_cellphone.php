@@ -15,6 +15,8 @@
                     </header>
                     <div class="clr"></div>
 
+                    <div id="pop" class="alert alert-warning"></div>
+
                     <div id="page-inside">
 
 
@@ -95,12 +97,44 @@
         var RegCellPhone = /^([0-9]{11})?$/;
         var flag = cellPhone.search(RegCellPhone);
         if (cellPhone.length == 0 || flag == -1) {
-            alert("手机号不合法!");
+            setAlert("请输入正确的手机号码!");
             return false;
         } else {
             return true;
         }
     }
+
+    function setAlert(msg) {
+        $('#pop').html(msg);
+        pop1.show();
+    }
+
+    //弹层接口
+    var usePop = function(options){
+        $.extend({
+            name : "",
+            delayHide : 3000 //延迟隐藏时间
+        },options);
+        //
+        var hideFlag;
+        var _pop = {};
+        _pop.show = function(){
+            $(options.name).stop(true,true).fadeIn(500);
+            hideFlag = setTimeout(_pop.hide, options.delayHide);
+        }
+        _pop.hide = function(){
+            clearTimeout(hideFlag);
+            $(options.name).stop(true,true).fadeOut(500);
+        }
+        return _pop;
+    };
+
+
+    //自定义
+    var pop1 = usePop({
+        name:"#pop",
+        delayHide:3000
+    })
 </script>
 
 

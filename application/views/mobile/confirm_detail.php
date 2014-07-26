@@ -26,6 +26,9 @@
                         <div class="userInfo-msg" style="">
                             <?php echo $msg; ?>
                         </div>
+
+                        <div id="pop" class="alert alert-warning"></div>
+
                         <form action="<?php echo URL; ?>mobile/submitOrder" id="myform"
                               class="form-horizontal confirm-form" method="post">
                         <div class="userInfo-form">
@@ -45,7 +48,7 @@
                                         </div>
                                         <?php $name = empty($_COOKIE['name']) ? "" : $_COOKIE['name']; ?>
                                         <div class="input">
-                                            <input type="text" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
+                                            <input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
                                         </div>
                                     </div>
                             </div>
@@ -67,7 +70,7 @@
                                             <span></span>
                                         </div>
                                         <div class="input">
-                                            <input type="tel" name="cellphone" value="<?php echo $cellphone; ?>" placeholder="请填写手机号码">
+                                            <input type="tel" id="cellphone" name="cellphone" value="<?php echo $cellphone; ?>" placeholder="请填写手机号码">
                                         </div>
                                     </div>
                                 </div>
@@ -138,16 +141,19 @@
     var address_string;
 
     function validateAddress() {
-        var district = $('#district').val();
+        //var district = $('#district').val();
         var address1 = $('#address1').val();
         var address2 = $('#address2').val();
 
-        if (district == '' || address1 == '' || address2 == '') {
-            alert('请添加完整地址');
+        if (address1 == '') {
+            setAlert('连小区和楼宇名都没有, 让我们往哪儿送啊?');
             return false;
-        } else {
-            return true;
+        } else if (address2 == '') {
+            setAlert('别漏了详细地址, 楼栋号和门牌号!');
+            return false;
         }
+
+        return true;
     }
 
     //TODO: REMOVE DUPLICATION
@@ -162,7 +168,11 @@
     var address = "";
 
     function check_address_location() {
-        if (validateAddress()) {
+        if ($("#name").val()=='') {
+            setAlert('请赐下您的大名');
+        } else if ($("#cellphone").val()=='') {
+            setAlert('不留手机我们怎么联系您呢?');
+        } else if (validateAddress()) {
             address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
             myLocalsearch.setSearchCompleteCallback(calculate_distance);
             myLocalsearch.search(address);
@@ -212,10 +222,36 @@
     }
 
     function setAlert(msg) {
-        $('#alert_note').html(msg);
-        $('#alert_note').addClass("alert-warning");
-        $('#alert_note').css('display', 'block');
+        $('#pop').html(msg);
+        pop1.show();
     }
+
+    //弹层接口
+    var usePop = function(options){
+        $.extend({
+            name : "",
+            delayHide : 3000 //延迟隐藏时间
+        },options);
+        //
+        var hideFlag;
+        var _pop = {};
+        _pop.show = function(){
+            $(options.name).stop(true,true).fadeIn(500);
+            hideFlag = setTimeout(_pop.hide, options.delayHide);
+        }
+        _pop.hide = function(){
+            clearTimeout(hideFlag);
+            $(options.name).stop(true,true).fadeOut(500);
+        }
+        return _pop;
+    };
+
+
+    //自定义
+    var pop1 = usePop({
+        name:"#pop",
+        delayHide:3000
+    })
 </script>
 
 

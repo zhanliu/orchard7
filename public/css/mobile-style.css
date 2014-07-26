@@ -898,4 +898,4 @@ a, input, div, textarea {
     content: "\f015";
 }
 
-#pop{display:none;color:white;font-size:18px;padding:10px;position:relative;width:90%;height:30px;background:rgba(0,0,0,0.5);}
+#pop{display:none;color:white;font-size:18px;padding:10px;position:relative;width:100%;height:30px;background:rgba(0,0,0,0.5);}

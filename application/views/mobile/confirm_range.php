@@ -18,6 +18,8 @@
                     </header>
                     <div class="clr"></div>
 
+                    <div id="pop" class="alert alert-warning"></div>
+
                     <div id="page-inside">
 
 
@@ -27,7 +29,7 @@
                             </div>
 
 
-                        <div id="pop" class="alert alert-warning"></div>
+
 
                             <div id="form-bg">
                                 <fieldset>
