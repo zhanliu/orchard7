@@ -42,16 +42,16 @@
                     </tfoot>
 
                     <tbody>
-                    <?php foreach ($store_staffs as $store_staff) { ?>
+                    <?php foreach ($staffs as $staff) { ?>
                         <tr align="center">
-                            <td><?php echo $store_staff->id; ?></td>
-                            <td><?php echo $store_staff->wechat_id; ?></td>
-                            <td><?php echo $store_staff->name; ?></td>
-                            <td><?php echo $store_staff->cellphone; ?></td>
-                            <td><?php echo $store_staff->store_name; ?></td>
-                            <td><?php echo $store_staff->status; ?></td>
-                            <td><a href="<?php echo URL . 'asset/enableStoreStaff/' . $store_staff->id; ?>" class="myButton">激活</a></td>
-                            <td><a href="<?php echo URL . 'asset/deleteStoreStaff/' . $store_staff->id; ?>" class="myButton">删除</a></td>
+                            <td><?php echo $staff->id; ?></td>
+                            <td><?php echo $staff->wechat_id; ?></td>
+                            <td><?php echo $staff->name; ?></td>
+                            <td><?php echo $staff->cellphone; ?></td>
+                            <td><?php echo $staff->store_name; ?></td>
+                            <td><?php echo $staff->status; ?></td>
+                            <td><a href="<?php echo URL . 'asset/enableStoreStaff/' . $staff->id; ?>" class="myButton">激活</a></td>
+                            <td><a href="<?php echo URL . 'asset/deleteStoreStaff/' . $staff->id; ?>" class="myButton">删除</a></td>
                         </tr>
                     <?php } ?>
                     </tbody>

@@ -25,17 +25,17 @@ class Asset extends Controller
     public function storeStaff()
     {
         $store_model = $this->loadModel('StoreModel');
-        $store_staffs = $store_model->getAllStoreStaffs();
+        $staffs = $store_model->getAllStoreStaffs();
 
         require 'application/views/common/header.php';
-        require 'application/views/asset/store_staff.php';
+        require 'application/views/asset/staff.php';
         require 'application/views/common/footer.php';
     }
 
     public function enableStoreStaff($id)
     {
         $store_model = $this->loadModel('StoreModel');
-        $store_staffs = $store_model->enableStoreStaff($id);
+        $staffs = $store_model->enableStoreStaff($id);
 
         header('location: ' . URL . 'asset/storeStaff');
     }
@@ -43,7 +43,7 @@ class Asset extends Controller
     public function deleteStoreStaff($id)
     {
         $store_model = $this->loadModel('StoreModel');
-        $store_staffs = $store_model->deleteStoreStaff($id);
+        $staffs = $store_model->deleteStoreStaff($id);
 
         header('location: ' . URL . 'asset/storeStaff');
     }

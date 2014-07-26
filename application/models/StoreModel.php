@@ -64,7 +64,7 @@ class StoreModel
     public function getAllStoreStaffs()
     {
         $sql = "SELECT s.id, s.wechat_id, s.cellphone, s.name, s.store_id, ss.name as store_name, s.description, s.status, s.created_time, s.updated_time ";
-        $sql.= " FROM store_staff as s, store as ss ";
+        $sql.= " FROM staff as s, store as ss ";
         $sql.= "WHERE s.store_id = ss.id order by s.wechat_id asc ";
         $query = $this->db->prepare($sql);
         $query->execute();
@@ -72,24 +72,24 @@ class StoreModel
         return $query->fetchAll();
     }
 
-    public function deleteStoreStaff($store_staff_id)
+    public function deleteStoreStaff($staff_id)
     {
-        $sql = "DELETE FROM store_staff WHERE id = :store_staff_id";
+        $sql = "DELETE FROM staff WHERE id = :staff_id";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':store_staff_id' => $store_staff_id));
+        $query->execute(array(':staff_id' => $staff_id));
     }
 
-    public function enableStoreStaff($store_staff_id)
+    public function enableStoreStaff($staff_id)
     {
-        $sql = "Update store_staff set status = 'Y' WHERE id = :store_staff_id";
+        $sql = "Update staff set status = 'Y' WHERE id = :staff_id";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':store_staff_id' => $store_staff_id));
+        $query->execute(array(':staff_id' => $staff_id));
     }
 
-    public function disableStoreStaff($store_staff_id)
+    public function disableStoreStaff($staff_id)
     {
-        $sql = "Update store_staff set status = 'N' WHERE id = :store_staff_id";
+        $sql = "Update staff set status = 'N' WHERE id = :staff_id";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':store_staff_id' => $store_staff_id));
+        $query->execute(array(':staff_id' => $staff_id));
     }
 }
