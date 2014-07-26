@@ -64,9 +64,9 @@ class OrderModel
 
         $status = 0;
 
-        $now = time();
-        $created_time = date("Y-m-d H:i:s" ,$now);
-        $updated_time = date("Y-m-d H:i:s" ,$now);
+        $now = new DateTime(null, new DateTimeZone('Asia/Shanghai'));
+        $created_time = $now->format("Y-m-d H:i:s");
+        $updated_time = $created_time;
 
         $is_verified = $isCustomerExisted;
 
@@ -130,8 +130,12 @@ class OrderModel
             $delivery_fee = 7;
         }
 
-        $sql = "UPDATE order1 SET total_amount = " . $total_amount . ", delivery_fee = " . $delivery_fee;
-        $sql.= " where id = " . $order_id;
+        $now = new DateTime(null, new DateTimeZone('Asia/Shanghai'));
+        $date_str = $now->format('Ymd');
+        $order_number = $date_str.$order_id;
+
+        $sql = "UPDATE order1 SET total_amount = " . $total_amount . ", delivery_fee = " . $delivery_fee . ", order_number = " . $order_number;
+        $sql.= " WHERE id = " . $order_id;
 
         $query = $this->db->prepare($sql);
         $query->execute();
