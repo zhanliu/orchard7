@@ -26,6 +26,9 @@
                                 <strong>注意:</strong> 当前配送范围仅限广州市海珠区部分区域
                             </div>
 
+
+                        <div id="pop" class="alert alert-warning"></div>
+
                             <div id="form-bg">
                                 <fieldset>
                                     <form id="location_form" action="<?php echo URL; ?>mobile/showcase" method="post"
@@ -36,7 +39,7 @@
 
                                         <div class="form-group">
                                             <!--<label class="col-sm-3 control-label">广东省-广州市-海珠区</label>-->
-                                            <div class="alert alert-info" id="alert_note" style="display:none"></div>
+
                                             <?php $address1 = empty($_COOKIE['address1']) ? "" : $_COOKIE['address1']; ?>
 
                                             <input type="text" id="address1" name="address1" style="width:90%;" size="20"
@@ -135,53 +138,34 @@
     }
 
     function setAlert(msg) {
-        $('#alert_note').html(msg);
-        $('#alert_note').addClass("alert-warning");
-        $('#alert_note').css('display', 'block');
+        $('#pop').html(msg);
+        pop1.show();
     }
 
-    $("#search_address_button").click(function() {
-        searchAddress();
-    })
-
-    var searchAddress = function() {
-        $("#search_address input").blur();
-        if (!tempCity) {
-            utilities.ui.msg($("#userinfo_message_chooseCity").val())
-            return
-        } else {
-            utilities.ui.showBusy()
-            ajax1(API_SEARCH_ADDRESS, {
-                cityCode : tempCity.citycode,
-                keyword : $("#search_address input").val()
-            }, function(ret) {
-                utilities.ui.hideBusy()
-                if (ret.err != -1) {
-                    var data = JSON.parse(ret.cot);
-                    console.log(data)
-                    showSearchAddressPage(data)
-
-                } else {
-                    utilities.ui.msg(ret.msg)
-                }
-            })
+    //弹层接口
+    var usePop = function(options){
+        $.extend({
+            name : "",
+            delayHide : 3000 //延迟隐藏时间
+        },options);
+        //
+        var hideFlag;
+        var _pop = {};
+        _pop.show = function(){
+            $(options.name).stop(true,true).fadeIn(500);
+            hideFlag = setTimeout(_pop.hide, options.delayHide);
         }
-    }
-    var showSearchAddressPage = function(data) {
-        selector.open({
-            title : $("#userinfo_message_residenceArea").val(),
-            tip : $("#userinfo_message_inputKeyAddress").val(),
-            display : 2,
-            placeholder : $("#userinfo_message_inputResidenceKeyword").val(),
-            specialtype : 2,
-            searchable : true,
-            citycode : tempCity.citycode,
-            data : data,
-            keyword : $("#search_address input").val()
+        _pop.hide = function(){
+            clearTimeout(hideFlag);
+            $(options.name).stop(true,true).fadeOut(500);
+        }
+        return _pop;
+    };
 
-        }, function(ret) {
-            tempDisct = ret
-            $(".userInfo-search input").val(tempDisct.streetName)
-        })
-    }
+
+    //自定义
+    var pop1 = usePop({
+        name:"#pop",
+        delayHide:3000
+    })
 </script>
