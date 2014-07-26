@@ -16,8 +16,15 @@
                     <div class="clr"></div>
 
                     <div class="page-app userinfo">
+                        <?PHP if (empty($_COOKIE['name'])) {
+                                 $msg = "这是您第一次订餐,请完善您的送餐信息";
+                              } else {
+                                 $msg = "欢迎再次下单, 请确认您的送餐信息";
+                              }
+                        ?>
+
                         <div class="userInfo-msg" style="">
-                            这是您第一次订餐,请完善您的送餐信息
+                            <?php echo $msg; ?>
                         </div>
                         <form action="<?php echo URL; ?>mobile/submitOrder" id="myform"
                               class="form-horizontal confirm-form" method="post">
@@ -32,8 +39,6 @@
                                 </p>
                             </div>
                             <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
-
-
                                     <div class="value">
                                         <div class="icon nick">
                                             <span></span>
@@ -43,11 +48,9 @@
                                             <input type="text" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
                                         </div>
                                     </div>
-
-
                             </div>
-                            <div class="userInfo_notSltText name am-clickable" style="display: none;"></div>
-                            <div class="userInfo-stepTitle">
+
+                            <div class="userInfo-stepTitle selected">
                                 <div class="num">
                                     <span>2</span>
                                 </div>
@@ -56,21 +59,20 @@
                                     联系电话
                                 </p>
                             </div>
-                            <div class="userInfo-stepBox" style="display: none; padding: 0px; height: 0px;">
-                                <ul class="userInfo-group telGroup"><li id="phone_0" class="selected"><p><?php echo $cellphone; ?></p><div id="delP_0" class="del"></div></li></ul>
-                                <div id="newphone" style="display: none;">
+
+                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
+                                <div id="newphone">
                                     <div class="value">
                                         <div class="icon tel">
                                             <span></span>
                                         </div>
                                         <div class="input">
-                                            <input type="tel" name="cellphone" value="" placeholder="请填写手机号码">
+                                            <input type="tel" name="cellphone" value="<?php echo $cellphone; ?>" placeholder="请填写手机号码">
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="userInfo_notSltText" style=""><?php echo $cellphone; ?></div>
+
 
                             <div class="userInfo-stepTitle selected">
                                 <div class="num">
@@ -82,13 +84,16 @@
 
                             <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
 
-                                <div id="addressList"></div>
-                                <br>
+                                <DIV><SPAN STYLE="COLOR:#000;FONT-SIZE:15PX">广东省广州市海珠区</SPAN></DIV><BR>
+
                                 <div id="newaddress" style="">
+
                                     <div class="userInfo-addAddrBox">
                                         <div class="alert alert-info" id="alert_note" style="display:none"></div>
+
                                         <div class="value userInfo-fullInput" id="search_address">
-                                            <input type="text" id="address1" name="address1" placeholder="输入关键字,搜索路名或小区" value="<?php echo $_COOKIE['address1'];?>">
+
+                                            <input type="text" id="address1" name="address1" placeholder="输入小区或楼宇名" value="<?php echo $_COOKIE['address1'];?>">
                                         </div>
                                         <div class="newaddress_fullInput">
                                             <?php $address2 = empty($_COOKIE['address2']) ? "" : $_COOKIE['address2']; ?>

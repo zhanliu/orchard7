@@ -792,6 +792,12 @@ a, input, div, textarea {
     background: url(images/icon-name.png) no-repeat center center;
     background-size: 25px 25px;
 }
+
+.userInfo-form .icon.tel {
+    background: url(images/icon-username.png) no-repeat center center;
+    background-size: 25px 25px;
+}
+
 .userInfo-form .icon {
     width: 40px;
     float: left;
