@@ -29,7 +29,7 @@ class OrderModel
 
     public function getAllOrdersWithDetails()
     {
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, addr.province, ";
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, addr.id as addressid, addr.country, addr.province, ";
         $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
@@ -54,7 +54,7 @@ class OrderModel
         return $query->fetchAll();
     }
 
-    public function addOrder($customer_id, $store_id, $address_id, $is_diy, $total_amount)
+    public function addOrder($customer_id, $store_id, $address_id, $is_diy, $total_amount, $isCustomerExisted)
     {
         // clean the input from javascript code for example
         $customer_id = strip_tags($customer_id);
@@ -68,12 +68,14 @@ class OrderModel
         $created_time = date("Y-m-d H:i:s" ,$now);
         $updated_time = date("Y-m-d H:i:s" ,$now);
 
-        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, total_amount, address_id, ";
-        $sql.= "created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :total_amount, :address_id, ";
+        $is_verified = $isCustomerExisted;
+
+        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, is_verified, total_amount, address_id, ";
+        $sql.= "created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :is_verified, :total_amount, :address_id, ";
         $sql.= ":created_time, :updated_time)";
         $query = $this->db->prepare($sql);
 
-        $query->execute(array(':customer_id' => $customer_id,':store_id'=>$store_id, ':status'=> $status ,':is_diy' => $is_diy, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
+        $query->execute(array(':customer_id' => $customer_id,':store_id'=>$store_id, ':status'=> $status, ':is_diy' => $is_diy, ':is_verified' => $is_verified, ':total_amount'=> $total_amount, ':address_id' => $address_id,  ':created_time'=>$created_time, ':updated_time'=>$updated_time));
         $insertedId = $this->db->lastInsertId();
 
         return $insertedId;
