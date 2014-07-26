@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `store_staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `wechat_id` varchar(60) NOT NULL,
   `name` varchar(40) NOT NULL,
