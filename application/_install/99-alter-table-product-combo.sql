@@ -34,4 +34,7 @@ alter table `order_details` add column item_type varchar(40) after `item_quantit
 alter table `order1` add column store_id int(20) after `customer_id`;
 /* ----------- 2014/7/17 ------------add order delivery fee --------------*/
 alter table `order1` add column delivery_fee int(10) after `total_amount`;
+/* ----------- 2014/7/26 ------------add order delivery fee --------------*/
+alter table `order1` add column order_number varchar(40) after `id`;
+alter table `order1` add column is_verified int(1) after `is_diy`;
 

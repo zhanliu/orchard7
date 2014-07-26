@@ -36,6 +36,7 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
     <script src="<?php echo URL; ?>public/js/jquery-ui-1.8.21.custom.min.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.ui.Mask.js"></script>
+    <script src="http://mzt.vip.com/cmstopic/app/design/js/lib/jquery/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
 
 
     <script type='application/javascript' src='<?php echo URL; ?>public/js/fastclick.min.js'></script>

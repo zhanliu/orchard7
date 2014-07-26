@@ -175,7 +175,7 @@ class Mobile extends Controller {
             //CID, STORE_ID, ADDRESS_ID, IS_DIY, TOTAL_PRICE
             //TODO: order status is not set yet!
             $store_id = $_POST['store_id'];
-            $order_id = $order_model->addOrder($customer_id, $store_id, $address_id, 1, 0);
+            $order_id = $order_model->addOrder($customer_id, $store_id, $address_id, 1, 0, $isCustomerExisted);
 
             //add order detail
             $order_detail_model = $this->loadModel('OrderDetailModel');
