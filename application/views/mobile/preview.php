@@ -101,6 +101,7 @@
     });
 
     function addToCart(id) {
+        //jQuery.ui.Mask.show('正在重新计算总价...');
         var number = Number($('#qty_' + id).text());
         $('#qty_' + id).text(number + 1);
 
@@ -118,6 +119,7 @@
     }
 
     function reduceToCart(id) {
+        //jQuery.ui.Mask.show('正在重新计算总价...');
         var number = Number($('#qty_' + id).text());
         $('#qty_' + id).text(number - 1);
 
@@ -141,7 +143,9 @@
     }
 
     function removeFromCart(id) {
+
         $('#list_' + id).css('display', 'none');
+
         $.ajax({
                 url: '<?php echo URL; ?>mobile/RemoveFromCart/' + id,
                 data: "",
@@ -157,10 +161,16 @@
     }
 
     function updateTotalPrice() {
+        jQuery.ui.Mask.show('正在重新计算总价...');
         $.ajax({
                 url: '<?php echo URL; ?>mobile/callTotalPrice/',
                 data: "",
                 dataType: 'json',
+                complete:function() {
+                    //setTimeout(function () {
+                        jQuery.ui.Mask.hide();
+                    //}, 300);                    // hides loader.
+                },
                 success: function (data) {
                     if (data != '' || data == 0) {
 
