@@ -91,6 +91,19 @@ class OrderModel
 
         return $query->fetchAll();
     }
+    
+    public function getOrdersByWechatId($wechat_id) {
+
+        $wechat_id = strip_tags($wechat_id);
+
+        $sql = "SELECT * ";
+        $sql.= "FROM order1 o and ";
+        $sql.= "WHERE o.id=".$order_id;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
 
     public function getOrderStatusCode()
     {

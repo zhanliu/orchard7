@@ -50,6 +50,31 @@ class StoreModel
         $query = $this->db->prepare($sql);
         $query->execute(array(':name' => $name, ':address_id' => $address_id, ':phone_number' => $phone_number));
     }
+    
+    public function addStaff($name, $cellphone, $store_id, $wechat_id)
+    {
+        // clean the input from javascript code for example
+        $name = strip_tags($name);
+        $cellphone = strip_tags($cellphone);
+        $store_id = strip_tags($store_id);
+        $wechat_id = strip_tags($wechat_id);
+        $status = 'N';
+        $description = 'wechat created staff';
+        $now = time();
+        $created_time = date("Y-m-d H:i:s" ,$now);
+        $updated_time = date("Y-m-d H:i:s" ,$now);
+        
+
+        $sql = "INSERT INTO staff (wechat_id, name, cellphone, store_id, description, status, created_time, updated_time) VALUES (:wechat_id, :name, :cellphone,:store_id, :description, :status,:created_time, :updated_time)";
+
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':wechat_id' => $wechat_id, ':name' => $name, ':cellphone' => $cellphone, ':store_id' => $store_id, ':description' => $description,':status' => $status,':created_time' => $created_time,':updated_time' => $updated_time));
+    
+    
+    	$insertedId = $this->db->lastInsertId();
+        
+        return $insertedId;
+    }
 
     public function deleteStore($store_id)
     {

@@ -117,8 +117,11 @@ class wechatCallbackapiTest
         } else if ($keyword == "117") {
             $msgType = "text";
             $contentStr = $postObj->AppSecret;   
-        } else if ($keyword == "911") {
+        } else if ($keyword == "query#") {
             $msgType = "text";
+            
+            $orders = $this->queryOrder($fromUsername);
+            
             $contentStr = $admin_entry;
         } else if ($keyword == "432") {
             $msgType = "news";
@@ -130,9 +133,10 @@ class wechatCallbackapiTest
             
             if ($num == 3) {
                 $arr = explode("#",$keyword);
-            	$contentStr = $arr[0] . $arr[1] . $arr[2] . $arr[3];
+                //$contentStr = $arr[0] . $arr[1] . $arr[2] . $arr[3];
                 
                 //insert staff into db
+                $contentStr = $this->addStaff($arr[1], $arr[2], $arr[3], $fromUsername);
             } else {
                 $contentStr = "注册请使用: \n apply#姓名#电话号#店铺编号\n\n（店铺编号:\n 5-逸景一店\n 6-逸景二店\n 7-南珠店\n 8-东晓南店）";
             }
@@ -251,6 +255,25 @@ class wechatCallbackapiTest
 
         return strpos($str, $needle) === 0;
 
+    }
+    
+    
+    function addStaff($name, $cellphone, $store_id, $wechat_id) {
+        require 'index.php';
+        require 'application/service/StaffService.php';
+        $staff_service = new StaffService();
+        
+        
+        return $staff_service->addStaff($name, $cellphone, $store_id, $wechat_id);
+    }
+    
+    function queryOrder($wechat_id) {
+        require 'index.php';
+        require 'application/service/StaffService.php';
+        $staff_service = new StaffService();
+        
+        
+        return $staff_service->queryOrder($wechat_id);
     }
 
 }

@@ -22,10 +22,6 @@ class Asset extends Controller
         require 'application/views/common/footer.php';
     }
 
-    public function addStaff($name, $cellphone, $store_id, $wechat_id) {
-        $store_model = $this->loadModel('StoreModel');
-        
-    }
     
     public function storeStaff()
     {
@@ -35,6 +31,8 @@ class Asset extends Controller
         require 'application/views/common/header.php';
         require 'application/views/asset/staff.php';
         require 'application/views/common/footer.php';
+        
+        
     }
 
     public function enableStoreStaff($id)
