@@ -122,7 +122,17 @@ class wechatCallbackapiTest
             
             $orders = $this->queryOrder($fromUsername);
             
-            $contentStr = $admin_entry;
+            if ($orders !=null && !empty($orders)) {
+                
+                foreach($orders as $order) {
+                    $contentStr = $contentStr . $order->id . "|" . $order->status . "|" . $order->total_amount . "|" . $order->country."-".$order->province."-".$order->city."-".$order->district."-".$order->address1."-".$order->address2 . "|"  .$order->storename . "\n\n";              
+                }
+                
+            } else {
+                $contentStr = "您订阅的订单结果为空。";
+            }
+        	
+            
         } else if ($keyword == "432") {
             $msgType = "news";
             $contentStr = "";

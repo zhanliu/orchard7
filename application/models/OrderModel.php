@@ -98,9 +98,12 @@ class OrderModel
 
         $wechat_id = strip_tags($wechat_id);
 
-        $sql = "SELECT * ";
-        $sql.= "FROM order1 o and ";
-        $sql.= "WHERE o.id=".$order_id;
+        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, ";
+        $sql.= "addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
+        $sql.= "FROM staff s left join order1 as ord on s.store_id = ord.store_id left join customer as cus on ord.customer_id = cus.id ";
+        $sql.= "left join address as addr on ord.address_id = addr.id ";
+        $sql = $sql . "WHERE s.wechat_id = '" . $wechat_id . "'";
+        
         $query = $this->db->prepare($sql);
         $query->execute();
 
