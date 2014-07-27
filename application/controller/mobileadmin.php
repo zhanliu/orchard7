@@ -50,7 +50,11 @@ class MobileAdmin extends Controller {
 
 
         $orderStatus = $order_model->getOrderStatusCode();
-        $orders = $order_model->getTodayOrdersWithDetailsByStatus(0);
+        $orders = $order_model->getTodayOrdersWithDetailsByStatusType(0);
+
+        $amount_of_type_0 = $order_model->getTodayAmountOfOrdersByStatusType(0);
+        $amount_of_type_1 = $order_model->getTodayAmountOfOrdersByStatusType(1);
+        $amount_of_type_9 = $amount_of_type_0 + $amount_of_type_1;
 
         $order_model->insertOrderProcessLog($id, $staff_id, $from_status, $status);
 
