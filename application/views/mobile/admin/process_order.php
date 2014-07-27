@@ -37,7 +37,7 @@
 
                             <div>配送店铺: <?php echo $order->storename; ?></div>
                             <div>下单时间: <?php echo $order->created_time; ?></div>
-                            <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?> | 
+                            <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?> |
                                 <span style="background:<?php echo $order_reliable_bg ?>;color:#fff">
                                     <?php echo $order_reliable; ?>
                                 </span>
@@ -54,10 +54,18 @@
                             <hr>
 
                             <h3>订单详情</h3>
-                            <?php foreach ($items as $item) { ?>
-                                <div>商品名: <?php echo $item->name; ?></div>
-                                <div>价格: <?php echo $item->price; ?> | 数量: <?php echo $item->item_quantity; ?></div><br>
-                            <?php } ?>
+                            <table border="1" width="90%">
+                                <th>商品</th><th>价格</th><th>数量</th>
+                                <?php foreach ($items as $item) { ?>
+                                <tr>
+                                    <td><?php echo $item->name; ?>
+                                    <td><?php echo $item->price; ?></td>
+                                    <td><?php echo $item->item_quantity; ?></td>
+                                </tr>
+                                <?php } ?>
+                            </table>
+
+                            <hr>
 
                             <h3>状态Update</h3>
 
