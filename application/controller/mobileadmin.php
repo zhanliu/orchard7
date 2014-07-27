@@ -16,8 +16,12 @@ class MobileAdmin extends Controller {
         if ($queryStatus == 9) {
             $orders = $order_model->getTodayOrdersWithDetails();
         } else {
-            $orders = $order_model->getTodayOrdersWithDetailsByStatus($queryStatus);
+            $orders = $order_model->getTodayOrdersWithDetailsByStatusType($queryStatus);
         }
+
+        $amount_of_type_0 = $order_model->getTodayAmountOfOrdersByStatusType(0);
+        $amount_of_type_1 = $order_model->getTodayAmountOfOrdersByStatusType(1);
+        $amount_of_type_9 = $amount_of_type_0 + $amount_of_type_1;
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/admin/order_manager.php';

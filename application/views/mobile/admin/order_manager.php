@@ -25,11 +25,11 @@
                         <div class="full-content">
 
                             <div class="alert alert-danger">
-                                今日待处理订单 <br />
+                                今日订单 <br />
 
-                                <a href="<?php echo URL; ?>mobileadmin/orderManager/0" class="myButton" >未处理</a>
-                                <a href="<?php echo URL; ?>mobileadmin/orderManager/1" class="myButton" >已处理</a>
-                                <a href="<?php echo URL; ?>mobileadmin/orderManager/9" class="myButton" >全部</a>
+                                <a href="<?php echo URL; ?>mobileadmin/orderManager/0" class="myButton" >未处理(<?php echo $amount_of_type_0; ?>)</a>
+                                <a href="<?php echo URL; ?>mobileadmin/orderManager/1" class="myButton" >已处理(<?php echo $amount_of_type_1; ?>)</a>
+                                <a href="<?php echo URL; ?>mobileadmin/orderManager/9" class="myButton" >全部(<?php echo $amount_of_type_9; ?>)</a>
                             </div>
 
                                 <?php

@@ -57,7 +57,7 @@ class OrderModel
         return $query->fetchAll();
     }
 
-    public function getTodayOrdersWithDetailsByStatus($status)
+    public function getTodayOrdersWithDetailsByStatusType($type)
     {
         $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
         $sql.= "ord.is_verified, addr.id as addressid, addr.country, addr.province, os.status, ";
@@ -65,8 +65,8 @@ class OrderModel
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
         $sql.= "left join order_status os on ord.status = os.status_code ";
-        $sql.= "WHERE ord.created_time >= CURDATE() and os.type =  " . $status;
-        if ($status == 0) {
+        $sql.= "WHERE ord.created_time >= CURDATE() and os.type = " . $type;
+        if ($type == 0) {
             $sql.= " order by ord.created_time asc ";
         } else {
             $sql.= " order by ord.created_time desc ";
@@ -75,6 +75,16 @@ class OrderModel
         $query->execute();
 
         return $query->fetchAll();
+    }
+
+    public function getTodayAmountOfOrdersByStatusType($type)
+    {
+        $sql = "SELECT COUNT(ord.id) AS amount_of_orders FROM order1 as ord, order_status as os ";
+        $sql.= "WHERE ord.status = os.status_code AND ord.created_time >= CURDATE() and os.type = " . $type;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetch()->amount_of_orders;
     }
 
     public function getOrderById($order_id) {
