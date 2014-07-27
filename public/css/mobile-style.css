@@ -898,4 +898,31 @@ a, input, div, textarea {
     content: "\f015";
 }
 
+.myButton {
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fed22f), color-stop(1, #eed22f));
+    background:-moz-linear-gradient(top, #f9f9f9 5%, #eed22f 100%);
+    background:-webkit-linear-gradient(top, #fed22f 5%, #eed22f 100%);
+    background:-o-linear-gradient(top, #fed22f 5%, #eed22f 100%);
+    background:-ms-linear-gradient(top, #fed22f 5%, #eed22f 100%);
+    background:linear-gradient(to bottom, #fed22f 5%, #fed22f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='##fed22f', endColorstr='##eed22f',GradientType=0);
+    background-color:#fed22f;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#999;
+    font-family:arial;
+    font-size:18px;
+    font-weight:bold;
+    padding:6px 10px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+}
+
 #pop{display:none;color:white;font-size:18px;padding:10px;position:relative;width:100%;height:30px;background:rgba(0,0,0,0.5);}
