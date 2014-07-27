@@ -74,10 +74,10 @@ class Order extends Controller
 
     public function updateOrder($id) {
         $order_model = $this->loadModel('OrderModel');
-        $order = $order_model->getOrderDetailById($id);
+        $order = $order_model->getOrderById($id);
 
         $order_detail_model = $this->loadModel('OrderDetailModel');
-        $orderDetails = $order_detail_model->getAllOrderDetailsById($id);
+        $orderDetails = $order_detail_model->getOrderDetailsById($id);
 
         $product_model = $this->loadModel('ProductModel');
         $items = $product_model->getProductsByOrderId($id);

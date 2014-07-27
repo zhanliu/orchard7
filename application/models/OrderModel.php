@@ -59,7 +59,7 @@ class OrderModel
 
 
 
-    public function getOrderDetailById($order_id) {
+    public function getOrderById($order_id) {
 
         $order_id = strip_tags($order_id);
         $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, addr.id as addressid, addr.country, ";

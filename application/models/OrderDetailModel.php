@@ -27,7 +27,7 @@ class OrderDetailModel
         return $query->fetchAll();
     }
 
-    public function getAllOrderDetailsById($id)
+    public function getOrderDetailsById($id)
     {
         $sql = "SELECT od.order_id, od.item_id, od.item_quantity, p.name, p.price ";
         $sql.= "FROM order_details as od, product as p ";
