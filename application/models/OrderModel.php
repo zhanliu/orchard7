@@ -56,7 +56,20 @@ class OrderModel
         return $query->fetchAll();
     }
 
+    public function getTodayOrdersWithDetailsByStatus($status)
+    {
+        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
+        $sql.= "ord.is_verified, addr.id as addressid, addr.country, addr.province, os.status, ";
+        $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
+        $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
+        $sql.= "left join order_status os on ord.status = os.status_code ";
+        $sql.= "WHERE ord.created_time >= CURDATE() and ord.status =  " . $status;
+        $query = $this->db->prepare($sql);
+        $query->execute();
 
+        return $query->fetchAll();
+    }
 
     public function getOrderDetailById($order_id) {
 

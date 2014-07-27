@@ -2,10 +2,21 @@
 include('application/views/mobile/ShoppingCart.class.php');
 class MobileAdmin extends Controller {
 
-    public function orderManager()
+    public function orderManager($queryStatus)
     {
         $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->getTodayOrdersWithDetails();
+        $orderStatus = $order_model->getOrderStatusCode();
+        $orders = null;
+
+        if ($queryStatus == null) {
+            $queryStatus = 0;
+        }
+
+        if ($queryStatus == 9) {
+            $orders = $order_model->getTodayOrdersWithDetails();
+        } else {
+            $orders = $order_model->getTodayOrdersWithDetailsByStatus($queryStatus);
+        }
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/admin/order_manager.php';
