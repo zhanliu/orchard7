@@ -66,6 +66,11 @@ class OrderModel
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
         $sql.= "left join order_status os on ord.status = os.status_code ";
         $sql.= "WHERE ord.created_time >= CURDATE() and os.type =  " . $status;
+        if ($status == 0) {
+            $sql.= " order by ord.created_time asc ";
+        } else {
+            $sql.= " order by ord.created_time desc ";
+        }
         $query = $this->db->prepare($sql);
         $query->execute();
 
