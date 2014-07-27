@@ -136,6 +136,21 @@ class OrderModel
         return $query->fetchAll();
     }
 
+    public function getOrderProcess($order_id) {
+
+        $order_id = strip_tags($order_id);
+
+        $sql = "SELECT op.id as id, op.order_id as order_id, op.from_status as from_status, op.to_status as to_status, op.created_time as created_time, sta.name as name, stu1.status as status1, stu2.status as status2  ";
+        $sql.= "FROM order_process op, staff sta, order_status stu1, order_status stu2 ";
+        $sql.= "WHERE op.order_id = '" . $order_id .  "' and op.from_status = stu1.status_code and op.to_status = stu2.status_code and op.operator = sta.id ";
+        $sql.= "order by op.created_time asc ";
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function getOrderStatusCode()
     {
         $sql = "SELECT * ";
@@ -184,5 +199,22 @@ class OrderModel
         $sql = "UPDATE order1 set status = :status WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id, ':status' => $status));
+    }
+
+    public function insertOrderProcessLog($order_id, $staff_id, $from_status, $to_status) {
+        $order_id = strip_tags($order_id);
+        $staff_id = strip_tags($staff_id);
+        $from_status = strip_tags($from_status);
+        $to_status = strip_tags($to_status);
+        $now = new DateTime(null, new DateTimeZone('Asia/Shanghai'));
+        $created_time = $now->format("Y-m-d H:i:s");
+
+        $sql = "insert into order_process (order_id, operator, from_status, to_status, created_time ) VALUES (:order_id,:operator, :from_status, :to_status, :created_time)";
+        $query = $this->db->prepare($sql);
+
+        $query->execute(array(':order_id' => $order_id,':operator'=>$staff_id, ':from_status'=> $from_status, ':to_status' => $to_status, ':created_time' => $created_time));
+        $insertedId = $this->db->lastInsertId();
+
+        return $insertedId;
     }
 }

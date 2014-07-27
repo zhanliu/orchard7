@@ -32,12 +32,14 @@ class MobileAdmin extends Controller {
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $items = $order_detail_model->getOrderDetailsById($id);
 
+        $order_process = $order_model->getOrderProcess($id);
+
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/admin/process_order.php';
         require 'application/views/mobile/footer.php';
     }
 
-    public function updateOrder($id, $status)
+    public function updateOrder($id, $status, $from_status, $staff_id)
     {
         $order_model = $this->loadModel('OrderModel');
         $order_model->updateOrderStatus($id, $status);
@@ -45,6 +47,8 @@ class MobileAdmin extends Controller {
 
         $orderStatus = $order_model->getOrderStatusCode();
         $orders = $order_model->getTodayOrdersWithDetailsByStatus(0);
+
+        $order_model->insertOrderProcessLog($id, $staff_id, $from_status, $status);
 
 
         require 'application/views/mobile/header.php';

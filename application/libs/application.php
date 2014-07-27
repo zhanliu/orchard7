@@ -17,6 +17,9 @@ class Application
     /** @var null Parameter three */
     private $url_parameter_3 = null;
 
+    /** @var null Parameter four */
+    private $url_parameter_4 = null;
+
     /**
      * "Start" the application:
      * Analyze the URL elements and calls the according controller/method or the fallback
@@ -82,6 +85,7 @@ class Application
             $this->url_parameter_1 = (isset($url[2]) ? $url[2] : null);
             $this->url_parameter_2 = (isset($url[3]) ? $url[3] : null);
             $this->url_parameter_3 = (isset($url[4]) ? $url[4] : null);
+            $this->url_parameter_4 = (isset($url[5]) ? $url[5] : null);
 
             //for debugging. uncomment this if you have problems with the URL
             // echo 'Controller: ' . $this->url_controller . '<br />';
@@ -95,7 +99,10 @@ class Application
     public function translateURL()
     {
 // call the method and pass the arguments to it
-        if (isset($this->url_parameter_3)) {
+        if (isset($this->url_parameter_4)) {
+            // will translate to something like $this->home->method($param_1, $param_2, $param_3);
+            $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2, $this->url_parameter_3, $this->url_parameter_4);
+        } else if (isset($this->url_parameter_3)) {
             // will translate to something like $this->home->method($param_1, $param_2, $param_3);
             $this->url_controller->{$this->url_action}($this->url_parameter_1, $this->url_parameter_2, $this->url_parameter_3);
         } elseif (isset($this->url_parameter_2)) {

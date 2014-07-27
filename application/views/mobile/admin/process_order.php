@@ -37,19 +37,6 @@
                         <div>配送店铺: <?php echo $order->storename; ?></div>
                         <div>下单时间: <?php echo $order->created_time; ?></div>
                         <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?></div>
-                        <div>订单状态: <?php echo $order->status; ?>
-
-                            <?php if ($order->status_code == 0) { ?>
-                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/1" class="myButton" >待派送</a>
-                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/5" class="myButton" >取消订单</a>
-                            <?php } else if ($order->status_code == 1) { ?>
-                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/2" class="myButton" >派送中</a>
-                            <?php } else if ($order->status_code == 2) { ?>
-                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/3" class="myButton" >完成</a>
-                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/4" class="myButton" >拒收</a>
-                            <?php } ?>
-
-                        </div>
 
                         <hr>
 
@@ -65,6 +52,29 @@
                         <?php foreach ($items as $item) { ?>
                             <div>商品名: <?php echo $item->name; ?></div>
                             <div>价格: <?php echo $item->price; ?> | 数量: <?php echo $item->item_quantity; ?></div><br>
+                        <?php } ?>
+
+                        <hr>
+
+                        <div>订单状态: <?php echo $order->status; ?>
+
+                            <?php if ($order->status_code == 0) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/1/0/1" class="myButton" >待派送</a>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/5/0/1" class="myButton" >取消订单</a>
+                            <?php } else if ($order->status_code == 1) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/2/1/1" class="myButton" >派送中</a>
+                            <?php } else if ($order->status_code == 2) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/3/2/1" class="myButton" >完成</a>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/4/2/1" class="myButton" >拒收</a>
+                            <?php } ?>
+
+                        </div>
+
+                        <?php foreach ($order_process as $process) { ?>
+                            <div>操作员: <?php echo $process->name; ?></div>
+                            <div>新状态: <?php echo $process->status2; ?></div>
+                            <div>更新时间: <?php echo $process->created_time; ?></div>
+                            <hr>
                         <?php } ?>
 
                     </div>
