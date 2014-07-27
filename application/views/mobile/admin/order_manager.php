@@ -50,14 +50,14 @@
                                             (<?php echo $order->status; ?>)
                                         </div>
                                         <div class="desc" style="color:#000;padding:5px">
-                                            <span>配送店铺: <?php echo $order->storename; ?> </span><br>
-                                            <span>下单时间: <?php echo $order->created_time; ?>, </span><br>
-                                            <span>总价: <?php echo $order->total_amount; ?>, </span>
-                                            <span>运费: <?php echo $order->delivery_fee; ?>, </span>
-                                            <span style="background:<?php echo $order_reliable_bg?>;color:#fff">
+                                            <span padding="5px">配送店铺: <?php echo $order->storename; ?> </span><br>
+                                            <span padding="5px">下单时间: <?php echo $order->created_time; ?>, </span><br>
+                                            <span padding="5px">总价: <?php echo $order->total_amount; ?>, </span>
+                                            <span padding="5px">运费: <?php echo $order->delivery_fee; ?>, </span>
+                                            <span style="background:<?php echo $order_reliable_bg?>;color:#fff;padding=5px">
                                                 <?php echo $order_reliable; ?>
                                             </span>
-                                            <span>地址: <?php echo $full_address; ?></span>
+                                            <span padding="5px">地址: <?php echo $full_address; ?></span>
 
                                         </div>
                                      </div>
