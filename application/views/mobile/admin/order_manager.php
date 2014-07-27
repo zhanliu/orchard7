@@ -25,7 +25,7 @@
                         <div class="full-content">
 
                             <div class="alert alert-danger">
-                                今日新增订单
+                                今日待处理订单
                             </div>
                                 <?php foreach ($orderStatus as $status) { ?>
                                     <a href="<?php echo URL; ?>mobileadmin/orderManager/<?php echo $status->status_code; ?>" class="myButton" ><?php echo $status->status; ?></a>
@@ -43,8 +43,14 @@
 
                                     <div id="list_<?php echo $id; ?>">
 
-                                        <div class="name">订单号:<?php echo $order->order_number; ?>   (<?php echo $order->status; ?>)</div>
+                                        <div class="name">订单号:
+                                            <a href="<?php echo URL; ?>mobileadmin/processOrder/<?php echo $order->id; ?>" class="myButton" >
+                                                <?php echo $order->order_number; ?>
+                                            </a>
+                                            (<?php echo $order->status; ?>)
+                                        </div>
                                         <div class="desc" style="color:#000;padding:5px">
+                                            <span>配送店铺: <?php echo $order->storename; ?> </span><br>
                                             <span>下单时间: <?php echo $order->created_time; ?>, </span><br>
                                             <span>总价: <?php echo $order->total_amount; ?>, </span>
                                             <span>运费: <?php echo $order->delivery_fee; ?>, </span>
@@ -52,6 +58,7 @@
                                                 <?php echo $order_reliable; ?>
                                             </span>
                                             <span>地址: <?php echo $full_address; ?></span>
+
                                         </div>
                                      </div>
 
