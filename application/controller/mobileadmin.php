@@ -26,6 +26,9 @@ class MobileAdmin extends Controller {
 
     public function processOrder($id)
     {
+        $order_model = $this->loadModel('OrderModel');
+        $order = $order_model->getOrderById($id);
+
         $order_detail_model = $this->loadModel('OrderDetailModel');
         $order_detail = $order_detail_model->getOrderDetailsById($id);
 

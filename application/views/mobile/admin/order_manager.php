@@ -50,6 +50,7 @@
                                             (<?php echo $order->status; ?>)
                                         </div>
                                         <div class="desc" style="color:#000;padding:5px">
+
                                             <span style="color:#000;padding:3px">配送店铺: <?php echo $order->storename; ?> </span><br>
                                             <span style="color:#000;padding:3px">下单时间: <?php echo $order->created_time; ?>, </span><br>
                                             <span style="color:#000;padding:3px">总价: <?php echo $order->total_amount; ?>, </span>
