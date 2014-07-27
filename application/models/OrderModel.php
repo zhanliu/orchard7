@@ -48,7 +48,7 @@ class OrderModel
         $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
-        $sql.= "WHERE ord.created_time >= CURDATE()";
+        $sql.= "WHERE ord.created_time >= CURDATE() order by ord.created_time desc";
         $query = $this->db->prepare($sql);
         $query->execute();
 
