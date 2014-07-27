@@ -40,4 +40,6 @@ alter table `order1` add column is_verified int(1) after `is_diy`;
 
 /* ----------- 2014/7/26 ------------add order status type --------------*/
 alter table `order_status` add column type int(1) after `status`;
+update order_status set type = 0 where status_code in (0, 1, 2);
+update order_status set type = 1 where status_code in (3, 4, 5);
 
