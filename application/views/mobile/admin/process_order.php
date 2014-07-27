@@ -51,6 +51,10 @@
                         <hr>
 
                         <h3>Detail</h3>
+                        <?php foreach ($items as $item) { ?>
+                            <div>Product Name: <?php echo $item->name; ?></div>
+                            <div>Price: <?php echo $item->price; ?> | Quantity: <?php echo $item->item_quantity; ?></div><br>
+                        <?php } ?>
 
                     </div>
 

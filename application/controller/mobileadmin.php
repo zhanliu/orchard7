@@ -30,7 +30,7 @@ class MobileAdmin extends Controller {
         $order = $order_model->getOrderById($id);
 
         $order_detail_model = $this->loadModel('OrderDetailModel');
-        $order_detail = $order_detail_model->getOrderDetailsById($id);
+        $items = $order_detail_model->getOrderDetailsById($id);
 
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/admin/process_order.php';
