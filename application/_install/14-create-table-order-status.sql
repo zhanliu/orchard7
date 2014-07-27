@@ -11,4 +11,4 @@ insert into order_status (status_code, status) values ("1", "待派送");
 insert into order_status (status_code, status) values ("2", "派送中");
 insert into order_status (status_code, status) values ("3", "完成");
 insert into order_status (status_code, status) values ("4", "拒收");
-insert into order_status (status_code, status) values ("5", "取消");
+insert into order_status (status_code, status) values ("5", "取消订单");

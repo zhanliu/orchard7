@@ -37,4 +37,20 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function updateOrder($id, $status)
+    {
+        $order_model = $this->loadModel('OrderModel');
+        $order_model->updateOrderStatus($id, $status);
+
+
+        $orderStatus = $order_model->getOrderStatusCode();
+        $orders = $order_model->getTodayOrdersWithDetailsByStatus(0);
+
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/admin/order_manager.php';
+        require 'application/views/mobile/footer.php';
+    }
+
+
 }

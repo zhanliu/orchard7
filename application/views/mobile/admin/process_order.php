@@ -37,7 +37,19 @@
                         <div>配送店铺: <?php echo $order->storename; ?></div>
                         <div>下单时间: <?php echo $order->created_time; ?></div>
                         <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?></div>
-                        <div>订单状态: <?php echo $order->status; ?></div>
+                        <div>订单状态: <?php echo $order->status; ?>
+
+                            <?php if ($order->status_code == 0) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/1" class="myButton" >待派送</a>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/5" class="myButton" >取消订单</a>
+                            <?php } else if ($order->status_code == 1) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/2" class="myButton" >派送中</a>
+                            <?php } else if ($order->status_code == 2) { ?>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/3" class="myButton" >完成</a>
+                                <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/4" class="myButton" >拒收</a>
+                            <?php } ?>
+
+                        </div>
 
                         <hr>
 
