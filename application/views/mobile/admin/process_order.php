@@ -36,8 +36,7 @@
 
                         <div>配送店铺: <?php echo $order->storename; ?></div>
                         <div>下单时间: <?php echo $order->created_time; ?></div>
-                        <div>总价: <?php echo $order->total_amount; ?></div>
-                        <div>运费: <?php echo $order->delivery_fee; ?></div>
+                        <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?></div>
                         <div>订单状态: <?php echo $order->status; ?></div>
 
                         <hr>
