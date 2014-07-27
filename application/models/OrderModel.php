@@ -74,7 +74,7 @@ class OrderModel
 
     public function getOrderById($order_id) {
         $order_id = strip_tags($order_id);
-        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
+        $sql = "SELECT ord.id, ord.order_number, cus.name as cname, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
         $sql.= "ord.is_verified, addr.id as addressid, addr.country, addr.province, os.status, ";
         $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";

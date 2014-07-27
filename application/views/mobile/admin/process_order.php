@@ -21,27 +21,38 @@
                     <div class="clr"></div>
 
 
-
                     <div style="color:#f00;padding:5px">
 
-                            <?php
-                                $order = $order[0];
-                                $full_address = $order->province.$order->city.$order->district.$order->address1.$order->address2;
-                            ?>
-                            <div class="alert alert-danger name">
-                                订单号:<?php echo $order->order_number; ?>
-                            </div>
-                            <h3>客户信息</h3>
-
-                            <div>配送店铺: <?php echo $order->storename; ?></div>
-                            <div>下单时间: <?php echo $order->created_time; ?></div>
-                            <div>总价: <?php echo $order->total_amount; ?></div>
-                            <div>运费: <?php echo $order->delivery_fee; ?></div>
-                            <div>地址: <?php echo $full_address; ?></div>
-
-                            <hr>
-
+                        <?php
+                        $order = $order[0];
+                        $full_address = $order->province . $order->city . $order->district . $order->address1 . $order->address2;
+                        ?>
+                        <div class="alert alert-danger name">
+                            订单号:<?php echo $order->order_number; ?>
                         </div>
+
+
+                        <h3>Basic info</h3>
+
+                        <div>配送店铺: <?php echo $order->storename; ?></div>
+                        <div>下单时间: <?php echo $order->created_time; ?></div>
+                        <div>总价: <?php echo $order->total_amount; ?></div>
+                        <div>运费: <?php echo $order->delivery_fee; ?></div>
+                        <div>Order Status: <?php echo $order->status; ?></div>
+
+                        <hr>
+
+                        <h3>Customer info</h3>
+
+                        <div>user name: <?php echo $order->cname; ?></div>
+                        <div>cellphone: <?php echo $order->cellphone; ?></div>
+                        <div>地址: <?php echo $full_address; ?></div>
+
+                        <hr>
+
+                        <h3>Detail</h3>
+
+                    </div>
 
                 </div>
             </div>
