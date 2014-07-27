@@ -40,7 +40,7 @@
 
                                     <div id="list_<?php echo $id; ?>">
 
-                                        <div class="name">订单号:<?php echo $order->order_number; ?></div>
+                                        <div class="name">订单号:<?php echo $order->order_number; ?>   (<?php echo $order->status; ?>)</div>
                                         <div class="desc" style="color:#000;padding:5px">
                                             <span>配送店铺: <?php echo $order->storename; ?> </span><br>
                                             <span>下单时间: <?php echo $order->created_time; ?>, </span><br>
