@@ -51,8 +51,8 @@
 
                         <h3>订单详情</h3>
                         <?php foreach ($items as $item) { ?>
-                            <div>Product Name: <?php echo $item->name; ?></div>
-                            <div>Price: <?php echo $item->price; ?> | Quantity: <?php echo $item->item_quantity; ?></div><br>
+                            <div>商品名: <?php echo $item->name; ?></div>
+                            <div>价格: <?php echo $item->price; ?> | 数量: <?php echo $item->item_quantity; ?></div><br>
                         <?php } ?>
 
                     </div>
