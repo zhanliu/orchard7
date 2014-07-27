@@ -29,20 +29,38 @@ class OrderModel
 
     public function getAllOrdersWithDetails()
     {
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, addr.id as addressid, addr.country, addr.province, ";
+        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
+        $sql.= "ord.is_verified, addr.id as addressid, addr.country, addr.province, ";
         $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
+
         $query = $this->db->prepare($sql);
         $query->execute();
 
         return $query->fetchAll();
     }
 
+    public function getTodayOrdersWithDetails()
+    {
+        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
+        $sql.= "ord.is_verified, addr.id as addressid, addr.country, addr.province, ";
+        $sql.= "addr.city, addr.district, addr.address1, addr.address2, s.name as storename ";
+        $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
+        $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
+        $sql.= "WHERE ord.created_time >= CURDATE()";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+
+
     public function getOrderDetailById($order_id) {
 
         $order_id = strip_tags($order_id);
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, ";
+        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, addr.id as addressid, addr.country, ";
         $sql.= "addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id ";
@@ -70,7 +88,7 @@ class OrderModel
 
         $is_verified = $isCustomerExisted;
 
-        $sql = "insert into order1 (customer_id, store_id, status,  is_diy, is_verified, total_amount, address_id, ";
+        $sql = "insert into order1 (customer_id, store_id, status, is_diy, is_verified, total_amount, address_id, ";
         $sql.= "created_time, updated_time) VALUES (:customer_id,:store_id, :status, :is_diy, :is_verified, :total_amount, :address_id, ";
         $sql.= ":created_time, :updated_time)";
         $query = $this->db->prepare($sql);
@@ -98,7 +116,7 @@ class OrderModel
 
         $wechat_id = strip_tags($wechat_id);
 
-        $sql = "SELECT ord.id, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, ";
+        $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount,addr.id as addressid, addr.country, ";
         $sql.= "addr.province, addr.city, addr.district, addr.address1, addr.address2 ";
         $sql.= "FROM staff s left join order1 as ord on s.store_id = ord.store_id left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id ";

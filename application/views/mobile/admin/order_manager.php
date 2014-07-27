@@ -25,22 +25,30 @@
                         <div class="full-content">
 
                             <div class="alert alert-danger">
-                                提示: 订单金额小于50元收取7元配送费, 超过50元就可以免费配送了!
+                                今日新增订单
                             </div>
 
 
                                 <?php
                                 foreach ($orders as $order) {
                                     $id = $order->id;
+                                    $full_address = $order->province.$order->city.$order->district.$order->address1.$order->address2;
                                     //$qty = $items[$product->id];
+                                    $order_reliable = $order->is_verified ? "老客订单" : "新客订单";
+                                    $order_reliable_bg = $order->is_verified ? "#008" : "#800";
                                     ?>
 
                                     <div id="list_<?php echo $id; ?>">
 
-                                        <div class="name"><?php echo $id; ?></div>
-                                        <div class="desc">
-                                            <span>单价:<?php echo $order->total_amount; ?>, </span>
-                                            <span>小计:<?php echo $order->delivery_fee; ?></span>
+                                        <div class="name">订单号:<?php echo $order->order_number; ?></div>
+                                        <div class="desc" style="color:#000;padding:5px">
+                                            <span>下单时间: <?php echo $order->created_time; ?>, </span><br>
+                                            <span>总价: <?php echo $order->total_amount; ?>, </span>
+                                            <span>运费: <?php echo $order->delivery_fee; ?>, </span>
+                                            <span style="background:<?php echo $order_reliable_bg?>;color:#fff">
+                                                <?php echo $order_reliable; ?>
+                                            </span>
+                                            <span>地址: <?php echo $full_address; ?></span>
                                         </div>
                                      </div>
 
