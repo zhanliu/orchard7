@@ -38,3 +38,6 @@ alter table `order1` add column delivery_fee int(10) after `total_amount`;
 alter table `order1` add column order_number varchar(40) after `id`;
 alter table `order1` add column is_verified int(1) after `is_diy`;
 
+/* ----------- 2014/7/26 ------------add order status type --------------*/
+alter table `order_status` add column type int(1) after `status`;
+

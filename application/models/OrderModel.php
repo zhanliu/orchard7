@@ -65,7 +65,7 @@ class OrderModel
         $sql.= "FROM order1 as ord left join customer as cus on ord.customer_id = cus.id ";
         $sql.= "left join address as addr on ord.address_id = addr.id left join store as s on ord.store_id = s.id ";
         $sql.= "left join order_status os on ord.status = os.status_code ";
-        $sql.= "WHERE ord.created_time >= CURDATE() and ord.status =  " . $status;
+        $sql.= "WHERE ord.created_time >= CURDATE() and os.type =  " . $status;
         $query = $this->db->prepare($sql);
         $query->execute();
 

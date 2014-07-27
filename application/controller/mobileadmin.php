@@ -2,13 +2,14 @@
 include('application/views/mobile/ShoppingCart.class.php');
 class MobileAdmin extends Controller {
 
-    public function orderManager($queryStatus)
+    public function orderManager($queryStatus=null)
     {
         $order_model = $this->loadModel('OrderModel');
         $orderStatus = $order_model->getOrderStatusCode();
         $orders = null;
 
-        if ($queryStatus == null) {
+
+        if (!isset($queryStatus)) {
             $queryStatus = 0;
         }
 
