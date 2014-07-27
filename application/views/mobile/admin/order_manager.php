@@ -27,7 +27,10 @@
                             <div class="alert alert-danger">
                                 今日待处理订单
                             </div>
-
+                                <?php foreach ($orderStatus as $status) { ?>
+                                    <a href="<?php echo URL; ?>mobileadmin/orderManager/<?php echo $status->status_code; ?>" class="myButton" ><?php echo $status->status; ?></a>
+                                <?php } ?>
+                                    <a href="<?php echo URL; ?>mobileadmin/orderManager/9" class="myButton" >全部</a>
 
                                 <?php
                                 foreach ($orders as $order) {
