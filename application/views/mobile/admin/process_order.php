@@ -40,7 +40,7 @@
                             <div>地址: <?php echo $full_address; ?></div>
 
                             <hr>
-                        
+
                         </div>
 
                 </div>
