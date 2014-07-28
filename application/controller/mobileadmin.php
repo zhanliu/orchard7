@@ -77,5 +77,14 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function processProduct($id)
+    {
+        $product_model = $this->loadModel('ProductModel');
+        $product = $product_model->getProductById($id);
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/admin/process_product.php';
+        require 'application/views/mobile/footer.php';
+    }
 
 }
