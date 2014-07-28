@@ -150,10 +150,10 @@ class OrderModel
 
         $order_id = strip_tags($order_id);
 
-        $sql = "SELECT op.id as id, op.order_id as order_id, op.from_status as from_status, op.to_status as to_status, op.created_time as created_time, sta.name as name, stu1.status as status1, stu2.status as status2  ";
+        $sql = "SELECT op.id as id, op.order_id as order_id, op.from_status, op.to_status, op.created_time, sta.name as name, stu1.status as status1, stu2.status as status2 ";
         $sql.= "FROM order_process op, staff sta, order_status stu1, order_status stu2 ";
         $sql.= "WHERE op.order_id = '" . $order_id .  "' and op.from_status = stu1.status_code and op.to_status = stu2.status_code and op.operator = sta.id ";
-        $sql.= "order by op.created_time asc ";
+        $sql.= "order by op.created_time asc";
 
         $query = $this->db->prepare($sql);
         $query->execute();

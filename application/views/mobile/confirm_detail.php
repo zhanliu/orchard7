@@ -1,134 +1,114 @@
-<body>
-<div id="st-container" class="st-container">
-    <div class="st-pusher">
-        <div class="st-content">
-            <div class="st-content-inner">
-                <div id="page-content">
+<div class="page-app userinfo">
+    <?PHP if (empty($_COOKIE['name'])) {
+        $msg = "这是您第一次订餐,请完善您的送餐信息";
+    } else {
+        $msg = "欢迎再次下单, 请确认您的送餐信息";
+    }
+    ?>
 
-                    <header class="newTodayView">
-                        <nav class="shine dropShadow">
-                            <a href="#">
-                                <span class="logo floatLeft">Daily Fresh</span>
-                                <span class="tagline floatLeft">新鲜健康 <br>每一天</span>
-                            </a>
-                        </nav>
-                    </header>
-                    <div class="clr"></div>
+    <div class="userInfo-msg" style="">
+        <?php echo $msg; ?>
+    </div>
 
-                    <div class="page-app userinfo">
-                        <?PHP if (empty($_COOKIE['name'])) {
-                                 $msg = "这是您第一次订餐,请完善您的送餐信息";
-                              } else {
-                                 $msg = "欢迎再次下单, 请确认您的送餐信息";
-                              }
-                        ?>
+    <div id="pop" class="alert alert-warning"></div>
 
-                        <div class="userInfo-msg" style="">
-                            <?php echo $msg; ?>
-                        </div>
-
-                        <div id="pop" class="alert alert-warning"></div>
-
-                        <form action="<?php echo URL; ?>mobile/submitOrder" id="myform"
-                              class="form-horizontal confirm-form" method="post">
-                        <div class="userInfo-form">
-                            <div class="userInfo-stepTitle selected">
-                                <div class="num">
-                                    <span>1</span>
-                                </div>
-                                <div class="arrow"></div>
-                                <p>
-                                    基本信息
-                                </p>
-                            </div>
-                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
-                                    <div class="value">
-                                        <div class="icon nick">
-                                            <span></span>
-                                        </div>
-                                        <?php $name = empty($_COOKIE['name']) ? "" : $_COOKIE['name']; ?>
-                                        <div class="input">
-                                            <input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
-                                        </div>
-                                    </div>
-                            </div>
-
-                            <div class="userInfo-stepTitle selected">
-                                <div class="num">
-                                    <span>2</span>
-                                </div>
-                                <div class="arrow"></div>
-                                <p>
-                                    联系电话
-                                </p>
-                            </div>
-
-                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
-                                <div id="newphone">
-                                    <div class="value">
-                                        <div class="icon tel">
-                                            <span></span>
-                                        </div>
-                                        <div class="input">
-                                            <input type="tel" id="cellphone" name="cellphone" value="<?php echo $cellphone; ?>" placeholder="请填写手机号码">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="userInfo-stepTitle selected">
-                                <div class="num">
-                                    <span>3</span>
-                                </div>
-                                <div class="arrow"></div>
-                                <p>送餐地址</p>
-                            </div>
-
-                            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
-
-                                <DIV><SPAN STYLE="COLOR:#000;FONT-SIZE:15PX">广东省广州市海珠区</SPAN></DIV><BR>
-
-                                <div id="newaddress" style="">
-
-                                    <div class="userInfo-addAddrBox">
-                                        <div class="alert alert-info" id="alert_note" style="display:none"></div>
-
-                                        <div class="value userInfo-fullInput" id="search_address">
-
-                                            <input type="text" id="address1" name="address1" placeholder="输入小区或楼宇名" value="<?php echo $_COOKIE['address1'];?>">
-                                        </div>
-                                        <div class="newaddress_fullInput">
-                                            <?php $address2 = empty($_COOKIE['address2']) ? "" : $_COOKIE['address2']; ?>
-                                            <div class="value userInfo-fullInput">
-                                                <input type="text" id="address2" name="address2" value="<?php echo $address2; ?>" placeholder="输入详细地址,如10弄5号">
-                                            </div>
-                                        </div>
-                                        <div class="clear" style="height:5px"></div>
-                                    </div>
-                                </div>
-
-                                <div class="page-button add ok" style="display: block;">
-                                    <span class="text" onclick="check_address_location()">确定</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <input type="hidden" name="cellphone" value="<?php echo $cellphone; ?>">
-                        <input type="hidden" name="address_lat" id="address_lat" value="">
-                        <input type="hidden" name="address_lng" id="address_lng" value="">
-                        <input type="hidden" name="store_id" id="store_id" value="">
-                        <input type="hidden" name="submit_order" value="true">
-                        </form>
+    <form action="<?php echo URL; ?>mobile/submitOrder" id="myform"
+          class="form-horizontal confirm-form" method="post">
+        <div class="userInfo-form">
+            <div class="userInfo-stepTitle selected">
+                <div class="num">
+                    <span>1</span>
+                </div>
+                <div class="arrow"></div>
+                <p>
+                    基本信息
+                </p>
+            </div>
+            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
+                <div class="value">
+                    <div class="icon nick">
+                        <span></span>
+                    </div>
+                    <?php $name = empty($_COOKIE['name']) ? "" : $_COOKIE['name']; ?>
+                    <div class="input">
+                        <input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="输入姓名">
                     </div>
                 </div>
             </div>
+
+            <div class="userInfo-stepTitle selected">
+                <div class="num">
+                    <span>2</span>
+                </div>
+                <div class="arrow"></div>
+                <p>
+                    联系电话
+                </p>
+            </div>
+
+            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
+                <div id="newphone">
+                    <div class="value">
+                        <div class="icon tel">
+                            <span></span>
+                        </div>
+                        <div class="input">
+                            <input type="tel" id="cellphone" name="cellphone" value="<?php echo $cellphone; ?>"
+                                   placeholder="请填写手机号码">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="userInfo-stepTitle selected">
+                <div class="num">
+                    <span>3</span>
+                </div>
+                <div class="arrow"></div>
+                <p>送餐地址</p>
+            </div>
+
+            <div class="userInfo-stepBox" style="padding: 15px 0px; height: auto;">
+
+                <DIV><SPAN STYLE="COLOR:#000;FONT-SIZE:15PX">广东省广州市海珠区</SPAN></DIV>
+                <BR>
+
+                <div id="newaddress" style="">
+
+                    <div class="userInfo-addAddrBox">
+                        <div class="alert alert-info" id="alert_note" style="display:none"></div>
+
+                        <div class="value userInfo-fullInput" id="search_address">
+
+                            <input type="text" id="address1" name="address1" placeholder="输入小区或楼宇名"
+                                   value="<?php echo $_COOKIE['address1']; ?>">
+                        </div>
+                        <div class="newaddress_fullInput">
+                            <?php $address2 = empty($_COOKIE['address2']) ? "" : $_COOKIE['address2']; ?>
+                            <div class="value userInfo-fullInput">
+                                <input type="text" id="address2" name="address2" value="<?php echo $address2; ?>"
+                                       placeholder="输入详细地址,如10弄5号">
+                            </div>
+                        </div>
+                        <div class="clear" style="height:5px"></div>
+                    </div>
+                </div>
+
+                <div class="page-button add ok" style="display: block;">
+                    <span class="text" onclick="check_address_location()">确定</span>
+                </div>
+            </div>
+
         </div>
-
-        <div class="clr"></div>
-
-    </div>
+        <input type="hidden" name="cellphone" value="<?php echo $cellphone; ?>">
+        <input type="hidden" name="address_lat" id="address_lat" value="">
+        <input type="hidden" name="address_lng" id="address_lng" value="">
+        <input type="hidden" name="store_id" id="store_id" value="">
+        <input type="hidden" name="submit_order" value="true">
+    </form>
 </div>
+
 
 <div id="map" style="display:none"></div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
@@ -168,9 +148,9 @@
     var address = "";
 
     function check_address_location() {
-        if ($("#name").val()=='') {
+        if ($("#name").val() == '') {
             setAlert('请赐下您的大名');
-        } else if ($("#cellphone").val()=='') {
+        } else if ($("#cellphone").val() == '') {
             setAlert('不留手机我们怎么联系您呢?');
         } else if (validateAddress()) {
             address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
@@ -227,21 +207,21 @@
     }
 
     //弹层接口
-    var usePop = function(options){
+    var usePop = function (options) {
         $.extend({
-            name : "",
-            delayHide : 3000 //延迟隐藏时间
-        },options);
+            name: "",
+            delayHide: 3000 //延迟隐藏时间
+        }, options);
         //
         var hideFlag;
         var _pop = {};
-        _pop.show = function(){
-            $(options.name).stop(true,true).fadeIn(500);
+        _pop.show = function () {
+            $(options.name).stop(true, true).fadeIn(500);
             hideFlag = setTimeout(_pop.hide, options.delayHide);
         }
-        _pop.hide = function(){
+        _pop.hide = function () {
             clearTimeout(hideFlag);
-            $(options.name).stop(true,true).fadeOut(500);
+            $(options.name).stop(true, true).fadeOut(500);
         }
         return _pop;
     };
@@ -249,8 +229,8 @@
 
     //自定义
     var pop1 = usePop({
-        name:"#pop",
-        delayHide:3000
+        name: "#pop",
+        delayHide: 3000
     })
 </script>
 

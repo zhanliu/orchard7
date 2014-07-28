@@ -42,3 +42,26 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     <script type='application/javascript' src='<?php echo URL; ?>public/js/fastclick.min.js'></script>
 </head>
 
+<body>
+
+<div id="st-container" class="st-container">
+    <div class="st-pusher">
+
+        <div class="st-content">
+            <div class="st-content-inner">
+                <div id="page-content">
+
+                    <header class="newTodayView">
+                        <nav class="shine dropShadow">
+                                <span class="floatLeft">
+                                    <a href="/"><i class="text-icon fa fa-home" style="padding-top: 5px;"></i></a>
+                                </span>
+                            <span class="tagline floatLeft">Fruit Planet<br>新鲜健康每一天</span>
+                                <span class="floatRight">
+                                    <a href="/"><i class="text-icon fa fa-user" style="padding-top: 5px;"></i></a>
+                                </span>
+                        </nav>
+                    </header>
+                    <div class="clr"></div>
+
+

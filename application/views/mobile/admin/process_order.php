@@ -28,9 +28,9 @@
                         $order_reliable = $order->is_verified ? "老客订单" : "新客订单";
                         $order_reliable_bg = $order->is_verified ? "#008" : "#800";
                         ?>
-                        <h1>
+                        <span style="font-family: bold;color:#555">
                             订单号:<?php echo $order->order_number; ?>
-                        </h1>
+                        </span>
 
                         <div style="color:#555;padding:5px">
                             <h3>基本信息</h3>
@@ -57,7 +57,7 @@
                             <table border="1" width="90%">
                                 <th>商品</th><th>价格</th><th>数量</th>
                                 <?php foreach ($items as $item) { ?>
-                                <tr>
+                                <tr align="center">
                                     <td><?php echo $item->name; ?>
                                     <td><?php echo $item->price; ?></td>
                                     <td><?php echo $item->item_quantity; ?></td>
@@ -67,12 +67,12 @@
 
                             <hr>
 
-                            <h3>订单详情</h3>
+                            <h3>订单状态</h3>
 
                             <table border="1" width="90%">
                                 <th>操作员</th><th>新状态</th><th>更新时间</th>
                                 <?php foreach ($order_process as $process) { ?>
-                                    <tr>
+                                    <tr align="center">
                                         <td><?php echo $process->name; ?></td>
                                         <td><?php echo $process->status2; ?></td>
                                         <td><?php echo $process->created_time; ?></td>
@@ -80,24 +80,28 @@
                                 <?php } ?>
                             </table>
 
+                            <br>
+
                             <div>
+                                Modify状态:
                                 <?php if ($order->status_code == 0) { ?>
                                     <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/1/0/1" class="myButton" >待派送</a>
                                     <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/5/0/1" class="myButton" >取消订单</a>
                                 <?php } else if ($order->status_code == 1) { ?>
                                     <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/2/1/1" class="myButton" >派送中</a>
                                 <?php } else if ($order->status_code == 2) { ?>
-                                    <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/3/2/1" class="myButton" >完成</a>
-                                    <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/4/2/1" class="myButton" >拒收</a>
+                                    <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/3/2/1" class="myButton" >完成订单</a>
+                                    <a href="<?php echo URL; ?>mobileadmin/updateOrder/<?php echo $order->id; ?>/4/2/1" class="myButton" >拒收订单</a>
                                 <?php } ?>
 
                             </div>
 
                             <hr>
 
-                            <div>
-                                <a href="<?php echo URL; ?>mobileadmin/orderManager" class="myButton" >返回</a>
+                            <div class="page-button ok">
+                                <span class="text" onclick="javascript:history.back();">返回</span>
                             </div>
+
                         </div>
 
                     </div>

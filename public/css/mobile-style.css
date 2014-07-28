@@ -182,7 +182,7 @@ a[rel='toggle-buttons-scroll-type']	{ display:inline-block; text-decoration:none
 /* TABLE STYLE */
 .table-style 					{ width:100%; height:auto; background-color:#FFF; border:none; }
 .table-style tr 				{ width:auto; height:auto; }
-.table-style td					{ text-align:center; color:#555; font-family: 'Open Sans', sans-serif; font-size:12px; width:33%; height: auto; padding:15px 0px 15px 0px; }
+.table-style td					{ text-align:center; color:#555; font-family: 'Open Sans', sans-serif; font-size:12px; width:33%; height: auto; padding:5px 0px 5px 0px; }
 .table-style tr:nth-child(2n+2) { background-color:#F8F8F8; }
 
 .table-style td a 			{ color:#FFF; background-color:#D94436; padding:3px; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px; text-decoration:none; }
@@ -279,7 +279,7 @@ i 	  { font-family: 'Open Sans', sans-serif; font-size:12px; line-height:18px; c
 
 /* OUR TEAM LIST */
 #aboutteam			{ width:100%; margin-top:-5px; }
-td 					{ padding:10px 0px 10px 0px; font-family: 'Open Sans', sans-serif; font-size:12px; color:#555; border-top:1px solid #F0F0F0; }
+td 					{ padding:5px 0px 5px 0px; font-family: 'Open Sans', sans-serif; font-size:12px; color:#555; border-top:1px solid #F0F0F0; }
 td img 				{ width:100px; height:100px; margin-left:15px; border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; -webkit-border-radius:5px; }
 tr:nth-child(even)	{ background: #F8F8F8; }
 tr:nth-child(odd) 	{ background: #FFF; }
@@ -888,7 +888,7 @@ a, input, div, textarea {
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
-    color: #FFF;
+    color: #eee;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -896,6 +896,10 @@ a, input, div, textarea {
 
 .fa-home:before {
     content: "\f015";
+}
+
+.fa-user:before {
+    content:"\f007"
 }
 
 .myButton {

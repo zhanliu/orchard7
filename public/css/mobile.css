@@ -193,11 +193,11 @@ header nav .logo {
 
 header nav .tagline {
     margin: 0;
-    width: 120px;
+    width: 200px;
     height: 29px;
-    padding-top: 11px;
+    padding-top: 7px;
+    color: #fff;
     font-size: 13px;
-    text-transform: uppercase;
 }
 
 header nav .cart {
