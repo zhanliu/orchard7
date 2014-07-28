@@ -3,11 +3,11 @@
     <div class="alert alert-danger">
         商品管理 <br/>
         <a href="<?php echo URL; ?>mobileadmin/productManager/1"
-           class="myButton">上架(<?php echo $amount_of_active; ?>)</a>
+           class="myButton">上架(<?php echo $active_amount; ?>)</a>
         <a href="<?php echo URL; ?>mobileadmin/productManager/0"
-           class="myButton">下架(<?php echo $amount_of_inactive; ?>)</a>
+           class="myButton">下架(<?php echo $inactive_amount; ?>)</a>
         <a href="<?php echo URL; ?>mobileadmin/productManager"
-           class="myButton">全部(<?php echo $amount_of_all; ?>)</a>
+           class="myButton">全部(<?php echo $amount; ?>)</a>
     </div>
 
     <?php
