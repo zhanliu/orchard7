@@ -95,8 +95,8 @@
                     </div>
                 </div>
 
-                <div class="page-button add ok" style="display: block;">
-                    <span class="text" onclick="check_address_location()">确定</span>
+                <div class="page-button add ok" onclick="check_address_location()">
+                    <span class="text">确定</span>
                 </div>
             </div>
 

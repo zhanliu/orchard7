@@ -6,7 +6,7 @@ class ProductModel
     function __construct($db) {
         try {
             $this->db = $db;
-            $select_clause = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+            $select_clause = "SELECT id, name, category_id, unit, price, original_price, description, tag, img_url, is_active, ";
             $select_clause.= "created_time, updated_time FROM product ";
         } catch (PDOException $e) {
             exit('Database connection could not be established.');
@@ -14,10 +14,15 @@ class ProductModel
     }
 
 
-    public function getAllProducts()
+    public function getAllProducts($status=null)
     {
-        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+        //TODO: include category name
+        $sql = "SELECT id, name, category_id, unit, price, original_price, description, tag, img_url, is_active, ";
         $sql.= "created_time, updated_time FROM product ";
+
+        if ($status!=null) {
+            $sql.= "WHERE is_active= " . $status;
+        }
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -35,8 +40,6 @@ class ProductModel
         $sql.= "created_time, updated_time FROM product ";
         $sql.= " WHERE id in (".$id_group.")";
 
-        //return $sql;
-
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -45,7 +48,7 @@ class ProductModel
 
     public function getProductById($product_id)
     {
-        $sql = "SELECT id, name,category_id,unit, price, original_price, description, tag, img_url, is_active, ";
+        $sql = "SELECT id, name, category_id, unit, price, original_price, description, tag, img_url, is_active, ";
         $sql.= "created_time, updated_time FROM product ";
         $sql.= " WHERE id=".$product_id;
         $query = $this->db->prepare($sql);
@@ -115,5 +118,15 @@ class ProductModel
         $query->execute();
 
         return $query->fetchAll();
+    }
+
+    public function getAmountOfProductsByStatus($status)
+    {
+        $sql = "SELECT COUNT(id) AS amount FROM product ";
+        $sql.= "WHERE is_active = " . $status;
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetch()->amount;
     }
 }

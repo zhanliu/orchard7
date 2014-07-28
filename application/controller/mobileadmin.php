@@ -64,5 +64,18 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function productManager($status=null) {
+        $product_model = $this->loadModel('ProductModel');
+        $products = $product_model->getAllProducts($status);
+
+        $amount_of_active = $product_model->getAmountOfProductsByStatus(1);
+        $amount_of_inactive = $product_model->getAmountOfProductsByStatus(0);
+        $amount_of_all = $amount_of_active + $amount_of_inactive;
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/admin/product_manager.php';
+        require 'application/views/mobile/footer.php';
+    }
+
 
 }

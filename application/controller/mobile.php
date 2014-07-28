@@ -6,7 +6,6 @@ class Mobile extends Controller {
 
     public function index() {
 
-
         if (isset($_COOKIE['address1'])) {
             $this->showcase();
         } else {

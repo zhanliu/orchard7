@@ -6,9 +6,10 @@
     $order_reliable = $order->is_verified ? "老客订单" : "新客订单";
     $order_reliable_bg = $order->is_verified ? "#008" : "#800";
     ?>
+
     <span style="font-family: bold;color:#555">
-                            订单号:<?php echo $order->order_number; ?>
-                        </span>
+        订单号:<?php echo $order->order_number; ?>
+    </span>
 
     <div style="color:#555;padding:5px">
         <h3>基本信息</h3>
@@ -16,9 +17,9 @@
         <div>配送店铺: <?php echo $order->storename; ?></div>
         <div>下单时间: <?php echo $order->created_time; ?></div>
         <div>总价: <?php echo $order->total_amount; ?> | 运费: <?php echo $order->delivery_fee; ?> |
-                                <span style="background:<?php echo $order_reliable_bg ?>;color:#fff">
-                                    <?php echo $order_reliable; ?>
-                                </span>
+            <span style="background:<?php echo $order_reliable_bg ?>;color:#fff">
+                <?php echo $order_reliable; ?>
+            </span>
         </div>
 
         <hr>
@@ -82,8 +83,8 @@
 
         <hr>
 
-        <div class="page-button ok">
-            <span class="text" onclick="javascript:history.back();">返回</span>
+        <div class="page-button ok" onclick="javascript:history.back();">
+            <span class="text">返回</span>
         </div>
 
     </div>
