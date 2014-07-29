@@ -76,4 +76,16 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function overwriteProductImage($id) {
+        $product_model = $this->loadModel('ProductModel');
+        $product = $product_model->getProductById($id);
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/admin/overwrite_product_image.php';
+        require 'application/views/mobile/footer.php';
+    }
+
+    public function submitOverwriteProductImage() {
+
+    }
 }
