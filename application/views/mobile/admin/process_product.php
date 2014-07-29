@@ -3,9 +3,16 @@
     <?php
     $product = $product[0];
     ?>
-    <div style="color:#555;padding:5px">
+
+    <div class="alert alert-danger">
+        商品管理
+        <a href="#" class="myButton" onclick="javascript:document.getElementById('myform').submit();">Update</a>
+        <a href="<?php echo URL; ?>mobileadmin/productManager" class="myButton">返回</a>
+    </div>
+
+    <div style="color:#555">
         <form action="<?php echo URL; ?>mobileadmin/submitProcessProduct" id="myform"
-              class="form-horizontal userInfo-form" method="post">
+              class="form-horizontal userInfo-form edit-form" method="post">
 
             <div>
                 <span style="color:#555;padding:5px">Name: </span>
@@ -14,7 +21,7 @@
 
             <div>
                 <span style="color:#555;padding:5px">Price: </span>
-                <input type="text" name="price" value="<?php echo $product->price; ?>" placeholder="输入 price">
+                <input type="text" name="price" value="<?php echo $product->price; ?>" placeholder="输入 price" size="8">
             </div><br>
 
             <div>
@@ -34,12 +41,16 @@
                 <textarea name="description" style="width:100%;height:50px" placeholder="输入 description"><?php echo $product->description; ?></textarea>
             </div><br>
 
-        </form>
+            <span>Status:
+            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <label for="cmn-toggle-1"></label></span>
 
-        <br>
-        <div class="page-button ok" onclick="javascript:history.back();">
-            <span class="text">返回</span>
-        </div>
+            <input type="hidden" name="id" value="<?php echo $product->id; ?>">
+            <input type="hidden" name="submit_process_product" value="true">
+
+            <br>
+
+        </form>
 
     </div>
 
