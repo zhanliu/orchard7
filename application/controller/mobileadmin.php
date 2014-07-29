@@ -85,8 +85,8 @@ class MobileAdmin extends Controller {
             $original_price = $_POST['original_price'];
             $unit = $_POST['unit'];
             $description = $_POST['description'];
-            //$is_active = $_POST['is_active'];
-            $is_active = 0;
+            $is_active = sizeof($_POST['is_active']);
+            //$is_active = 0;
 
             $product_model = $this->loadModel('ProductModel');
             $product_model->updateProduct($id, $name, $price, $original_price, $unit, $description, $is_active);
