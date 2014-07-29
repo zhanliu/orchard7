@@ -2,6 +2,7 @@
 
     <?php
     $product = $product[0];
+    $check = $product->is_active ? "checked" : "";
     ?>
 
     <div class="alert alert-danger">
@@ -42,7 +43,8 @@
             </div><br>
 
             <span>状态:
-            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox" <?php echo $check; ?>>
+
             <label for="cmn-toggle-1"></label></span>
 
             <input type="hidden" name="id" value="<?php echo $product->id; ?>">
