@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `order_process` (
   `order_id` varchar(20) NOT NULL,
   `operator` varchar(20) NOT NULL,
   `from_status` int(2) NOT NULL,
-  `to_status` int(2) NULL,
+  `to_status` int(2) NOT NULL,
   `created_time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)

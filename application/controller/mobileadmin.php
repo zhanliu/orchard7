@@ -6,18 +6,7 @@ class MobileAdmin extends Controller {
     {
         $order_model = $this->loadModel('OrderModel');
         $orderStatus = $order_model->getOrderStatusCode();
-        $orders = null;
-
-
-        if (!isset($queryStatus)) {
-            $queryStatus = 0;
-        }
-
-        if ($queryStatus == 9) {
-            $orders = $order_model->getTodayOrdersWithDetails();
-        } else {
-            $orders = $order_model->getTodayOrdersWithDetailsByStatusType($queryStatus);
-        }
+        $orders = $order_model->getTodayOrdersWithDetailsByStatusType($queryStatus);
 
         $amount_of_type_0 = $order_model->getTodayAmountOfOrdersByStatusType(0);
         $amount_of_type_1 = $order_model->getTodayAmountOfOrdersByStatusType(1);
