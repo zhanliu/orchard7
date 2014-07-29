@@ -6,7 +6,7 @@
            class="myButton">未处理(<?php echo $amount_of_type_0; ?>)</a>
         <a href="<?php echo URL; ?>mobileadmin/orderManager/1"
            class="myButton">已处理(<?php echo $amount_of_type_1; ?>)</a>
-        <a href="<?php echo URL; ?>mobileadmin/orderManager/9"
+        <a href="<?php echo URL; ?>mobileadmin/orderManager/"
            class="myButton">全部(<?php echo $amount_of_type_9; ?>)</a>
     </div>
 

@@ -83,8 +83,8 @@
 
         <hr>
 
-        <div class="page-button ok" onclick="javascript:history.back();">
-            <span class="text">返回</span>
+        <div class="page-button ok">
+            <a href="<?php echo URL; ?>mobileadmin/orderManager/0">返回</a>
         </div>
 
     </div>
