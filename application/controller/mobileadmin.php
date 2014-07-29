@@ -76,6 +76,28 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    public function submitProcessProduct() {
+        if (isset($_POST["submit_process_product"])) {
+            $id = $_POST["id"];
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $original_price = $_POST['original_price'];
+            $unit = $_POST['unit'];
+            $description = $_POST['description'];
+            //$is_active = $_POST['is_active'];
+            $is_active = 0;
+
+            $product_model = $this->loadModel('ProductModel');
+            $product_model->updateProduct($id, $name, $price, $original_price, $unit, $description, $is_active);
+
+            $product = $product_model->getProductById($id);
+
+            require 'application/views/mobile/header.php';
+            require 'application/views/mobile/admin/process_product.php';
+            require 'application/views/mobile/footer.php';
+        }
+    }
+
     public function overwriteProductImage($id) {
         $product_model = $this->loadModel('ProductModel');
         $product = $product_model->getProductById($id);
@@ -83,9 +105,5 @@ class MobileAdmin extends Controller {
         require 'application/views/mobile/header.php';
         require 'application/views/mobile/admin/overwrite_product_image.php';
         require 'application/views/mobile/footer.php';
-    }
-
-    public function submitOverwriteProductImage() {
-
     }
 }

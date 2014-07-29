@@ -129,4 +129,12 @@ class ProductModel
 
         return $query->fetch()->amount;
     }
+
+    public function updateProduct($id, $name, $price, $original_price, $unit, $description, $is_active) {
+        $sql = "UPDATE product SET name = :name, price = :price, original_price = :original_price, unit = :unit, ";
+        $sql.= "description = :description, is_active = :is_active where id = :id";
+        $query = $this->db->prepare($sql);
+
+        $query->execute(array(':id' => $id, ':name' => $name, ':price'=>$price,':original_price'=>$original_price, ':unit'=>$unit, ':description'=>$description, ':is_active'=>$is_active));
+    }
 }
