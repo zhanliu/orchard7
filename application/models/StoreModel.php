@@ -97,6 +97,16 @@ class StoreModel
         return $query->fetchAll();
     }
 
+    public function getStaffs($wechat_id)
+    {
+        $sql = "SELECT COUNT(id) AS amount_of_staffs FROM staff where wechat_id='" . $wechat_id . "'";
+
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetch()->amount_of_staffs;
+    }
+
     public function deleteStoreStaff($staff_id)
     {
         $sql = "DELETE FROM staff WHERE id = :staff_id";

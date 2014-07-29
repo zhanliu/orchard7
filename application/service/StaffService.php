@@ -16,6 +16,13 @@ class StaffService extends Controller
     
     	return $orders;
     }
+
+    public function getStaffs($wechat_id) {
+        $store_model = $this->loadModel('StoreModel');
+        $num = $store_model->getStaffs($wechat_id);
+
+        return $num;
+    }
 }
 
 
