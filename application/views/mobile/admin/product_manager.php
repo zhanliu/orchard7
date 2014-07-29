@@ -12,28 +12,36 @@
 
     <?php
     foreach ($products as $product) {
-        $id = $product->id;
+    $id = $product->id;
     ?>
 
-        <div id="list_<?php echo $id; ?>">
 
-            <div class="name" style="font-size:18px;padding:3px">
+    <div style="color:#000;padding:5px">
+        <table width="100%">
+            <tr>
+                <td width="50%" padding="5px">
+                <span>
                 <a href="<?php echo URL; ?>mobileadmin/processProduct/<?php echo $id; ?>"
                    class="myButton">
                     <?php echo $product->name; ?>
-                </a>
-            </div>
-            <div class="desc" style="color:#000;padding:5px">
+                </a></span><br>
+                    <span style="color:#000;padding:3px">Price: <?php echo $product->price; ?></span><br>
+                    <span
+                        style="color:#000;padding:3px">Original Price: <?php echo $product->original_price; ?></span><br>
+                    <span style="color:#000;padding:3px">Unit: <?php echo $product->unit; ?></span>
+                </td>
+                <td padding="5px"><img src="<?php echo UPLOAD_URL . $product->img_url; ?>"></td>
 
-                <span style="color:#000;padding:3px">Price: <?php echo $product->price; ?></span><br>
-                <span style="color:#000;padding:3px">Original Price: <?php echo $product->original_price; ?></span><br>
-                <span style="color:#000;padding:3px">Unit: <?php echo $product->unit; ?></span><br>
-                <span style="color:#000;padding:3px">Desc: <?php echo $product->description; ?></span>
+            </tr>
+            <tr><td colspan="2">
+                    <span style="color:#000;padding:3px">Desc: <?php echo $product->description; ?></span>
+            </td></tr>
+        </table>
 
-            </div>
-        </div>
 
-        <hr>
-    <?php } ?>
+
+    </div>
+
+<?php } ?>
 
 </div>
