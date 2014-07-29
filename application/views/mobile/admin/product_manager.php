@@ -30,7 +30,9 @@
                         style="color:#000;padding:3px">Original Price: <?php echo $product->original_price; ?></span><br>
                     <span style="color:#000;padding:3px">Unit: <?php echo $product->unit; ?></span>
                 </td>
-                <td padding="5px"><img src="<?php echo UPLOAD_URL . $product->img_url; ?>"></td>
+                <td padding="5px"><a href="<?php echo URL; ?>mobileadmin/overwriteProductImage/<?php echo $id; ?>">
+                       <img src="<?php echo UPLOAD_URL . $product->img_url; ?>"></a>
+                </td>
 
             </tr>
             <tr><td colspan="2">

@@ -5,15 +5,19 @@ $allowed = array('png', 'jpg', 'gif', 'jpeg');
 
 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
-	$extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
+    if (isset($_POST['fixed_upload_img_name'])) {
+        $file_name = $_POST['fixed_upload_img_name'];
+    } else {
+        $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
 
-	if(!in_array(strtolower($extension), $allowed)){
-		echo '{"status":"error"}';
-		exit;
-	}
+        if(!in_array(strtolower($extension), $allowed)){
+            echo '{"status":"error"}';
+            exit;
+        }
 
-	$prefix_name = $_POST["upload_inner_img_name_prefix"];
-	$file_name = $prefix_name."_".$_FILES['upl']['name'];
+        $prefix_name = $_POST["upload_inner_img_name_prefix"];
+        $file_name = $prefix_name."_".$_FILES['upl']['name'];
+    }
 
 	if (ONLINE == 'FALSE') { // offline
 	
