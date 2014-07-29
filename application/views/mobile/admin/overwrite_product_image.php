@@ -19,7 +19,7 @@
                 <div id="drop" border="1">
                     <input type="file" name="upl" multiple />
                 </div>
-                <ul>
+                <ul id="upload_flag">
                     <!-- The file uploads will be shown here -->
                 </ul>
                 <input type="hidden" name="fixed_upload_img_name" value="<?php echo $product->img_url; ?>">
@@ -29,7 +29,7 @@
         <br>
 
         <div class="page-button ok">
-            <a href="<?php echo URL; ?>mobileadmin/productManager/">返回</a>
+            <a href="<?php echo URL; ?>mobileadmin/productManager/" id="submit_link">确认</a>
         </div>
 
 
@@ -44,3 +44,19 @@
 <script src="<?php echo URL; ?>public/js/jquery.fileupload.js"></script>
 
 <script src="<?php echo URL; ?>public/js/upload-script.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#upload_flag').change(function(){
+
+            var mo2g = '<span id="done_span">DONE<span>';
+            $('#submit_link').append(mo2g);
+
+            setTimeout(function(){
+                $('#done_span').click();
+            },2000)
+
+            //$("#submit_link").click();
+        });
+    })
+</script>
