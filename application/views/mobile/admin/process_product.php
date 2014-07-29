@@ -42,13 +42,9 @@
                 <textarea name="description" style="width:100%;height:50px" placeholder="输入描述"><?php echo $product->description; ?></textarea>
             </div><br>
 
-<<<<<<< HEAD
-            <span>Status:
-            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox" <?php echo $check; ?>>
-=======
             <span>状态:
-            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox">
->>>>>>> f982663bb08af007df89807797b7ba06b90c48c1
+            <input id="cmn-toggle-1" name="is_active" class="cmn-toggle cmn-toggle-round" type="checkbox" <?php echo $check; ?>>
+
             <label for="cmn-toggle-1"></label></span>
 
             <input type="hidden" name="id" value="<?php echo $product->id; ?>">
