@@ -86,7 +86,7 @@
                             <div class="row">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <div class="btn-toolbar">
-                                        <a href="#" class="myButton" onclick="submit()">保存</a>
+                                        <a href="#" class="myButton" onclick="next()">保存</a>
                                         <a href="<?php echo URL; ?>asset/store" class="myButton">返回</a>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
 </div>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=8c8974690b10c942a37e0904f952ce35" type="text/javascript"></script>
 <script type="text/javascript">
-    function submit() {
+    function next() {
         if ($('#name').val()=="") {
             alert('店铺名称不能为空');
         } else {
@@ -112,7 +112,7 @@
             var myGeo = new BMap.Geocoder();
             myGeo.getPoint(full_address, function (point) {
                 if (point) {
-                    //alert(point.lat);
+                    alert(point.lat);
                     $('#lat').val(point.lat);
                     $('#lng').val(point.lng);
                     document.getElementById("myform").submit();

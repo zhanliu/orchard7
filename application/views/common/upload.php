@@ -1,7 +1,7 @@
 <?php
 
 // A list of permitted file extensions
-$allowed = array('png', 'jpg', 'gif', 'jpeg');
+$allowed = array('JPG', 'jpg', 'jpeg');
 
 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
