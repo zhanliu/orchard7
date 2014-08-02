@@ -112,7 +112,7 @@
             var myGeo = new BMap.Geocoder();
             myGeo.getPoint(full_address, function (point) {
                 if (point) {
-                    alert(point.lat);
+                    //alert(point.lat);
                     $('#lat').val(point.lat);
                     $('#lng').val(point.lng);
                     document.getElementById("myform").submit();
