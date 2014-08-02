@@ -38,7 +38,7 @@
 
                     <tbody>
                     <?php foreach ($credentials as $credential) { ?>
-                        <tr>
+                        <tr  align="center">
                             <td><?php echo $credential->id; ?></td>
                             <td><?php echo $credential->login; ?></td>
                             <td><?php echo $credential->name; ?></td>

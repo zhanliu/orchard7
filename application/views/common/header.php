@@ -66,7 +66,7 @@ if (!isset($_SESSION['login'])) {
                 <ul class="acc-menu">
                     <li><a href="<?php echo URL; ?>privilege/addRole">添加角色</a></li>
                     <li><a href="<?php echo URL; ?>privilege/role">角色管理</a></li>
-                    <li><a href="<?php echo URL; ?>privilege/credential">添加人员</a></li>
+                    <li><a href="<?php echo URL; ?>privilege/addCredential">添加人员</a></li>
                     <li><a href="<?php echo URL; ?>privilege/credential">人员管理</a></li>
                 </ul>
             </li>
