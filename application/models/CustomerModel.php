@@ -22,6 +22,15 @@ class CustomerModel
         return $query->fetchAll();
     }
 
+    public function getAllCustomersWithDetails()
+    {
+        $sql = "SELECT c.id, c.name, c.cellphone, c.created_time, a.district, a.address1, a.address2 FROM customer c, shipping_address sa, address a where sa.customer_id = c.id and sa.is_primary = 1 and sa.address_id = a.id";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public function getCustomerByCellphone($cellphone) {
         $sql = "SELECT * FROM customer WHERE cellphone='".$cellphone."'";
 

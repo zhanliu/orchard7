@@ -98,7 +98,7 @@ if (!isset($_SESSION['login'])) {
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>会员中心</span></a>
                 <ul class="acc-menu">
-                    <li><a href="/orchard7/admin/customer">客户管理</a></li>
+                    <li><a href="<?php echo URL; ?>customer/manageCustomer">客户管理</a></li>
                 </ul>
             </li>
 
