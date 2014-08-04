@@ -92,14 +92,53 @@
 
     function show_order_detail(customer_id) {
         $.ajax({
-            url: '<?php echo URL; ?>asset/getStoreDetailById/' + store_id,
+            url: '<?php echo URL; ?>customer/getCustomerOrderById/' + customer_id,
             data: "",
             dataType: 'json',
             success: function(data) {
-                var name = data['name'];
-                var phone_number = data['phone_number'];
-                var content = '<p>店铺名称: ' + name + '</p>';
-                content+= '<p>电话: ' + phone_number + '</p>';
+
+                var content = "";
+                var amount_sum = 0;
+
+                if (data != null && data.length != null && data.length > 0) {
+
+                    content = '<table width="100%" border="1">' +
+                        '<thead>' +
+                            '<tr>' +
+                                '<th>订单ID</th>' +
+                                '<th>金额</th>' +
+                                '<th>状态</th>' +
+                                '<th>创建时间</th>' +
+                            '</tr>' +
+                        '</thead>' +
+                        '<tfoot>' +
+                            '<tr>' +
+                                '<th>订单ID</th>' +
+                                '<th>金额</th>' +
+                                '<th>状态</th>' +
+                                '<th>创建时间</th>' +
+                            '</tr>' +
+                        '</tfoot>' +
+                        '<tbody>';
+
+
+                    for (var m = 0; m < data.length; ++m) {
+                        var id = data[m]['id'];
+                        var total_amount = data[m]['total_amount'];
+                        var status = data[m]['status'];
+                        var created_time = data[m]['created_time'];
+                        content += '<tr align="center"><td>' + id + '</td>';
+                        content += '<td>' + total_amount + '</td>';
+                        content += '<td>' + status + '</td>';
+                        content += '<td>' + created_time + '</td></tr>';
+
+                        amount_sum += Number(total_amount);
+                    }
+
+                    content += "</tbody></table><br />"
+                }
+
+                content += '<p>总消费金额: ￥' + amount_sum + '</p>';
 
                 $('#modal-body').html(content);
             }

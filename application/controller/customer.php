@@ -20,7 +20,13 @@ class Customer extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function getCustomerOrderById($customer_id)
+    {
+        $order_model = $this->loadModel('OrderModel');
+        $orders = $order_model->getOrdersByCustomerId($customer_id);
 
+        echo json_encode($orders);
+    }
 
 }
 

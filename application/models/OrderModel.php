@@ -27,6 +27,18 @@ class OrderModel
     }
 
 
+    public function getOrdersByCustomerId($customer_id)
+    {
+        $customer_id = strip_tags($customer_id);
+        $sql = "SELECT o.id, o.total_amount, o.created_time, os.status FROM order1 o, order_status os where o.status=os.status_code and o.customer_id = " . $customer_id;
+        $sql.= " order by created_time desc ";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+
     public function getAllOrdersWithDetails()
     {
         $sql = "SELECT ord.id, ord.order_number, cus.cellphone, ord.status, ord.total_amount, ord.delivery_fee, ord.created_time, ";
