@@ -25,7 +25,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
         // save 100*100 product image
 		if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
-
+            copy('public/uploads/'.$file_name, 'public/uploads/'.'b_'.$file_name);
 			echo '{"status":"success"}';
 
 			$filename = 'public/uploads/'.$file_name;
@@ -39,16 +39,16 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 			imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 			imagejpeg($image_p, $filename, 100);
 			
-			exit;
+		//	exit;
 		} else{
 			echo "There was an error uploading the file, please try again!";
 		}
 
         // save 150*150 product image
         $file_name = 'b_' .$file_name;
-        if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
+        //if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
 
-            echo '{"status":"success"}';
+        //    echo '{"status":"success"}';
 
             $filename = 'public/uploads/'.$file_name;
             //$percent = 2/3;////////////// file compress
@@ -61,10 +61,10 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
             imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
             imagejpeg($image_p, $filename, 100);
 
-            exit;
-        } else{
-            echo "There was an error uploading the file, please try again!";
-        }
+        //    exit;
+        //} else{
+        //    echo "There was an error uploading the file, please try again!";
+        //}
 		
 	} else { // online
 		$target_path = SAE_TMP_PATH;
