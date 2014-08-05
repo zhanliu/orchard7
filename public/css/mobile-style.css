@@ -68,7 +68,7 @@ body { font: 12px; color: #DEDEDE; background-color:#F8F8F8; }
 
 /* CONTENT BOX */
 .box-content { width: 49%; height:50px; background-color:#FFF; float:left; margin-top:10px; box-shadow:0px 0px 3px #CCC; border-radius:3px; -moz-border-radius:3px; -ms-border-radius:3px; -o-border-radius:3px; -webkit-border-radius:3px; z-index:40;
-    position:relative; }
+     }
 .box-content:nth-child(2n+2) { margin-left: 2%; }
 
 /************************************************************************* SOCIAL ICONS *************************************************************************/
