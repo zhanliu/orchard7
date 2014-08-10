@@ -53,7 +53,7 @@
                                             元/<?php echo $product->unit; ?></span></span></p>
 
                     <div class="buy-item" style="bottom: 0px; left:160px; position: absolute;">
-                        <a href="#" class="btn btn-primary" onclick="onclick="addToCart(<?php echo $index; ?>)"">加入购物车</a>
+                        <input type="button" class="btn-primary btn" value="加入购物车" onclick="addToCart(<?php echo $index; ?>)">
                         <!--<image src="<?php echo URL; ?>public/img/add-to-cart.png">-->
 
                     </div>
@@ -117,6 +117,7 @@
 
             }
         )
+        return false;
     }
 
     $(function(){

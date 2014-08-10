@@ -57,11 +57,11 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
                     <header class="newTodayView">
                         <nav class="shine dropShadow">
                                 <span class="floatLeft">
-                                    <a href="/"><i class="text-icon fa fa-home" style="padding-top: 5px;"></i></a>
+                                    <a href="<?php echo URL; ?>/mobile/showcase"><i class="text-icon fa fa-home" style="padding-top: 5px;"></i></a>
                                 </span>
                             <span class="tagline floatLeft">Fruit Planet<br>新鲜健康每一天</span>
                                 <span class="floatRight">
-                                    <a href="/"><i class="text-icon fa fa-user" style="padding-top: 5px;"></i></a>
+                                    <a href="#"><i class="text-icon fa fa-user" style="padding-top: 5px;"></i></a>
                                 </span>
                         </nav>
                     </header>
