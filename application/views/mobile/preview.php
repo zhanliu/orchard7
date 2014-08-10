@@ -67,6 +67,10 @@
 
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        updateTotalPrice();
+    });
+    
     $(function () {
         FastClick.attach(document.body);
     });
@@ -132,7 +136,7 @@
     }
 
     function updateTotalPrice() {
-        jQuery.ui.Mask.show('正在重新计算总价...');
+        jQuery.ui.Mask.show('正在计算总价...');
         $.ajax({
                 url: '<?php echo URL; ?>mobile/callTotalPrice/',
                 data: "",
