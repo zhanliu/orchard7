@@ -165,7 +165,7 @@ form#contactform input:focus, form#contactform textarea:focus { outline: none; b
 .team-pos	 { margin:auto; width:60px; }
 
 /* LATEST PROJECT */
-.latest 	{ width:100%; height:auto; }
+.latest 	{ width:100%; height:170px; }
 .latest img { background-image:url(img/noimg/big_noimg.png); border:none; float:left; margin: 3px 10px 10px 10px; width:130px; height:130px; }
 
 /************************************************************************* PORTFOLIO PARTS *************************************************************************/

@@ -22,7 +22,7 @@ a {
     cursor:pointer;
     color: #900;
 }
-a:visited { color: #900; }
+a:visited { color: #fff; }
 a:hover { color: #900; }
 a:focus { outline: thin dotted; }
 
@@ -1056,8 +1056,12 @@ div.stepy-hide {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
     color: #fff;
+
+    background-color: #EEBF02;
+    border-color: #EaaF22;
+    /*
     background-color: #2d78d5;
-    border-color: #276ec6;
+    border-color: #276ec6;*/
 }
 
 .stepy-navigator.panel-footer .btn {
@@ -1109,8 +1113,8 @@ element.style {
 }
 .btn-primary {
     color: #fff;
-    background-color: #4f8edc;
-    border-color: #4f8edc;
+    background-color: #EEBF02;
+    border-color: #EaaF22;
 }
 .btn {
     display: inline-block;
@@ -1403,11 +1407,3 @@ dl.list dt:last-child, dl.list dd:last-child, dl.list db:last-child {
 .alert-danger .alert-link {
     color:#7b0f0f;
 }
-
-.btn-primary {
-     color: #fff;
-    background-color: #4f8edc;
-    border-color: #4f8edc;
-}
-
-

@@ -12,17 +12,16 @@
     </div>
     <div class="clr"></div>
 
-    <div class="box-content"><h1><a href="#"> 精选单品 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 优惠套餐 </a></h1></div>
+    <div class="box-content" style="background: #EEBF02"><h1><a href="#" style="color:white"> 当季鲜果 </a></h1></div>
+    <div class="box-content"><h1><a href="#"> 礼品果篮 </a></h1></div>
     <div class="box-content"><h1><a href="#"> 热卖排行 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 当季食疗 </a></h1></div>
+    <div class="box-content"><h1><a href="#"> 优惠套餐 </a></h1></div>
 
     <div class="clr"></div>
 
     <div class="full-content">
-        <h5> 精选单品 </h5>
 
-        <p>时令鲜果一小时抵达</p>
+        <p style="font-size: 12pt; color:#85c744; text-align:center" >精选时令鲜果一小时抵达</p>
         <hr/>
 
         <form id="myform" action="<?php echo URL; ?>mobile/preview" method="post"
@@ -37,7 +36,7 @@
                 ?>
 
 
-                <div class="latest" id="<?php echo $div_id; ?>">
+                <div class="latest" id="<?php echo $div_id; ?>" style="position: relative">
                     <h3> <?php echo $product->name; ?> </h3>
                     <img src="<?php echo UPLOAD_URL . $product->img_url; ?>" class="pimg" />
 
@@ -53,10 +52,9 @@
                                         <?php echo $product->original_price; ?>
                                             元/<?php echo $product->unit; ?></span></span></p>
 
-                    <div class="buy-item">
-
-                        <image src="<?php echo URL; ?>public/img/add-to-cart.png"
-                               onclick="addToCart(<?php echo $index; ?>)">
+                    <div class="buy-item" style="bottom: 0px; left:160px; position: absolute;">
+                        <a href="#" class="btn btn-primary" onclick="onclick="addToCart(<?php echo $index; ?>)"">加入购物车</a>
+                        <!--<image src="<?php echo URL; ?>public/img/add-to-cart.png">-->
 
                     </div>
 
