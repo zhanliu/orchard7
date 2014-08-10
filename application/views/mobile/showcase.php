@@ -2,8 +2,11 @@
 
     <div class="group section-wrap upper" id="upper">
         <div class="wrap group">
-            <div class="section-2 group banner">
-                <a href="#"> <img src="<?php echo URL; ?>public/img/mobile/banner.jpg"/> </a>
+            <div id="sliderFrame">
+                <div id="slider">
+                    <img src="<?php echo URL; ?>public/img/mobile/fresh-fruit.jpg" alt="每日新鲜水果能量, 让您活力充沛" />
+                    <img src="<?php echo URL; ?>public/img/mobile/fruit-basket.jpg" alt="礼品果篮, 高端大气上档次" />
+                </div>
             </div>
         </div>
     </div>

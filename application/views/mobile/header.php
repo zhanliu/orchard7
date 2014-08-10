@@ -32,13 +32,16 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/mobile.css">
     <link id="compiledCss" rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/css/css.css">
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/mobile-style.css" type="text/css" media="screen">
+    <link href="<?php echo URL; ?>public/css/js-image-slider.css" rel="stylesheet" type="text/css" />
+
+
     <script src="<?php echo URL; ?>public/js/jquery-1.7.2.min.js"></script>
 
     <script src="<?php echo URL; ?>public/js/jquery-ui-1.8.21.custom.min.js"></script>
     <script src="<?php echo URL; ?>public/js/jquery.ui.Mask.js"></script>
     <script src="http://mzt.vip.com/cmstopic/app/design/js/lib/jquery/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
 
-
+    <script src="<?php echo URL; ?>public/js/js-image-slider.js" type="text/javascript"></script>
     <script type='application/javascript' src='<?php echo URL; ?>public/js/fastclick.min.js'></script>
 </head>
 
