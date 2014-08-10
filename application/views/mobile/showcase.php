@@ -38,11 +38,11 @@
 
                 <div class="latest" id="<?php echo $div_id; ?>" style="position: relative">
                     <h3> <?php echo $product->name; ?> </h3>
+
                     <img src="<?php echo UPLOAD_URL . $product->img_url; ?>" class="pimg" />
+                    <div class="description" ><?php echo $product->description; ?></div>
 
-                    <p><?php echo $product->description; ?></p>
-
-                    <p><span class="bright highlight_price" id="<?php echo $price_id; ?>">
+                    <div class="description" ><span class="bright highlight_price" id="<?php echo $price_id; ?>">
                                         <?php echo $product->price; ?></span>
                         <span class="bright highlight_price">元/<?php echo $product->unit; ?></span>
                                         <span id="<?php echo $price_id . '_original'; ?>"
@@ -50,7 +50,7 @@
                                             echo "style='display:none'";
                                         } ?>>
                                         <?php echo $product->original_price; ?>
-                                            元/<?php echo $product->unit; ?></span></span></p>
+                                            元/<?php echo $product->unit; ?></span></span></div>
 
                     <div class="buy-item" style="bottom: 0px; left:160px; position: absolute;">
                         <input type="button" class="btn-primary btn" value="加入购物车" onclick="addToCart(<?php echo $index; ?>)">
