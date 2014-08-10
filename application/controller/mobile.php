@@ -27,7 +27,8 @@ class Mobile extends Controller {
     public function showcase()
     {
         $this->product_model = $this->loadModel('ProductModel');
-        $products = $this->product_model->getAllProducts();
+        //query all active products
+        $products = $this->product_model->getAllProducts(1);
 
         if (isset($_POST["address1"])) {
             setcookie('address1', $_POST["address1"], time()+3600*24*365*10);
