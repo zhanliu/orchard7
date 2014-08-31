@@ -1,3 +1,4 @@
+
 <?php
 if (!session_id()) session_start();
 
@@ -46,6 +47,17 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 </head>
 
 <body>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?af92635aed30a982f9ea23990d5b33cb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
 
 <div id="st-container" class="st-container">
     <div class="st-pusher">
