@@ -83,7 +83,12 @@ class Mobile extends Controller {
     public function confirmCellphone() {
         if ($this->validateSession()) {
             require 'application/views/mobile/header.php';
-            require 'application/views/mobile/confirm_cellphone.php';
+            if (isset($_COOKIE['cellphone'])) {
+                $cellphone = $_COOKIE['cellphone'];
+                require 'application/views/mobile/confirm_detail.php';
+            } else {
+                require 'application/views/mobile/confirm_cellphone.php';
+            }
             require 'application/views/mobile/footer.php';
         }
     }
