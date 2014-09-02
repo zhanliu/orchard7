@@ -256,4 +256,8 @@ class Mobile extends Controller {
             $_SESSION['cart'] = new ShoppingCart();
         }
     }
+
+    public function queryOperationContent($name) {
+
+    }
 }
