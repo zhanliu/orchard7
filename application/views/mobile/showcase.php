@@ -16,9 +16,12 @@
 
     <div class="clr"></div>
 
+    <span id="showcase_operation_content">
+
+    </span>
+
     <div class="full-content">
         <h5> 精选单品 </h5>
-
         <p>时令鲜果一小时抵达</p>
         <hr/>
 
@@ -125,6 +128,21 @@
             $('#cart_num').text(count);
             $('#cart_num').css('display', 'inline');
         }
+
+        $.ajax({
+                url: '<?php echo URL; ?>mobile/queryOperationContent/' + 'showcase_operation',
+                data: "",
+                dataType: 'json',
+                success: function (data) {
+
+                    if (data != '') {
+                        $('#showcase_operation_content').addClass('full-content');
+                        $('#showcase_operation_content').html(data['content']);
+                    }
+                }
+            }
+        )
+
     });
 
 </script>

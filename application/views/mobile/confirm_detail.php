@@ -129,8 +129,8 @@
             setAlert('连小区和楼宇名都没有, 让我们往哪儿送啊?');
             return false;
         } else if (address2 == '') {
-            setAlert('别漏了详细地址, 楼栋号和门牌号!');
-            return false;
+//            setAlert('别漏了详细地址, 楼栋号和门牌号!');
+//            return false;
         }
 
         return true;
@@ -153,7 +153,7 @@
         } else if ($("#cellphone").val() == '') {
             setAlert('不留手机我们怎么联系您呢?');
         } else if (validateAddress()) {
-            address = '广东省广州市海珠区' + $("#address1").val() + $("#address2").val();
+            address = '广东省广州市海珠区' + $("#address1").val();// + $("#address2").val();
             myLocalsearch.setSearchCompleteCallback(calculate_distance);
             myLocalsearch.search(address);
         }

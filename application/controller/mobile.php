@@ -226,6 +226,16 @@ class Mobile extends Controller {
         echo $cart->count();
     }
 
+    public function queryOperationContent($name) {
+        $operation_model = $this->loadModel('OperationModel');
+
+        $contents = $operation_model->getOperationContentByName($name);
+
+        if (sizeof($contents) > 0) {
+            echo json_encode($contents[0]);
+        }
+    }
+
     /**
      * validate session timeout
      */
@@ -257,7 +267,4 @@ class Mobile extends Controller {
         }
     }
 
-    public function queryOperationContent($name) {
-
-    }
 }
