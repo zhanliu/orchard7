@@ -52,10 +52,11 @@
             </div>
         </div>
 
+        <a href="<?php echo URL; ?>mobile/confirmCellphone">
         <div class="page-button submit" id="submit">
-            <a href="<?php echo URL; ?>mobile/confirmCellphone">
-                <span class="text">进入结算</span></a>
-        </div>
+                <span class="text">进入结算</span>
+        </div></a>
+
         <div class="page-button submit" id="back" style="display:none">
             <a href="<?php echo URL; ?>mobile/showcase">
                 <span class="text">重新选购</span></a>

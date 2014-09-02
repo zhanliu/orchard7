@@ -13,9 +13,9 @@
     <div class="clr"></div>
 
     <div class="box-content" style="background: #EEBF02"><h1><a href="#" style="color:white"> 当季鲜果 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 礼品果篮 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 热卖排行 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 优惠套餐 </a></h1></div>
+    <div class="box-content"><h1><a href="#"> 鲜榨果汁 </a></h1></div>
+    <div class="box-content"><h1><a href="#"> 水果切 </a></h1></div>
+    <div class="box-content"><h1><a href="#"> Special </a></h1></div>
 
     <div class="clr"></div>
 

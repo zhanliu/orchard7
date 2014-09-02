@@ -95,9 +95,11 @@
                     </div>
                 </div>
 
-                <div class="page-button add ok" onclick="check_address_location()">
+                <a href="#" onclick="check_address_location()">
+                <div class="page-button add ok">
                     <span class="text">确定</span>
                 </div>
+                </a>
             </div>
 
         </div>
