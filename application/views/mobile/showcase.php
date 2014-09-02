@@ -19,9 +19,16 @@
 
     <div class="clr"></div>
 
-    <span id="showcase_operation_content">
 
-    </span>
+    <?php
+    $operation_model = $this->loadModel('OperationModel');
+
+    $contents = $operation_model->getOperationContentByName('showcase_operation');
+
+    if (sizeof($contents) > 0) {
+        echo '<span id="showcase_operation_content" class="full-content">' . $contents[0]->content . '</span>';
+    }
+    ?>
 
     <div class="full-content">
         <p style="font-size: 12pt; color:#85c744; text-align:center" >精选时令鲜果一小时抵达</p>
@@ -187,20 +194,6 @@
             $('#cart_num').text(count);
             $('#cart_num').css('display', 'inline');
         }
-
-        $.ajax({
-                url: '<?php echo URL; ?>mobile/queryOperationContent/' + 'showcase_operation',
-                data: "",
-                dataType: 'json',
-                success: function (data) {
-
-                    if (data != '') {
-                        $('#showcase_operation_content').addClass('full-content');
-                        $('#showcase_operation_content').html(data['content']);
-                    }
-                }
-            }
-        )
 
     });
 
