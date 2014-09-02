@@ -5,8 +5,8 @@
         <div class="shoppingCart-overview">
             <div class="amount">
                 <div class="tag">总金额:</div>
-                <div class="total"><span id="total_price1"><?php echo $total_price; ?></span>元</div>
-                <div class="subtotal">(小计:<span id="total_price2"><?php echo $total_price; ?></span>元,
+                <div class="total"><span id="total_gross_1"></span>元</div>
+                <div class="subtotal">(小计:<span id="total_net_1"><?php echo $total_price; ?></span>元,
                     外送费:<span id="delivery_fee_1">0</span>元)
                 </div>
             </div>
@@ -45,17 +45,18 @@
         <div class="shoppingCart-overview bottom">
             <div class="amount">
                 <div class="tag">总金额:</div>
-                <p class="total"><span id="total_price3"><?php echo $total_price; ?></span>元</p>
+                <p class="total"><span id="total_gross_2"></span>元</p>
 
-                <p class="subtotal">(小计:<span id="total_price4"><?php echo $total_price; ?></span>元,
+                <p class="subtotal">(小计:<span id="total_net_2"><?php echo $total_price; ?></span>元,
                     外送费:<span id="delivery_fee_2">0</span>元)</p>
             </div>
         </div>
 
+        <a href="<?php echo URL; ?>mobile/confirmCellphone">
         <div class="page-button submit" id="submit">
-            <a href="<?php echo URL; ?>mobile/confirmCellphone">
-                <span class="text">进入结算</span></a>
-        </div>
+                <span class="text">进入结算</span>
+        </div></a>
+
         <div class="page-button submit" id="back" style="display:none">
             <a href="<?php echo URL; ?>mobile/showcase">
                 <span class="text">重新选购</span></a>
@@ -67,6 +68,10 @@
 
 
 <script type="text/javascript">
+    $(document).ready(function(){
+        updateTotalPrice();
+    });
+
     $(function () {
         FastClick.attach(document.body);
     });
@@ -132,7 +137,7 @@
     }
 
     function updateTotalPrice() {
-        jQuery.ui.Mask.show('正在重新计算总价...');
+        jQuery.ui.Mask.show('正在计算总价...');
         $.ajax({
                 url: '<?php echo URL; ?>mobile/callTotalPrice/',
                 data: "",
@@ -150,19 +155,23 @@
                             $('#back').css('display', 'block');
                         }
 
-
-                        $('#total_price1').text(data);
-                        $('#total_price2').text(data);
-                        $('#total_price3').text(data);
-                        $('#total_price4').text(data);
-
-                        if (data >= 50) {
-                            $('#delivery_fee_1').text(0);
-                            $('#delivery_fee_2').text(0);
-                        } else {
-                            $('#delivery_fee_1').text(7);
-                            $('#delivery_fee_2').text(7);
+                        var delivery_fee = 0;
+                        if (data<50) {
+                            delivery_fee = 7;
                         }
+
+                        var total_net = data;
+                        var total_gross = total_net + delivery_fee;
+
+                        $('#total_gross_1').text(total_gross);
+                        $('#total_net_1').text(total_net);
+                        $('#total_gross_2').text(total_gross);
+                        $('#total_net_2').text(total_net);
+
+
+                        $('#delivery_fee_1').text(delivery_fee);
+                        $('#delivery_fee_2').text(delivery_fee);
+
                     }
                 }
             }

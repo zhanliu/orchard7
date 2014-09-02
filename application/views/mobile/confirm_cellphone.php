@@ -27,9 +27,11 @@
                 </div>
             </div>
             <div class="stepy-navigator panel-footer">
+                <a href="#" onclick="next()">
                 <div class="page-button submit">
-                    <a href="#" onclick="next()"><span class="text">下一步</span></a>
+                    <span class="text">下一步</span>
                 </div>
+                </a>
             </div>
 
             <div class="page-tipsTitle">友情提示</div>

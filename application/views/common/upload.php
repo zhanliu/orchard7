@@ -46,25 +46,17 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
         // save 150*150 product image
         $file_name = 'b_' .$file_name;
-        //if(move_uploaded_file($_FILES['upl']['tmp_name'], 'public/uploads/'.$file_name)){
+        $filename = 'public/uploads/'.$file_name;
+        //$percent = 2/3;////////////// file compress
+        header('Content-Type: image/jpeg');
+        list($width, $height) = getimagesize($filename);
+        $new_width = $width;
+        $new_height = $height;
+        $image_p = imagecreatetruecolor($new_width, $new_height);
+        $image = imagecreatefromjpeg($filename);
+        imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+        imagejpeg($image_p, $filename, 100);
 
-        //    echo '{"status":"success"}';
-
-            $filename = 'public/uploads/'.$file_name;
-            //$percent = 2/3;////////////// file compress
-            header('Content-Type: image/jpeg');
-            list($width, $height) = getimagesize($filename);
-            $new_width = $width;
-            $new_height = $height;
-            $image_p = imagecreatetruecolor($new_width, $new_height);
-            $image = imagecreatefromjpeg($filename);
-            imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-            imagejpeg($image_p, $filename, 100);
-
-        //    exit;
-        //} else{
-        //    echo "There was an error uploading the file, please try again!";
-        //}
 		
 	} else { // online
 		$target_path = SAE_TMP_PATH;
@@ -75,6 +67,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
         // save 100*100 image
 		if(move_uploaded_file($_FILES['upl']['tmp_name'], $target_path)) {
+            copy($target_path, SAE_TMP_PATH . 'b_' . $prefix_name);
 			//$percent = 2/3;////////////// file compress
 			header('Content-Type: image/jpeg');
 			list($width, $height) = getimagesize($target_path);
@@ -92,7 +85,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 			$s->write($domain, $filename ,$file_contents);
 			$url=$s->getUrl($domain, $filename );
 			
-			exit;
+//			exit;
 		} else{
 			echo "There was an error uploading the file, please try again!";
 		}
@@ -101,28 +94,25 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
         $prefix_name = 'b_' . $prefix_name;
         $target_path = SAE_TMP_PATH.$prefix_name;
         $file_name = 'b_' . $file_name;
-        if(move_uploaded_file($_FILES['upl']['tmp_name'], $target_path)) {
-            //$percent = 2/3;////////////// file compress
-            header('Content-Type: image/jpeg');
-            list($width, $height) = getimagesize($target_path);
-            $new_width = $width;
-            $new_height = $height;
-            $image_p = imagecreatetruecolor($new_width, $new_height);
-            $image = imagecreatefromjpeg($target_path);
-            imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-            imagejpeg($image_p, $target_path, 100);
+
+        //$percent = 2/3;////////////// file compress
+        header('Content-Type: image/jpeg');
+        list($width, $height) = getimagesize($target_path);
+        $new_width = $width;
+        $new_height = $height;
+        $image_p = imagecreatetruecolor($new_width, $new_height);
+        $image = imagecreatefromjpeg($target_path);
+        imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+        imagejpeg($image_p, $target_path, 100);
 
 
-            $file_contents= file_get_contents($target_path);
-            $s = new SaeStorage();
-            $filename = $file_name;
-            $s->write($domain, $filename ,$file_contents);
-            $url=$s->getUrl($domain, $filename );
+        $file_contents= file_get_contents($target_path);
+        $s = new SaeStorage();
+        $filename = $file_name;
+        $s->write($domain, $filename ,$file_contents);
+        $url=$s->getUrl($domain, $filename );
 
-            exit;
-        } else{
-            echo "There was an error uploading the file, please try again!";
-        }
+        exit;
 	}
 }
 

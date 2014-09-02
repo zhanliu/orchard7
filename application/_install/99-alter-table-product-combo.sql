@@ -43,3 +43,6 @@ alter table `order_status` add column type int(1) after `status`;
 update order_status set type = 0 where status_code in (0, 1, 2);
 update order_status set type = 1 where status_code in (3, 4, 5);
 
+/* ----------- 2014/8/4 ------------add address type --------------*/
+alter table `address` add column type varchar(20) after `id`;
+
