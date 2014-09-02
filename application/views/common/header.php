@@ -101,6 +101,12 @@ if (!isset($_SESSION['login'])) {
                     <li><a href="<?php echo URL; ?>customer/manageCustomer">客户管理</a></li>
                 </ul>
             </li>
+            <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>运营中心</span></a>
+                <ul class="acc-menu">
+                    <li><a href="/orchard7/order/addOrder">添加运营文案</a></li>
+                    <li><a href="<?php echo URL; ?>order/manageOrder">运营文案管理</a></li>
+                </ul>
+            </li>
 
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-map-marker"></i> <span>Maps</span></a>
                 <ul class="acc-menu">
