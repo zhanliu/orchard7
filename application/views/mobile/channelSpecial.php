@@ -12,10 +12,10 @@
     </div>
     <div class="clr"></div>
 
-    <div class="box-content" style="background: #EEBF02"><h1><a href="#" style="color:white"> 当季鲜果 </a></h1></div>
+    <div class="box-content"><h1><a href="<?php echo URL; ?>mobile/showcase"> 当季鲜果 </a></h1></div>
     <div class="box-content"><h1><a href="#"> 鲜榨果汁 </a></h1></div>
     <div class="box-content"><h1><a href="#"> 水果切 </a></h1></div>
-    <div class="box-content"><h1><a href="<?php echo URL; ?>mobile/channelSpecial"> Special </a></h1></div>
+    <div class="box-content" style="background: #EEBF02"><h1><a href="#" style="color:white"> Special </a></h1></div>
 
     <div class="clr"></div>
 
@@ -23,62 +23,12 @@
     <?php
     $operation_model = $this->loadModel('OperationModel');
 
-    $contents = $operation_model->getOperationContentByName('showcase_operation');
+    $contents = $operation_model->getOperationContentByName('special_operation');
 
     if (sizeof($contents) > 0) {
         echo '<span id="showcase_operation_content" class="full-content">' . $contents[0]->content . '</span>';
     }
     ?>
-
-    <div class="full-content">
-        <p style="font-size: 12pt; color:#85c744; text-align:center" >精选时令鲜果一小时抵达</p>
-        <hr/>
-
-        <form id="myform" action="<?php echo URL; ?>mobile/preview" method="post"
-              class="form-horizontal">
-            <?php
-            foreach ($products as $product) {
-                $index = $product->id;
-                $div_id = "div_" . $index;
-                $list_id = "list_" . $index;
-                $number_field_id = "number_field_" . $index;
-                $price_id = "price_" . $index;
-                ?>
-
-
-                <div class="latest" id="<?php echo $div_id; ?>" style="position: relative">
-                    <h3> <?php echo $product->name; ?> </h3>
-
-                    <img src="<?php echo UPLOAD_URL . $product->img_url; ?>" class="pimg" />
-                    <div class="description" ><?php echo $product->description; ?></div>
-
-                    <div class="description" ><span class="bright highlight_price" id="<?php echo $price_id; ?>">
-                                        <?php echo $product->price; ?></span>
-                        <span class="bright highlight_price">元/<?php echo $product->unit; ?></span>
-                                        <span id="<?php echo $price_id . '_original'; ?>"
-                                              class="gray_price" <?php if ($product->original_price == null) {
-                                            echo "style='display:none'";
-                                        } ?>>
-                                        <?php echo $product->original_price; ?>
-                                            元/<?php echo $product->unit; ?></span></span></div>
-
-                    <div class="buy-item" style="bottom: 0px; left:160px; position: absolute;">
-                        <input type="button" class="btn-primary btn" value="加入购物车" onclick="addToCart(<?php echo $index; ?>)">
-                        <!--<image src="<?php echo URL; ?>public/img/add-to-cart.png">-->
-
-                    </div>
-
-                </div>
-
-                <hr/>
-            <?php } ?>
-            <input type="hidden" name="item_type" value="product">
-            <input type="hidden" name="block" value="<?php echo $block; ?>">
-            <input type="hidden" name="submit_add_item" value="true">
-        </form>
-
-        <div class="clr"></div>
-    </div>
 
     <div class="clr"></div>
 

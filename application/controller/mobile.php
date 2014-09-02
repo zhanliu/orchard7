@@ -242,6 +242,13 @@ class Mobile extends Controller {
         }
     }
 
+    public function channelSpecial() {
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/channelSpecial.php';
+        require 'application/views/mobile/footer.php';
+    }
+
     /**
      * validate session timeout
      */
