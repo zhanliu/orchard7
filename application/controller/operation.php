@@ -12,66 +12,36 @@ class Operation extends Controller
     }
 
     public function addOperation() {
-        $combo_model = $this->loadModel('ComboModel');
-        $combos = $combo_model->getAllCombos();
 
         require 'application/views/common/header.php';
-        require 'application/views/order/add_order.php';
+        require 'application/views/operation/add_operation.php';
         require 'application/views/common/footer.php';
     }
 
     public function manageOperation() {
-        $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->getAllOrdersWithDetails();
-        $orderStatus = $order_model->getOrderStatusCode();
-
-        //TODO: revise logic to handle order mapping with product and combo
-        $combo_model = $this->loadModel('ComboModel');
-        $combos = $combo_model->getAllCombos();
-
-        $order_detail_model = $this->loadModel('OrderDetailModel');
-        $orderDetails = $order_detail_model->getAllOrderDetails();
+        $operation_model = $this->loadModel('OperationModel');
+        $operations = $operation_model->getAllOperationContents();
 
         require 'application/views/common/header.php';
-        require 'application/views/order/order_manager.php';
+        require 'application/views/operation/operation_manager.php';
         require 'application/views/common/footer.php';
     }
 
-    public function deleteOperation($id) {
-        $order_model = $this->loadModel('OrderModel');
-        $orders = $order_model->deleteOrder($id);
+    public function deleteOperation($name) {
+        $operation_model = $this->loadModel('OperationModel');
+        $operations = $operation_model->deleteOperationContent($name);
 
-        $order_detail_model = $this->loadModel('OrderDetailModel');
-        $order_detail_model->deleteOrderDetailByOrderId($id);
-
-        header('location: ' . URL . 'order/manageOrder');
+        header('location: ' . URL . 'operation/manageOperation');
     }
 
 
-    public function updateOperation($id) {
-        $order_model = $this->loadModel('OrderModel');
-        $order = $order_model->getOrderById($id);
+    public function updateOperation($name) {
+        $operation_model = $this->loadModel('OperationModel');
+        $operations = $operation_model->getOperationContentByName($name);
 
-        $order_detail_model = $this->loadModel('OrderDetailModel');
-        $orderDetails = $order_detail_model->getOrderDetailsById($id);
-
-        $product_model = $this->loadModel('ProductModel');
-        $items = $product_model->getProductsByOrderId($id);
-
-        ///////////////////// collect orderCombo, control quantity input
-        $orderItem = NULL;
-        foreach ($items as $item) {
-            //echo "size is ".sizeof($items);
-            $orderItem[$item->id] = "";
-            foreach ($orderDetails as $orderDetail) {
-                if ($orderDetail->item_id == $item->id) {
-                    $orderItem[$orderDetail->item_id] = $orderDetail->item_quantity;
-                }
-            }
-        }
 
         require 'application/views/common/header.php';
-        require 'application/views/order/update_order.php';
+        require 'application/views/operation/update_operation.php';
         require 'application/views/common/footer.php';
     }
 
@@ -118,37 +88,13 @@ class Operation extends Controller
 
     public function submitAddOperation() {
         //add Customer
-        $customer_model = $this->loadModel('CustomerModel');
-        $isCustomerExisted = false;
-        $cellphone = $_POST["cellphone"];
-        $customer = $customer_model->getCustomerByCellphone($cellphone);
-        $customer_id = NULL;;
+        $operation_model = $this->loadModel('OperationModel');
 
-        if (sizeof($customer) == 1) {
-            $isCustomerExisted = true;
-            $customer_id = $customer[0]->id;
-        } else {
-            $customer_id = $customer_model->addCustomer($cellphone);
-        }
+        $name = $_POST["name"];
+        $content = $_POST["content"];
+        $operation = $operation_model->addOperationContent($name, $content);
 
-        //add Address
-        $shipping_address_id = NULL;
-        $address_model = $this->loadModel('AddressModel');
-        $shipping_address_model = $this->loadModel('ShippingAddressModel');
-
-        if (isset($_POST["submit_add_address"])) {
-            //insert row to address table
-            $address_id = $address_model->addAddress($_POST["country"], $_POST["province"], $_POST["city"], $_POST["district"], $_POST["address1"], $_POST["address2"], "","");
-
-            $shipping_address_id = $shipping_address_model->addShippingAddress($customer_id, $address_id);
-            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
-        } else if (isset($_POST["submit_already_add_address"])) {
-
-            $shipping_address_id = $_POST["primary_address_radio"];
-            $shipping_address_model->setDefaultShippingAddress($shipping_address_id, $customer_id);
-        }
-        //add Order
-        //TODO: complete this function
+        header('location: ' . URL . 'operation/manageOperation');
     }
 
 }
