@@ -6,9 +6,12 @@ class Mobile extends Controller {
 
     public function index() {
 
-        global $SKIP_LOCATION;
+        require 'application/config/Settings_INI.php';
 
-        if (isset($_COOKIE['address1']) || $SKIP_LOCATION) {
+        $settings = new Settings_INI;
+        $SKIP_LOCATION = $settings->loadProperty('SKIP_LOCATION');
+
+        if (isset($_COOKIE['address1']) || $SKIP_LOCATION == 1) {
             $this->showcase();
         } else {
             require 'application/views/mobile/header.php';

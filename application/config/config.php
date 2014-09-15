@@ -40,4 +40,3 @@ if (ONLINE=='TRUE') {
     define('DB_PASS', '');
 }
 
-$SKIP_LOCATION = true;

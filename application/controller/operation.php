@@ -27,6 +27,31 @@ class Operation extends Controller
         require 'application/views/common/footer.php';
     }
 
+    public function manageConfig() {
+
+        require 'application/config/Settings_INI.php';
+
+        $settings = new Settings_INI;
+//        $settings->load('settings.ini');
+//        $local_skip_location = $settings->get('SKIP_LOCATION');
+
+        $local_skip_location = $settings->loadProperty('SKIP_LOCATION');
+
+        require 'application/views/common/header.php';
+        require 'application/views/operation/config_manager.php';
+        require 'application/views/common/footer.php';
+    }
+
+    public function updateLocationQueryConfig($flag) {
+
+        require 'application/config/Settings_INI.php';
+
+        $settings = new Settings_INI;
+        $settings->modifyProperty('SKIP_LOCATION', $flag);
+
+        header('location: ' . URL . 'operation/manageConfig');
+    }
+
     public function deleteOperation($name) {
         $operation_model = $this->loadModel('OperationModel');
         $operations = $operation_model->deleteOperationContent($name);
