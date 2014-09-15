@@ -6,7 +6,9 @@ class Mobile extends Controller {
 
     public function index() {
 
-        if (isset($_COOKIE['address1'])) {
+        global $SKIP_LOCATION;
+
+        if (isset($_COOKIE['address1']) || $SKIP_LOCATION) {
             $this->showcase();
         } else {
             require 'application/views/mobile/header.php';

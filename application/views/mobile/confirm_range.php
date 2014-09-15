@@ -85,7 +85,6 @@
                     data: "",
                     dataType: 'json',
                     success: function (data) {
-
                         if (data != '') {
 
                             var distance = data['distance'];

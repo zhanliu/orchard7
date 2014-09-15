@@ -103,8 +103,9 @@ if (!isset($_SESSION['login'])) {
             </li>
             <li class="hasChild"><a href="javascript:;"><i class="fa fa-table"></i> <span>运营中心</span></a>
                 <ul class="acc-menu">
-                    <li><a href="/orchard7/operation/addOperation">添加运营文案</a></li>
+                    <li><a href="<?php echo URL; ?>operation/addOperation">添加运营文案</a></li>
                     <li><a href="<?php echo URL; ?>operation/manageOperation">运营文案管理</a></li>
+                    <li><a href="<?php echo URL; ?>operation/manageConfig">配置管理</a></li>
                 </ul>
             </li>
 
