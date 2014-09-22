@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">文案内容</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="content" id="content" placeholder="必填" >
+                                <input type="textarea" class="form-control" name="content" id="content" placeholder="必填" >
                             </div>
                         </div>
 

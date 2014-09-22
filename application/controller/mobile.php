@@ -285,4 +285,18 @@ class Mobile extends Controller {
         }
     }
 
+    public function orderCenter($queryStatus=null)
+    {
+        $order_model = $this->loadModel('OrderModel');
+        $orderStatus = $order_model->getOrderStatusCode();
+        $orders = $order_model->getTodayOrdersWithDetailsByStatusType($queryStatus);
+
+        $amount_of_type_0 = $order_model->getTodayAmountOfOrdersByStatusType(0);
+        $amount_of_type_1 = $order_model->getTodayAmountOfOrdersByStatusType(1);
+        $amount_of_type_9 = $amount_of_type_0 + $amount_of_type_1;
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/order_manager.php';
+        require 'application/views/mobile/footer.php';
+    }
 }
