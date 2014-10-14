@@ -11,7 +11,7 @@
  */
 
 
-define("TOKEN", "orchard7_2014");
+define("TOKEN", "orchard7_2015");
 $wechatObj = new wechatCallbackapiTest();
 if (isset($_GET['echostr'])) {
     $wechatObj->valid();

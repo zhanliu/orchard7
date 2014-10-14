@@ -1,0 +1,59 @@
+{
+    "button": [
+        {
+            "name": "我要抢购",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "水果拼盘",
+                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                },
+                {
+                    "type": "view",
+                    "name": "时令鲜果",
+                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                },
+                {
+                    "type": "view",
+                    "name": "香脆坚果",
+                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                },
+                {
+                    "type": "view",
+                    "name": "商务拼盘",
+                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                }
+            ]
+        },
+        {
+            "name": "个人中心",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "我的订单",
+                    "url":"http://orchard7.vipsinaapp.com/mobileadmin/orderManager"
+                 },
+                {
+                    "type": "view",
+                    "name": "我的积分",
+                    "url":"http://orchard7.vipsinaapp.com/mobileadmin/orderManager"
+                }
+            ]
+        },
+        {
+            "name": "更多资讯",
+            "sub_button": [
+                {
+                    "type": "click",
+                    "name": "关于我们",
+                    "key": "rselfmenu_2_0"
+                 },
+                {
+                    "type": "click",
+                    "name": "订购说明",
+                    "key": "rselfmenu_2_1"
+                }
+            ]
+        }
+    ]
+}
