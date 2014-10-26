@@ -46,3 +46,7 @@ update order_status set type = 1 where status_code in (3, 4, 5);
 /* ----------- 2014/8/4 ------------add address type --------------*/
 alter table `address` add column type varchar(20) after `id`;
 
+
+/* ----------- 2014/10/26 ----------add channel for product --------*/
+alter table `product` add column channel int(20) after `category_id`;
+
