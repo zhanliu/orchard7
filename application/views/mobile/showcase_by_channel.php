@@ -12,10 +12,10 @@
     </div>
     <div class="clr"></div>
 
-    <div class="box-content" style="background: #EEBF02"><h1><a href="#" style="color:white"> 水果拼盘 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 时令鲜果 </a></h1></div>
-    <div class="box-content"><h1><a href="#"> 香脆坚果 </a></h1></div>
-    <div class="box-content"><h1><a href="<?php echo URL; ?>mobile/channelSpecial"> 商务拼盘 </a></h1></div>
+    <div class="box-content" style="<?php if ($channel_id == 1) echo "background: #EEBF02"; ?>"><h1><a href="<?php echo URL; ?>mobile/showcaseByChannel/1" style="<?php if ($channel_id == 1) echo "color:white"; ?>"> 水果拼盘 </a></h1></div>
+    <div class="box-content" style="<?php if ($channel_id == 2) echo "background: #EEBF02"; ?>"><h1><a href="<?php echo URL; ?>mobile/showcaseByChannel/2" style="<?php if ($channel_id == 2) echo "color:white"; ?>"> 时令鲜果 </a></h1></div>
+    <div class="box-content" style="<?php if ($channel_id == 3) echo "background: #EEBF02"; ?>"><h1><a href="<?php echo URL; ?>mobile/showcaseByChannel/3" style="<?php if ($channel_id == 3) echo "color:white"; ?>"> 香脆坚果 </a></h1></div>
+    <div class="box-content" style="<?php if ($channel_id == 4) echo "background: #EEBF02"; ?>"><h1><a href="<?php echo URL; ?>mobile/showcaseByChannel/4" style="<?php if ($channel_id == 4) echo "color:white"; ?>"> 商务拼盘 </a></h1></div>
 
     <div class="clr"></div>
 

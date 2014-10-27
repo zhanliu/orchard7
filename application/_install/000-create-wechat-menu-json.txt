@@ -6,22 +6,22 @@
                 {
                     "type": "view",
                     "name": "水果拼盘",
-                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                    "url":"http://orchard7.vipsinaapp.com/mobile/showcaseByChannel/1"
                 },
                 {
                     "type": "view",
                     "name": "时令鲜果",
-                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                    "url":"http://orchard7.vipsinaapp.com/mobile/showcaseByChannel/2"
                 },
                 {
                     "type": "view",
                     "name": "香脆坚果",
-                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                    "url":"http://orchard7.vipsinaapp.com/mobile/showcaseByChannel/3"
                 },
                 {
                     "type": "view",
                     "name": "商务拼盘",
-                    "url":"http://orchard7.vipsinaapp.com/mobile"
+                    "url":"http://orchard7.vipsinaapp.com/mobile/showcaseByChannel/4"
                 }
             ]
         },

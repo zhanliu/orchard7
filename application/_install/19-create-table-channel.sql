@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS `channel` (
 
 
 insert into channel (name, description, is_active) values ("水果拼盘", "水果拼盘", 1);
-insert into channel (name, description, is_active) values ("时令鲜果", "时令鲜果", 2);
-insert into channel (name, description, is_active) values ("香脆坚果", "香脆坚果", 3);
-insert into channel (name, description, is_active) values ("商务拼盘", "商务拼盘", 4);
+insert into channel (name, description, is_active) values ("时令鲜果", "时令鲜果", 1);
+insert into channel (name, description, is_active) values ("香脆坚果", "香脆坚果", 1);
+insert into channel (name, description, is_active) values ("商务拼盘", "商务拼盘", 1);

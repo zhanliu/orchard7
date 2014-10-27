@@ -44,6 +44,22 @@ class Mobile extends Controller {
         require 'application/views/mobile/footer.php';
     }
 
+    // on locate success, show product list
+    public function showcaseByChannel($channel_id)
+    {
+        $this->product_model = $this->loadModel('ProductModel');
+        //query all active products
+        $products = $this->product_model->getAllProductsByChannel($channel_id);
+
+        if (isset($_POST["address1"])) {
+            setcookie('address1', $_POST["address1"], time()+3600*24*365*10);
+        }
+
+        require 'application/views/mobile/header.php';
+        require 'application/views/mobile/showcase_by_channel.php';
+        require 'application/views/mobile/footer.php';
+    }
+
     // preview shopping cart
     public function preview() {
         if ($this->validateSession()) {
